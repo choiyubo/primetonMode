@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<tag xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" tagName="w:treeNode" >
+	<require>
+		<path>/webcomp/baseWebcomp.xml</path>
+		<include>onClickFunc,onRefreshFunc,icon,scope</include>
+	</require>
+	<group groupName="基本属性">
+		<property displayName="nodeType" hint="定义树的节点类型的名称" name="nodeType" required="true" type="primitive:string"/>
+		<property displayName="iconField" hint="定义当前节点上打开和关闭节点的图标的字段,用,号格开, 认为打开和关闭图标相同" name="iconField" required="false" type="primitive:string"/>
+		<property displayName="xpath" hint="定义树的节点类型对应的数据区中的路径" name="xpath" required="true" type="primitive:string"/>
+		<property displayName="showField" hint="树节点上显示指定字段的内容" name="showField" required="true" type="primitive:string"/>
+		<property displayName="submitXpath" hint="提交数据用的xpath" name="submitXpath" required="false" type="primitive:string"/>
+	</group>
+	<group groupName="事件">
+		<property  allowXPath="false" displayName="onCheckFunc" hint="根节点复选框被点击时调用的方法" name="onCheckFunc" required="false" type="javascript:functionName"/>
+	</group>
+</tag>

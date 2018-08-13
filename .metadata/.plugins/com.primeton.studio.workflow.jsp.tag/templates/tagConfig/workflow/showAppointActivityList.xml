@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tag xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  tagName="wf:showAppointActivityList">
+<require>
+	<path>/workflow/baseWorkflow.xml</path>
+	<include>id,scope</include>
+</require>
+	<group groupName="基本属性">
+		<property type="primitive:string" name="workItemID" displayName="workItemID" hint="工作项ID，支持@开头的变量" required="true"/>
+		<property type="primitive:boolean" name="appointed" displayName="appointed" defaultValue="" hint="" required="false"/>
+	</group>
+</tag>
+
+

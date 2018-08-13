@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="GBK"?>
+<resources>
+	<require uri="/css/style1/style-custom.css" type="hcss" code="&lt;h:css href=&quot;/css/style1/style-custom.css&quot;/&gt;"/>
+	<require uri="/common/common.jsp" type="include" code="&lt;%@include file=&quot;/common/common.jsp&quot;%&gt;"/>
+	<require uri="/common/common.jsp" type="include" code="&lt;%@include file=&quot;/common/skins/skin[0-9]/component(-debug)?.jsp&quot;%&gt;"/>
+</resources>

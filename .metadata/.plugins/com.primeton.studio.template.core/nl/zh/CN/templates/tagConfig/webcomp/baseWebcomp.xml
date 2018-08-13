@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 编辑使用 XMLSpy v2006 U (http://www.altova.com) 由 any (any) -->
+<!-- 编辑使用 XMLSpy v2006 U (http://www.altova.com) 由 any (any) -->
+<!-- 编辑使用 XMLSpy v2006 U (http://www.altova.com) 由 any (any) -->
+<!-- 编辑使用 XMLSpy v2006 U (http://www.altova.com) 由 any (any) -->
+<!-- 编辑使用 XMLSpy v2006 U (http://www.altova.com) 由 any (any) -->
+<!-- 编辑使用 XMLSpy v2006 U (http://www.altova.com) 由 any (any) -->
+<!-- edited with XMLSPY v2004 rel. 2 U (http://www.xmlspy.com) by binge (binge) -->
+<tag tagName="baseWebcomp"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	>
+	<require>
+		<path>/base.xml</path>
+		<include>id,scope,property,iterateId</include>
+	</require>
+	<group groupName="基本属性">
+		<property showInViewModel="never" name="name" displayName="名称"
+			hint="指定标签名称" type="primitive:string" defaultValue=""
+			required="false">
+		</property>
+		<property showInViewModel="common" name="value" displayName="取值"
+			hint="指定标签取值" type="primitive:string" defaultValue=""
+			required="false">
+		</property>
+		<property showInViewModel="common" name="width" displayName="宽度"
+			hint="控件的宽度" type="primitive:string" required="false">
+			<validators>
+				<widthHeightValidator/>
+			</validators>
+		</property>
+		<property showInViewModel="common" name="height"
+			displayName="高度" hint="控件的高度" type="primitive:string"
+			required="false">
+			<validators>
+				<widthHeightValidator/>
+			</validators>
+		</property>
+		<property showInViewModel="common" name="title"
+			displayName="生成title属性" hint="生成title属性" type="primitive:string"
+			defaultValue="" required="false">
+		</property>
+		<property showInViewModel="common" name="disabled"
+			displayName="标签是否可用"
+			hint="指定标签是否可用;true:不可用，生成disabled属性 false(缺省):可用，不生成disabled属性"
+			type="primitive:boolean" defaultValue="" required="false">
+		</property>
+		<property showInViewModel="common" name="readOnly"
+			displayName="显示字符是否只读"
+			hint="指定显示字符是否只读;true:显示字符只读，不可修改 false(缺省):显示字符可以修改"
+			type="primitive:boolean" defaultValue="" required="false">
+		</property>
+		<property showInViewModel="never" name="indexed"
+			displayName="是否产生索引" hint="指定是否产生索引;true:产生索引属性 false(缺省):不产生索引属性"
+			type="primitive:boolean" defaultValue="" required="false">
+		</property>
+		<property showInViewModel="common" name="size"
+			displayName="显示字符数" hint="指定显示字符的长度" type="primitive:integer"
+			defaultValue="" required="false">
+			<validators>
+				<intRangeValidator>
+					<min>1</min>
+					<max>500</max>
+				</intRangeValidator>
+			</validators>
+		</property>
+		<property showInViewModel="common" name="tabindex"
+			displayName="获得焦点的顺序" hint="确定在不同元素之间获得焦点的顺序"
+			type="primitive:integer" defaultValue="" required="false">
+			<validators>
+				<intRangeValidator>
+					<min>0</min>
+					<max>500</max>
+				</intRangeValidator>
+			</validators>
+		</property>
+		<property name="accesskey" displayName="accesskey"
+			hint="该元素获得焦点的快捷键" type="primitive:string" required="false"
+			showInViewModel="rare">
+			<validators>
+				<characterValidator/>
+			</validators>
+		</property>
+		<property showInViewModel="never" name="modelField"
+			displayName="绑定显示模型的某个字段" hint="绑定显示模型的某个字段"
+			type="resource:dataField" defaultValue="" required="false">
+
+		</property>
+		<property showInViewModel="common" name="maxlength"
+			displayName="显示字符数的最大长度" hint="指定显示字符的最大长度" type="primitive:integer"
+			defaultValue="" required="false">
+			<validators>
+				<intRangeValidator>
+					<min>1</min>
+					<max>500</max>
+				</intRangeValidator>
+			</validators>
+		</property>
+	</group>
+	<group groupName="样式">
+		<property showInViewModel="common" name="style"
+			displayName="style" hint="控件的style" type="css:style"
+			required="false" />
+		<property showInViewModel="common" name="styleClass"
+			displayName="styleClass" hint="控件的样式" type="css:styleclass"
+			required="false" />
+	</group>
+	<group groupName="事件">
+		<property allowXPath="false" showInViewModel="rare"
+			name="onSelectFunc" displayName="onSelectFunc"
+			hint="选中时的回调的函数，请只填写函数名" type="javascript:functionName"
+			required="false" />
+		<property allowXPath="false" showInViewModel="rare"
+			name="beforeSelectFunc" displayName="beforeSelectFunc"
+			hint="选中前回调的函数，请只填写函数名" type="javascript:functionName"
+			required="false" />
+		<property allowXPath="false" showInViewModel="rare"
+			name="afterSelectFunc" displayName="afterSelectFunc"
+			hint="选中后回调的函数，请只填写函数名" type="javascript:functionName"
+			required="false" />
+		<property allowXPath="false" showInViewModel="rare"
+			name="beforeUnSelectFunc" displayName="beforeUnSelectFunc"
+			hint="取消选中该行前回调的函数，请只填写函数名" type="javascript:functionName"
+			required="false" />
+		<property allowXPath="false" showInViewModel="rare"
+			name="afterUnSelectFunc" displayName="afterUnSelectFunc"
+			hint="取消选中该行后回调的函数，请只填写函数名" type="javascript:functionName"
+			required="false" />
+		<property allowXPath="false" showInViewModel="rare"
+			name="onRefreshFunc" displayName="onRefreshFunc"
+			hint="渲染控件时回调的函数，请只填写函数名" type="javascript:functionName"
+			required="false" />
+		<property allowXPath="false" showInViewModel="rare"
+			name="onClickFunc" displayName="onClickFunc"
+			hint="点击控件时回调的函数，请只填写函数名" type="javascript:functionName"
+			required="false" />
+		<property allowXPath="false" showInViewModel="rare"
+			name="onUnSelectFunc" displayName="onUnSelectFunc"
+			hint="控件由选中状态变为非选中状态时回调的函数，请只填写函数名" type="javascript:functionName"
+			required="false" />
+		<property allowXPath="false" showInViewModel="rare"
+			name="onmouseover" displayName="onmouseover事件" hint="鼠标在文字上时发生的事件"
+			type="javascript:function" defaultValue="" required="false">
+		</property>
+		<property allowXPath="false" showInViewModel="rare"
+			name="onmouseout" displayName="onmouseout事件" hint="鼠标移开时发生的事件"
+			type="javascript:function" defaultValue="" required="false">
+		</property>
+		<property allowXPath="false" showInViewModel="rare"
+			name="onmouseup" displayName="onmouseup事件" hint="释放鼠标时发生的事件"
+			type="javascript:function" defaultValue="" required="false">
+		</property>
+		<property allowXPath="false" showInViewModel="rare"
+			name="onmousemove" displayName="onmousemove事件" hint="鼠标移动时发生的事件"
+			type="javascript:function" defaultValue="" required="false">
+		</property>
+		<property allowXPath="false" showInViewModel="rare"
+			name="ondblclick" displayName="ondblclick事件" hint="元素受到鼠标双击时发生的事件"
+			type="javascript:function" defaultValue="" required="false">
+		</property>
+		<property allowXPath="false" showInViewModel="rare"
+			name="onclick" displayName="onclick事件" hint="元素受到鼠标敲击时发生的事件"
+			type="javascript:function" defaultValue="" required="false">
+		</property>
+		<property allowXPath="false" showInViewModel="rare"
+			name="onmousedown" displayName="onmousedown事件" hint="按下鼠标时发生的事件"
+			type="javascript:function" defaultValue="" required="false">
+		</property>
+		<property allowXPath="false" showInViewModel="rare"
+			name="onchange" displayName="onchange事件" hint="元素状态改变时发生的事件"
+			type="javascript:function" defaultValue="" required="false">
+		</property>
+		<property allowXPath="false" showInViewModel="rare"
+			name="onkeyup" displayName="onkeyup事件" hint="键盘弹起时发生的事件"
+			type="javascript:function" defaultValue="" required="false">
+		</property>
+		<property allowXPath="false" showInViewModel="rare"
+			name="onkeypress" displayName="onkeypress事件" hint="击键盘时发生的事件"
+			type="javascript:function" defaultValue="" required="false">
+		</property>
+		<property allowXPath="false" showInViewModel="rare"
+			name="onblur" displayName="onblur事件" hint="元素失去焦点时发生的事件"
+			type="javascript:function" defaultValue="" required="false">
+		</property>
+		<property allowXPath="false" showInViewModel="rare"
+			name="onkeydown" displayName="onkeydown事件" hint="按下键盘时发生的事件"
+			type="javascript:function" defaultValue="" required="false">
+		</property>
+		<property allowXPath="false" showInViewModel="rare"
+			name="onfocus" displayName="onfocus事件" hint="元素获得焦点时发生的事件"
+			type="javascript:function" defaultValue="" required="false">
+		</property>
+		<property allowXPath="false" showInViewModel="rare"
+			name="onselect" displayName="onselect事件" hint="元素被选中时发生的事件"
+			type="javascript:function" defaultValue="" required="false">
+		</property>
+	</group>
+	<group groupName="其它">
+		<property showInViewModel="common" name="icon"
+			displayName="icon" hint="控件的图标" type="resource:multiByExtension"
+			required="false" >
+			<factoryParam>
+		    <mapEntry>
+		     <key class="string">webExtensions</key>
+		     <value class="string">gif,jpg,jpeg,bmp,png</value>
+		    </mapEntry>
+		   </factoryParam>
+		   </property>
+	</group>
+</tag>

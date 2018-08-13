@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tag tagName="r:treeNode" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
+	<group groupName="basic">
+		<property allowXPath="false" name="scope" displayName="scope" hint="Set the data area." type="combo:readonly" defaultValue="" required="false">
+			<dataProvider class="mapProvider">
+				<mapEntry>
+					<key class="string">request</key>
+					<value class="string">r</value>
+				</mapEntry>
+				<mapEntry>
+					<key class="string">page</key>
+					<value class="string">p</value>
+				</mapEntry>
+				<mapEntry>
+					<key class="string">flow</key>
+					<value class="string">f</value>
+				</mapEntry>
+				<mapEntry>
+					<key class="string">session</key>
+					<value class="string">s</value>
+				</mapEntry>
+			</dataProvider>
+		</property>
+		<property name="nodeType" displayName="nodetype" hint="Sets the type of the node." type="primitive:string" defaultValue="" required="true">
+			
+		</property>
+		<property name="showField" displayName="showField" hint="Sets the content of node." type="primitive:string" defaultValue="" required="true">
+			
+		</property>
+		<property name="icon" displayName="icon" hint="Sets the icons for  node opened status and closed status." type="resource:multiByExtension" defaultValue="" required="false">
+		<factoryParam>
+		    <mapEntry>
+		     <key class="string">webExtensions</key>
+		     <value class="string">gif,jpg,jpeg,bmp,png</value>
+		    </mapEntry>
+		   </factoryParam>	
+		</property>
+		<property name="iconField" displayName="iconField" hint="Sets the icon field for  node opened status and closed status." type="primitive:string" defaultValue="" required="false">
+			
+		</property>
+
+		<property name="action" displayName="action" hint="Sets the biz to load data when the node has been opend." type="resource:biz" defaultValue="" required="false">
+			
+		</property>
+		<property name="childEntities" displayName="childEntities" hint="Sets the son node's type." type="primitive:string" defaultValue="" required="false">
+			
+		</property>
+				<property name="submitXpath" displayName="submitXpath" hint="Sets the xpath of submitted data." type="primitive:string" defaultValue="" required="false">
+			
+		</property>
+	</group>
+	<group groupName="Event">
+		<property allowXPath="false" name="onClickFunc" displayName="onClickFunc" hint="Fires when the user clicks the object." type="javascript:functionName" defaultValue="" required="false">
+			
+		</property>
+		<property allowXPath="false" name="onDblclickFunc" displayName="onDblclickFunc" hint="Fires when the user double-clicks the object." type="javascript:functionName" defaultValue="" required="false">
+			
+		</property>
+		<property allowXPath="false" name="onRefreshFunc" displayName="onRefreshFunc" hint="Fires when the node  has been refreshed." type="javascript:functionName" defaultValue="" required="false">
+			
+		</property>	
+	</group>
+	<group groupName="Other">
+		<property allowXPath="false" name="initParamFunc" displayName="initParamFunction" hint="Fires when the node has been opened." type="primitive:string" defaultValue="" required="false">
+			
+		</property>
+
+	</group>
+</tag>

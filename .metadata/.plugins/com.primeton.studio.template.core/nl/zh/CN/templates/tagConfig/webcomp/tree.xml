@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<tag xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" tagName="w:tree" >
+    <require>
+        <path>/webcomp/baseWebcomp.xml</path>
+        <include>width,height,scope</include>
+    </require>
+    <group groupName="基本属性">
+    		<property allowXPath="false" name="id" displayName="页面标识" hint="对象的唯一标识" type="primitive:string" defaultValue="" required="true">
+			<validators>
+				<notEmptyValidator/>
+				<IDNotDuplicateValidator/>
+			</validators>
+		</property>
+        <property displayName="hasRoot" hint="是否显示根节点" name="hasRoot" required="false" type="primitive:boolean"/>
+        <property displayName="hasCheckBox" hint="定义树节点是否有checkbox" name="hasCheckBox" required="false" type="primitive:boolean"/>
+        <property displayName="checkBoxType" hint="树节点的Checkbox的关联类型,simple表是父子节点间的checkbox无关联. Associated表示树父子节点间的checkbox是联动的." name="checkBoxType" required="false" type="primitive:string">
+        	<dataProvider class="mapProvider">
+				<mapEntry>
+					<key class="string">simple</key>
+					<value class="string">simple</value>
+				</mapEntry>
+				<mapEntry>
+					<key class="string">associated</key>
+					<value class="string">associated</value>
+				</mapEntry>
+			</dataProvider>
+        </property>
+    </group>
+</tag>

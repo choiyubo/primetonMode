@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tag xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" tagName="wf:appointActivity">
+	<require>
+		<path>/workflow/baseWFSelect.xml</path>
+		<include>id,name,value,genScript,styleClass,scope</include>
+	</require>
+	<group groupName="基本属性">
+		<property type="primitive:string" name="workItemID" displayName="workItemID" hint="工作项ID,支持@开头的变量" required="true"/>
+	</group>
+</tag>
+

@@ -1,0 +1,43 @@
+<div id="sankeychart" style="height:400px;"></div>
+
+    <script type="text/javascript">
+    
+       var sankeychart = echarts.init(document.getElementById('sankeychart'));
+		sankeychart.showLoading();
+	   $ .get('<%= request.getContextPath() %>/common/nui/echart/json/sankeydata.json', function (data) {
+	    sankeychart.hideLoading();
+	
+	    sankeychart.setOption(option = {
+	        title: {
+	            text: '桑基图',
+	            left: 'center',
+	        },
+	        tooltip: {
+	            trigger: 'item',
+	            triggerOn: 'mousemove'
+	
+	        },
+	        series: [
+	            {
+	                type: 'sankey',
+	                layout:'none',
+	                data: data.nodes,
+	                links: data.links,
+	                itemStyle: {
+	                    normal: {
+	                        borderWidth: 1,
+	                        borderColor: '#aaa'
+	                    }
+	                },
+	                lineStyle: {
+	                    normal: {
+	                        curveness: 0.5
+	                    }
+	                }
+	            }
+	        ]
+	    });
+	});
+     
+     
+    </script>

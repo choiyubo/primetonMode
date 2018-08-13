@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tag xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" tagName="wf:activityGraph">
+	<require>
+		<path>/workflow/baseWFGraph.xml</path>
+		<include>onclick,ondblclick,onmouseover,onmouseout,scope</include>
+	</require>
+	<group groupName="基本属性">
+		<property type="primitive:string" name="activityType" displayName="activityType" hint="活动类型" required="false"/>
+	</group>
+</tag>
+
+

@@ -1,0 +1,68 @@
+##组合向导切换功能向导需要的语句 勿删！！
+#if(${map.get("recordview")}!="")
+#set($map=${map.get("recordview")})
+#end
+##如果在map中没有得到值，默认的是空字符串""
+##标题 (String类型)
+#set($title=${map.get("title")})
+##recoderview实体表格封装
+#set($entityTable=${map.get("entityTable")})
+##每行显示字段数 (Integer类型)
+#set($row_length=${map.get("rowLength")})
+##界面中设的xpath
+#set($xpath=${map.get("xpath")})
+##表单宽度
+#set($width="100%")
+#set($width=${map.get("width")})
+##生成反向需要使用的信息
+${WizardReverseHelper.getComponentTag("recordview",$map)}
+<w:panel id="panel1" width="$width" title="$title">
+<table align="center" border="0" width="100%" class="form_table">
+#set($currentRowCount = $row_length)
+#foreach($row in [1..${entityTable.getCountSize()}])
+#set($tagElement =${entityTable.getTagConfig($row)})
+#if(${entityTable.getCell($row,5)}==true)
+	#if($currentRowCount==$row_length)
+	<tr>
+	#end
+	##下面计算输入控件所占cols的数量
+	#set($currentColspan = 1)
+	#set($currentRowField = ${entityTable.getCell($row,4)})
+	#if($currentRowField==1)
+		#if($row<${entityTable.getCountSize()})
+			#set($currentColspan = 1)
+		#else
+			#set($currentColspan = $currentRowCount * 2 - 1)
+		#end
+		#set($currentRowCount = $currentRowCount - 1)
+	#else
+		#if($currentRowCount<=$currentRowField)
+			#set($currentColspan = $currentRowCount * 2 - 1)
+			#set($currentRowCount=0)
+		#else
+			#set($currentColspan= $currentRowField * 2 - 1)
+			#set($currentRowCount = $currentRowCount - $currentRowField)
+		#end
+	#end
+	<td class="form_label">${entityTable.getCell($row,2)}</td>
+	<td#if($currentColspan != 1) colspan="$currentColspan"#end>
+		#set($temp=${tagElement.removeAttribute("iterateId")})
+		#if($xpath != "")
+			#set($property_name=${TagElementHelper.getAttributeValue($tagElement, "property")})
+			${TagElementHelper.setAttributeValue($tagElement, "property", "${xpath}/${property_name}")}
+		#end
+		${tagElement.toString(true,true)}
+	</td>
+	#if($row==${entityTable.getCountSize()})
+	</tr>
+	#else
+		#if($currentRowCount==0)
+	</tr>#set($currentRowCount = $row_length)
+		#end
+	#end
+#end
+#end
+</table>
+</w:panel>
+##生成反向需要使用的信息
+${WizardReverseHelper.getComponentEndTag("recordview")}

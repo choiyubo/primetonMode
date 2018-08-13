@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSPY v2004 rel. 4 U (http://www.xmlspy.com) by ton (ORiON) -->
+<tag tagName="b:message" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
+	<require>
+		<path>/bean/baseBean.xml</path>
+		<include>ignore,scope</include>
+	</require>
+	<group groupName="基本属性">
+		<property name="key" displayName="消息key" hint="资源文件中的属性key值" type="beanMessageKey" showInViewModel="common" required="true">
+			<validators>
+				<notEmptyValidator/>
+				<IDNotDuplicateValidator/>
+			</validators>
+		</property>
+		
+		<property name="locale" displayName="locale" hint="国家和语种信息" type="primitive:string" showInViewModel="common" required="false"/>
+	</group>
+</tag>

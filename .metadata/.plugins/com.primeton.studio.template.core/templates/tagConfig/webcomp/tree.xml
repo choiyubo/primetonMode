@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<tag xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" tagName="w:tree" >
+    <require>
+        <path>/webcomp/baseWebcomp.xml</path>
+        <include>width,height,scope</include>
+    </require>
+    <group groupName="Basic">
+    		<property allowXPath="false" name="id" displayName="id" hint="id" type="primitive:string" defaultValue="" required="true">
+			<validators>
+				<notEmptyValidator/>
+				<IDNotDuplicateValidator/>
+			</validators>
+		</property>
+        <property displayName="hasRoot" hint="Sets whether tree has root." name="hasRoot" required="false" type="primitive:boolean"/>
+        <property displayName="hasCheckBox" hint="Sets whether tree has checkbox." name="hasCheckBox" required="false" type="primitive:boolean"/>
+        <property displayName="checkBoxType" hint="Sets the type of checkbox." name="checkBoxType" required="false" type="primitive:string">
+        	<dataProvider class="mapProvider">
+				<mapEntry>
+					<key class="string">simple</key>
+					<value class="string">simple</value>
+				</mapEntry>
+				<mapEntry>
+					<key class="string">associated</key>
+					<value class="string">associated</value>
+				</mapEntry>
+			</dataProvider>
+        </property>
+    </group>
+</tag>

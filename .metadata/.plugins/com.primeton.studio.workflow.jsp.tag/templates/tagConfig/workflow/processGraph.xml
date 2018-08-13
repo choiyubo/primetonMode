@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tag xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" tagName="wf:processGraph">
+	<require>
+		<path>/workflow/baseWFGraph.xml</path>
+		<include>onclick,ondblclick,zoomQuotiety,onmouseover,onmouseout,processInstID,processID,processName,scope</include>
+	</require>
+	<group groupName="基本属性">
+		<property type="primitive:string" name="titlePath" displayName="titlePath" hint="头文件路径" required="false"/>
+		<property type="primitive:string" name="iconPath" displayName="iconPath" hint="图标文件路径" required="false"/>
+		<property type="primitive:string" name="serverID" displayName="serverID" hint="受管引擎ID" required="false"/>
+	</group>
+</tag>
+
+

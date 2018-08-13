@@ -1,0 +1,42 @@
+##获得整个向导数据
+#set($wizardMap=${dataContextManager.getWizardDataContext()})
+##获得向导所在的contribution名称
+#set($contributionName=${wizardMap.get("contribution")})
+#set($flowQName=${templateConfigManager.getInvokePath("data_select_flow.vm")})
+#set($queryMap = ${dataContextManager.getComponentDataContext(1, "queryform")})
+#set($viewlistMap = ${dataContextManager.getComponentDataContext(2, "viewlist")})
+#set($displayField = ${dataContextManager.getComponentDataContext(0, "select_display_field").get("field")})
+#set($queryAction = "query")
+##所选择的实体 (String类型)
+#set($selectedEntity=${dataContextManager.getComponentDataContext(0, "entitySelect").get("selectedEntity")})
+##选择实体的短名称（String类型）
+#set($entityName=${dataContextManager.getComponentDataContext(0, "entitySelect").get("entityName")})
+#set($iter_xpath = "${entityName.toLowerCase()}s")
+#set($keys = ${DataEntityHelper.getPrimaryKeys(${queryMap.get("selectedEntity")})})
+##queryform的初始值
+#set($temp = ${queryMap.put("title", "${DataEntityHelper.getEntityDisplayName($selectedEntity)}查询")})
+#set($temp=${queryMap.put("criteriaName", "criteria")}) ## 将queryform中设置的查询条件变量设置为criteria
+#set($temp = ${queryMap.put("formName", "query_form")}) ## 将queryform中设置的查询条件变量设置为criteria
+#set($temp = ${queryMap.put("isPagination", true)}) ## lookup都需要分页
+
+##设置结果列表的初始值
+#set($temp = ${viewlistMap.put("title", "${DataEntityHelper.getEntityDisplayName($selectedEntity)}列表")})
+#set($temp=$viewlistMap.put("criteriaName", "criteria"))
+#set($temp=$viewlistMap.put("genFunction", false))
+#set($temp=$viewlistMap.put("isPagination", true))
+#set($temp=$viewlistMap.put("formWidth", ${queryMap.get("formWidth")}))
+#set($temp=$viewlistMap.put("tableType", 2))
+#set($temp=$viewlistMap.put("iter_xpath", $iter_xpath))
+#set($temp=$viewlistMap.put("submitXpath", ""))
+#set($temp=$viewlistMap.put("formName", "page_form"))
+#set($eventEntityTable = ${viewlistMap.get("events")})
+#set($entityTable = ${viewlistMap.get("entityTable")})
+${eventEntityTable.clear()}
+#set($item=["选择","selectRecord","1"])
+${eventEntityTable.addRow($item)}
+#set($item=["取消选择值","unSelectRecord","0"])
+${eventEntityTable.addRow($item)}
+#set($item=["关闭","window.close","0"])
+${eventEntityTable.addRow($item)}
+
+

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wizard height="500" sort="908" id="spring_entity_slavery" isDefault="true" name="Spring主从表维护向导" width="750" type="Richweb">
+	<page description="选择一个数据实体产生维护的功能代码(只支持选择单向1:n或者双向n:1关联的1端实体)" height="600" index="0" title="选择数据实体" width="750">
+		<layout row="2" column="2"/>
+		<component id="entitySelect" type="Spring_Entity_Select">
+			<ui>
+				<size row="1" column="2"/>
+				<fillStyle style="fill_horizontal"/>
+			</ui>
+		</component>
+		<component id="auto_pk" type="checkbox" label="自动产生主键">
+			<ui>
+				<size row="1" column="2"/>
+				<data default_value="true"></data>
+			</ui>
+		</component>
+		<component id="select_slavery_tables" label="选择需要维护的从表" type="table_select">
+			<ui>
+				<size column="2" row="1"/>
+			</ui>
+		</component>
+		<templates>
+			<item>data_init.vm</item>
+		</templates>
+	</page>
+	<page description="使用queryform查询表单查询选择的实体" height="550" index="1" title="查询条件页面设置" width="750">
+		<layout column="1" row="2"/>
+		<component id="queryform" type="queryform">
+			<ui>
+				<size column="1" row="2"/>
+			</ui>
+		</component>
+	</page>
+	<page description="采用table方式显示当前实体的查询结果" height="700" index="2" title="查询结果列表设置" width="750">
+		<layout column="1" row="2"/>
+		<component id="viewlist" type="viewlist">
+			<ui>
+				<size column="1" row="2"/>
+			</ui>
+		</component>
+	</page>
+	<page description="配置录入表单的基本信息" height="600" index="3" title="数据录入页面设置" width="750">
+		<layout column="1" row="2"/>
+		<component id="dataform" type="dataform">
+			<ui>
+				<size column="1" row="2"/>
+			</ui>
+		</component>
+		<templates>
+			<item>datacell_init.vm</item>
+		</templates>
+	</page>
+	<page description="采用datacell录入从表，配置datacell选项" height="700" index="4" title="从表录入配置" width="800">
+		<layout column="1" row="2"/>
+		<component id="slavery_tables" nested_type="Spring_Datacell" type="tables">
+			<ui>
+				<size column="1" row="2"/>
+			</ui>
+		</component>
+	</page>
+
+	<previewPage plugin="com.primeton.studio.spring.ui" class="com.primeton.studio.spring.ui.functionWizard.SpringFunctionWizardPreviewPageBuilderFactory"/>
+
+	<event>
+		<entry source="entitySelect" target="queryform"/>
+		<entry source="entitySelect" target="viewlist"/>
+		<entry source="entitySelect" target="dataform"/>
+		<entry source="entitySelect" target="select_slavery_tables"/>
+		<entry source="select_slavery_tables" target="slavery_tables"/>
+	</event>
+	<handlers>
+		<handler plugin="com.primeton.studio.spring.ui" class="com.primeton.studio.spring.ui.functionWizard.SpringFunctionWizardProcessHandler"/>
+	</handlers>
+	<template>
+		<entry templateName="entity_query.vm" fileName="${entitySelect.entityName}Query.jsp" fileType="page"/>
+		<entry templateName="entity_input.vm" fileName="${entitySelect.entityName}Input.jsp" fileType="page"/>
+
+		<entry templateName="entity_maintain.vm" fileName="${entitySelect.entityName}Maintain.flowx" fileType="pageflow"/>
+
+		<entry templateName="template_service_interface.vm" fileName="I${entitySelect.entityName}Service.java" fileType="java"/>
+		<entry templateName="template_service_impl.vm" fileName="${entitySelect.entityName}Service.java" fileType="java"/>
+
+		<entry templateName="data_init.vm"/>
+		<entry templateName="datacell_init.vm"/>
+	</template>
+</wizard>

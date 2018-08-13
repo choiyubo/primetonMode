@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<tag xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" tagName="w:time" >
+    <require>
+        <path>/webcomp/baseWebcomp.xml</path>
+        <include>iterateId,scope,property,name,value,indexed,id,readOnly,title,tabindex,disabled,modelField</include>
+    </require>
+    <group groupName="基本属性">
+        <property showInViewModel="common" displayName="srcFormat" hint="源值格式，如果取到的值为字符串，须指定该格式" name="srcFormat" required="false" type="combo:editable">
+   			<dataProvider class="listProvider">
+				<string>HH:mm:ss</string>
+				<string>HH时mm分ss秒</string>
+				<string>HHmmss</string>
+			</dataProvider>
+        </property>
+        <property showInViewModel="common" displayName="maxValue" hint="控件的最大值，格式应该符合HH:mm:ss" name="maxValue" required="false" type="primitive:string">
+        </property>
+        <property showInViewModel="common" displayName="minValue" hint="控件的最小值，格式应该符合HH:mm:ss" name="minValue" required="false" type="primitive:string"/>
+    </group>
+</tag>

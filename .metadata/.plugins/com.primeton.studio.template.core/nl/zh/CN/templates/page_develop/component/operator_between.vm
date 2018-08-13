@@ -1,0 +1,17 @@
+#set($entityTable=${map.get("entityTable")})
+#set($currentRow=${map.get("currentRow")})
+#set($tagElement=${entityTable.getTagConfig($currentRow)})
+#set($type=${tagElement.getName()})
+#set($entityName=${map.get("entityName")})
+#set($property=${tagElement.getAttributeValue("property")})
+#set($xpath=${StringUtil.substringBeforeLast($property, "/")})
+#set($temp =  $tagElement.removeAttribute("validateAttr"))
+<h:hidden property="${xpath}/_op" value="between" /><h:hidden property="${property}" value=" " />
+#set($tagName = ${TagElementHelper.getTagName($tagElement)})
+#if($tagName=="w:date")
+<h:hidden property="${xpath}/_pattern" value="yyyy-MM-dd"/>
+#end
+<table style="border:0px;background-color:transparent" border="0" cellspacing="0" cellpadding="0">
+<tr style="border: 0px none ; background-color: transparent;"><td style="border: 0px none ; background-color: transparent;">$tagElement.addAttr("property", "${xpath}/_min")从:</td><td style="border: 0px none ; background-color: transparent;">$tagElement.toString(true, true)</td>
+<td style="border: 0px none ; background-color: transparent;">$tagElement.addAttr("property", "${xpath}/_max")到:</td><td style="border: 0px none ; background-color: transparent;">$tagElement.toString(true, true)</td></tr>
+</table>

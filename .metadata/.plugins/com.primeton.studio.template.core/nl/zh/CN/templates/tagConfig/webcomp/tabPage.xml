@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<tag xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" tagName="w:tabPage" >
+	<require>
+		<path>/webcomp/baseWebcomp.xml</path>
+		<include>id,title,onSelectFunc,onUnSelectFunc,onRefreshFunc,scope</include>
+	</require>
+	<group groupName="基本属性">
+		<property displayName="allowClose" hint="是否允许tab页被关闭" name="allowClose" required="false" type="primitive:boolean"/>
+		<property displayName="allowSelect" hint="是否允许tab页被选中" name="allowSelect" required="false" type="primitive:boolean"/>
+		<property displayName="allowReload" hint="是否允许tab页被刷新" name="allowReload" required="false" type="primitive:boolean"/>
+		<property displayName="tabType" hint="设定tab页类型，用iframe实现，还是div实现" name="tabType" required="false" type="combo:readonly">
+			<dataProvider class="listProvider">
+				<string>div</string>
+				<string>iframe</string>
+			</dataProvider>
+		</property>
+		<property displayName="url" hint="abType为iframe时，iframe的url（src属性）" name="url" required="false" type="resource:multiByExtension">
+			<factoryParam>
+		    <mapEntry>
+		     <key class="string">webExtensions</key>
+		     <value class="string">*</value>
+		    </mapEntry>
+		    <mapEntry>
+		     <key class="string">modelExtensions</key>
+		     <value class="string">flow,flowx</value>
+		    </mapEntry>
+		   </factoryParam>
+		</property>
+	</group>
+</tag>

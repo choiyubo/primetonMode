@@ -1,0 +1,34 @@
+##获得整个向导数据
+#set($wizardMap=${dataContextManager.getWizardDataContext()})
+##获得向导所在的contribution名称
+#set($contributionName=${wizardMap.get("contribution")})
+###set($queryMap = ${dataContextManager.getComponentDataContext(1, "nui_queryform")})
+###set($viewlistMap = ${dataContextManager.getComponentDataContext(2, "nui_viewlist")})
+#set($dataformMap = ${dataContextManager.getComponentDataContext(1, "nui_dataform")})
+#set($selectedEntityMap = ${dataContextManager.getComponentDataContext(0, "entitySelect")})
+#set($selectedEntity=${dataContextManager.getComponentDataContext(0, "entitySelect").get("selectedEntity")})
+##选择实体的短名称（String类型）
+#set($entityName=${dataContextManager.getComponentDataContext(0, "entitySelect").get("entityName")})
+#set($entityNameLow = "${entityName.toLowerCase()}")
+#set($isPagination=${queryMap.get("isPagination")})
+#set($isAutoPK=${dataContextManager.getComponentDataContext(0, "auto_pk").get("checked")})
+#set($keys = ${DataEntityHelper.getPrimaryKeys($selectedEntity)})
+##dataform表格封装
+#set($entityTable=${dataformMap.get("entityTable")})
+##初始化 queryform 向导界面中的初始化值
+###set($temp = ${queryMap.put("title", "${DataEntityHelper.getEntityDisplayName($selectedEntity)}查询")})
+###set($temp = ${queryMap.put("criteriaName", "criteria")}) ## 将queryform中设置的查询条件变量设置为criteria
+##初始化 viewlist 向导界面中的初始化值
+###set($temp = ${viewlistMap.put("title", "${DataEntityHelper.getEntityDisplayName($selectedEntity)}列表")})
+###set($temp=$viewlistMap.put("criteriaName", "criteria"))
+###set($temp=$viewlistMap.put("isPagination", ${isPagination}))
+###set($temp=$viewlistMap.put("tableType", 1))
+###set($temp=$viewlistMap.put("iter_xpath", $iter_xpath))
+###set($temp=$viewlistMap.put("submitXpath", "select_objs"))
+###set($entityTable = ${viewlistMap.get("entityTable")})
+##初始化 dataform 向导界面中的初始化值
+#set($temp = ${dataformMap.put("title", "${DataEntityHelper.getEntityDisplayName($selectedEntity)}Input")})
+#set($temp=${dataformMap.put("entityVariable", "${entityName.toLowerCase()}")}) ## 设置提交实体变量的名称
+#set($temp=$dataformMap.put("inFunctionWizard", true)) ## 设置dataform在向导中执行
+
+

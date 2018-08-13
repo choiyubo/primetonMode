@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tag tagName="r:treeMenuItem" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
+	<group groupName="基本属性">
+		<property name="display" displayName="display" hint="display属性 设置菜单项显示名" type="primitive:string" defaultValue="" required="true">
+			<validators>
+				<notEmptyValidator/>
+			</validators>
+		</property>
+	</group>
+	<group groupName="事件">
+		<property allowXPath="false" name="onClickFunc" displayName="onClickFunc" hint="onClickFunc属性 指定选择菜单时触发的javascript函数名" type="primitive:string" defaultValue="" required="true">
+			<validators>
+				<notEmptyValidator/>
+			</validators>
+		</property>
+	</group>
+	<group groupName="其他属性">
+  </group>
+</tag>

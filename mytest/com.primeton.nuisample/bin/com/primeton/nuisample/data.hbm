@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC  "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+ "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class dynamic-insert="true" dynamic-update="true" entity-name="com.primeton.nuisample.data.OContacts" table="o_contacts">
+        <tuplizer class="com.primeton.server.das.tuplizer.SDOEntityTuplizer" entity-mode="sdo"/>
+        <id name="contactId" type="long">
+            <column name="CONTACT_ID"/>
+            <generator class="assigned"/>
+        </id>
+        <property name="operatorId" type="long">
+            <column name="OPERATOR_ID"/>
+        </property>
+        <property name="contactName" type="string">
+            <column length="20" name="CONTACT_NAME" not-null="true"/>
+        </property>
+        <property name="relation" type="string">
+            <column length="20" name="RELATION"/>
+        </property>
+        <property name="phone" type="string">
+            <column length="20" name="PHONE"/>
+        </property>
+        <property name="postcode" type="string">
+            <column length="6" name="POSTCODE"/>
+        </property>
+        <property name="address" type="string">
+            <column length="128" name="ADDRESS"/>
+        </property>
+        <property name="email" type="string">
+            <column length="128" name="EMAIL"/>
+        </property>
+    </class>
+    <class dynamic-insert="true" dynamic-update="true" entity-name="com.primeton.nuisample.data.OOperator" table="o_operator">
+        <tuplizer class="com.primeton.server.das.tuplizer.SDOEntityTuplizer" entity-mode="sdo"/>
+        <id name="operatorId" type="long">
+            <column name="OPERATOR_ID"/>
+            <generator class="assigned"/>
+        </id>
+        <property name="userId" type="string">
+            <column length="20" name="USER_ID"/>
+        </property>
+        <property name="userName" type="string">
+            <column length="20" name="USER_NAME" not-null="true"/>
+        </property>
+        <property name="birthday" type="date">
+            <column name="BIRTHDAY"/>
+        </property>
+        <property name="gender" type="string">
+            <column length="1" name="GENDER"/>
+        </property>
+        <property name="postcode" type="string">
+            <column length="6" name="POSTCODE"/>
+        </property>
+        <property name="address" type="string">
+            <column length="128" name="ADDRESS"/>
+        </property>
+        <property name="phone" type="string">
+            <column length="20" name="PHONE"/>
+        </property>
+        <property name="email" type="string">
+            <column length="128" name="EMAIL"/>
+        </property>
+        <property name="memo" type="string">
+            <column length="4000" name="MEMO"/>
+        </property>
+        <many-to-one cascade="none" entity-name="com.primeton.nuisample.data.OOrg" fetch="join" foreign-key="FK_O_USER_REFER" lazy="false" name="oOrg">
+            <column name="ORG_ID"/>
+        </many-to-one>
+        <bag cascade="none" inverse="true" lazy="true" name="oContacts">
+            <key column="OPERATOR_ID"/>
+            <one-to-many entity-name="com.primeton.nuisample.data.OContacts"/>
+        </bag>
+    </class>
+    <class dynamic-insert="true" dynamic-update="true" entity-name="com.primeton.nuisample.data.OOrg" table="o_org">
+        <tuplizer class="com.primeton.server.das.tuplizer.SDOEntityTuplizer" entity-mode="sdo"/>
+        <id name="orgId" type="long">
+            <column name="ORG_ID"/>
+            <generator class="assigned"/>
+        </id>
+        <property name="orgName" type="string">
+            <column length="128" name="ORG_NAME" not-null="true"/>
+        </property>
+        <property name="orgCode" type="string">
+            <column length="20" name="ORG_CODE"/>
+        </property>
+        <property name="orgAddress" type="string">
+            <column length="128" name="ORG_ADDRESS"/>
+        </property>
+        <property name="orgSeq" type="string">
+            <column length="512" name="ORG_SEQ"/>
+        </property>
+        <many-to-one cascade="none" entity-name="com.primeton.nuisample.data.OOrg" fetch="join" foreign-key="FK_O_ORG_REFERE" lazy="false" name="oOrg">
+            <column name="PARENT_ORG_ID"/>
+        </many-to-one>
+    </class>
+</hibernate-mapping>

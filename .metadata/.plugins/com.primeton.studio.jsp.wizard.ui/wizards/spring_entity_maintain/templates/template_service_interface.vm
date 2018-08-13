@@ -1,0 +1,84 @@
+
+#set($wizardMap=${dataContextManager.getWizardDataContext()})
+
+#set($contribution=${wizardMap.get("contribution")})
+
+#set($selectedEntity=${dataContextManager.getComponentDataContext(0, "entitySelect").get("selectedEntity")})
+#set($entityName=${dataContextManager.getComponentDataContext(0, "entitySelect").get("entityName")})
+#set($entityNameLow="${entityName.replaceFirst('.', ${entityName.substring(0,1).toLowerCase()})}")
+
+#set($author=${wizardMap.get("author")})
+#set($email=${wizardMap.get("email")})
+
+#set($currentServiceNamespace=${templateConfigManager.getInvokePath("template_service_interface.vm")})
+#if(${StringUtil.contains($currentServiceNamespace, ".")})
+#set($currentPackage=${StringUtil.substringBeforeLast($currentServiceNamespace, ".")})
+#else
+#set($currentPackage="")
+#end
+#if(${StringUtil.contains($currentServiceNamespace, ".")})
+#set($currentFile=${StringUtil.substringAfterLast($currentServiceNamespace, ".")})
+#else
+#set($currentFile=$currentServiceNamespace)
+#end
+##set($currentPackage=${dataContextManager.getPageDataContext("template_page").get("package_template_service_interface.vm")})
+##set($currentFile=${dataContextManager.getPageDataContext("template_page").get("file_template_service_interface.vm")})
+#if(!${StringUtil.equals(${currentPackage}, "")})
+package ${currentPackage};
+#end
+import com.eos.das.entity.criteria.CriteriaType;
+import com.eos.foundation.PageCond;
+
+import ${selectedEntity};
+
+/**
+ * <pre>
+ * Title: the title
+ * Description: the description
+ * </pre>
+ * @author ${author} (mailto:${email})
+ * @version 1.00.00
+ *
+ */
+/*
+ * Modify History
+ * $log$
+ */
+public interface ${currentFile}{
+
+	/**
+	 *
+	 * @param ${entityNameLow} ${entityName}
+	 */
+	public abstract void add${entityName}(${entityName} ${entityNameLow});
+
+	/**
+	 *
+	 * @param ${entityNameLow}s ${entityName}[]
+	 */
+	public abstract void delete${entityName}(${entityName}[] ${entityNameLow}s);
+
+	/**
+	 *
+	 * @param ${entityNameLow} ${entityName}[]
+	 */
+	public abstract void get${entityName}(${entityName} ${entityNameLow});
+
+	/**
+	 *
+	 * @param criteria CriteriaType
+	 * @param page PageCond
+	 * @return ${entityName}[]
+	 */
+	public abstract ${entityName}[] query${entityName}s(CriteriaType criteriaType,
+			PageCond pageCond);
+
+	/**
+	 *
+	 * @param ${entityNameLow} ${entityName}[]
+	 */
+	public abstract void update${entityName}(${entityName} ${entityNameLow});
+
+}
+
+

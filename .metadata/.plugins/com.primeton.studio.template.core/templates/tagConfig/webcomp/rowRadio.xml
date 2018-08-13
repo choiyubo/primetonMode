@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<tag xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" tagName="w:rowRadio" >
+	<require>
+		<path>/webcomp/baseWebcomp.xml</path>
+		<include>scope,onSelectFunc,onUnSelectFunc,beforeSelectFunc,afterSelectFunc</include>
+	</require>
+	<group groupName="basic">
+		<property displayName="rowEvent" hint="Sets the event to select the row.Supports only click and dblclick." name="rowEvent" required="false" type="combo:readonly">
+			<dataProvider class="listProvider">
+				<string>click</string>
+				<string>dblclick</string>
+			</dataProvider>
+		</property>
+		<property displayName="tagName" hint="Sets the tagName of element which fires the select event.Default is tr." name="tagName" required="false" type="combo:readonly">
+			<dataProvider class="listProvider">
+				<string>tr</string>
+				<string>td</string>
+			</dataProvider>
+		</property>
+		<property displayName="showRadio" hint="Sets whether to show  radio." name="showRadio" required="false" type="primitive:boolean"/>
+	</group>
+	<group groupName="Style">
+		<property displayName="selectStyleClass" hint="Sets the style of selected rows." name="selectStyleClass" required="false" type="css:styleclass"/>
+	</group>
+</tag>

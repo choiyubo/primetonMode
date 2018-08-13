@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<tag xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" tagName="w:popMenu" >
+    <require>
+        <path>/webcomp/baseWebcomp.xml</path>
+        <include>onClickFunc</include>
+    </require>
+    <group groupName="Basic">
+    <property allowXPath="false" name="id" displayName="id" hint="id" type="primitive:string" defaultValue="" required="true">
+    		<validators>
+				<notEmptyValidator/>
+			</validators>
+	</property>
+    </group>
+</tag>

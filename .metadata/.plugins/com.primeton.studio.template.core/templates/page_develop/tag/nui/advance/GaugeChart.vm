@@ -1,0 +1,24 @@
+<div id="gaugechart" style="height:400px;"></div>
+    
+    <script type="text/javascript">
+       var gaugechart = echarts.init(document.getElementById('gaugechart'));
+		var option = {
+			title : {
+				text: "gaugechart",
+				left:"center"
+			},
+		    tooltip : {
+		        formatter: "{a} <br/>{b} : {c}%"
+		    },
+		    series: [
+		        {
+		            name: 'Quata',
+		            type: 'gauge',
+		            detail: {formatter:'{value}%'},
+		            data: [{value: 50, name: 'Completion Rates'}]
+		        }
+		    ]
+		};
+        gaugechart.setOption(option);
+     
+    </script>

@@ -1,0 +1,9 @@
+INDEX VERSION 1.127
+/Users/caiyubo/Applications/primeton/platform/ide/eclipse/workspace_demo/.metadata/.plugins/org.eclipse.jst.jsp.core/jspsearch/3094224844.index
+/mytest/com.primeton.eos.Util/src
+/Users/caiyubo/Applications/primeton/platform/ide/eclipse/workspace_demo/.metadata/.plugins/org.eclipse.jst.jsp.core/jspsearch/3708006965.index
+/mytest/com.primeton.eos.Util/src
+/Users/caiyubo/Applications/primeton/platform/ide/eclipse/workspace_demo/.metadata/.plugins/org.eclipse.jst.jsp.core/jspsearch/1664073666.index
+/mytest/com.primeton.eos.Util/src
+/Users/caiyubo/Applications/primeton/platform/ide/eclipse/workspace_demo/.metadata/.plugins/org.eclipse.jst.jsp.core/jspsearch/3270544563.index
+/mytest/com.primeton.eos.Util/src

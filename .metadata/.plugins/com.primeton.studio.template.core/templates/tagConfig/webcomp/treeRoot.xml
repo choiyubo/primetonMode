@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<tag xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" tagName="w:treeRoot" >
+    <require>
+        <path>/webcomp/baseWebcomp.xml</path>
+        <include>onClickFunc,onRefreshFunc,icon,scope</include>
+    </require>
+    <group groupName="Basic">
+
+        <property displayName="display " hint="Sets the content of root node." name="display" required="true" type="primitive:string">
+        	<validators>
+				<notEmptyValidator/>
+				<IDNotDuplicateValidator/>
+			</validators>
+		</property>
+    </group>
+    <group groupName="Event">
+		 <property allowXPath="false"  displayName="onCheckFunc" hint="Fires when the node's checkbox has been checked." name="onCheckFunc" required="false" type="javascript:functionName"/>
+    </group>
+</tag>

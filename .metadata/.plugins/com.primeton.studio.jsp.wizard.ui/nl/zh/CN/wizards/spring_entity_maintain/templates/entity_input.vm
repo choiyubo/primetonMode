@@ -1,0 +1,84 @@
+##获得整个向导数据
+#set($wizardMap=${dataContextManager.getWizardDataContext()})
+##获得向导所在的contribution名称
+#set($contributionName=${wizardMap.get("contribution")})
+#set($flowQName=${templateConfigManager.getInvokePath("entity_maintain.vm")})
+#set($queryMap = ${dataContextManager.getComponentDataContext(1, "queryform")})
+#set($viewlistMap = ${dataContextManager.getComponentDataContext(2, "viewlist")})
+#set($dataformMap = ${dataContextManager.getComponentDataContext(3, "dataform")})
+#set($selectedEntityMap = ${dataContextManager.getComponentDataContext(0, "entitySelect")})
+#set($selectedEntity=${dataContextManager.getComponentDataContext(0, "entitySelect").get("selectedEntity")})
+##选择实体的短名称（String类型）
+#set($entityName=${dataContextManager.getComponentDataContext(0, "entitySelect").get("entityName")})
+#set($entityNameLow = "${entityName.toLowerCase()}")
+#set($isPagination=${queryMap.get("isPagination")})
+#set($isAutoPK=${dataContextManager.getComponentDataContext(0, "auto_pk").get("checked")})
+#set($keys = ${DataEntityHelper.getPrimaryKeys($selectedEntity)})
+##dataform表格封装
+#set($entityTable=${dataformMap.get("entityTable")})
+#set($criteria = $queryMap.get("criteriaName"))
+#set($entityVar = $dataformMap.get("entityVariable"))
+#set($selectArrVar = $viewlistMap.get("submitXpath"))
+#set($formName = $dataformMap.get("formName"))
+#set($iter_xpath = "${entityNameLow}s")
+#if($criteria == "")#set($criteria = "criteria")#end
+#if($entityVar == "")#set($entityVar = $entityNameLow)#end
+#if($selectArrVar == "")#set($selectArrVar = "select_objs")#end
+<%@page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
+<%@include file="/common/common.jsp"%>
+<%@include file="/common/skins/skin0/component.jsp" %>
+<h:css href="/css/style1/style-custom.css"/>
+<%-- 
+  - Author(s): ${RuntimeInfo.getAuthor()}
+  - Date: ${RuntimeInfo.getDate()} ${RuntimeInfo.getTime()}
+  - Description:
+--%>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<title>${DataEntityHelper.getEntityDisplayName($selectedEntity)}录入</title>
+</head>
+<body>
+<e:datasource name="${entityVar}" type="entity" path="$selectedEntity" />
+<h:form name="$formName" action="${flowQName}" method="post" onsubmit="return checkForm(this);">
+#foreach($key in $keys)
+#if($isAutoPK) ## 如果是自动生成主键那么产生所有的hidden变量进行提交
+	<h:hidden property="$entityVar/$key" />
+#end
+	#set($keyRow=0) ## 查询dataform表单配置中是否设置了主键的录入控件
+	#foreach($row in [1..${entityTable.getCountSize()}])
+		#if($key == ${entityTable.getCell($row,1)})
+			#set($keyRow = $row)
+		#end
+	#end
+#if($isAutoPK)
+	#if($keyRow != 0) ## 如果是自动生成主键又设置了主键的录入控件，删除此录入操作
+		$entityTable.deleteRow($keyRow)
+	#end
+#else
+	#if($keyRow == 0) ## 如果在可录入主键的情况下并没有选择主键录入控件，产生一个隐含的提交域
+	<h:hidden property="$entityVar/$key" />
+	#end
+#end
+#end
+	<l:equal property="_eosLastAccessAction" targetValue="update">
+		<input type="hidden" name="_eosFlowAction" value="updateSubmit" >
+	</l:equal>
+	<l:equal property="_eosLastAccessAction" targetValue="insert">
+		<input type="hidden" name="_eosFlowAction" value="insertSubmit" >
+	</l:equal>
+<h:hiddendata property="${criteria}" />
+#if($isPagination)
+<h:hidden property="page/begin"/>
+<h:hidden property="page/length"/>
+<h:hidden property="page/isCount"/>
+#end
+#set($temp=${dataformMap.put("pageFlow","")}) ## 将dataform向导中选择的页面流清空，不然dataform模板产生form表单
+#set($map=${dataformMap})
+#parse("dataform")  ##执行dataform模板
+$WizardReverseHelper.createReverseConfigFile("dataform", $dataformMap)##生成反向配置文件
+</h:form>
+</body>
+</html>
+
+

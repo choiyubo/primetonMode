@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tag tagName="r:comboSelect" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
+	<group groupName="Basic">
+		<property allowXPath="false" name="id" displayName="id" showInViewModel="rare" hint="control's ID" type="primitive:string" defaultValue="" required="true">
+			<validators>
+				<IDNotDuplicateValidator/>
+				<notEmptyValidator/>
+			</validators>
+		</property>
+		<property allowXPath="false" name="scope" displayName="scope" showInViewModel="rare" hint="Data area" type="combo:readonly" defaultValue="" required="false">
+			<dataProvider class="mapProvider">
+				<mapEntry>
+					<key class="string">request</key>
+					<value class="string">r</value>
+				</mapEntry>
+				<mapEntry>
+					<key class="string">page</key>
+					<value class="string">p</value>
+				</mapEntry>
+				<mapEntry>
+					<key class="string">flow</key>
+					<value class="string">f</value>
+				</mapEntry>
+				<mapEntry>
+					<key class="string">session</key>
+					<value class="string">s</value>
+				</mapEntry>
+			</dataProvider>
+		</property>
+		<property name="xpath" showInViewModel="common" displayName="xpath" hint="xpath" type="primitive:string" defaultValue="" required="false">
+			
+		</property>
+	</group>
+	<group groupName="Event">
+		<property allowXPath="false" showInViewModel="rare" name="onChangeFunc" displayName="onChangeFunc" hint="Fires when the contents of the object or selection have changed." type="javascript:functionName" defaultValue="" required="false">
+			
+		</property>
+		<property allowXPath="false" showInViewModel="rare" name="validateFunc" displayName="validateFunc" hint="Fires when the object loses the input focus or  user submits." type="javascript:functionName" defaultValue="" required="false">
+			
+		</property>
+		<property allowXPath="false" showInViewModel="rare" name="initParamFunc" displayName="initParamFunc" hint="Fires when the control initializes." type="javascript:functionName" defaultValue="" required="false">
+			
+		</property>
+	</group>
+	<group groupName="style">
+		<property name="width" showInViewModel="common" displayName="width" hint="Sets width of input box." type="primitive:string" defaultValue="" required="false">
+			<validators>
+				<widthHeightValidator/>
+			</validators>
+		</property>
+		<property name="height" showInViewModel="common" displayName="height" hint="Sets height of input box" type="primitive:string" defaultValue="" required="false">
+			<validators>
+				<widthHeightValidator/>
+			</validators>
+		</property>
+		<property name="optionsWidth" showInViewModel="common" displayName="optionsWidth" hint="Sets width of pop-box." type="primitive:integer" defaultValue="" required="false">
+			<validators>
+				<intRangeValidator>
+					<min>1</min>
+				</intRangeValidator>
+			</validators>
+		</property>
+		<property name="optionsHeight" showInViewModel="common" displayName="optionsHeight" hint="Sets height of pop-box" type="primitive:integer" defaultValue="" required="false">
+			<validators>
+				<intRangeValidator>
+					<min>1</min>
+				</intRangeValidator>
+			</validators>
+		</property>
+	</group>
+	<group groupName="Other">
+		<property name="queryAction" showInViewModel="common" displayName="queryAction" hint="Sets the biz to load data." type="resource:multiByExtension" defaultValue="" required="false">
+	<factoryParam>
+	<mapEntry>
+     <key class="string">modelExtensions</key>
+     <value class="string">biz,bizx</value>
+    </mapEntry>
+   </factoryParam>
+		</property>
+		<property name="readOnly" showInViewModel="common" displayName="readOnly" hint="readOnly" type="primitive:boolean" defaultValue="" required="false">
+</property>
+		<property name="allowInput" showInViewModel="common" displayName="allowInput" hint="Sets whether the user can input data into the inputbox." type="primitive:boolean" defaultValue="" required="false">
+</property>
+		<property name="disabled" showInViewModel="common" displayName="disabled" hint="disable" type="primitive:boolean" defaultValue="" required="false">
+</property>
+		<property name="linkId" showInViewModel="common" displayName="linkId" hint="Sets a comboSelect to be linked." type="primitive:string" defaultValue="" required="false">
+			
+		</property>
+		<property name="linkField" showInViewModel="common" displayName="linkField" hint="Sets field name that be used to link another comboselect." type="primitive:string" defaultValue="" required="false">
+		</property>
+	    <property name="submitXpath" showInViewModel="common" displayName="submitXpath" hint="Sets the xpath of submitted data." type="primitive:string" defaultValue="" required="false">
+				
+		</property>
+		<property name="filterType" showInViewModel="common" displayName="filterType" hint="filter type" type="combo:editable" defaultValue="" required="false">
+			<dataProvider class="mapProvider">
+				<mapEntry>
+					<key class="string">startwith</key>
+					<value class="string">startwith</value>
+				</mapEntry>
+				<mapEntry>
+					<key class="string">like</key>
+					<value class="string">like</value>
+				</mapEntry>
+			</dataProvider>
+		</property>
+		<property name="property" showInViewModel="common" displayName="property" hint="property" type="primitive:string" defaultValue="" required="false">
+			
+		</property>
+		<property name="value" showInViewModel="common" displayName="value" hint="value" type="primitive:string" defaultValue="" required="false">
+			
+		</property>
+		<property name="valueField" showInViewModel="common" displayName="valueField" hint="valueField" type="primitive:string" defaultValue="" required="false">
+			
+		</property>
+		<property name="textField" showInViewModel="common" displayName="textField" hint="textField" type="primitive:string" defaultValue="" required="false">
+			
+		</property>
+		<property name="filterField" showInViewModel="common" displayName="filterField" hint="filterField" type="primitive:string" defaultValue="" required="false">
+			
+		</property>
+		<property name="nullText" showInViewModel="common" displayName="nullText" hint="Set the label which be displayed when the control's value is null." type="primitive:string" defaultValue="" required="false">
+			
+		</property>
+	</group>
+</tag>

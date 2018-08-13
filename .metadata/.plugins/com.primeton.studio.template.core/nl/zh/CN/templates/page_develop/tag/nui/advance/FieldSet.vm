@@ -1,0 +1,42 @@
+    <style type="text/css">
+    fieldset
+    {
+        border:solid 1px #aaa;
+    }        
+    .hideFieldset
+    {
+        border-left:0;
+        border-right:0;
+        border-bottom:0;
+    }
+    .hideFieldset .fieldset-body
+    {
+        display:none;
+    }
+    
+    </style>
+    
+    <h1>FieldSet</h1>
+
+    <h4>不可折叠</h4>
+    <fieldset id="fd1" style="width:600px;">
+        <legend><span>不可折叠</span></legend>
+        <div class="fieldset-body">
+        </div>
+    </fieldset>
+
+    <br />
+    <h4>可折叠</h4>
+    <fieldset id="fd2" style="width:600px;">
+        <legend><label><input type="checkbox" checked id="checkbox1" onclick="toggleFieldSet(this, 'fd2')" hideFocus/>可折叠</label></legend>
+        <div class="fieldset-body">
+            
+        </div>
+    </fieldset>
+    
+    <script type="text/javascript">
+        function toggleFieldSet(ck, id) {
+            var dom = document.getElementById(id);
+            dom.className = !ck.checked ? "hideFieldset" : "";
+        }
+    </script>

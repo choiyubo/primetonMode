@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wizard id="entity_datacell" sort="1009" isDefault="true" name="DataCell 单表维护向导"  width="750" height="350" type="Richweb">
+	<page index="0" title="数据实体选择" description="选择一个数据实体使用Datacell控件进行维护的代码" width="750" height="350">
+		<layout row="2" column="3"/>
+		<component id="entitySelect" type="entity_select" label="选择实体:">
+			<ui>
+				<size row="2" column="3"/>
+			</ui>
+		</component>
+		<templates>
+			<item>data_init.vm</item>
+		</templates>
+	</page>
+	<page index="1" title="查询条件设置" description="使用queryform查询表单查询选择的实体"  width="750" height="550">
+		<layout row="2" column="1"/>
+		<component id="queryform" type="queryform">
+			<ui>
+				<size row="2" column="1"/>
+			</ui>
+		</component>
+		<templates>
+			<item>datacell_init.vm</item>
+		</templates>
+	</page>
+	<page index="2" title="Datacell表格编辑器设置" description="配置datacell控件的相关参数" width="800" height="700">
+		<layout row="2" column="1"/>
+		<component id="datacell" type="datacell">
+			<ui>
+				<size row="2" column="1"/>
+			</ui>
+		</component>
+	</page>
+	<event>
+		<entry source="entitySelect" target="queryform"/>
+		<entry source="entitySelect" target="datacell"/>
+	</event>
+	<template>
+		<entry templateName="entity_datacell.vm" fileName="${entitySelect.entityName}Datacell.jsp" fileType="page"/>
+		<entry templateName="save_all_entities.vm" fileName="saveAll${entitySelect.entityName}s.bizx" component="${entitySelect.entityNameLowerCase}biz" fileType="biz"/>
+		<entry templateName="query_entities.vm" fileName="query${entitySelect.entityName}s.bizx" component="${entitySelect.entityNameLowerCase}biz" fileType="biz"/>
+		<entry templateName="data_init.vm"/>
+		<entry templateName="datacell_init.vm"/>
+	</template>
+</wizard>

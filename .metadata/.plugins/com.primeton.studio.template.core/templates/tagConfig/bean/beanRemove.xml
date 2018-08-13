@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSPY v2004 rel. 4 U (http://www.xmlspy.com) by ton (ORiON) -->
+<tag tagName="b:remove" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
+	<require>
+		<path>/bean/baseBean.xml</path>
+		<include>iterateId,ignore,scope</include>
+	</require>
+	<group groupName="Basic">
+		<property name="property" displayName="property" hint="Sets Xpath in Data area." type="primitive:string" defaultValue="" required="true" allowXpath="true" showInViewModel="never">
+		</property>
+	</group>
+</tag>

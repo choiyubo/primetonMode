@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tag tagName="r:datacell" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
+	<group groupName="基本属性">
+		<property allowXPath="false" name="id" displayName="id" hint="对象的唯一标识" type="primitive:string" defaultValue="" required="true">
+			<validators>
+				<notEmptyValidator/>
+				<IDNotDuplicateValidator/>
+			</validators>
+		</property>
+
+		<property allowXPath="false" name="scope" displayName="scope" hint="读取数据的数据区" type="combo:readonly" defaultValue="" required="false">
+			<dataProvider class="mapProvider">
+				<mapEntry>
+					<key class="string">request</key>
+					<value class="string">r</value>
+				</mapEntry>
+				<mapEntry>
+					<key class="string">page</key>
+					<value class="string">p</value>
+				</mapEntry>
+				<mapEntry>
+					<key class="string">flow</key>
+					<value class="string">f</value>
+				</mapEntry>
+				<mapEntry>
+					<key class="string">session</key>
+					<value class="string">s</value>
+				</mapEntry>
+			</dataProvider>
+		</property>
+
+		<property name="xpath" displayName="xpath" hint="xpath属性" type="primitive:string" defaultValue="" required="false">
+		</property>
+	</group>
+	<group groupName="事件">
+		<property allowXPath="false" name="initParamFunc" displayName="initParamFunc" hint="initParamFunc属性 只在列表数据显示前执行一次, 以后不执行" type="javascript:functionName" defaultValue="" required="false">
+		</property>
+	</group>
+
+	<group groupName="样式">
+		<property name="width" displayName="宽度" hint="width属性 列表区域宽度,基于像素或百分比" type="primitive:string" defaultValue="" required="false">
+			<validators>
+				<widthHeightValidator/>
+			</validators>
+		</property>
+
+		<property name="height" displayName="高度" hint="height属性 列表区域高度,基于像素或百分比" type="primitive:string" defaultValue="" required="false">
+			<validators>
+				<widthHeightValidator/>
+			</validators>
+		</property>
+
+		<property name="rowSelectStyleClass" displayName="rowSelectStyleClass" hint="rowSelectStyleClass属性 鼠标选中行时,行的样式class" type="primitive:string" defaultValue="" required="false">
+		</property>
+
+		<property name="rowStyleClass" displayName="rowStyleClass" hint="rowStyleClass属性 行的默认样式class" type="primitive:string" defaultValue="" required="false">
+		</property>
+
+		<property name="rowEvenStyleClass" displayName="rowEvenStyleClass" hint="rowEvenStyleClass属性 偶数行的默认样式class" type="primitive:string" defaultValue="" required="false">
+		</property>
+	</group>
+
+	<group groupName="其他属性">
+		<property name="isCount" displayName="isCount" hint="isCount属性 是否需要统计总行数" type="primitive:boolean" defaultValue="false" required="false">
+		</property>
+
+		<property name="queryAction" displayName="查询逻辑(queryAction)" hint="queryAction属性 查询数据时,所使用的action(业务逻辑)" type="resource:multiByExtension" defaultValue="" required="false">
+			<factoryParam>
+				<mapEntry>
+					<key class="string">modelExtensions</key>
+					<value class="string">biz,bizx</value>
+				</mapEntry>
+			</factoryParam>
+		</property>
+
+		<property name="submitAction" displayName="提交逻辑(submitAction)" hint="submitAction属性 提交数据时,所使用的action(业务逻辑)" type="resource:multiByExtension" defaultValue="" required="false">
+			<factoryParam>
+				<mapEntry>
+					<key class="string">modelExtensions</key>
+					<value class="string">biz,bizx</value>
+				</mapEntry>
+			</factoryParam>
+		</property>
+
+		<property name="entityType" displayName="数据实体选择" hint="entityType属性 提交数据时,所使用的数据实体选择" type="resource:dataEntity" defaultValue="" required="false">
+		</property>
+		
+		<property name="readonly" displayName="readonly" hint="readonly属性 列表是否是只读属性(不允许修改,数据也不提交)" type="primitive:boolean" defaultValue="false" required="false">
+		</property>
+
+		<property name="showIndex" displayName="showIndex" hint="showIndex属性 是否显示索引列" type="primitive:boolean" defaultValue="true" required="false">
+		</property>
+
+		<property name="allowAdd" displayName="allowAdd" hint="allowAdd属性 是否允许添加数据" type="primitive:boolean" defaultValue="" required="false">
+		</property>
+
+		<property name="allowDel" displayName="allowDel" hint="allowDel属性 是否允许删除数据" type="primitive:boolean" defaultValue="" required="false">
+		</property>
+
+		<property name="freezeNumber" displayName="freezeNumber" hint="freezeNumber属性 冻结的列数(从第一列开始)" type="primitive:integer" defaultValue="" required="false">
+			<validators>
+				<intRangeValidator>
+					<min>0</min>
+				</intRangeValidator>
+			</validators>
+		</property>
+
+		<property name="submitXpath" displayName="submitXpath" hint="submitXpath属性 提交的数据根节点的xpath" type="primitive:string" defaultValue="" required="false">
+		</property>
+
+		<property name="paramFormId" displayName="paramFormId" hint="paramFormId属性 关联的另一个form的ID" type="primitive:string" defaultValue="" required="false">
+		</property>
+
+		<property name="linkId" displayName="linkId" hint="linkId属性 关联的另一个datacell的ID" type="primitive:string" defaultValue="" required="false">
+		</property>
+
+		<property name="linkField" displayName="linkField" hint="linkField属性 关联另一个 datacell 时所使用的关联列" type="primitive:string" defaultValue="" required="false">
+		</property>
+
+		<property name="pageSize" displayName="pageSize" hint="pageSize属性 每页的记录数" type="primitive:integer" defaultValue="" required="false">
+			<validators>
+				<intRangeValidator>
+					<min>1</min>
+				</intRangeValidator>
+			</validators>
+		</property>
+
+		<property name="pageSizeList" displayName="pageSizeList" hint="pageSizeList属性 定义'页面数据条数调整框'内的候选数值 10,20,30" type="primitive:string" defaultValue="" required="false">
+		</property>
+	</group>
+</tag>

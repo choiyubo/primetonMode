@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tag tagName="r:treeRoot" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
+	<group groupName="基本属性">
+		<property allowXPath="false" name="scope" displayName="scope" hint="读取数据的数据区" type="combo:readonly" defaultValue="" required="false">
+			<dataProvider class="mapProvider">
+				<mapEntry>
+					<key class="string">request</key>
+					<value class="string">r</value>
+				</mapEntry>
+				<mapEntry>
+					<key class="string">page</key>
+					<value class="string">p</value>
+				</mapEntry>
+				<mapEntry>
+					<key class="string">flow</key>
+					<value class="string">f</value>
+				</mapEntry>
+				<mapEntry>
+					<key class="string">session</key>
+					<value class="string">s</value>
+				</mapEntry>
+			</dataProvider>
+		</property>
+		<property name="action" displayName="查询逻辑" hint="action属性 设置树根节点展开的动作" type="resource:biz" defaultValue="" required="true">
+			<validators>
+				<notEmptyValidator/>
+			</validators>
+		</property>
+		<property name="childEntities" displayName="子节点类型" hint="childEntities属性 指定展开的子节点的对象数组的xpath,多个之间用,号隔开" type="primitive:string" defaultValue="" required="true">
+			<validators>
+				<notEmptyValidator/>
+			</validators>
+		</property>
+		<property name="display" displayName="display" hint="display属性 设置根节点的显示内容" type="primitive:string" defaultValue="" required="false">
+			
+		</property>
+		<property name="icon" displayName="icon" hint="icon属性 定义打开和关闭节点的图标,用,号格开,如果只定义一个图标,认为打开和关闭图标相同" type="primitive:string" defaultValue="" required="false">
+			
+		</property>
+		</group>
+		<group groupName="事件">
+		<property allowXPath="false" name="onClickFunc" displayName="onClickFunc" hint="onClickFunc属性 指定鼠标单击时触发的javascript函数名" type="javascript:functionName" defaultValue="" required="false">
+			
+		</property>
+		<property allowXPath="false" name="onDblclickFunc" displayName="onDblclickFunc" hint="onDblclickFunc属性 指定鼠标双击时触发的javascript函数名" type="javascript:functionName" defaultValue="" required="false">
+			
+		</property>
+		<property allowXPath="false" name="initParamFunc" displayName="initParamFunction" hint="initParamFunction属性 指定设置树初始化参数的javascript函数名，该函数不需要输入参数" type="javascript:functionName" defaultValue="" required="false">
+			
+		</property>
+	</group>
+	<group groupName="其他属性">
+		<property name="displayProperty" displayName="displayProperty" hint="displayProperty属性" type="primitive:string" defaultValue="" required="false">
+			
+		</property>
+	</group>
+</tag>

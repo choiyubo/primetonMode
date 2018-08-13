@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSPY v2004 rel. 4 U (http://www.xmlspy.com) by ton (ORiON) -->
+<tag tagName="baseBean" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
+	<require>
+		<path>/base.xml</path>
+		<include>scope,property,iterateId</include>
+	</require>
+	<group groupName="基本属性">
+		<property name="ignore" displayName="忽略" hint="xpath取指为null时是否忽略异常" type="primitive:boolean" required="false" showInViewModel="never"/>
+		<property name="value" displayName="数值" hint="缺省值,没有property指定时使用该值" type="primitive:string" required="false" showInViewModel="common"/>
+		<property name="toScope" displayName="toScope" hint="指定设置变量的数据区" type="combo:readonly" defaultValue="" required="false" showInViewModel="rare" allowXPath="false">
+			<dataProvider class="listProvider">
+				<string>request</string>
+				<string>page</string>
+				<string>pageFlow</string>
+				<string>session</string>
+			</dataProvider>
+		</property>
+		<property name="propertyType" displayName="属性类型" hint="定义porperty的取值类型" type="combo:readonly" defaultValue="" required="false" showInViewModel="never">
+			<dataProvider class="listProvider">
+				<string>cookie</string>
+				<string>header</string>
+				<string>scope</string>
+				<string>parameter</string>
+			</dataProvider>
+		</property>
+		<property showInViewModel="never" name="modelField" displayName="绑定显示模型的某个字段" hint="绑定显示模型的某个字段" type="resource:dataField" defaultValue="" required="false">
+		</property>
+		<property name="name" displayName="名称" hint="变量的xpath或属性名称" type="primitive:string" required="false" showInViewModel="never"/>
+	</group>
+</tag>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<tag xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" tagName="w:lookup" >
+	<require>
+		<path>/webcomp/baseWebcomp.xml</path>
+		<include>iterateId,property,name,value,indexed,id,style,styleClass,tabindex,accesskey,disabled,size,maxlength,onblur,onchange,onclick,ondblclick,onfocus,onselect,onkeyup,onkeydown,onkeypress,onmouseup,onmousedown,onmousemove,onmouseover,onmouseout,title,scope,modelField</include>
+	</require>
+	<group groupName="Basic">
+		<property showInViewModel="common" displayName="left" hint="Sets the left of dialog." name="left" required="false" type="primitive:string"/>
+		<property showInViewModel="common" displayName="top" hint="Sets the top of dialog." name="top" required="false" type="primitive:string"/>
+		<property showInViewModel="common" displayName="lookupUrl" hint="Sets the url of the control." name="lookupUrl" required="false" type="resource:multiByExtension">
+			<factoryParam>
+				<mapEntry>
+					<key class="string">modelExtensions</key>
+					<value class="string">flow,flowx</value>
+				</mapEntry>
+				<mapEntry>
+		     		<key class="string">webExtensions</key>
+		     		<value class="string">*</value>
+		    	</mapEntry>
+			</factoryParam>
+		</property>
+		<property showInViewModel="common" displayName="displayValue" hint="Set the value displayed in the text box." name="displayValue" required="false" type="primitive:string"/>
+		<property showInViewModel="common" displayName="dialogTitle" hint="Sets title of the dialog." name="dialogTitle" required="false" type="primitive:string"/>
+		<property showInViewModel="never" displayName="displayProperty" hint="Sets xpath of the dislay value." name="displayProperty" required="false" type="primitive:string"/>
+		<property showInViewModel="never" displayName="displayName" hint="Sets the name of the text." name="displayName" required="false" type="primitive:string"/>
+				<property showInViewModel="common" name="width" displayName="width"
+			hint="Sets the width of dialog." type="primitive:string" required="false">
+			<validators>
+				<widthHeightValidator/>
+			</validators>
+		</property>
+				<property showInViewModel="common" name="height" displayName="height"
+			hint="Sets the height of dialog." type="primitive:string" required="false">
+			<validators>
+				<widthHeightValidator/>
+			</validators>
+		</property>
+		<property showInViewModel="common" name="lookupWidth" displayName="width"
+			hint="Sets the width of the control." type="primitive:string" required="false">
+			<validators>
+				<widthHeightValidator/>
+			</validators>
+		</property>	
+		
+	</group>
+	<group groupName="Event">
+		<property allowXPath="false" showInViewModel="rare" displayName="onReturnFunc" hint="Fires when the dialog has been closed." name="onReturnFunc" required="false" type="javascript:functionName"/>
+	</group>
+	<group groupName="Validate">
+		<property showInViewModel="common" displayName="validateAttr" hint="" name="validateAttr" required="false" type="validateAttr"/>
+	</group>
+</tag>

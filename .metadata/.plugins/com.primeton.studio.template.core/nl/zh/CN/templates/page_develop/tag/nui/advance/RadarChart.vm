@@ -1,0 +1,63 @@
+<div id="radarchart" style="height:400px"></div>
+<script type="text/javascript">
+
+                
+                var radarchart = echarts.init(document.getElementById('radarchart')); 
+                
+                var option = {
+                    title : {
+                        text: '请输入文本',
+                        subtext: '请输入文本'
+                    },
+                    tooltip : {
+                        trigger: 'axis'
+                    },
+                    legend: {
+                        orient : 'vertical',
+                        x : 'right',
+                        y : 'bottom',
+                        data:['指标1','指标2']
+                    },
+                    toolbox: {
+                        show : false,
+                        feature : {
+                            mark : {show: true},
+                            dataView : {show: true, readOnly: false},
+                            restore : {show: true},
+                            saveAsImage : {show: true}
+                        }
+                    },
+                    polar : [
+                       {
+                           indicator : [
+                               { text: '标识1', max: 6000},
+                               { text: '标识2', max: 16000},
+                               { text: '标识3', max: 30000},
+                               { text: '标识4', max: 38000},
+                               { text: '标识5', max: 52000},
+                               { text: '标识6', max: 25000}
+                            ]
+                        }
+                    ],
+                    calculable : true,
+                    series : [
+                        {
+                            name: '请输入名称',
+                            type: 'radar',
+                            data : [
+                                {
+                                    value : [4300, 10000, 28000, 35000, 50000, 19000],
+                                    name : '指标1'
+                                },
+                                 {
+                                    value : [5000, 14000, 28000, 31000, 42000, 21000],
+                                    name : '指标2'
+                                }
+                            ]
+                        }
+                    ]
+                };
+               
+                radarchart.setOption(option);
+
+</script>

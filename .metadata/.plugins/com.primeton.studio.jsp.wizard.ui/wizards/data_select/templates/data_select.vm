@@ -1,0 +1,116 @@
+#set($wizardMap=${dataContextManager.getWizardDataContext()})
+#set($contributionName=${wizardMap.get("contribution")})
+#set($flowQName=${templateConfigManager.getInvokePath("data_select_flow.vm")})
+#set($queryMap = ${dataContextManager.getComponentDataContext(1, "queryform")})
+#set($viewlistMap = ${dataContextManager.getComponentDataContext(2, "viewlist")})
+#set($displayField = ${dataContextManager.getComponentDataContext(0, "select_display_field").get("field")})
+#set($queryAction = "query")
+#set($selectedEntity=${dataContextManager.getComponentDataContext(0, "entitySelect").get("selectedEntity")})
+#set($entityName=${dataContextManager.getComponentDataContext(0, "entitySelect").get("entityName")})
+#set($iter_xpath = "${entityName.toLowerCase()}s")
+#set($criteria = $queryMap.get("criteriaName"))
+#if($criteria == "")
+	#set($criteria = "criteria")
+#end
+
+#set($keys = ${DataEntityHelper.getPrimaryKeys(${queryMap.get("selectedEntity")})})
+#set($window_width = ${dataContextManager.getComponentDataContext(0, "window_width").get("input")})
+#set($window_height = ${dataContextManager.getComponentDataContext(0, "window_height").get("input")})
+#if($window_width == "")
+	#set($window_width = "550")
+#end
+#if($window_height == "")
+	#set($window_height = "350")
+#end
+<%@page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
+<%@include file="/common/common.jsp"%>
+<%@include file="/common/skins/skin0/component.jsp" %>
+<h:css href="/css/style1/style-custom.css"/>
+<%-- 
+  - Author(s): ${RuntimeInfo.getAuthor()}
+  - Date: ${RuntimeInfo.getDate()} ${RuntimeInfo.getTime()}
+  - Description:
+--%>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<title>Selected${DataEntityHelper.getEntityDisplayName($selectedEntity)}</title>
+</head>
+<body>
+<e:datasource name="${criteria}" type="entity" path="com.primeton.das.criteria.criteraiType" />
+<e:datasource name="page" type="entity" path="com.eos.foundation.PageCond" />
+#set($temp=${queryMap.put("pageFlow",${flowQName})})
+#set($temp=${queryMap.put("action",${queryAction})})
+#set($temp=${queryMap.put("isPagination","true")})
+#set($map=${queryMap})
+#parse("queryform")
+$WizardReverseHelper.createReverseConfigFile("queryform", $queryMap)
+<br/>
+#set($temp=$viewlistMap.put("pageFlow", $flowQName))
+#set($temp=$viewlistMap.put("genFunction", false))
+#set($temp=$viewlistMap.put("action", ${queryAction}))
+#set($temp=$viewlistMap.put("isPagination", true))
+#set($temp=$viewlistMap.put("formWidth", ${queryMap.get("formWidth")}))
+#set($temp=$viewlistMap.put("tableType", 2))
+#set($temp=$viewlistMap.put("iter_xpath", $iter_xpath))
+#set($temp=$viewlistMap.put("submitXpath", ""))
+#set($temp=$viewlistMap.put("criteriaName", ${criteria}))
+#set($eventEntityTable = ${viewlistMap.get("events")})
+#set($entityTable = ${viewlistMap.get("entityTable")})
+${eventEntityTable.clear()}
+#set($item=["Select","selectRecord","1"])
+${eventEntityTable.addRow($item)}
+#set($item=["Cancel Select Value","unSelectRecord","0"])
+${eventEntityTable.addRow($item)}
+#set($item=["Close","window.close","0"])
+${eventEntityTable.addRow($item)}
+#foreach($row in [1..${entityTable.getCountSize()}])
+	#foreach($key in $keys)
+		#if($key == $entityTable.getCell($row,1))
+			$entityTable.setCell($row,5,true)
+		#end
+		#if($displayField == $$entityTable.getCell($row,1))
+			$entityTable.setCell($row,5,true)
+		#end
+	#end
+#end
+#set($map=${viewlistMap})
+#parse("viewlist")
+$WizardReverseHelper.createReverseConfigFile("viewlist", $viewlistMap)
+<script>
+window.resize($window_width, $window_height);
+window.moveCenter();
+function selectRecord()
+{
+	var g = $id("group1");
+	if (g.getSelectRow() == null) {
+		alert("Please select a record!");
+		return;
+	}
+	var ret = new Array;
+#set($temp=0)
+#foreach($key in $keys)
+	ret[$temp] = g.getParam("$key");
+	#set($temp=$temp + 1)
+#if($temp == 1)
+	#set($temp=$temp + 1)
+	ret[1] = g.getParam("$displayField");
+#end
+#end
+	window.returnValue = ret;
+	window.close();
+}
+
+function unSelectRecord()
+{
+	var ret = new Array;
+	ret[0] = "";
+	ret[1] = "";
+	window.returnValue = ret;
+	window.close();
+}
+</script>
+</body>
+</html>
+
+

@@ -1,0 +1,12 @@
+M2_REPO=/Users/caiyubo/Applications/primeton/platform/ide/eclipse/Eclipse.app/Contents/MacOS/F\:\\Apps\\primeton\\platform_7.6\\tools\\repo75
+eclipse.preferences.version=1
+org.eclipse.jdt.core.builder.cleanOutputFolder=false
+org.eclipse.jdt.core.builder.resourceCopyExclusionFilter=.eosdebug,.edoc,*.eosComponentType,*.datasetx,*.bpsresx,*.java,*.bizlet,*.workflowx,*.bpsdirx,*.componentType,*.flowx,*.xsd,*.namingsqlx,*.bpsrelyx,*.wsdl,*.compositex,*.bizx,*.SpringXml
+org.eclipse.jdt.core.classpathVariable.JRE_LIB=/Library/Java/JavaVirtualMachines/jdk1.7.0_79.jdk/Contents/Home/jre/lib/rt.jar
+org.eclipse.jdt.core.classpathVariable.JRE_SRC=/Library/Java/JavaVirtualMachines/jdk1.7.0_79.jdk/Contents/Home/src.zip
+org.eclipse.jdt.core.classpathVariable.JRE_SRCROOT=src
+org.eclipse.jdt.core.classpathVariable.M2_REPO=/Users/caiyubo/Applications/primeton/platform/tools/maven_bjbus
+org.eclipse.jdt.core.codeComplete.visibilityCheck=enabled
+org.eclipse.jdt.core.compiler.codegen.targetPlatform=1.5
+org.eclipse.jdt.core.compiler.compliance=1.5
+org.eclipse.jdt.core.compiler.source=1.5

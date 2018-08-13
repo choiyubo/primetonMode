@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tag xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" tagName="wf:selectActParticipant" >
+	<require>
+		<path>/workflow/baseWFSelect.xml</path>
+		<include>id,faltToLeaf,name,value,maxNum,form,output,hidden,hiddenType,genScript,styleClass,scope</include>
+	</require>
+	<group groupName="基本属性">
+		<property type="primitive:string" name="processID" displayName="processID" hint="流程定义ID" required="false"/>
+		<property type="primitive:string" name="processInstID" displayName="processInstID" hint="流程实例ID" required="false"/>
+		<property type="primitive:string" name="activityID" displayName="activityID" hint="活动定义ID" required="true"/>
+		<property type="primitive:string" name="selectTypes" displayName="selectTypes" hint="可选的参与者类型，类型之间以斜杠分割，默认为可选择所有类型。" required="false"/>
+	</group>
+</tag>
+
+

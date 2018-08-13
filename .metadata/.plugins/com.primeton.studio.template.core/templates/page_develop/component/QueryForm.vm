@@ -1,0 +1,126 @@
+#if(${map.get("queryform")}!="")
+#set($map=${map.get("queryform")})
+#end
+#set($pageflow=${map.get("pageFlow")})
+#set($action=${map.get("action")})
+#set($title=${map.get("title")})
+#set($formName=${map.get("formName")})
+#set($selectedEntity=${map.get("selectedEntity")})
+#set($pageLength=${map.get("pageLength")})
+#set($row_length=${map.get("rowLength")})
+#set($isPagination=${map.get("isPagination")})
+#set($isPageCount=${map.get("isPageCount")})
+#set($criteriaName=${map.get("criteriaName")})
+#set($entityName=${map.get("entityName")})
+#set($entityTable=${map.get("entityTable")})
+#set($orderEntityTable=${map.get("orderEntityTable")})
+#set($width=${map.get("formWidth")})
+#set($checkType=${map.get("checkType")})
+#set($target=${map.get("target")})
+#set($formId=$map.get("formId"))
+#set($onsubmit = "return checkForm(this);")
+#set($onsubmit = $map.get("onsubmit"))
+#if($criteriaName == "")
+	#set($criteriaName = "criteria")
+#end
+#if($title == "")
+	#set($title = "${DataEntityHelper.getEntityDisplayName($selectedEntity)}Query")
+#end
+${WizardReverseHelper.getComponentTag("queryform",$map)}
+#if($checkType!="")
+<h:form #if($formId != "") id="$formId" #end name="${formName}" action="${pageflow}" checkType="${checkType}" target="${target}" method="post" onsubmit="${onsubmit}">
+#else
+<h:form #if($formId != "") id="$formId" #end name="${formName}" action="${pageflow}" target="${target}" method="post" onsubmit="${onsubmit}">
+#end
+#if(${action}!="")
+	<input type="hidden" name="_eosFlowAction" value="${action}"/>
+#end
+<w:panel id="panel1" width="$width" title="$title">
+<table align="center" border="0" width="100%" class="form_table">
+#foreach($row in [1..${entityTable.getCountSize()}])
+	#set($temp=$map.put("currentRow",$row))
+	#set($rowTagElement=${entityTable.getTagConfig($row)})
+	#set($tagName=${TagElementHelper.getTagName($rowTagElement)})
+	#if($tagName=="h:hidden")
+	${entityTable.getTagConfig($row).toString(true,true)}
+		#if(${entityTable.getOperationType($row)}!="between")
+			#parse("operator")
+		#else
+			#parse("operator_between")
+		#end
+	#end
+#end
+
+#set($currentRowCount = $row_length)
+#foreach($row in [1..${entityTable.getCountSize()}])
+#set($temp=$map.put("currentRow",$row))
+
+#set($rowTagElement=${entityTable.getTagConfig($row)})
+#set($tagName=${TagElementHelper.getTagName($rowTagElement)})
+#if($tagName!="h:hidden")
+
+	#if($currentRowCount==$row_length)
+	<tr>
+	#end
+#if(${entityTable.getCell($row,5)}==1)
+	#if($row<${entityTable.getCountSize()})
+		#set($currentColspan = 1)
+	#else
+		#set($currentColspan = $currentRowCount * 2 - 1)
+	#end
+	#set($currentRowCount = $currentRowCount - 1)
+#else
+	#if($currentRowCount<=${entityTable.getCell($row,5)})
+		#set($currentColspan = $currentRowCount * 2 - 1)
+		#set($currentRowCount=0)
+	#else
+		#set($currentColspan= ${entityTable.getCell($row,5)} * 2 - 1)
+		#set($currentRowCount = $currentRowCount - ${entityTable.getCell($row,5)})
+	#end
+#end
+#if(${entityTable.getCountSize()} > 0)
+	<td class="form_label">${entityTable.getCell($row,2)}</td>
+	<td colspan="$currentColspan">
+#if(${entityTable.getOperationType($row)}!="between")
+#set($temp=${entityTable.getTagConfig($row).removeAttribute("displayValue")})
+#set($temp=${entityTable.getTagConfig($row).removeAttribute("validateAttr")})
+${entityTable.getTagConfig($row).toString(true,true)}
+	#parse("operator")
+#else
+	#parse("operator_between")
+#end</td>
+	#if($row==${entityTable.getCountSize()})
+	</tr>
+	#else
+		#if($currentRowCount==0)
+	</tr>#set($currentRowCount = $row_length)
+		#end
+	#end
+#end##-------1
+#end##---
+#end ## foreach end
+	<tr class="form_bottom">
+		#set($currentColspan=$row_length*2)<td colspan="$currentColspan" class="form_bottom">
+			<input type="hidden" name="${criteriaName}/_entity" value="${selectedEntity}">
+#if($isPagination)
+			Record count per page<h:text size="2" property="page/length" value="${pageLength}" validateAttr="minValue=1;maxValue=100;type=integer;isNull=true" />
+			<input type="hidden" name="page/begin" value="0">
+			<input type="hidden" name="page/isCount" value="${isPageCount}">
+#end
+			<input type="submit" value="Query" class="button">
+		</td>
+	</tr>
+</table>
+</w:panel>
+#if($orderEntityTable.getCountSize() > 0)
+	#foreach($row in [1..${orderEntityTable.getCountSize()}])
+		#set($temp=$map.put("currentRow",$row))
+		#parse("order")
+	#end
+#end
+</h:form>
+${WizardReverseHelper.getComponentEndTag("queryform")}
+
+
+
+

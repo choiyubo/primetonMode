@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tag tagName="r:comboSelect" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
+	<group groupName="基本属性">
+		<property allowXPath="false" name="id" displayName="id" showInViewModel="rare" hint="对象的唯一标识" type="primitive:string" defaultValue="" required="true">
+			<validators>
+				<IDNotDuplicateValidator/>
+				<notEmptyValidator/>
+			</validators>
+		</property>
+		<property allowXPath="false" name="scope" displayName="scope" showInViewModel="rare" hint="读取数据的数据区" type="combo:readonly" defaultValue="" required="false">
+			<dataProvider class="mapProvider">
+				<mapEntry>
+					<key class="string">request</key>
+					<value class="string">r</value>
+				</mapEntry>
+				<mapEntry>
+					<key class="string">page</key>
+					<value class="string">p</value>
+				</mapEntry>
+				<mapEntry>
+					<key class="string">flow</key>
+					<value class="string">f</value>
+				</mapEntry>
+				<mapEntry>
+					<key class="string">session</key>
+					<value class="string">s</value>
+				</mapEntry>
+			</dataProvider>
+		</property>
+		<property name="xpath" showInViewModel="common" displayName="xpath" hint="xpath属性" type="primitive:string" defaultValue="" required="false">
+			
+		</property>
+	</group>
+	<group groupName="事件">
+		<property allowXPath="false" showInViewModel="rare" name="onChangeFunc" displayName="onChangeFunc" hint="onChangeFunc属性 列表选项改变时调用的函数的名称" type="javascript:functionName" defaultValue="" required="false">
+			
+		</property>
+		<property allowXPath="false" showInViewModel="rare" name="validateFunc" displayName="validateFunc" hint="validateFunc属性 提交数据前的校验函数的函数名" type="javascript:functionName" defaultValue="" required="false">
+			
+		</property>
+		<property allowXPath="false" showInViewModel="rare" name="initParamFunc" displayName="initParamFunc" hint="initParamFunc属性 只在列表数据显示前执行一次, 以后不执行" type="javascript:functionName" defaultValue="" required="false">
+			
+		</property>
+	</group>
+	<group groupName="样式">
+		<property name="width" showInViewModel="common" displayName="width" hint="width属性 输入区的宽度" type="primitive:string" defaultValue="" required="false">
+			<validators>
+				<widthHeightValidator/>
+			</validators>
+		</property>
+		<property name="height" showInViewModel="common" displayName="height" hint="height属性 输入区的高度" type="primitive:string" defaultValue="" required="false">
+			<validators>
+				<widthHeightValidator/>
+			</validators>
+		</property>
+		<property name="optionsWidth" showInViewModel="common" displayName="optionsWidth" hint="optionsWidth属性 列表区的宽度" type="primitive:integer" defaultValue="" required="false">
+			<validators>
+				<intRangeValidator>
+					<min>1</min>
+				</intRangeValidator>
+			</validators>
+		</property>
+		<property name="optionsHeight" showInViewModel="common" displayName="optionsHeight" hint="optionsHeight属性 列表区的高度" type="primitive:integer" defaultValue="" required="false">
+			<validators>
+				<intRangeValidator>
+					<min>1</min>
+				</intRangeValidator>
+			</validators>
+		</property>
+	</group>
+	<group groupName="其他属性">
+		<property name="queryAction" showInViewModel="common" displayName="queryAction" hint="queryAction属性 获取数据所用的action(业务逻辑)" type="resource:multiByExtension" defaultValue="" required="false">
+	<factoryParam>
+	<mapEntry>
+     <key class="string">modelExtensions</key>
+     <value class="string">biz,bizx</value>
+    </mapEntry>
+   </factoryParam>
+		</property>
+		<property name="readOnly" showInViewModel="common" displayName="readOnly" hint="readonly属性 列表是否是只读属性" type="primitive:boolean" defaultValue="" required="false">
+</property>
+		<property name="allowInput" showInViewModel="common" displayName="allowInput" hint="allowInput属性 是否允许在Combooselect上输入列表中不存在的数据" type="primitive:boolean" defaultValue="" required="false">
+</property>
+		<property name="disabled" showInViewModel="common" displayName="disabled" hint="disabled属性 是否使该组件无效" type="primitive:boolean" defaultValue="" required="false">
+</property>
+		<property name="linkId" showInViewModel="common" displayName="linkId" hint="linkId属性 关联的另一个comboselect的id" type="primitive:string" defaultValue="" required="false">
+			
+		</property>
+		<property name="linkField" showInViewModel="common" displayName="linkField" hint="linkField属性 关联所使用的列" type="primitive:string" defaultValue="" required="false">
+		</property>
+	    <property name="submitXpath" showInViewModel="common" displayName="submitXpath" hint="设置提交的数据的Xpath名称。" type="primitive:string" defaultValue="" required="false">
+				
+		</property>
+		<property name="filterType" showInViewModel="common" displayName="filterType" hint="filterType属性 过虑的方式:精确,前匹配,模糊匹配" type="combo:editable" defaultValue="" required="false">
+			<dataProvider class="mapProvider">
+				<mapEntry>
+					<key class="string">startwith</key>
+					<value class="string">startwith</value>
+				</mapEntry>
+				<mapEntry>
+					<key class="string">like</key>
+					<value class="string">like</value>
+				</mapEntry>
+			</dataProvider>
+		</property>
+		<property name="property" showInViewModel="common" displayName="property" hint="property属性" type="primitive:string" defaultValue="" required="false">
+			
+		</property>
+		<property name="value" showInViewModel="common" displayName="value" hint="value属性 默认的选中的值" type="primitive:string" defaultValue="" required="false">
+			
+		</property>
+		<property name="valueField" showInViewModel="common" displayName="valueField" hint="valueField属性 选择框的value值所对应的字段名" type="primitive:string" defaultValue="" required="false">
+			
+		</property>
+		<property name="textField" showInViewModel="common" displayName="textField" hint="textField属性 选择框的显示值所对应的字段名" type="primitive:string" defaultValue="" required="false">
+			
+		</property>
+		<property name="filterField" showInViewModel="common" displayName="filterField" hint="filterField属性 选择框的过滤时所对应的字段名" type="primitive:string" defaultValue="" required="false">
+			
+		</property>
+		<property name="nullText" showInViewModel="common" displayName="nullText" hint="nullText属性 默认不选择任何数据时显示的文字" type="primitive:string" defaultValue="" required="false">
+			
+		</property>
+	</group>
+</tag>

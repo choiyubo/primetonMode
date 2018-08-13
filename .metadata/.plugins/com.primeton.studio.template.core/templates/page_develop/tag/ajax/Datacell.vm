@@ -1,0 +1,49 @@
+#set($tagElement = ${map.get("tag_element")})
+#set($entityTable = ${map.get("entityTable")})
+#set($genFunction = false)
+#foreach($row in [1..${entityTable.getCountSize()}])
+	#set($rowTagConfig=${entityTable.getTagConfig($row)})
+	#set($childElements = ${TagElementHelper.getChildElements($rowTagConfig)})
+	#foreach($child in $childElements)
+		#set($tagName = ${TagElementHelper.getTagName($child)})
+		#if($tagName == "w:lookup")
+			#set($disp_value=${TagElementHelper.getAttributeValue($child, "displayValue")})
+			#set($expression_value="")
+			#set($expression_value=${TagElementHelper.getAttributeValue($rowTagConfig, "expression")})
+			#if($disp_value != ""&&${expression_value}=="")
+				#set($fieldName=${TagElementHelper.getAttributeValue($rowTagConfig, "fieldName")})
+				#set($fieldName=${fieldName.replaceAll("/","_")})
+				#set($functionId="lookupReturn_${fieldName}")
+				#set($genFunction = true)
+				${TagElementHelper.removeAttribute($child, "displayValue")}
+				${TagElementHelper.setAttributeValue($child, "onReturnFunc", "$functionId")}
+				${TagElementHelper.setAttributeValue($rowTagConfig, "expression", "$[${disp_value}]")}
+			#end
+		#end
+	#end
+#end
+${tagElement.toString(true,true)}
+#if($genFunction)
+<script>
+	#foreach($row in [1..${entityTable.getCountSize()}])
+		#set($rowTagConfig=${entityTable.getTagConfig($row)})
+		#set($childElements = ${TagElementHelper.getChildElements($rowTagConfig)})
+		#foreach($child in $childElements)
+			#set($tagName = ${TagElementHelper.getTagName($child)})
+			#if($tagName == "w:lookup")
+				#set($expression_value=${TagElementHelper.getAttributeValue($rowTagConfig, "expression")})
+				#if($expression_value && $expression_value.startsWith("$["))
+					#set($fieldName=${TagElementHelper.getAttributeValue($rowTagConfig, "fieldName")})
+					#set($disp_value= $expression_value.substring(2, ${expression_value.length-1}))
+					function lookupReturn_${fieldName.replaceAll("/","_")} (retValue){
+					var a = $id('${tagElement.getAttributes().get("id")}')
+					a.activeEntity.setProperty("$fieldName", retValue[0]);
+					a.activeEntity.setProperty("$disp_value", retValue[1]);
+					return true;
+					}
+				#end
+			#end
+		#end
+	#end
+</script>
+#end

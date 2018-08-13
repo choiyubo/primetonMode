@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tag tagName="r:datacell" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
+	<group groupName="Basic">
+		<property allowXPath="false" name="id" displayName="id" hint="control's id." type="primitive:string" defaultValue="" required="true">
+			<validators>
+				<notEmptyValidator/>
+				<IDNotDuplicateValidator/>
+			</validators>
+		</property>
+
+		<property allowXPath="false" name="scope" displayName="scope" hint="Data area" type="combo:readonly" defaultValue="" required="false">
+			<dataProvider class="mapProvider">
+				<mapEntry>
+					<key class="string">request</key>
+					<value class="string">r</value>
+				</mapEntry>
+				<mapEntry>
+					<key class="string">page</key>
+					<value class="string">p</value>
+				</mapEntry>
+				<mapEntry>
+					<key class="string">flow</key>
+					<value class="string">f</value>
+				</mapEntry>
+				<mapEntry>
+					<key class="string">session</key>
+					<value class="string">s</value>
+				</mapEntry>
+			</dataProvider>
+		</property>
+
+		<property name="xpath" displayName="xpath" hint="xpath" type="primitive:string" defaultValue="" required="false">
+		</property>
+	</group>
+	<group groupName="Event">
+		<property allowXPath="false" name="initParamFunc" displayName="initParamFunc" hint="Fires when the control initializes." type="javascript:functionName" defaultValue="" required="false">
+		</property>
+	</group>
+
+	<group groupName="Sytle">
+		<property name="width" displayName="width" hint="width" type="primitive:string" defaultValue="" required="false">
+			<validators>
+				<widthHeightValidator/>
+			</validators>
+		</property>
+
+		<property name="height" displayName="height" hint="height" type="primitive:string" defaultValue="" required="false">
+			<validators>
+				<widthHeightValidator/>
+			</validators>
+		</property>
+
+		<property name="rowSelectStyleClass" displayName="rowSelectStyleClass" hint="Sets the style of selected row." type="primitive:string" defaultValue="" required="false">
+		</property>
+
+		<property name="rowStyleClass" displayName="rowStyleClass" hint="Sets the style of  row." type="primitive:string" defaultValue="" required="false">
+		</property>
+
+		<property name="rowEvenStyleClass" displayName="rowEvenStyleClass" hint="Sets the style of  even row." type="primitive:string" defaultValue="" required="false">
+		</property>
+	</group>
+
+	<group groupName="Other">
+		<property name="isCount" displayName="isCount" hint="Sets whether to count the number of rows." type="primitive:boolean" defaultValue="false" required="false">
+		</property>
+
+		<property name="queryAction" displayName="queryAction" hint="Sets the biz to load data." type="resource:multiByExtension" defaultValue="" required="false">
+			<factoryParam>
+				<mapEntry>
+					<key class="string">modelExtensions</key>
+					<value class="string">biz,bizx</value>
+				</mapEntry>
+			</factoryParam>
+		</property>
+
+		<property name="submitAction" displayName="submitAction" hint="Sets the biz to save data." type="resource:multiByExtension" defaultValue="" required="false">
+			<factoryParam>
+				<mapEntry>
+					<key class="string">modelExtensions</key>
+					<value class="string">biz,bizx</value>
+				</mapEntry>
+			</factoryParam>
+		</property>
+
+		<property name="entityType" displayName="entityType" hint="entityType" type="resource:dataEntity" defaultValue="" required="false">
+		</property>
+		
+		<property name="readonly" displayName="readonly" hint="readonly" type="primitive:boolean" defaultValue="false" required="false">
+		</property>
+
+		<property name="showIndex" displayName="showIndex" hint="Sets whether to show the index column." type="primitive:boolean" defaultValue="true" required="false">
+		</property>
+
+		<property name="allowAdd" displayName="allowAdd" hint="Sets whether the user can add rows." type="primitive:boolean" defaultValue="" required="false">
+		</property>
+
+		<property name="allowDel" displayName="allowDel" hint="Sets whether the user can delete rows." type="primitive:boolean" defaultValue="" required="false">
+		</property>
+
+		<property name="freezeNumber" displayName="freezeNumber" hint="Sets the number of columns to be freezed" type="primitive:integer" defaultValue="" required="false">
+			<validators>
+				<intRangeValidator>
+					<min>0</min>
+				</intRangeValidator>
+			</validators>
+		</property>
+
+		<property name="submitXpath" displayName="submitXpath" hint="Sets the xpath of submitted data." type="primitive:string" defaultValue="" required="false">
+		</property>
+
+		<property name="paramFormId" displayName="paramFormId" hint="Sets id of the form which provide query parameter." type="primitive:string" defaultValue="" required="false">
+		</property>
+
+		<property name="linkId" displayName="linkId" hint="Sets a datacell to be linked." type="primitive:string" defaultValue="" required="false">
+		</property>
+
+		<property name="linkField" displayName="linkField" hint="Sets the field name that be used to link another datacell." type="primitive:string" defaultValue="" required="false">
+		</property>
+
+		<property name="pageSize" displayName="pageSize" hint="Sets the number of rows to be shown in each page." type="primitive:integer" defaultValue="" required="false">
+			<validators>
+				<intRangeValidator>
+					<min>1</min>
+				</intRangeValidator>
+			</validators>
+		</property>
+
+		<property name="pageSizeList" displayName="pageSizeList" hint="Sets whether to show the select box which user can choose the number of rows to be shown in each page." type="primitive:string" defaultValue="" required="false">
+		</property>
+	</group>
+</tag>

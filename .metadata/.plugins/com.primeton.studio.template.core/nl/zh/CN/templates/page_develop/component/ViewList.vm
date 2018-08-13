@@ -1,0 +1,197 @@
+##组合向导切换功能向导需要的语句 勿删！！
+#if(${map.get("viewlist")}!="")
+#set($map=${map.get("viewlist")})
+#end
+##如果在map中没有得到值，默认的是空字符串""
+
+##标题 (String类型)
+#set($title=${map.get("title")})
+##表单名称 (String类型)
+#set($formName=${map.get("formName")})
+##页面流 (String类型)
+#set($pageFlow=${map.get("pageFlow")})
+##分页Action (String类型)
+#set($action=${map.get("action")})
+##viewlist中的iterateId (String类型)
+##criteriaName在向导中没有配置，向导中默认是使用实体名小写加s
+#set($criteriaName=${map.get("criteriaName")})
+##所选择的实体 (String类型)
+#set($selectedEntity=${map.get("selectedEntity")})
+## 表格外观 分为check radio none (Integer类型)
+## 取得为integer类型 0对应none 1对应check 2对应radio
+#set($tableStyle=${map.get("tableType")})
+##viewlist实体表格封装
+#set($entityTable=${map.get("entityTable")})
+##viewlist事件表格封装
+#set($eventEntityTable=${map.get("events")})
+##是否分页 (Boolean类型)
+#set($isPagination=${map.get("isPagination")})
+##是否生成事件js函数 (Boolean类型)
+#set($genFunction=${map.get("genFunction")})
+##查询表单宽度
+#set($width=${map.get("formWidth")})
+##实体名，不带NamingSpace (String类型)
+#set($entityName=${map.get("entityName")})
+##实体名，不带NamingSpace (String类型)
+#set($iter_xpath=${map.get("iter_xpath")})
+##提交的xpath值
+#set($submitXpath=${map.get("submitXpath")})
+##form校验方式
+#set($checkType=${map.get("checkType")})
+##form的提交target
+#set($target=${map.get("target")})
+#if($title == "")
+	#set($title = "${DataEntityHelper.getEntityDisplayName($selectedEntity)}列表")
+#end
+#if(!$iter_xpath)
+	#set($iter_xpath = "${entityName.toLowerCase()}s")
+#end
+##生成反向需要使用的信息
+${WizardReverseHelper.getComponentTag("viewlist",$map)}
+#if($pageFlow != "") ##判断是否需要产生form
+<h:form name="$formName" action="$pageFlow" method="post">
+#if($action != "")
+	<input type="hidden" name="_eosFlowAction" value="$action" >
+#end
+#if($criteriaName!="")
+	<h:hiddendata property="$criteriaName" />
+#end
+#if($isPagination)
+	<h:hidden property="page/begin"/>
+	<h:hidden property="page/length"/>
+	<h:hidden property="page/count"/>
+	<h:hidden property="page/isCount"/>
+#end
+#end  ##判断是否有form
+<w:panel id="list_panel" width="$width" title="$title">
+<table align="center" border="0" width="100%" class="EOS_table">
+	<tr>
+#if($tableStyle!=0)
+		<th align="center">选择</th>
+#end
+#set($paramStr="")
+#set($cols=0)
+#foreach($row in [1..${entityTable.getCountSize()}])
+## 根据表格中的第5列配置("是否提交") 来判断是否产生提交的隐藏域
+#if(${entityTable.getCell($row,5)} == true)
+	#if($submitXpath != "")
+		#set($paramStr = "${paramStr}<h:param name='${submitXpath}/${entityTable.getCell($row,1)}' iterateId='id1' property='${entityTable.getCell($row,1)}' indexed='true' />")
+	#else
+		#set($paramStr = "${paramStr}<h:param name='${entityTable.getCell($row,1)}' iterateId='id1' property='${entityTable.getCell($row,1)}'/>")
+	#end
+			
+#end
+## 结果集所显示的字段 根据表格中的第4列配置("是否生成") 来判断是否生成
+#if(${entityTable.getCell($row,4)})
+#set($cols = $cols + 1)
+		<th>${entityTable.getCell($row,2)}</th>
+#end
+#end ## end foreach
+	</tr>
+#if($tableStyle != 0)
+#set($cols = $cols + 1)
+	#if($tableStyle == 1)
+		<w:checkGroup id="group1">
+	#else
+		<w:radioGroup id="group1">
+	#end
+#end
+	<l:iterate property="$iter_xpath" id="id1">
+	<tr class="<l:output evenOutput='EOS_table_row' />">
+#if($tableStyle != 0)
+	<td align="center">
+	#if($tableStyle == 1)
+		<w:rowCheckbox>
+	#else
+		<w:rowRadio>
+	#end
+	$paramStr
+#end
+#if($tableStyle != 0)
+	#if($tableStyle == 1)
+		</w:rowCheckbox>
+	#else
+		</w:rowRadio>
+	#end
+	</td>
+#end
+		## 结果集的标题 根据表格中的第5列配置("是否生成") 来判断是否生成
+	#foreach($row in [1..${entityTable.getCountSize()}])
+		#if(${entityTable.getCell($row,4)})
+		<td>${entityTable.getTagConfig($row).addAttr("iterateId","id1")}${entityTable.getTagConfig($row).toString(true,true)}</td>
+		#end
+	#end
+	</tr>
+	</l:iterate>
+#if($tableStyle != 0)
+	#if($tableStyle == 1)
+		</w:checkGroup>
+	#else
+		</w:radioGroup>
+	#end
+#end
+##如果有事件按钮，或者有分页操作
+#if(${eventEntityTable.getCountSize()} > 0 || $isPagination)
+	<tr>
+		<td colspan="$cols" class="command_sort_area">
+		## 产生事件按钮的html
+#if(${eventEntityTable.getCountSize()} > 0)
+	<span style="float:left">
+	#foreach($row in [1..${eventEntityTable.getCountSize()}])
+## 如果事件需要选择行操作
+	#if(${eventEntityTable.getCell($row,3)} != "0")
+	<l:greaterThan property="page/size" targetValue="0" compareType="number">
+	#end
+		<input type="button" value="${eventEntityTable.getCell($row,1)}" onclick="${eventEntityTable.getCell($row,2)}();" class="button">
+	#if(${eventEntityTable.getCell($row,3)} != "0")
+	</l:greaterThan>
+	#end
+	#end ##end foreach
+	</span>
+#end
+#if($isPagination)
+		<span style="float:right">
+			<l:equal property="page/isCount" targetValue="true">共<b:write property="page/count"/>条记录 第<b:write property="page/currentPage"/>页/<b:write property="page/totalPage"/>页</l:equal>
+			<l:equal property="page/isCount" targetValue="false">第<b:write property="page/currentPage"/>页</l:equal>
+			<input type="button" onclick="firstPage('page', '$action', null, null, '$formName');" value="首页"  <l:equal property="page/isFirst" targetValue="true">disabled</l:equal> >
+			<input type="button" onclick="prevPage('page', '$action', null, null, '$formName');" value="上页" <l:equal property="page/isFirst" targetValue="true">disabled</l:equal> >
+			<input type="button" onclick="nextPage('page', '$action', null, null, '$formName');" value="下页" <l:equal property="page/isLast" targetValue="true">disabled</l:equal> >
+			<l:equal property="page/isCount" targetValue="true"><input type="button" onclick="lastPage('page', '$action', null, null, '$formName');" value="尾页" <l:equal property="page/isLast" targetValue="true">disabled</l:equal> ></l:equal>
+		</span>
+#end
+		</td>
+	</tr>
+#end
+</table>
+</w:panel>
+#if($pageFlow != "")
+</h:form>
+#end
+
+#if($genFunction)
+<script>
+#foreach($row in [1..${eventEntityTable.getCountSize()}])
+function ${eventEntityTable.getCell($row,2)}() {
+	var g = $id("group1");
+#if(${eventEntityTable.getCell($row,3)} == "1")
+	if (g.getSelectLength() != 1) {
+		alert("请选择一行记录！");
+		return;
+	}
+#end
+#if(${eventEntityTable.getCell($row,3)} == "2")
+	if (g.getSelectLength() < 1) {
+		alert("请选择记录！");
+		return;
+	}
+#end
+	var frm = $name("$formName");
+	frm.elements["_eosFlowAction"].value = "${eventEntityTable.getCell($row,2)}";
+	frm.submit();
+}
+#end ## end foreach
+</script>
+#end
+##生成反向需要使用的信息
+${WizardReverseHelper.getComponentEndTag("viewlist")}
+

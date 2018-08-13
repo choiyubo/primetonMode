@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSPY v2004 rel. 4 U (http://www.xmlspy.com) by ton (ORiON) -->
+<tag tagName="form" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
+	<group groupName="Basic">
+		<property name="action" displayName="Page Flow" hint="Sets the Page Flow  to which the form content is sent for processing." type="resource:multiByExtension" defaultValue="" required="false">
+			<factoryParam>
+				<mapEntry>
+					<key class="string">modelExtensions</key>
+					<value class="string">flow,flowx</value>
+				</mapEntry>
+				<mapEntry>
+		     		<key class="string">webExtensions</key>
+		     		<value class="string">*</value>
+		    	</mapEntry>
+			</factoryParam>
+		</property>
+	</group>
+</tag>

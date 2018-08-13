@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<PaletteGroups>
+	<PaletteGroup initialState="INITIAL_STATE_OPEN" largeIcon=""
+		name="HTML标签" plugin="com.primeton.studio.jsp.tag"
+		smallIcon="icons/html/html_elements.gif">
+		<PaletteItem initialTemplateID="" label="TextArea"
+			largeIcon="icons/html/textarea_32.gif"
+			smallIcon="icons/html/textarea.gif" templateId="TextArea" />
+		<PaletteItem initialTemplateID="" label="TextBox"
+			largeIcon="icons/html/textbox_32.gif"
+			smallIcon="icons/html/textbox.gif" templateId="TextBox" />
+		<PaletteItem initialTemplateID="" label="Password"
+			largeIcon="icons/html/password_32.gif"
+			smallIcon="icons/html/password.gif" templateId="Password" />
+		<PaletteItem initialTemplateID="" label="Button"
+			largeIcon="icons/html/button_32.gif"
+			smallIcon="icons/html/button.gif" templateId="Button" />
+		<PaletteItem initialTemplateID="" label="SubmitButton"
+			largeIcon="icons/html/submit_button_32.gif"
+			smallIcon="icons/html/submit_button.gif" templateId="SubmitButton" />
+		<PaletteItem initialTemplateID="" label="ResetButton"
+			largeIcon="icons/html/reset_button_32.gif"
+			smallIcon="icons/html/reset_button.gif" templateId="ResetButton" />
+		<PaletteItem initialTemplateID="" label="ImageButton"
+			largeIcon="icons/html/image_button_32.gif"
+			smallIcon="icons/html/image_button.gif" templateId="ImageButton" />
+		<PaletteItem initialTemplateID="" label="CheckBox"
+			largeIcon="icons/html/checkbox_32.gif"
+			smallIcon="icons/html/checkbox.gif" templateId="CheckBox" />
+		<PaletteItem initialTemplateID="" label="RadioButton"
+			largeIcon="icons/html/radio_32.gif" smallIcon="icons/html/radio.gif"
+			templateId="radio" />
+		<PaletteItem initialTemplateID="" label="ComboBox"
+			largeIcon="icons/html/combobox_32.gif"
+			smallIcon="icons/html/combobox.gif" templateId="ComboBox" />
+		<PaletteItem initialTemplateID="" label="ListBox"
+			largeIcon="icons/html/listbox_32.gif"
+			smallIcon="icons/html/listbox.gif" templateId="ListBox" />
+		<PaletteItem initialTemplateID="" label="HiddenField"
+			largeIcon="icons/html/hidden_field_32.gif"
+			smallIcon="icons/html/hidden_field.gif" templateId="HiddenField" />
+		<PaletteItem initialTemplateID="" label="FileUpload"
+			largeIcon="icons/html/file_upload_32.gif"
+			smallIcon="icons/html/file_upload.gif" templateId="FileUpload" />
+		<PaletteItem initialTemplateID="" label="GroupBox"
+			largeIcon="icons/html/groupbox_32.gif"
+			smallIcon="icons/html/groupbox.gif" templateId="GroupBox" />
+		<PaletteItem initialTemplateID="" label="Link"
+			largeIcon="icons/html/link_32.gif" smallIcon="icons/html/link.gif"
+			templateId="Link" />
+		<PaletteItem initialTemplateID="" label="Image"
+			largeIcon="icons/html/image_32.gif" smallIcon="icons/html/image.gif"
+			templateId="Image" />
+		<PaletteItem initialTemplateID="" label="Table"
+			largeIcon="icons/html/table_32.gif" smallIcon="icons/html/table.gif"
+			templateId="table" />
+		<PaletteItem initialTemplateID="" label="Panel"
+			largeIcon="icons/html/panel_32.gif" smallIcon="icons/html/panel.gif"
+			templateId="Panel" />
+		<PaletteItem initialTemplateID="" label="IFrame"
+			largeIcon="icons/html/iframe_32.gif"
+			smallIcon="icons/html/iframe.gif" templateId="IFrame" />
+		<PaletteItem initialTemplateID="" label="HorizontalRule"
+			largeIcon="icons/html/horizontal_rule_32.gif"
+			smallIcon="icons/html/horizontal_rule.gif"
+			templateId="HorizontalRule" />
+		<PaletteItem initialTemplateID="" label="Form"
+			largeIcon="icons/html/form_32.gif" smallIcon="icons/html/form.gif"
+			templateId="Form" />
+	</PaletteGroup>
+	<PaletteGroup initialState="INITIAL_STATE_CLOSED" largeIcon=""
+		name="EOS标签" plugin="com.primeton.studio.jsp.tag"
+		smallIcon="icons/click.gif">
+		<PaletteItem initialTemplateID="templates/eos/Text.xml"
+			label="Text" largeIcon="icons/eos/textbox_32.gif"
+			smallIcon="icons/eos/textbox.gif" templateId="h:text" />
+		<PaletteItem initialTemplateID="templates/eos/TextArea.xml"
+			label="TextArea" largeIcon="icons/eos/textarea_32.gif"
+			smallIcon="icons/eos/textarea.gif" templateId="h:textarea" />
+		<PaletteItem initialTemplateID="templates/eos/Password.xml"
+			label="Password" largeIcon="icons/eos/password_32.gif"
+			smallIcon="icons/eos/password.gif" templateId="h:password" />
+		<PaletteItem initialTemplateID="templates/eos/CheckBox.xml"
+			label="CheckBox" largeIcon="icons/eos/checkbox_32.gif"
+			smallIcon="icons/eos/checkbox.gif" templateId="h:checkbox" />
+		<PaletteItem
+			initialTemplateID="templates/eos/SwitchCheckbox.xml"
+			label="SwitchCheckbox" largeIcon="icons/eos/file_upload_32.gif"
+			smallIcon="icons/eos/file_upload.gif" templateId="h:switchCheckbox" />
+		<PaletteItem initialTemplateID="templates/eos/Form.xml"
+			label="Form" largeIcon="icons/eos/form_32.gif"
+			smallIcon="icons/eos/form.gif" templateId="h:form" />
+		<PaletteItem initialTemplateID="templates/eos/Select.xml"
+			label="Select" largeIcon="icons/eos/select_32.gif"
+			smallIcon="icons/eos/select.gif" templateId="h:select" />
+		<PaletteItem initialTemplateID="templates/eos/Hidden.xml"
+			label="Hidden" largeIcon="icons/eos/hidden_32.gif"
+			smallIcon="icons/eos/hidden.gif" templateId="h:hidden" />
+		<PaletteItem initialTemplateID="templates/eos/RadioBox.xml"
+			label="RadioBox" largeIcon="icons/eos/radio_32.gif"
+			smallIcon="icons/eos/radio.gif" templateId="h:radio" />
+		<PaletteItem initialTemplateID="templates/eos/Link.xml"
+			label="Link" largeIcon="icons/eos/link_32.gif"
+			smallIcon="icons/eos/link.gif" templateId="h:link" />
+		<PaletteItem initialTemplateID="templates/eos/Image.xml"
+			label="Image" largeIcon="icons/eos/image_32.gif"
+			smallIcon="icons/eos/image.gif" templateId="h:img" />
+		<PaletteItem initialTemplateID="templates/eos/Script.xml"
+			label="Script" largeIcon="icons/wf/workitem_list_32.gif"
+			smallIcon="icons/wf/workitem_list.gif" templateId="h:script" />
+		<PaletteItem initialTemplateID="templates/eos/Css.xml"
+			label="Css" largeIcon="icons/rc/HCSS.gif"
+			smallIcon="icons/rc/HCSS.gif" templateId="h:css" />
+		<PaletteItem initialTemplateID="templates/eos/FileUpload.xml"
+			label="FileUpload" largeIcon="icons/eos/file_upload_32.gif"
+			smallIcon="icons/eos/file_upload.gif" templateId="h:file" />
+		<PaletteItem initialTemplateID="templates/eos/Download.xml"
+			label="Download" largeIcon="icons/eos/file_upload_32.gif"
+			smallIcon="icons/eos/file_upload.gif" templateId="h:download" />
+		<PaletteItem initialTemplateID="templates/eos/HiddenData.xml"
+			label="HiddenData" largeIcon="icons/eos/hidden_32.gif"
+			smallIcon="icons/eos/hidden.gif" templateId="h:hiddendata" />
+		<PaletteItem initialTemplateID="templates/eos/OutputFile.xml"
+			label="OutputFile" largeIcon="icons/eos/file_upload_32.gif"
+			smallIcon="icons/eos/file_upload.gif" templateId="h:outputFile" />
+		<PaletteItem initialTemplateID="templates/eos/ErrorMessage.xml"
+			label="ErrorMessage" largeIcon="icons/eos/hidden_32.gif"
+			smallIcon="icons/eos/hidden.gif" templateId="h:errorMessage" />
+		<PaletteItem initialTemplateID="templates/eos/Pageflow.xml"
+			label="PageFlow" largeIcon="icons/eos/pageflow.gif"
+			smallIcon="icons/eos/pageflow.gif" templateId="h:pageflow" />
+	</PaletteGroup>
+	<PaletteGroup initialState="INITIAL_STATE_CLOSED" largeIcon=""
+		name="Bean标签" plugin="com.primeton.studio.jsp.tag"
+		smallIcon="icons/click.gif">
+		<PaletteItem initialTemplateID="templates/bean/Write.xml"
+			label="Write" largeIcon="icons/rc/Bwrite.gif"
+			smallIcon="icons/rc/Bwrite.gif" templateId="b:write" />
+		<PaletteItem initialTemplateID="templates/bean/Set.xml"
+			label="Set" largeIcon="icons/rc/Bset.gif"
+			smallIcon="icons/rc/Bset.gif" templateId="b:set" />
+		<PaletteItem initialTemplateID="templates/bean/Remove.xml"
+			label="Remove" largeIcon="icons/rc/Bremove.gif"
+			smallIcon="icons/rc/Bremove.gif" templateId="b:remove" />
+		<PaletteItem initialTemplateID="templates/bean/Size.xml"
+			label="Size" largeIcon="icons/rc/Bsize.gif"
+			smallIcon="icons/rc/Bsize.gif" templateId="b:size" />
+		<PaletteItem initialTemplateID="templates/bean/Message.xml"
+			label="Message" largeIcon="icons/rc/Bmessage.gif"
+			smallIcon="icons/rc/Bmessage.gif" templateId="b:message" />
+		<PaletteItem initialTemplateID="templates/bean/Label.xml"
+			label="Label" largeIcon="icons/rc/BeanLabel.gif"
+			smallIcon="icons/rc/BeanLabel.gif" templateId="b:label" />
+	</PaletteGroup>
+	<PaletteGroup initialState="INITIAL_STATE_CLOSED" largeIcon=""
+		name="业务字典标签" plugin="com.primeton.studio.jsp.tag"
+		smallIcon="icons/click.gif">
+		<PaletteItem initialTemplateID="templates/dict/DictWrite.xml"
+			label="DictWrite" largeIcon="icons/rc/DictWrite.gif"
+			smallIcon="icons/rc/DictWrite.gif" templateId="d:write" />
+		<PaletteItem initialTemplateID="templates/dict/DictSelect.xml"
+			label="DictSelect" largeIcon="icons/pg/select_32.gif"
+			smallIcon="icons/pg/select.gif" templateId="d:select" />
+		<PaletteItem initialTemplateID="templates/dict/DictCheckbox.xml"
+			label="DictCheckbox" largeIcon="icons/rc/DickCheckBox.gif"
+			smallIcon="icons/rc/DickCheckBox.gif" templateId="d:checkbox" />
+		<PaletteItem initialTemplateID="templates/dict/DictRadio.xml"
+			label="DictRadio" largeIcon="icons/rc/DickRadio.gif"
+			smallIcon="icons/rc/DickRadio.gif" templateId="d:radio" />
+	</PaletteGroup>
+	<PaletteGroup initialState="INITIAL_STATE_CLOSED" largeIcon=""
+		name="页面控件" plugin="com.primeton.studio.jsp.tag"
+		smallIcon="icons/click.gif">
+		<PaletteItem initialTemplateID="templates/page/Date.xml"
+			label="Date" largeIcon="icons/rc/Wdate.gif"
+			smallIcon="icons/rc/Wdate.gif" templateId="w:date" />
+		<PaletteItem initialTemplateID="templates/page/Time.xml"
+			label="Time" largeIcon="icons/rc/Wtime.gif"
+			smallIcon="icons/rc/Wtime.gif" templateId="w:time" />
+		<PaletteItem initialTemplateID="templates/page/Wtree.xml"
+			label="Wtree" largeIcon="icons/rc/tree_32.gif"
+			smallIcon="icons/rc/tree.gif" templateId="w:tree" />
+		<PaletteItem initialTemplateID="templates/page/RichText.xml"
+			label="RichText" largeIcon="icons/rc/RichText.gif"
+			smallIcon="icons/rc/RichText.gif" templateId="w:richtext" />
+		<PaletteItem initialTemplateID="templates/page/Tabs.xml"
+			label="Tabs" largeIcon="icons/pg/tabs.gif"
+			smallIcon="icons/pg/tabs.gif" templateId="w:tabPanel" />
+		<PaletteItem initialTemplateID="templates/page/LookUp.xml"
+			label="LookUp" largeIcon="icons/pg/lookup.gif"
+			smallIcon="icons/pg/lookup.gif" templateId="w:lookup" />
+		<PaletteItem initialTemplateID="templates/page/Panel.xml"
+			label="Panel" largeIcon="icons/html/panel_32.gif"
+			smallIcon="icons/pg/Panel.gif" templateId="w:panel" />
+		<PaletteItem initialTemplateID="templates/page/PopMenu.xml"
+			label="PopMenu" largeIcon="icons/pg/popmenu.gif"
+			smallIcon="icons/pg/popmenu.gif" templateId="w:popMenu" />
+	</PaletteGroup>
+	<PaletteGroup initialState="INITIAL_STATE_CLOSED"
+		largeIcon="icons/html/html_elements.gif" name="Ajax控件"
+		plugin="com.primeton.studio.jsp.tag"
+		smallIcon="icons/html/html_elements.gif">
+		<PaletteItem initialTemplateID="templates/ajax/Dtree.xml"
+			label="Dtree" largeIcon="icons/rc/tree_32.gif"
+			smallIcon="icons/rc/tree.gif" templateId="r:rtree" />
+		<PaletteItem initialTemplateID="templates/ajax/ComboSelect.xml"
+			label="ComboSelect" largeIcon="icons/pg/select_32.gif"
+			smallIcon="icons/pg/select.gif" templateId="r:comboSelect" />
+		<PaletteItem initialTemplateID="templates/ajax/Datacell.xml"
+			label="DataCell" largeIcon="icons/rc/datacell_32.gif"
+			smallIcon="icons/rc/datacell.gif" templateId="r:datacell" />
+	</PaletteGroup>
+	<PaletteGroup initialState="INITIAL_STATE_CLOSED"
+		largeIcon="icons/html/html_elements.gif" name="组合控件"
+		plugin="com.primeton.studio.jsp.tag"
+		smallIcon="icons/html/html_elements.gif">
+		<PaletteItem
+			initialTemplateID="templates/component/QueryForm.xml"
+			label="QueryForm" largeIcon="icons/rc/queryform.gif"
+			smallIcon="icons/rc/queryform.gif" templateId="queryform" />
+		<PaletteItem
+			initialTemplateID="templates/component/viewlist.xml"
+			label="ViewList" largeIcon="icons/rc/viewlist.gif"
+			smallIcon="icons/rc/viewlist.gif" templateId="viewlist" />
+		<PaletteItem
+			initialTemplateID="templates/component/RecordView.xml"
+			label="RecordView" largeIcon="icons/rc/recordform.gif"
+			smallIcon="icons/rc/recordform.gif" templateId="recordview" />
+		<PaletteItem
+			initialTemplateID="templates/component/DataForm.xml"
+			label="DataForm" largeIcon="icons/rc/dataform.gif"
+			smallIcon="icons/rc/dataform.gif" templateId="dataform" />
+	</PaletteGroup>
+	<PaletteGroup initialState="INITIAL_STATE_CLOSED"
+		largeIcon="icons/click.gif" name="工作流标签"
+		plugin="com.primeton.studio.jsp.tag" smallIcon="icons/click.gif">
+		<PaletteItem
+			initialTemplateID="templates/workflow/ActivityGraph.xml"
+			label="ActivityGraph" largeIcon="icons/wf/act_participant_32.gif"
+			smallIcon="icons/wf/act_participant.gif"
+			templateId="wf:activityGraph" />
+		<PaletteItem
+			initialTemplateID="templates/workflow/AppointActivity.xml"
+			label="AppointActivity" largeIcon="icons/wf/appoint_activity_32.gif"
+			smallIcon="icons/wf/appoint_activity.gif"
+			templateId="wf:appointActivity" />
+		<PaletteItem
+			initialTemplateID="templates/workflow/FetchWorkList.xml"
+			label="FetchMessageList" largeIcon="icons/wf/rollback.gif"
+			smallIcon="icons/wf/rollback.gif" templateId="wf:fetchMessageList" />
+		<PaletteItem
+			initialTemplateID="templates/workflow/ProcessGraph.xml"
+			label="ProcessGraph" largeIcon="icons/wf/rollback_32.gif"
+			smallIcon="icons/wf/processGrap.gif" templateId="wf:processGraph" />
+		<PaletteItem
+			initialTemplateID="templates/workflow/SelectActParticipant.xml"
+			label="SelectActParticipant" largeIcon="icons/wf/rollback_32.gif"
+			smallIcon="icons/wf/selectActParticipant.gif"
+			templateId="wf:selectActParticipant" />
+		<PaletteItem
+			initialTemplateID="templates/workflow/SelectAgentParticipant.xml"
+			label="SelectAgentParticipant" largeIcon="icons/wf/rollback_32.gif"
+			smallIcon="icons/wf/selectAgentParticipant.gif"
+			templateId="wf:selectAgentParticipant" />
+		<PaletteItem
+			initialTemplateID="templates/workflow/SelectParticipant.xml"
+			label="SelectParticipant" largeIcon="icons/wf/rollback_32.gif"
+			smallIcon="icons/wf/selectParticipant.gif"
+			templateId="wf:selectParticipant" />
+		<PaletteItem
+			initialTemplateID="templates/workflow/SelectProcessAndActivity.xml"
+			label="SelectProcessAndActivity" largeIcon="icons/wf/rollback_32.gif"
+			smallIcon="icons/wf/selectProcessAndActivity.gif"
+			templateId="wf:selectProcessAndActivity" />
+		<PaletteItem
+			initialTemplateID="templates/workflow/SetParticipant.xml"
+			label="SetParticipant" largeIcon="icons/wf/org_participant_32.gif"
+			smallIcon="icons/wf/org_participant.gif"
+			templateId="wf:setParticipant" />
+		<PaletteItem
+			initialTemplateID="templates/workflow/ShowAppointActivityList.xml"
+			label="ShowAppointActivityList" largeIcon="icons/wf/rollback_32.gif"
+			smallIcon="icons/wf/selectParticipant.gif"
+			templateId="wf:showAppointActivityList" />
+		<PaletteItem
+			initialTemplateID="templates/workflow/ShowProcStartForm.xml"
+			label="ShowProcStartForm" largeIcon="icons/wf/rollback_32.gif"
+			smallIcon="icons/wf/showProcStartForm.gif"
+			templateId="wf:showProcStartForm" />
+		<PaletteItem
+			initialTemplateID="templates/workflow/ShowWorkItemForm.xml"
+			label="ShowWorkItemForm" largeIcon="icons/wf/rollback_32.gif"
+			smallIcon="icons/wf/showWorkItemForm.gif"
+			templateId="wf:showWorkItemForm" />
+		<PaletteItem
+			initialTemplateID="templates/workflow/WorkItemAction.xml"
+			label="WorkItemAction" largeIcon="icons/wf/reassign_workitem_32.gif"
+			smallIcon="icons/wf/reassign_workitem.gif"
+			templateId="wf:workItemAction" />
+		<PaletteItem
+			initialTemplateID="templates/workflow/WorkItemActionList.xml"
+			label="WorkItemActionList" largeIcon="icons/wf/workitem_list_32.gif"
+			smallIcon="icons/wf/workitem_list.gif"
+			templateId="wf:workItemActionList" />
+	</PaletteGroup>
+</PaletteGroups>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSPY v2004 rel. 2 U (http://www.xmlspy.com) by binge (binge) -->
+<tag tagName="d:checkbox" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
+	<require>
+		<path>/dict/baseDict.xml</path>
+		<include>name,iterateId,scope,property,value,filter,seperator,filterOp,filterField,filterStr,dictTypeId,extAttr,indexed,id,style,styleClass,tabindex,accesskey,title,disabled,onclick,ondblclick,onfocus,onkeyup,onkeydown,onkeypress,onmouseup,onmousedown,onmousemove,onmouseover,onmouseout,seperator,perrow,submitMethod,modelField,onblur,onchange,perrow</include>
+	</require>
+	<group/>
+</tag>

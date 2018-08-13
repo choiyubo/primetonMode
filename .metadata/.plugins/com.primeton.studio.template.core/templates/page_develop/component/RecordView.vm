@@ -1,0 +1,58 @@
+#if(${map.get("recordview")}!="")
+#set($map=${map.get("recordview")})
+#end
+#set($title=${map.get("title")})
+#set($entityTable=${map.get("entityTable")})
+#set($row_length=${map.get("rowLength")})
+#set($xpath=${map.get("xpath")})
+#set($width="100%")
+#set($width=${map.get("width")})
+${WizardReverseHelper.getComponentTag("recordview",$map)}
+<w:panel id="panel1" width="$width" title="$title">
+<table align="center" border="0" width="100%" class="form_table">
+#set($currentRowCount = $row_length)
+#foreach($row in [1..${entityTable.getCountSize()}])
+#set($tagElement =${entityTable.getTagConfig($row)})
+#if(${entityTable.getCell($row,5)}==true)
+	#if($currentRowCount==$row_length)
+	<tr>
+	#end
+	#set($currentColspan = 1)
+	#set($currentRowField = ${entityTable.getCell($row,4)})
+	#if($currentRowField==1)
+		#if($row<${entityTable.getCountSize()})
+			#set($currentColspan = 1)
+		#else
+			#set($currentColspan = $currentRowCount * 2 - 1)
+		#end
+		#set($currentRowCount = $currentRowCount - 1)
+	#else
+		#if($currentRowCount<=$currentRowField)
+			#set($currentColspan = $currentRowCount * 2 - 1)
+			#set($currentRowCount=0)
+		#else
+			#set($currentColspan= $currentRowField * 2 - 1)
+			#set($currentRowCount = $currentRowCount - $currentRowField)
+		#end
+	#end
+	<td class="form_label">${entityTable.getCell($row,2)}</td>
+	<td#if($currentColspan != 1) colspan="$currentColspan"#end>
+		#set($temp=${tagElement.removeAttribute("iterateId")})
+		#if($xpath != "")
+			#set($property_name=${TagElementHelper.getAttributeValue($tagElement, "property")})
+			${TagElementHelper.setAttributeValue($tagElement, "property", "${xpath}/${property_name}")}
+		#end
+		${tagElement.toString(true,true)}
+	</td>
+	#if($row==${entityTable.getCountSize()})
+	</tr>
+	#else
+		#if($currentRowCount==0)
+	</tr>#set($currentRowCount = $row_length)
+		#end
+	#end
+#end
+#end
+</table>
+</w:panel>
+${WizardReverseHelper.getComponentEndTag("recordview")}

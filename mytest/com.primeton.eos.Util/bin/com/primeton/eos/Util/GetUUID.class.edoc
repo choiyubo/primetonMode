@@ -1,0 +1,12 @@
+<map>
+  <entry>
+    <string>GetUUID</string>
+    <string>&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;b&gt;com.primeton.eos.Util.GetUUID&lt;/b&gt;&lt;br/&gt;&lt;p&gt; 获取uuid
+ &lt;dl&gt;&lt;dt&gt;作者:&lt;/dt&gt;&lt;dd&gt;caiyubo&lt;/dd&gt;&lt;/dl&gt;&lt;/font&gt;&lt;/body&gt;&lt;/html&gt;</string>
+  </entry>
+  <entry>
+    <string>com.primeton.eos.Util.GetUUID.getUUID()</string>
+    <string>&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;b&gt;String com.primeton.eos.Util.GetUUID.getUUID()&lt;/b&gt;&lt;br/&gt;&lt;p&gt; 
+ &lt;dl&gt;&lt;dt&gt;返回：&lt;/dt&gt;&lt;dd&gt;&lt;/dd&gt;&lt;/dl&gt;&lt;/font&gt;&lt;/body&gt;&lt;/html&gt;</string>
+  </entry>
+</map>

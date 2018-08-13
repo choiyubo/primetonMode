@@ -1,0 +1,25 @@
+<div id="gaugechart" style="height:400px;"></div>
+    
+    <script type="text/javascript">
+    
+       var gaugechart = echarts.init(document.getElementById('gaugechart'));
+		var option = {
+			title : {
+				text: "仪表盘",
+				left:"center"
+			},
+		    tooltip : {
+		        formatter: "{a} <br/>{b} : {c}%"
+		    },
+		    series: [
+		        {
+		            name: '指标示例',
+		            type: 'gauge',
+		            detail: {formatter:'{value}%'},
+		            data: [{value: 50, name: '完成率'}]
+		        }
+		    ]
+		};
+        gaugechart.setOption(option);
+     
+    </script>

@@ -1,0 +1,19 @@
+#set($tagElement = ${map.get("tag_element")})
+${tagElement.toStringWithoutEndTag()}
+    <div title="north" region="north" height="80" >
+        north
+    </div>
+    <div title="south" region="south" showSplit="false" showHeader="true" height="80"  >
+        south
+    </div>
+    <div title="west" region="west" width="200" >
+        west
+    </div>
+    <div title="east" region="east"  showCloseButton="true" >
+        east
+    </div>
+    <div title="center" region="center" >
+        center
+    </div>
+
+</div>

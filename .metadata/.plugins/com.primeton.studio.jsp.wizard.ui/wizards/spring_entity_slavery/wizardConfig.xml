@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wizard height="500" id="spring_entity_slavery" sort="908" isDefault="true" name="Spring Master Detail CRUD Wizard" width="750" type="Richweb">
+	<page description="Select a data entity to generate the maintenance code(Only can select the 1 peer data entity in one-way 1:n relation or two-way n:1 relation)" height="600" index="0" title="Select data entity" width="750">
+		<layout row="2" column="2"/>
+		<component id="entitySelect" type="Spring_Entity_Select">
+			<ui>
+				<size row="1" column="2"/>
+				<fillStyle style="fill_horizontal"/>
+			</ui>
+		</component>
+		<component id="auto_pk" type="checkbox" label="Auto create primary key">
+			<ui>
+				<size row="1" column="2"/>
+				<data default_value="true"></data>
+			</ui>
+		</component>
+		<component id="select_slavery_tables" label="Select the master-detail table which need maintenance" type="table_select">
+			<ui>
+				<size column="2" row="1"/>
+			</ui>
+		</component>
+		<templates>
+			<item>data_init.vm</item>
+		</templates>
+	</page>
+	<page description="The entity using queryform to query and select" height="550" index="1" title="Query Condition Setting" width="750">
+		<layout column="1" row="2"/>
+		<component id="queryform" type="queryform">
+			<ui>
+				<size column="1" row="2"/>
+			</ui>
+		</component>
+	</page>
+	<page description="Show results with list" height="700" index="2" title="Query Result List Setting" width="750">
+		<layout column="1" row="2"/>
+		<component id="viewlist" type="viewlist">
+			<ui>
+				<size column="1" row="2"/>
+			</ui>
+		</component>
+	</page>
+	<page description="Config the base infomation of the form" height="600" index="3" title="he Data Input Page Setting" width="750">
+		<layout column="1" row="2"/>
+		<component id="dataform" type="dataform">
+			<ui>
+				<size column="1" row="2"/>
+			</ui>
+		</component>
+		<templates>
+			<item>datacell_init.vm</item>
+		</templates>
+	</page>
+	<page description="Use datacell fill the subordinate table，and config datacell options" height="700" index="4" title="Config the subordinate table" width="800">
+		<layout column="1" row="2"/>
+		<component id="slavery_tables" nested_type="Spring_Datacell" type="tables">
+			<ui>
+				<size column="1" row="2"/>
+			</ui>
+		</component>
+	</page>
+
+	<previewPage plugin="com.primeton.studio.spring.ui" class="com.primeton.studio.spring.ui.functionWizard.SpringFunctionWizardPreviewPageBuilderFactory"/>
+
+	<event>
+		<entry source="entitySelect" target="queryform"/>
+		<entry source="entitySelect" target="viewlist"/>
+		<entry source="entitySelect" target="dataform"/>
+		<entry source="entitySelect" target="select_slavery_tables"/>
+		<entry source="select_slavery_tables" target="slavery_tables"/>
+	</event>
+	<handlers>
+		<handler plugin="com.primeton.studio.spring.ui" class="com.primeton.studio.spring.ui.functionWizard.SpringFunctionWizardProcessHandler"/>
+	</handlers>
+	<template>
+		<entry templateName="entity_query.vm" fileName="${entitySelect.entityName}Query.jsp" fileType="page"/>
+		<entry templateName="entity_input.vm" fileName="${entitySelect.entityName}Input.jsp" fileType="page"/>
+
+		<entry templateName="entity_maintain.vm" fileName="${entitySelect.entityName}Maintain.flowx" fileType="pageflow"/>
+
+		<entry templateName="template_service_interface.vm" fileName="I${entitySelect.entityName}Service.java" fileType="java"/>
+		<entry templateName="template_service_impl.vm" fileName="${entitySelect.entityName}Service.java" fileType="java"/>
+
+		<entry templateName="data_init.vm"/>
+		<entry templateName="datacell_init.vm"/>
+	</template>
+</wizard>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<PaletteGroups>
+	<PaletteGroup initialState="INITIAL_STATE_OPEN" largeIcon=""
+		name="HTML标签" plugin="com.primeton.studio.jsp.tag"
+		smallIcon="icons/html/html_elements.gif">
+		<PaletteItem initialTemplateID="" label="TextArea"
+			largeIcon="icons/html/textarea_32.gif"
+			smallIcon="icons/html/textarea.gif" templateId="TextArea" />
+		<PaletteItem initialTemplateID="" label="TextBox"
+			largeIcon="icons/html/textbox_32.gif"
+			smallIcon="icons/html/textbox.gif" templateId="TextBox" />
+		<PaletteItem initialTemplateID="" label="Password"
+			largeIcon="icons/html/password_32.gif"
+			smallIcon="icons/html/password.gif" templateId="Password" />
+		<PaletteItem initialTemplateID="" label="Button"
+			largeIcon="icons/html/button_32.gif"
+			smallIcon="icons/html/button.gif" templateId="Button" />
+		<PaletteItem initialTemplateID="" label="SubmitButton"
+			largeIcon="icons/html/submit_button_32.gif"
+			smallIcon="icons/html/submit_button.gif" templateId="SubmitButton" />
+		<PaletteItem initialTemplateID="" label="ResetButton"
+			largeIcon="icons/html/reset_button_32.gif"
+			smallIcon="icons/html/reset_button.gif" templateId="ResetButton" />
+		<PaletteItem initialTemplateID="" label="ImageButton"
+			largeIcon="icons/html/image_button_32.gif"
+			smallIcon="icons/html/image_button.gif" templateId="ImageButton" />
+		<PaletteItem initialTemplateID="" label="CheckBox"
+			largeIcon="icons/html/checkbox_32.gif"
+			smallIcon="icons/html/checkbox.gif" templateId="CheckBox" />
+		<PaletteItem initialTemplateID="" label="RadioButton"
+			largeIcon="icons/html/radio_32.gif" smallIcon="icons/html/radio.gif"
+			templateId="radio" />
+		<PaletteItem initialTemplateID="" label="ComboBox"
+			largeIcon="icons/html/combobox_32.gif"
+			smallIcon="icons/html/combobox.gif" templateId="ComboBox" />
+		<PaletteItem initialTemplateID="" label="ListBox"
+			largeIcon="icons/html/listbox_32.gif"
+			smallIcon="icons/html/listbox.gif" templateId="ListBox" />
+		<PaletteItem initialTemplateID="" label="HiddenField"
+			largeIcon="icons/html/hidden_field_32.gif"
+			smallIcon="icons/html/hidden_field.gif" templateId="HiddenField" />
+		<PaletteItem initialTemplateID="" label="FileUpload"
+			largeIcon="icons/html/file_upload_32.gif"
+			smallIcon="icons/html/file_upload.gif" templateId="FileUpload" />
+		<PaletteItem initialTemplateID="" label="GroupBox"
+			largeIcon="icons/html/groupbox_32.gif"
+			smallIcon="icons/html/groupbox.gif" templateId="GroupBox" />
+		<PaletteItem initialTemplateID="" label="Link"
+			largeIcon="icons/html/link_32.gif" smallIcon="icons/html/link.gif"
+			templateId="Link" />
+		<PaletteItem initialTemplateID="" label="Image"
+			largeIcon="icons/html/image_32.gif" smallIcon="icons/html/image.gif"
+			templateId="Image" />
+		<PaletteItem initialTemplateID="" label="Table"
+			largeIcon="icons/html/table_32.gif" smallIcon="icons/html/table.gif"
+			templateId="table" />
+		<PaletteItem initialTemplateID="" label="Panel"
+			largeIcon="icons/html/panel_32.gif" smallIcon="icons/html/panel.gif"
+			templateId="Panel" />
+		<PaletteItem initialTemplateID="" label="IFrame"
+			largeIcon="icons/html/iframe_32.gif"
+			smallIcon="icons/html/iframe.gif" templateId="IFrame" />
+		<PaletteItem initialTemplateID="" label="HorizontalRule"
+			largeIcon="icons/html/horizontal_rule_32.gif"
+			smallIcon="icons/html/horizontal_rule.gif"
+			templateId="HorizontalRule" />
+		<PaletteItem initialTemplateID="" label="Form"
+			largeIcon="icons/html/form_32.gif" smallIcon="icons/html/form.gif"
+			templateId="Form" />
+	</PaletteGroup>
+</PaletteGroups>

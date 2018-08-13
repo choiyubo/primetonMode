@@ -1,0 +1,84 @@
+##set the wizard data context
+#set($wizardMap=${dataContextManager.getWizardDataContext()})
+##set contribution name
+#set($contribution=${wizardMap.get("contribution")})
+##set entity's short name
+#set($selectedEntity=${dataContextManager.getComponentDataContext(0, "entitySelect").get("selectedEntity")})
+#set($entityName=${dataContextManager.getComponentDataContext(0, "entitySelect").get("entityName")})
+#set($entityNameLow="${entityName.replaceFirst('.', ${entityName.substring(0,1).toLowerCase()})}")
+#set($isAutoPK=${dataContextManager.getComponentDataContext(0, "auto_pk").get("checked")})
+##set author, email
+#set($author=${wizardMap.get("author")})
+#set($email=${wizardMap.get("email")})
+##set current package
+#set($currentPackage=${dataContextManager.getPageDataContext("template_page").get("package_template_service_impl.vm")})
+#set($currentFile=${dataContextManager.getPageDataContext("template_page").get("file_template_service_impl.vm")})
+#set($interfacePackage=${dataContextManager.getPageDataContext("template_page").get("package_template_service_interface.vm")})
+#set($interfaceFile=${dataContextManager.getPageDataContext("template_page").get("file_template_service_interface.vm")})
+#if(${StringUtil.equals($interfacePackage, "")})
+#set($interfaceNamespace=${interfaceFile})
+#else
+#set($interfaceNamespace="${interfacePackage}.${interfaceFile}")
+#end
+#if(!${StringUtil.equals($currentPackage, "")})
+package ${currentPackage};
+#end
+
+import com.eos.das.entity.IDASCriteria;
+import com.eos.das.entity.criteria.CriteriaType;
+import com.eos.foundation.PageCond;
+import com.eos.spring.DASDaoSupport;
+import ${selectedEntity};
+#if(!${StringUtil.equals($interfacePackage, $currentPackage)})
+import ${interfaceNamespace};
+#end
+
+import commonj.sdo.DataObject;
+
+/**
+ * <pre>
+ * Title: the title
+ * Description: the description
+ * </pre>
+ * @author ${author} (mailto:${email})
+ * @version 1.00.00
+ *
+ */
+/*
+ * Modify History
+ * $log$
+ */
+public class ${currentFile} extends DASDaoSupport implements ${interfaceFile}{
+	public void add${entityName}(${entityName} ${entityNameLow}){
+#if($isAutoPK)
+		getDASTemplate().getPrimaryKey(${entityNameLow});
+#end
+		getDASTemplate().insertEntity(${entityNameLow});
+	}
+
+	public void delete${entityName}(${entityName}[] ${entityNameLow}s ){
+		for(DataObject ${entityNameLow}:${entityNameLow}s){
+			getDASTemplate().deleteEntityCascade(${entityNameLow});
+		}
+	}
+
+
+	public void get${entityName}(${entityName} ${entityNameLow}){
+		getDASTemplate().expandEntity(${entityNameLow});
+	}
+
+
+	public ${entityName}[]  query${entityName}s(CriteriaType criteriaType,PageCond pageCond){
+		IDASCriteria dasCriteria = getDASTemplate().criteriaTypeToDASCriteria(criteriaType);
+		return getDASTemplate().queryEntitiesByCriteriaEntityWithPage(${entityName}.class, dasCriteria, pageCond);
+	}
+
+
+    public void update${entityName}(${entityName} ${entityNameLow}){
+	    getDASTemplate().updateEntity(${entityNameLow});
+    }
+
+}
+
+
+

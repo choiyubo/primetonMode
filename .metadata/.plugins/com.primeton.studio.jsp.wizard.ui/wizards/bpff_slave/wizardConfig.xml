@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wizard height="500" id="bpff_slave" isDefault="true" name="BPFF Master Slaver Function Wizard" sort="1001" type="NUI" width="750">
+	<page description="Select Master Entity(Support Single 1:n Or Bi n:1 entity)" height="600" index="0" title="Select Dataset" width="780">
+		<layout column="2" row="3"/>
+		<component id="entitySelect" label="Select Entity:" type="entity_select">
+			<ui>
+				<size column="1" row="1"/>
+				<fillStyle style="fill_horizontal"/>
+			</ui>
+		</component> 
+		<component id="auto_pk" label="Auto create primary key" type="checkbox">
+			<ui>
+				<size column="1" row="1"/>
+				<fillStyle style="fill_horizontal"/>
+				<data default_value="true"/>
+			</ui>
+		</component>
+		<component id="select_slavery_tables" label="Select Slaver Entity" type="table_select">
+			<ui>
+				<size column="2" row="2"/>
+			</ui>
+		</component>
+		<templates>
+			<item>data_init.vm</item>
+		</templates>
+	</page>
+	<page description="Config Master Input And Load page info" height="600" index="1" title="Master Input And Load Page" width="750">
+		<layout column="1" row="2"/>
+		<component id="nui_dataform" type="nui_dataform">
+			<ui>
+				<size column="1" row="2"/>
+			</ui>
+		</component>
+		<templates>
+			<item>datacell_init.vm</item>
+		</templates>
+	</page>
+	<page description="Config Master Input And Load page info" height="600" index="2" title="Slaver Input And Load Page" width="800">
+		<layout column="1" row="2"/>
+		<component id="nui_slavery_tables" nested_type="nui_datacell" type="tables">
+			<ui>
+				<size column="1" row="2"/>
+			</ui>
+		</component>
+	</page>
+	
+	<previewPage plugin="com.primeton.components.bpff.studio.wizard" class="org.gocom.components.bpff.studio.wizard.BPFFFunctionWizardPreviewPageBuilderFactory"/>
+	
+	<event>
+		<entry source="entitySelect" target="nui_dataform"/>
+		<entry source="entitySelect" target="select_slavery_tables"/>
+		<entry source="select_slavery_tables" target="nui_slavery_tables"/>
+	</event>
+	<template>
+		<entry fileName="${entitySelect.entityName}Form.jsp" fileType="page" templateName="form_add_jsp.vm"/>
+		<entry fileName="${entitySelect.entityName}View.jsp" fileType="page" templateName="form_load_jsp.vm"/>
+		
+		<entry component="${entitySelect.entityNameLowerCase}biz" fileName="addOrUpdate${entitySelect.entityName}.bizx" fileType="biz" templateName="add_entity.vm"/>
+		<entry templateName="data_init.vm"/>
+		<entry templateName="datacell_init.vm"/>
+	</template>
+</wizard>
+

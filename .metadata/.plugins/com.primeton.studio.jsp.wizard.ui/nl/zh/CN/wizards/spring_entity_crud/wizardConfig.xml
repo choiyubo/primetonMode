@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wizard id="spring_entity_crud" sort="910" isDefault="true" name="Spring 增删改查向导" width="600" height="350" type="Richweb">
+	<page index="0" title="选择数据实体" description="选择一个数据实体产生维护的功能代码" width="600" height="350">
+		<layout row="1" column="1"/>
+		<component id="entitySelect" type="Spring_Entity_Select">
+			<ui>
+				<size row="3" column="1"/>
+				<fillStyle style="fill_horizontal"/>
+			</ui>
+		</component>
+		<component id="auto_pk" type="checkbox" label="自动产生主键">
+			<ui>
+				<size row="1" column="1"/>
+				<data default_value="true"></data>
+			</ui>
+		</component>
+	</page>
+
+	<previewPage plugin="com.primeton.studio.spring.ui" class="com.primeton.studio.spring.ui.crud.CRUDPreviewPageBuilderFactory"/>
+
+	<event>
+
+	</event>
+
+	<handlers>
+		<handler plugin="com.primeton.studio.spring.ui" class="com.primeton.studio.spring.ui.crud.CRUDWizardProcessHandler"/>
+	</handlers>
+
+	<template>
+		<entry templateName="template_service_interface.vm" fileName="I${entitySelect.entityName}Service.java" fileType="java"/>
+		<entry templateName="template_service_impl.vm" fileName="${entitySelect.entityName}Service.java" fileType="java"/>
+	</template>
+</wizard>

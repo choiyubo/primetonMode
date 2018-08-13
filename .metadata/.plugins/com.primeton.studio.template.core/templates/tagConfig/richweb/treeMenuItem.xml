@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tag tagName="r:treeMenuItem" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<group groupName="Basic">
+		<property name="display" displayName="display" hint="Sets the content of menu item." type="primitive:string" defaultValue="" required="true">
+			<validators>
+				<notEmptyValidator/>
+			</validators>
+		</property>
+	</group>
+	<group groupName="Event">
+		<property allowXPath="false" name="onClickFunc" displayName="onClickFunc" hint="Fires when the user clicks the object." type="primitive:string" defaultValue="" required="true">
+			<validators>
+				<notEmptyValidator/>
+			</validators>
+		</property>
+	</group>
+	<group groupName="other">
+  </group>
+</tag>

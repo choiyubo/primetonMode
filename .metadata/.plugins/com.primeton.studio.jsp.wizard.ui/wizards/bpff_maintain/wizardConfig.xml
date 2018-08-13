@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wizard id="bpff_maintain" sort="1002" isDefault="true" name="BPFF Function Wizard"  width="700" height="350" type="NUI">
+	<page index="0" title="Select Entity" description="select entity for generator code" width="600" height="350">
+		<layout row="1" column="2"/>
+		<component id="entitySelect" type="entity_select" label="Select Entity:">
+			<ui>
+				<size row="1" column="1"/>
+			</ui>
+		</component>
+		<component id="auto_pk" type="checkbox" label="Auto create primary key">
+			<ui>
+				<size row="1" column="1"/>
+				<data default_value="true"></data>
+			</ui>
+		</component>
+		<templates>
+			<item>data_init.vm</item>
+		</templates>
+	</page>
+	<page index="1" title="Data Input and Load Page" description="Data Input and Load Page Basic Info" width="750" height="600">
+		<layout row="2" column="1"/>
+		<component id="nui_dataform" type="nui_dataform">
+			<ui>
+				<size row="2" column="1"/>
+			</ui>
+		</component>
+	</page>
+	
+	<previewPage plugin="com.primeton.components.bpff.studio.wizard" class="org.gocom.components.bpff.studio.wizard.BPFFFunctionWizardPreviewPageBuilderFactory"/>
+	
+	<event>
+		<entry source="entitySelect" target="nui_dataform"/>
+	</event>
+ 	<template>
+		<entry templateName="add_jsp.vm" fileName="${entitySelect.entityName}Form.jsp" fileType="page"/>
+		<entry templateName="load_jsp.vm" fileName="${entitySelect.entityName}View.jsp" fileType="page"/>
+
+		<entry templateName="add_entity.vm" fileName="addOrUpdate${entitySelect.entityName}.bizx" component="${entitySelect.entityNameLowerCase}biz" fileType="biz"/>
+	</template>
+</wizard>
+
+
+
+
+

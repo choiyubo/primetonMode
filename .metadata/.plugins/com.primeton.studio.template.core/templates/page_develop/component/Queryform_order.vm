@@ -1,0 +1,8 @@
+#set($entityTable=${map.get("orderEntityTable")})
+#set($currentRow=${map.get("currentRow")})
+#set($criteriaName=${map.get("criteriaName")})
+#if($criteriaName == "")
+	#set($criteriaName = "criteria")
+#end
+<h:hidden property="${criteriaName}/_orderby[$currentRow]/_sort" value="${entityTable.getCell($row,2)}"/>
+<h:hidden property="${criteriaName}/_orderby[$currentRow]/_property" value="${entityTable.getCell($row,1)}"/>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wizard id="spring_entity_maintain" sort="909" isDefault="true" name="Spring Single Table CRUD Wizard" width="750" height="500" type="Richweb">
+	<page index="0" title="Select Entity" description="Select an entity to generate the maintenance code" width="650" height="500">
+		<layout row="1" column="1"/>
+		<component id="entitySelect" type="Spring_Entity_Select">
+			<ui>
+				<size row="3" column="1"/>
+				<fillStyle style="fill_horizontal"/>
+			</ui>
+		</component>
+		<component id="auto_pk" type="checkbox" label="Auto create primary key">
+			<ui>
+				<size row="1" column="1"/>
+				<data default_value="true"></data>
+			</ui>
+		</component>
+		<templates>
+			<item>data_init.vm</item>
+		</templates>
+	</page>
+	<page index="1" title="Query Condition Setting" description="The Entity using queryform to query and select" width="750" height="550">
+		<layout row="2" column="1"/>
+		<component id="queryform" type="queryform">
+			<ui>
+				<size row="2" column="1"/>
+			</ui>
+		</component>
+	</page>
+	<page index="2" title="Query Result List Setting" description="Show results with list" width="750" height="700">
+		<layout row="2" column="1"/>
+		<component id="viewlist" type="viewlist">
+			<ui>
+				<size row="2" column="1"/>
+			</ui>
+		</component>
+	</page>
+	<page index="3" title="Add Page Setting" description="Config the base infomation of the form" width="750" height="600">
+		<layout row="2" column="1"/>
+		<component id="dataform" type="dataform">
+			<ui>
+				<size row="2" column="1"/>
+			</ui>
+		</component>
+	</page>
+
+	<previewPage plugin="com.primeton.studio.spring.ui" class="com.primeton.studio.spring.ui.functionWizard.SpringFunctionWizardPreviewPageBuilderFactory"/>
+
+	<event>
+		<entry source="entitySelect" target="queryform"/>
+		<entry source="entitySelect" target="viewlist"/>
+		<entry source="entitySelect" target="dataform"/>
+	</event>
+
+	<handlers>
+		<handler plugin="com.primeton.studio.spring.ui" class="com.primeton.studio.spring.ui.functionWizard.SpringFunctionWizardProcessHandler"/>
+	</handlers>
+
+	<template>
+		<entry templateName="entity_query.vm" fileName="${entitySelect.entityName}Query.jsp" fileType="page"/>
+		<entry templateName="entity_input.vm" fileName="${entitySelect.entityName}Input.jsp" fileType="page"/>
+
+		<entry templateName="entity_maintain.vm" fileName="${entitySelect.entityName}Maintain.flowx" fileType="pageflow"/>
+
+		<entry templateName="template_service_interface.vm" fileName="I${entitySelect.entityName}Service.java" fileType="java"/>
+		<entry templateName="template_service_impl.vm" fileName="${entitySelect.entityName}Service.java" fileType="java"/>
+	</template>
+</wizard>

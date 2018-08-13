@@ -1,0 +1,9 @@
+<soaphead>
+	<heads>
+		<head name="DefaultHead" isDefault="true">
+			<parameters>
+				<parameter isInput="true" name="RequestSOAPHeader" type="http://www.chinaunicom.com.cn/schema/cuc/common/v2_1.RequestSOAPHeader" value="defaultHead"  valueType="query" catalog="DataObject" passType="reference"/>
+			</parameters>
+		</head>
+	</heads>
+</soaphead>

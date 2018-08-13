@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<tag xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" tagName="w:layout" >
+	<require>
+		<path>/webcomp/baseWebcomp.xml</path>
+		<include>iterateId,property,name,value,width,height,indexed,id,style,styleClass,tabindex,accesskey,readonly,disabled,size,maxlength,onblur,onchange,onclick,ondblclick,onfocus,onselect,onkeyup,onkeydown,onkeypress,onmouseup,onmousedown,onmousemove,onmouseover,onmouseout,title,scope,modelField</include>
+	</require>
+	<group groupName="基本属性">
+		<property showInViewModel="common" displayName="width" hint="在文本框中的显示值" name="width" required="false" type="primitive:string">
+			<validators>
+				<widthHeightValidator/>
+			</validators>
+		</property>
+		<property showInViewModel="common" displayName="height" hint="对话框标题" name="height" required="false" type="primitive:string">
+			<validators>
+				<widthHeightValidator/>
+			</validators>
+		</property>
+		<property showInViewModel="common" displayName="type" hint="显示值的property" name="type" required="false" type="primitive:string">
+			<dataProvider class="mapProvider">
+				<mapEntry>
+					<key class="string">horizontal</key>
+					<value class="string">horizontal</value>
+				</mapEntry>
+				<mapEntry>
+					<key class="string">vertical</key>
+					<value class="string">vertical</value>
+				</mapEntry>
+			</dataProvider>
+		</property>
+	</group>
+</tag>

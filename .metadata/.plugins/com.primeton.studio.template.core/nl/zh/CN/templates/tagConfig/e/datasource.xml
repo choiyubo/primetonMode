@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tag tagName="e:datasource">
+	<group groupName="基本属性">
+		<property allowXPath="false" name="name" displayName="name" hint="数据源名称" type="primitive:string" defaultValue="" required="false">
+			<validators>
+				<notEmptyValidator/>
+			</validators>
+		</property>
+		<property allowXPath="false" name="scope" displayName="scope" hint="读取数据的数据区" type="combo:readonly" defaultValue="" required="false">
+			<dataProvider class="mapProvider">
+				<mapEntry>
+					<key class="string">request</key>
+					<value class="string">r</value>
+				</mapEntry>
+				<mapEntry>
+					<key class="string">page</key>
+					<value class="string">p</value>
+				</mapEntry>
+				<mapEntry>
+					<key class="string">flow</key>
+					<value class="string">f</value>
+				</mapEntry>
+				<mapEntry>
+					<key class="string">session</key>
+					<value class="string">s</value>
+				</mapEntry>
+			</dataProvider>
+		</property>
+		<property name="path" displayName="path" hint="路径" type="primitive:string" defaultValue="" required="false">	
+		</property>
+		<property name="type" displayName="type" hint="数据类型" type="primitive:string" defaultValue="" required="false">	
+			<dataProvider class="mapProvider">
+				<mapEntry>
+					<key class="string">java</key>
+					<value class="string">java</value>
+				</mapEntry>
+				<mapEntry>
+					<key class="string">entity</key>
+					<value class="string">entity</value>
+				</mapEntry>
+				<mapEntry>
+					<key class="string">DataObject</key>
+					<value class="string">DataObject</value>
+				</mapEntry>
+				<mapEntry>
+					<key class="string">AnyType</key>
+					<value class="string">AnyType</value>
+				</mapEntry>
+				<mapEntry>
+					<key class="string">String</key>
+					<value class="string">String</value>
+				</mapEntry>
+				<mapEntry>
+					<key class="string">Time</key>
+					<value class="string">Time</value>
+				</mapEntry>
+				<mapEntry>
+					<key class="string">Date</key>
+					<value class="string">Date</value>
+				</mapEntry>
+				<mapEntry>
+					<key class="string">Byte</key>
+					<value class="string">Byte</value>
+				</mapEntry>
+				<mapEntry>
+					<key class="string">Char</key>
+					<value class="string">Char</value>
+				</mapEntry>
+				<mapEntry>
+					<key class="string">Float</key>
+					<value class="string">Float</value>
+				</mapEntry>
+				<mapEntry>
+					<key class="string">Int</key>
+					<value class="string">Int</value>
+				</mapEntry>
+				<mapEntry>
+					<key class="string">Long</key>
+					<value class="string">Long</value>
+				</mapEntry>
+				<mapEntry>
+					<key class="string">Integer</key>
+					<value class="string">Integer</value>
+				</mapEntry>
+				<mapEntry>
+					<key class="string">Double</key>
+					<value class="string">Double</value>
+				</mapEntry>
+				<mapEntry>
+					<key class="string">Short</key>
+					<value class="string">Short</value>
+				</mapEntry>
+				<mapEntry>
+					<key class="string">Boolean</key>
+					<value class="string">Boolean</value>
+				</mapEntry>
+				<mapEntry>
+					<key class="string">Decimal</key>
+					<value class="string">Decimal</value>
+				</mapEntry>
+			</dataProvider>
+		</property>
+	</group>
+</tag>

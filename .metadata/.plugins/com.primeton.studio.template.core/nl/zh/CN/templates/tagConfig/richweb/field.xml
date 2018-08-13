@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tag tagName="r:field" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
+	<group groupName="基本属性">
+		<property allowXPath="false" name="scope" displayName="scope" hint="读取数据的数据区" type="combo:readonly" defaultValue="" required="false">
+			<dataProvider class="mapProvider">
+				<mapEntry>
+					<key class="string">request</key>
+					<value class="string">r</value>
+				</mapEntry>
+				<mapEntry>
+					<key class="string">page</key>
+					<value class="string">p</value>
+				</mapEntry>
+				<mapEntry>
+					<key class="string">flow</key>
+					<value class="string">f</value>
+				</mapEntry>
+				<mapEntry>
+					<key class="string">session</key>
+					<value class="string">s</value>
+				</mapEntry>
+			</dataProvider>
+		</property>
+		<property name="fieldId" displayName="fieldId" hint="fieldId属性 列的唯一标识" type="primitive:string" defaultValue="" required="false">
+			<validators>
+				<IDNotDuplicateValidator/>
+			</validators>
+		</property>
+		<property name="fieldName" displayName="fieldName" hint="fieldName属性 列对应的数据对象的属性名" type="primitive:string" defaultValue="" required="true">
+			<validators>
+				<notEmptyValidator>
+					<message>fieldName 不能为空，请填写</message>
+				</notEmptyValidator>
+			</validators>
+		</property>
+				<property name="label" displayName="label" hint="label属性 列的标题" type="primitive:string" defaultValue="" required="false">
+		</property>
+		<property name="width" displayName="width" hint="width属性 初始宽度(单位象素)" type="primitive:string" defaultValue="" required="false">
+			<validators>
+				<widthHeightValidator/>
+			</validators>
+		</property>
+	</group>
+	<group groupName="事件">
+		<property allowXPath="false" name="onRefreshFunc" displayName="onRefreshFunc" hint="onRefreshFunc属性 数据显示方式转换时调用的函数" type="primitive:string" defaultValue="" required="false">
+		</property>
+	</group>
+	<group groupName="其他属性">
+		<property name="allowModify" displayName="allowModify" hint="allowModify属性 是否可修改,true为可修改" type="primitive:boolean" defaultValue="true" required="false">
+</property>
+		<property name="allowResize" displayName="allowResize" hint="allowResize属性 是否允许改变列的宽度" type="primitive:boolean" defaultValue="true" required="false">
+</property>
+		<property name="sortAt" displayName="sortAt" hint="sortAt属性 是否允许排序,客户端还是服务端" type="combo:readonly" defaultValue="none" required="false">
+			<dataProvider class="mapProvider">
+				<mapEntry>
+					<key class="string">client</key>
+					<value class="string">c</value>
+				</mapEntry>
+				<mapEntry>
+					<key class="string">server</key>
+					<value class="string">s</value>
+				</mapEntry>
+			</dataProvider>
+		</property>
+		<property name="expression" displayName="expression" hint="expression属性 数据显示方式的转换模板" type="primitive:string" defaultValue="" required="false">
+		</property>
+
+		<property name="editId" displayName="editId" hint="editId属性 对应的编辑控件的id(不写的时候自动绑定)" type="primitive:string" defaultValue="" required="false">
+
+		</property>
+		<property name="align" displayName="align" hint="align属性 水平对齐方式" type="combo:readonly" defaultValue="left" required="false">
+			<dataProvider class="mapProvider">
+				<mapEntry>
+					<key class="string">left</key>
+					<value class="string">left</value>
+				</mapEntry>
+				<mapEntry>
+					<key class="string">center</key>
+					<value class="string">center</value>
+				</mapEntry>
+				<mapEntry>
+					<key class="string">right</key>
+					<value class="string">right</value>
+				</mapEntry>
+			</dataProvider>
+		</property>
+		<property name="defaultValue" displayName="defaultValue" hint="defaultValue属性 添加一列时的默认值" type="primitive:string" defaultValue="" required="false">
+
+		</property>
+				<property name="nullText" displayName="nullText" hint="nullText属性 该列数据不纯在时,表格相应位置所要显示的文字" type="primitive:string" defaultValue="" required="false">
+
+		</property>
+	</group>
+</tag>

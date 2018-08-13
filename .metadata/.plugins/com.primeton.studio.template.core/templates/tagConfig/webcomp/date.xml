@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<tag xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" tagName="w:date" >
+    <require>
+        <path>/webcomp/baseWebcomp.xml</path>
+        <include>iterateId,scope,property,name,value,indexed,id,style,styleClass,tabindex,accesskey,readOnly,disabled,size,maxlength,onblur,onchange,onclick,ondblclick,onfocus,onselect,onkeyup,onkeydown,onkeypress,onmouseup,onmousedown,onmousemove,onmouseover,onmouseout,title,onSelectFunc,modelField,width</include>
+    </require>
+    <group groupName="Basic">
+        <property showInViewModel="common" displayName="format" hint="Sets the format of the control" name="format" required="false" type="combo:editable">
+			<dataProvider class="listProvider">
+				<string>yyyy-MM-dd HH:mm:ss</string>
+				<string>yyyy-MM-dd</string>
+				<string>yyyy/MM/dd</string>
+				<string>yyyy/MM/dd HH:mm:ss</string>
+				<string>yyyy MM dd</string>
+				<string>yyyyMMddHHmmss</string>
+				<string>yyyyMMdd</string>
+			</dataProvider>
+        </property>
+        <property showInViewModel="common" displayName="srcFormat" hint="Sets original format." name="srcFormat" required="false" type="combo:editable">
+   			<dataProvider class="listProvider">
+				<string>yyyy-MM-dd HH:mm:ss</string>
+				<string>yyyy-MM-dd</string>
+				<string>yyyy/MM/dd</string>
+				<string>yyyy/MM/dd HH:mm:ss</string>
+				<string>yyyy MM dd日</string>
+				<string>yyyyMMddHHmmss</string>
+				<string>yyyyMMdd</string>
+			</dataProvider>
+        </property>
+        <property showInViewModel="common" displayName="submitFormat" hint="Sets the submit format." name="submitFormat" required="false" type="combo:editable">
+   			<dataProvider class="listProvider">
+				<string>yyyy-MM-dd HH:mm:ss</string>
+				<string>yyyy-MM-dd</string>
+				<string>yyyy/MM/dd</string>
+				<string>yyyy/MM/dd HH:mm:ss</string>
+				<string>yyyy MM dd</string>
+				<string>yyyyMMddHHmmss</string>
+				<string>yyyyMMdd</string>
+			</dataProvider>
+        </property>
+        <property name="allowInput" showInViewModel="common" displayName="allowInput" hint="Sets whether the user can input data into the inputbox." type="primitive:boolean" defaultValue="" required="false">
+</property>
+        <property showInViewModel="common" displayName="maxValue" hint="Sets the maximum value of control." name="maxValue" required="false" type="primitive:string">
+        </property>
+        <property showInViewModel="common" displayName="minValue" hint="Sets the minimum value of control." name="minValue" required="false" type="primitive:string"/>
+        <property showInViewModel="common" displayName="defaultNull" hint="Sets the content of contorl when it's null." name="defaultNull" required="false" type="primitive:boolean"/>
+    	<property showInViewModel="common" displayName="allowNull" hint="Sets whether the input can be empty." name="allowNull" required="false" type="primitive:boolean"/>
+    </group>
+</tag>

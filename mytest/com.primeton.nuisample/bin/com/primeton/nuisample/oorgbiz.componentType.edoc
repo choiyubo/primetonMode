@@ -1,0 +1,26 @@
+<map>
+  <entry>
+    <string></string>
+    <string>&lt;html&gt;&lt;b&gt;Name:&lt;/b&gt;oorgbiz.componentType&lt;br&gt;&lt;b&gt;Display Name:&lt;/b&gt;&lt;br&gt;&lt;b&gt;Namespace:&lt;/b&gt;com.primeton.nuisample.oorgbiz&lt;/html&gt;</string>
+  </entry>
+  <entry>
+    <string>com.primeton.nuisample.oorgbiz.addOOrg(com.primeton.nuisample.data.OOrg)</string>
+    <string>&lt;html&gt;&lt;b&gt;Name:&lt;/b&gt;addOOrg&lt;br&gt;&lt;b&gt;Display Name:&lt;/b&gt;addOOrg&lt;br&gt;&lt;b&gt;Namespace:&lt;/b&gt;com.primeton.nuisample.oorgbiz.addOOrg&lt;dl&gt;&lt;dt&gt;Parameters:&lt;/dt&gt;&lt;dd&gt;&lt;b&gt;oorg(com.primeton.nuisample.data.OOrg):&lt;/b&gt;&lt;/dd&gt;&lt;/html&gt;</string>
+  </entry>
+  <entry>
+    <string>com.primeton.nuisample.oorgbiz.getOOrg(com.primeton.nuisample.data.OOrg)</string>
+    <string>&lt;html&gt;&lt;b&gt;Name:&lt;/b&gt;getOOrg&lt;br&gt;&lt;b&gt;Display Name:&lt;/b&gt;getOOrg&lt;br&gt;&lt;b&gt;Namespace:&lt;/b&gt;com.primeton.nuisample.oorgbiz.getOOrg&lt;dl&gt;&lt;dt&gt;Parameters:&lt;/dt&gt;&lt;dd&gt;&lt;b&gt;oorg(com.primeton.nuisample.data.OOrg):&lt;/b&gt;&lt;/dd&gt;&lt;dt&gt;Return:&lt;/dt&gt;&lt;dd&gt;&lt;b&gt;oorg(com.primeton.nuisample.data.OOrg):&lt;/b&gt;&lt;/dd&gt;&lt;/html&gt;</string>
+  </entry>
+  <entry>
+    <string>com.primeton.nuisample.oorgbiz.updateOOrg(com.primeton.nuisample.data.OOrg)</string>
+    <string>&lt;html&gt;&lt;b&gt;Name:&lt;/b&gt;updateOOrg&lt;br&gt;&lt;b&gt;Display Name:&lt;/b&gt;updateOOrg&lt;br&gt;&lt;b&gt;Namespace:&lt;/b&gt;com.primeton.nuisample.oorgbiz.updateOOrg&lt;dl&gt;&lt;dt&gt;Parameters:&lt;/dt&gt;&lt;dd&gt;&lt;b&gt;oorg(com.primeton.nuisample.data.OOrg):&lt;/b&gt;&lt;/dd&gt;&lt;/html&gt;</string>
+  </entry>
+  <entry>
+    <string>com.primeton.nuisample.oorgbiz.queryOOrgs(com.primeton.das.criteria.criteriaType, com.eos.foundation.PageCond, Int, Int)</string>
+    <string>&lt;html&gt;&lt;b&gt;Name:&lt;/b&gt;queryOOrgs&lt;br&gt;&lt;b&gt;Display Name:&lt;/b&gt;queryOOrgs&lt;br&gt;&lt;b&gt;Namespace:&lt;/b&gt;com.primeton.nuisample.oorgbiz.queryOOrgs&lt;dl&gt;&lt;dt&gt;Parameters:&lt;/dt&gt;&lt;dd&gt;&lt;b&gt;criteria(com.primeton.das.criteria.criteriaType):&lt;/b&gt;&lt;/dd&gt;&lt;dd&gt;&lt;b&gt;page(com.eos.foundation.PageCond):&lt;/b&gt;&lt;/dd&gt;&lt;dd&gt;&lt;b&gt;pageIndex(Int):&lt;/b&gt;&lt;/dd&gt;&lt;dd&gt;&lt;b&gt;pageSize(Int):&lt;/b&gt;&lt;/dd&gt;&lt;dt&gt;Return:&lt;/dt&gt;&lt;dd&gt;&lt;b&gt;oorgs(com.primeton.nuisample.data.OOrg[]):&lt;/b&gt;&lt;/dd&gt;&lt;dd&gt;&lt;b&gt;total(Int):&lt;/b&gt;&lt;/dd&gt;&lt;/html&gt;</string>
+  </entry>
+  <entry>
+    <string>com.primeton.nuisample.oorgbiz.deleteOOrgs(com.primeton.nuisample.data.OOrg[])</string>
+    <string>&lt;html&gt;&lt;b&gt;Name:&lt;/b&gt;deleteOOrgs&lt;br&gt;&lt;b&gt;Display Name:&lt;/b&gt;deleteOOrgs&lt;br&gt;&lt;b&gt;Namespace:&lt;/b&gt;com.primeton.nuisample.oorgbiz.deleteOOrgs&lt;dl&gt;&lt;dt&gt;Parameters:&lt;/dt&gt;&lt;dd&gt;&lt;b&gt;oorgs(com.primeton.nuisample.data.OOrg[]):&lt;/b&gt;&lt;/dd&gt;&lt;/html&gt;</string>
+  </entry>
+</map>

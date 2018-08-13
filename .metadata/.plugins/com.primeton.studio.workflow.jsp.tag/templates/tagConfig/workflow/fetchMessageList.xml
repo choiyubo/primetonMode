@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tag xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" tagName="wf:fetchMessageList">
+	<require>
+		<path>/workflow/baseWorkflow.xml</path>
+		<include>id,scope</include>
+	</require>
+	<group groupName="基本属性">
+		<property type="primitive:string" name="processInstID" displayName="processInstID" hint="流程实例ID，支持@开头变量" required="false"/>
+		<property type="primitive:string" name="workItemID" displayName="workItemID" hint="工作项ID，支持@开头变量" required="false"/>
+		<property type="primitive:string" name="activityID" displayName="activityID" hint="活动定义ID，支持@开头变量" required="false"/>
+		<property type="primitive:string" name="activityInstID" displayName="activityInstID" hint="活动实例ID，支持@开头变量" required="false"/>
+	</group>
+</tag>
+
+

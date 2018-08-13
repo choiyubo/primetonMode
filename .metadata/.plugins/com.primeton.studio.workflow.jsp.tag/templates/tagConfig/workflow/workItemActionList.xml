@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tag xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" tagName="wf:workItemActionList">
+    <group groupName="基本属性">
+        <property type="combo:readonly" name="scope" displayName="scope"  hint="读取数据的数据区" required="false" >
+            <dataProvider class="listProvider">
+                <string>page</string>
+                <string>request</string>
+                <string>flow</string>
+                <string>session</string>
+            </dataProvider>
+        </property>
+        <property type="primitive:string" name="workItemID" displayName="workItemID" hint="工作项ID" required="true"/>
+    </group>
+</tag>

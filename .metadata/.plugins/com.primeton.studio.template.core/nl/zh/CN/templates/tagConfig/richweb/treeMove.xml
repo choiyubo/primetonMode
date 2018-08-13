@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tag tagName="r:treeMove" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
+	<group groupName="基本属性">
+		<property name="toNode" displayName="toNode" hint="toNode属性 移动到的节点的对应数据实体名称" type="primitive:string" defaultValue="" required="true">
+			<validators>
+				<notEmptyValidator/>
+			</validators>
+		</property>
+		<property name="action" displayName="action" hint="action属性 设置移动节点产生的动作" type="resource:biz" defaultValue="" required="true">
+			<validators>
+				<notEmptyValidator/>
+			</validators>
+		</property>
+		<property name="toTree" displayName="toTree" hint="toTree属性 树的id,节点拖动时的目标树,缺省为当前节点所在的树" type="primitive:string" defaultValue="" required="false">
+			
+		</property>
+		</group>
+		<group groupName="事件">
+		<property allowXPath="false" name="initParamFunc" displayName="initParamFunction" hint="initParamFunction属性 节点移动时调用业务逻辑时调用的函数" type="primitive:string" defaultValue="" required="false">
+			
+		</property>
+		</group>
+</tag>

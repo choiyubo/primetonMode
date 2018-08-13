@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tag xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" tagName="wf:selectProcessAndActivity">
+	<require>
+		<path>/workflow/baseWFSelect.xml</path>
+		<include>id,scope,form,name,value,hidden,hiddenType,genScript,maxNum,styleClass,output</include>
+	</require>
+	<group groupName="基本属性">
+		<property type="primitive:boolean" name="showActivity" displayName="showActivity" hint="是否显示活动" defaultValue="" required="false"/>
+		<property type="primitive:boolean" name="selectProcess" displayName="selectProcess" hint="是否选择流程" defaultValue="" required="false"/>
+		<property type="primitive:boolean" name="selectActivity" displayName="selectActivity" hint="是否选择活动" defaultValue="" required="false"/>
+	</group>
+</tag>
+

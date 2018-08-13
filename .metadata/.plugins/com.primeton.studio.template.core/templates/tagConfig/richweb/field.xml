@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tag tagName="r:field" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
+	<group groupName="Basic">
+		<property allowXPath="false" name="scope" displayName="scope" hint="Sets the data area." type="combo:readonly" defaultValue="" required="false">
+			<dataProvider class="mapProvider">
+				<mapEntry>
+					<key class="string">request</key>
+					<value class="string">r</value>
+				</mapEntry>
+				<mapEntry>
+					<key class="string">page</key>
+					<value class="string">p</value>
+				</mapEntry>
+				<mapEntry>
+					<key class="string">flow</key>
+					<value class="string">f</value>
+				</mapEntry>
+				<mapEntry>
+					<key class="string">session</key>
+					<value class="string">s</value>
+				</mapEntry>
+			</dataProvider>
+		</property>
+		<property name="fieldId" displayName="fieldId" hint="Sets the id of the column." type="primitive:string" defaultValue="" required="false">
+			<validators>
+				<IDNotDuplicateValidator/>
+			</validators>
+		</property>
+		<property name="fieldName" displayName="fieldName" hint="Sets the field name of the column" type="primitive:string" defaultValue="" required="true">
+			<validators>
+				<notEmptyValidator>
+					<message>Field name can not be empty.</message>
+				</notEmptyValidator>
+			</validators>
+		</property>
+				<property name="label" displayName="label" hint="Sets the label of the column." type="primitive:string" defaultValue="" required="false">
+		</property>
+		<property name="width" displayName="width" hint="Sets the width of the column." type="primitive:string" defaultValue="" required="false">
+			<validators>
+				<widthHeightValidator/>
+			</validators>
+		</property>
+	</group>
+	<group groupName="Event">
+		<property allowXPath="false" name="onRefreshFunc" displayName="onRefreshFunc" hint="Fires when the cell in the column has been refreshed. " type="primitive:string" defaultValue="" required="false">
+		</property>
+	</group>
+	<group groupName="Other">
+		<property name="allowModify" displayName="allowModify" hint="Sets whether the cell in the column can be modified." type="primitive:boolean" defaultValue="true" required="false">
+</property>
+		<property name="allowResize" displayName="allowResize" hint="Sets whether the column can be resized." type="primitive:boolean" defaultValue="true" required="false">
+</property>
+		<property name="sortAt" displayName="sortAt" hint="Sets the sort mode,sort at client or sort at server." type="combo:readonly" defaultValue="none" required="false">
+			<dataProvider class="mapProvider">
+				<mapEntry>
+					<key class="string">client</key>
+					<value class="string">c</value>
+				</mapEntry>
+				<mapEntry>
+					<key class="string">server</key>
+					<value class="string">s</value>
+				</mapEntry>
+			</dataProvider>
+		</property>
+		<property name="expression" displayName="expression" hint="Sets the template to convert showed content." type="primitive:string" defaultValue="" required="false">
+		</property>
+
+		<property name="editId" displayName="editId" hint="Sets a editor to edit the cell." type="primitive:string" defaultValue="" required="false">
+
+		</property>
+		<property name="align" displayName="align" hint="align" type="combo:readonly" defaultValue="left" required="false">
+			<dataProvider class="mapProvider">
+				<mapEntry>
+					<key class="string">left</key>
+					<value class="string">left</value>
+				</mapEntry>
+				<mapEntry>
+					<key class="string">center</key>
+					<value class="string">center</value>
+				</mapEntry>
+				<mapEntry>
+					<key class="string">right</key>
+					<value class="string">right</value>
+				</mapEntry>
+			</dataProvider>
+		</property>
+		<property name="defaultValue" displayName="defaultValue" hint="Sets the default value which be used when add a new row." type="primitive:string" defaultValue="" required="false">
+
+		</property>
+				<property name="nullText" displayName="nullText" hint="The text displayed while data is not exist." type="primitive:string" defaultValue="" required="false">
+
+		</property>
+	</group>
+</tag>

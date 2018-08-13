@@ -1,0 +1,9 @@
+#set($tagElement = ${map.get("tag_element")})
+${tagElement.toStringWithoutEndTag()}
+    <div size="30%" showCollapseButton="true">
+        1
+    </div>
+    <div showCollapseButton="true">
+        2
+    </div>
+</div>

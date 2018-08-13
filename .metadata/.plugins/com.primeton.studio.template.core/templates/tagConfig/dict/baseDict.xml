@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSPY v2004 rel. 4 U (http://www.xmlspy.com) by ton (ORiON) -->
+<tag tagName="baseDict" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" groupName="Basic">
+	<require>
+		<path>/base.xml</path>
+		<include>scope,property,id,iterateId</include>
+	</require>
+	<group groupName="Basic">
+		<property name="dictTypeId" displayName="dictTypeId" hint="Dict type ID" type="selectDictType" required="false" showInViewModel="never">
+			<validators>
+				<notEmptyValidator/>
+			</validators>
+		</property>
+		<property name="name" displayName="name" hint="name" type="primitive:string" required="false" showInViewModel="never"/>
+		<property name="id" displayName="id" hint="id" type="primitive:string" required="false" showInViewModel="never"/>
+		<property name="indexed" displayName="indexed" hint="Sets whether the object generates index." type="primitive:boolean" required="false" showInViewModel="never"/>
+		<property name="filterStr" displayName="filterStr" hint="Filter string" type="primitive:string" required="false"/>
+		<property name="filterOp" displayName="filterOp" hint="Filter OP" type="combo:editable" required="false">
+			<dataProvider class="listProvider">
+				<string>=</string>
+				<string>!=</string>
+				<string>&gt;</string>
+				<string>&gt;=</string>
+				<string>&lt;</string>
+				<string>&lt;=</string>
+				<string>in</string>
+				<string>!in</string>
+				<string>between</string>
+				<string>!between</string>
+				<string>like</string>
+				<string>!like</string>
+				<string>match</string>
+				<string>!match</string>
+			</dataProvider>
+		</property>
+		<property name="filterField" displayName="filterField" hint="Filter Field" type="primitive:string" required="false"/>
+		<property name="extAttr" displayName="extAttr" hint="Extended attributes" type="primitive:string" required="false" showInViewModel="rare"/>
+		<property name="disabled" displayName="disabled" hint="Sets the status of the object." type="primitive:boolean" required="false" defaultValue="" showInViewModel="rare"/>
+		<property name="submitMethod" displayName="submitMethod" hint="Sets the submit method." type="combo:readonly" required="false">
+			<dataProvider class="listProvider">
+				<string>standard</string>
+				<string>special</string>
+			</dataProvider>
+		</property>
+		<property name="perrow" displayName="perrow" hint="Sets the number of dict entry to show each line." type="primitive:integer" required="false" showInViewModel="rare"/>
+		<property name="accesskey" displayName="accesskey" hint="Sets  the accelerator key for the object." type="primitive:string" required="false" showInViewModel="rare">
+			<validators>
+				<characterValidator/>
+			</validators>
+		</property>
+		<property name="value" displayName="value" hint="value" type="primitive:string"/>
+		<property name="seperator" displayName="seperator" hint="seperator" type="primitive:string" required="false" defaultValue=""/>
+		<property showInViewModel="never" name="modelField" displayName="modelField" hint="Binding a field of ViewModel." type="resource:dataField" defaultValue="" required="false">
+
+		</property>
+		<property name="filter" displayName="filter" hint="Sets whether to convert the HTML tag." type="primitive:boolean" required="false" defaultValue=""/>
+		<property name="title" displayName="title" hint="Sets  advisory information (a ToolTip) for the object." type="primitive:string" required="false" showInViewModel="rare"/>
+		<property name="tabindex" displayName="tabindex" hint="Sets  the index that defines the tab order for the object." type="primitive:integer" required="false" showInViewModel="rare">
+			<validators>
+				<intRangeValidator>
+					<min>1</min>
+					<max>500</max>
+					<checkMax>false</checkMax>
+				</intRangeValidator>
+			</validators>
+		</property>
+	</group>
+	<group groupName="Event">
+		<property name="onmouseup" displayName="onmouseup" hint="Fires when the user releases a key." type="javascript:function" required="false" showInViewModel="rare" allowXpath="false"/>
+		<property name="onmouseover" displayName="onmouseover" hint="Fires when the user moves the mouse pointer into the object." type="javascript:function" required="false" showInViewModel="rare" allowXpath="false"/>
+		<property name="onmouseout" displayName="onmouseout" hint="Fires when the user moves the mouse pointer outside the boundaries of the object." type="javascript:function" required="false" showInViewModel="rare" allowXpath="false"/>
+		<property name="onmousemove" displayName="onmousemove" hint="Fires when the user moves the mouse over the object." type="javascript:function" required="false" showInViewModel="rare" allowXpath="false"/>
+		<property name="onmousedown" displayName="onmousedown" hint="Fires when the user clicks the object with either mouse button." type="javascript:function" required="false" showInViewModel="rare" allowXpath="false"/>
+		<property name="onkeyup" displayName="onkeyup" hint="Fires when the user releases a key." type="javascript:function" required="false" showInViewModel="rare" allowXpath="false"/>
+		<property name="onkeypress" displayName="onkeypress" hint="Fires when the user presses an alphanumeric key." type="javascript:function" required="false" showInViewModel="rare" allowXpath="false"/>
+		<property name="onkeydown" displayName="onkeydown" hint="Fires when the user presses a key." type="javascript:function" required="false" showInViewModel="rare" allowXpath="false"/>
+		<property name="onfocus" displayName="onfocus" hint="Fires when the object receives focus." type="javascript:function" required="false" showInViewModel="rare" allowXpath="false"/>
+		<property name="ondblclick" displayName="ondblclick" hint="Fires when the user double-clicks the object." type="javascript:function" required="false" showInViewModel="rare" allowXpath="false"/>
+		<property name="onclick" displayName="onclick" hint="Fires when the user clicks the object." type="javascript:function" required="false" showInViewModel="rare" allowXpath="false"/>
+		<property name="onchange" displayName="onchange" hint="Fires when the contents of the object or selection have changed." type="javascript:function" required="false" showInViewModel="rare" allowXpath="false"/>
+		<property name="onblur" displayName="onblur" hint="Fires when the object loses the input focus." type="javascript:function" required="false" showInViewModel="rare" allowXpath="false"/>
+	</group>
+	<group groupName="Style">
+		<property name="styleClass" displayName="styleClass" hint="Sets  the class of the object." type="css:styleclass" showInViewModel="rare" allowXpath="false" required="false"/>
+		<property name="style" displayName="style" hint="Sets an inline style for the element." type="css:style" showInViewModel="rare" allowXpath="false" required="false"/>
+	</group>
+</tag>

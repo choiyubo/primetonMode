@@ -1,0 +1,10 @@
+com.primeton.studio.database.dm.v7.other.driverTemplate=true
+com.primeton.studio.database.gbase.8.3.other.driverTemplate=true
+com.primeton.studio.database.kingbase.v7.other.driverTemplate=true
+com.primeton.studio.database.oscar.v7.other.driverTemplate=true
+eclipse.preferences.version=1
+org.eclipse.datatools.enablement.ibm.db2.luw.driverTemplate=true
+org.eclipse.datatools.enablement.ibm.db2.luw.jdbc4.driverTemplate=true
+org.eclipse.datatools.enablement.ibm.db2.luw.jdbc4.kerberosDriverTemplate=true
+org.eclipse.datatools.enablement.ibm.db2.luw.kerberosDriverTemplate=true
+org.eclipse.datatools.enablement.ibm.db2.luw.other.driverTemplate=true

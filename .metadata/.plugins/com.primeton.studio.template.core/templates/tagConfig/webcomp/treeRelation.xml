@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<tag xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" tagName="w:treeRelation" >
+    <require>
+        <path>/webcomp/baseWebcomp.xml</path>
+        <include>value,scope</include>
+    </require>
+    <group groupName="Basic">
+        <property displayName="field" hint="Sets field name to link parent node." name="field" required="false" type="primitive:string"/>
+        <property displayName="parentField" hint="Sets field name of parent to link current node." name="parentField" required="false" type="primitive:string"/>
+        <property displayName="parentNodeType" hint="Sets parent node's type." name="parentNodeType" required="true" type="primitive:string"/>
+    </group>
+</tag>

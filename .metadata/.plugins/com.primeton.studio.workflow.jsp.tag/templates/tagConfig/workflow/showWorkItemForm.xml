@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tag xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" tagName="wf:showWorkItemForm">
+	<require>
+		<path>/workflow/baseWorkflow.xml</path>
+		<include>id,scope</include>
+	</require>
+	<group groupName="基本属性">
+		<property type="primitive:string" name="workItemID" displayName="workItemID" hint="工作项ID，支持@开头的变量" required="false" />
+		<property type="primitive:string" name="activityInstID" displayName="activityInstID" hint="活动实例ID，支持@开头的变量" required="false" />
+		<property type="primitive:string" name="prefix" displayName="prefix" hint="生成的表单字段的name属性前缀" required="false"/>
+	</group>
+</tag>
+

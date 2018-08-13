@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSPY v2004 rel. 4 U (http://www.xmlspy.com) by ton (ORiON) -->
+<tag tagName="d:write" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
+	<require>
+		<path>/dict/baseDict.xml</path>
+		<include>iterateId,scope,property,value,filter,dictTypeId,seperator,modelField</include>
+	</require>
+	<group groupName="基本属性">
+		<property showInViewModel="never" name="ignore" displayName="忽略" hint="当xpath取指为null时是否抛出异常" type="primitive:boolean" defaultValue="" required="false">
+		</property>
+		<property name="level" displayName="level" hint="指定要显示级别的名称，缺省为当前级别。" type="primitive:integer" defaultValue="" required="false">
+			<validators>
+				<notEqualsValidator>
+					<target>0</target>
+				</notEqualsValidator>
+				<intRangeValidator>
+					<min>-1</min>
+				</intRangeValidator>
+			</validators>
+		</property>
+	</group>
+</tag>

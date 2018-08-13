@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSPY v2004 rel. 4 U (http://www.xmlspy.com) by ton (ORiON) -->
+<tag tagName="b:set" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
+	<require>
+		<path>/bean/baseBean.xml</path>
+		<include>iterateId,property,propertyType,value,scope,toScope</include>
+	</require>
+	<group groupName="基本属性">
+		<property name="name" displayName="名称" hint="变量的xpath或属性名称" type="primitive:string" required="true" showInViewModel="never"/>
+	</group>
+</tag>

@@ -1,0 +1,18 @@
+##获得整个向导数据
+#set($wizardMap=${dataContextManager.getWizardDataContext()})
+##获得向导所在的contribution名称
+#set($contributionName=${wizardMap.get("contribution")})
+#set($queryMap = ${dataContextManager.getComponentDataContext(1, "queryform")})
+#set($selectedEntityMap = ${dataContextManager.getComponentDataContext(0, "entitySelect")})
+#set($selectedEntity=${dataContextManager.getComponentDataContext(0, "entitySelect").get("selectedEntity")})
+##选择实体的短名称（String类型）
+#set($entityName=${dataContextManager.getComponentDataContext(0, "entitySelect").get("entityName")})
+#set($entityNameLow = "${entityName.toLowerCase()}")
+#set($isPagination=${queryMap.get("isPagination")})
+#set($isAutoPK=${dataContextManager.getComponentDataContext(0, "auto_pk").get("checked")})
+#set($keys = ${DataEntityHelper.getPrimaryKeys($selectedEntity)})
+#set($save_biz=${templateConfigManager.getInvokePath("save_all_entities.vm")})
+#set($query_biz=${templateConfigManager.getInvokePath("query_entities.vm")})
+#set($temp=${queryMap.put("criteriaName", "criteria")}) ## 将queryform中设置的查询条件变量设置为criteria
+#set($temp = ${queryMap.put("title", "${DataEntityHelper.getEntityDisplayName($selectedEntity)}查询")})
+#set($temp = ${queryMap.put("formName", "query_form")}) ## 将queryform中设置的查询条件变量设置为criteria

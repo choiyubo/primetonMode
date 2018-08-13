@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<tag xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" tagName="w:tabPanel" >
+	<require>
+		<path>/webcomp/baseWebcomp.xml</path>
+		<include>width,height,scope</include>
+	</require>
+	<!-- here the property id is required -->
+	<group groupName="Basic">
+		<property name="id" displayName="ID:" hint="ID" type="primitive:string" defaultValue="" required="true" allowXpath="false" showInViewModel="rare">
+			<validators>
+					<notEmptyValidator/>
+					<IDNotDuplicateValidator/>
+			</validators>
+		</property>
+		<property displayName="defaultTab" hint="Sets default selected tab." name="defaultTab" required="false" type="primitive:string"/>
+		<property displayName="titleAlign" hint="titleAlign" name="titleAlign" required="false" type="combo:readonly">
+			<dataProvider class="listProvider">
+				<string>top</string>
+				<string>buttom</string>
+			</dataProvider>
+		</property>
+	</group>
+	<group groupName="Style">
+		<property displayName="titleStyle" hint="titleStyle" name="titleStyle" required="false" type="css:style"/>
+		<property displayName="titleStyleClass" hint="titleStyleClass" name="titleStyleClass" required="false" type="css:styleclass"/>
+		<property displayName="bodyStyle" hint="bodyStyle" name="bodyStyle" required="false" type="css:style"/>
+		<property displayName="bodyStyleClass" hint="bodyStyleClass" name="bodyStyleClass" required="false" type="css:styleclass"/>
+	</group>
+</tag>

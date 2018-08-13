@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSPY v2004 rel. 4 U (http://www.xmlspy.com) by ton (ORiON) -->
+<tag tagName="b:size" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
+	<require>
+		<path>/bean/baseBean.xml</path>
+		<include>iterateId,property,ignore,scope,toScope,name</include>
+	</require>
+	<group/>
+</tag>

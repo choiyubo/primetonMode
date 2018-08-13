@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tag tagName="r:treeMove" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
+	<group groupName="Basic">
+		<property name="toNode" displayName="toNode" hint="Sets the target node type." type="primitive:string" defaultValue="" required="true">
+			<validators>
+				<notEmptyValidator/>
+			</validators>
+		</property>
+		<property name="action" displayName="action" hint="Sets the biz to save data." type="resource:biz" defaultValue="" required="true">
+			<validators>
+				<notEmptyValidator/>
+			</validators>
+		</property>
+		<property name="toTree" displayName="toTree" hint="Sets the target tree,by default it is current." type="primitive:string" defaultValue="" required="false">
+			
+		</property>
+		</group>
+		<group groupName="Event">
+		<property allowXPath="false" name="initParamFunc" displayName="initParamFunction" hint="Fires when the node has been moved." type="primitive:string" defaultValue="" required="false">
+			
+		</property>
+		</group>
+</tag>

@@ -1,0 +1,48 @@
+##set wizard data context
+#set($wizardMap=${dataContextManager.getWizardDataContext()})
+##set contribution name
+#set($contributionName=${wizardMap.get("contribution")})
+#set($flowQName=${templateConfigManager.getInvokePath("entity_maintain.vm")})
+#set($queryMap = ${dataContextManager.getComponentDataContext(1, "queryform")})
+#set($viewlistMap = ${dataContextManager.getComponentDataContext(2, "viewlist")})
+#set($dataformMap = ${dataContextManager.getComponentDataContext(3, "dataform")})
+#set($selectedEntityMap = ${dataContextManager.getComponentDataContext(0, "entitySelect")})
+#set($selectedEntity=${dataContextManager.getComponentDataContext(0, "entitySelect").get("selectedEntity")})
+##set entity name
+#set($entityName=${dataContextManager.getComponentDataContext(0, "entitySelect").get("entityName")})
+#set($entityNameLow = "${entityName.toLowerCase()}")
+#set($isPagination=${queryMap.get("isPagination")})
+#set($isAutoPK=${dataContextManager.getComponentDataContext(0, "auto_pk").get("checked")})
+#set($keys = ${DataEntityHelper.getPrimaryKeys($selectedEntity)})
+##dataform
+#set($entityTable=${dataformMap.get("entityTable")})
+##set slavery selected object
+#set($slaveryMap = ${dataContextManager.getComponentDataContext(4, "slavery_tables")})
+##set parameters of the wizard
+#set($entityVar = $dataformMap.get("entityVariable"))
+#if($entityVar == "") #set($entityVar = $entityNameLow) #end
+
+##init datacell
+#set($slaveryProperties = $slaveryMap.get("slaveryProperties"))
+#foreach($property in $slaveryProperties)
+	#set($tagElement = ${slaveryMap.get("$property").get("tag_element")})
+	#set($toolBars = $TagElementHelper.getElementByName($tagElement, "r:toolbar"))
+   	#set($toolBar = "")
+	#foreach($bar in $toolBars)
+		#set($toolBar = $bar)
+	#end
+	$TagElementHelper.setAttributeValue($tagElement, "id", "${property}_cell")
+	#if($toolBar == "")
+		#set($toolBar=$TagElementHelper.newTagElement("r:toolbar"))
+	#end
+	$TagElementHelper.setAttributeValue($tagElement, "xpath", "${entityVar}/${property}")
+	$TagElementHelper.setAttributeValue($tagElement, "submitXpath", "${entityVar}/${property}")
+	$TagElementHelper.setAttributeValue($tagElement, "queryAction", "")
+	$TagElementHelper.setAttributeValue($tagElement, "submitAction", "")
+	$TagElementHelper.setAttributeValue($tagElement, "width", "100%")
+	$TagElementHelper.setAttributeValue($toolBar, "location", "top")
+	$TagElementHelper.setAttributeValue($toolBar, "tools", "edit:add del")
+#end
+
+
+

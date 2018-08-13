@@ -1,0 +1,371 @@
+##获得整个向导数据
+#set($queryMap = ${dataContextManager.getComponentDataContext(1, "nui_queryform")})
+#set($dataformMap = ${dataContextManager.getComponentDataContext(3, "nui_dataform")})
+#set($selectedEntityMap = ${dataContextManager.getComponentDataContext(0, "entitySelect")})
+#set($selectedEntity=${dataContextManager.getComponentDataContext(0, "entitySelect").get("selectedEntity")})
+##选择实体的短名称（String类型）
+#set($entityName=${dataContextManager.getComponentDataContext(0, "entitySelect").get("entityName")})
+#set($entityNameLow = "${entityName.toLowerCase()}")
+#set($isPagination=${queryMap.get("isPagination")})
+#set($isAutoPK=${dataContextManager.getComponentDataContext(0, "auto_pk").get("checked")})
+#set($hasPK = ${DataEntityHelper.hasPrimaryKey($selectedEntity)})
+#set($keys = ${DataEntityHelper.getPrimaryKeys($selectedEntity)})
+##获得向导中设置的传递参数的变量
+#set($criteria = $queryMap.get("criteriaName"))
+#set($entityVar = $dataformMap.get("entityVariable"))
+#set($iter_xpath = "${entityNameLow}s")
+##表单信息
+#set($entityTable=${dataformMap.get("entityTable")})
+#set($dataformTitle=${dataformMap.get("title")})
+#set($dataFormName = ${dataformMap.get("formName")})
+#if(${StringUtil.isEmpty($dataFormName)})
+#set($dataFormName="dataform1")
+#end
+##从表信息
+#set($datacellMap = ${dataContextManager.getComponentDataContext(4, "nui_slavery_tables")})
+#set($slaveryProperties = ${datacellMap.get("slaveryProperties")})
+#set($selectedSlaveryMap = ${dataContextManager.getComponentDataContext(0, "select_slavery_tables")})
+#set($salveryEntitiesMap = ${dataContextManager.getComponentDataContext(0, "select_slavery_tables").get("table")})
+##每行显示字段数 (Integer类型)
+#set($row_length=${map.get("rowLength")})
+#if(${StringUtil.isEmpty($row_length)})
+#set($row_length = 2)
+#end
+##录入页面用到逻辑流
+#set($add_biz=${templateConfigManager.getInvokePath("add_entity.vm")})
+#set($update_biz=${templateConfigManager.getInvokePath("update_entity.vm")})
+#set($get_biz=${templateConfigManager.getInvokePath("get_entity.vm")})
+##判断
+#if($criteria == "")#set($criteria = "criteria")#end
+#if($entityVar == "")#set($entityVar = $entityNameLow)#end
+#if($selectArrVar == "")#set($selectArrVar = "select_objs")#end
+#set($aj = "$")
+##表单宽度
+#set($queryformWidth = ${queryMap.get("formWidth")})
+#if(${StringUtil.isEmpty($queryformWidth)})
+#set($queryformWidth = "100%")
+#end
+#set($dataformWidth = ${dataformMap.get("formWidth")})
+#if(${StringUtil.isEmpty($dataformWidth)})
+#set($dataformWidth = "100%")
+#end
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" session="false" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<%-- 
+  - Author(s): ${RuntimeInfo.getAuthor()}
+  - Date: ${RuntimeInfo.getDate()} ${RuntimeInfo.getTime()}
+  - Description: 
+--%>
+<head>
+<title>${dataformTitle}</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="<%= request.getContextPath() %>/common/nui/nui.js" type="text/javascript"></script>
+</head>
+<body>
+  <fieldset style="border:solid 1px #aaa;position:relative;margin:5px 2px 0px 2px;">
+  <legend>
+    ${DataEntityHelper.getEntityDisplayName($selectedEntity)}
+  </legend>
+    <div id="${dataFormName}" style="padding-top:5px;">
+		<!-- hidden域 -->
+    	#foreach($row in [1..${entityTable.getCountSize()}])
+			#set($temp=$map.put("currentRow",$row))
+			#set($rowTagElement=${entityTable.getTagConfig($row)})
+			#set($tagName=${TagElementHelper.getAttributeValue($rowTagElement,"class")})
+			#if($tagName=="nui-hidden")
+			${entityTable.getTagConfig($row).toString(false,true)}
+			#end
+		#end
+		#foreach($property in $slaveryProperties)
+		#set($slaveryTable = $property)
+		<input class="nui-hidden" name="${entityVar}.${property}" id="${entityVar}.${property}"/>
+		#end
+		#set($pks = ${selectedEntityMap.get("PK")})
+		#if($isAutoPK)
+		#foreach($pk in $pks)
+		<input class="nui-hidden" name="${entityVar}.${pk}" id="${entityVar}.${pk}"/>
+		#end
+		#end
+		<table style="width:${dataformWidth};height:95%;table-layout:fixed;" class="nui-form-table">
+		##是否是一行的开始
+        #set($rowStart = 1)
+        #set($currentRowCount = $row_length)		
+				#foreach($row in [1..${entityTable.getCountSize()}])
+					##将row行号放入map中供生成标签的属性中产生查询条件下标
+					#set($temp=$map.put("currentRow",$row))
+					##temp变量无用处，如果去掉会把$map.put("currentRow",$row)打印在也页面上
+					#if($rowStart == 1)
+					<tr>
+					#set($rowStart = 0)
+					#end
+					##下面计算输入控件所占cols的数量
+					#if(${entityTable.getCell($row,5)}==1)
+						#if($row<${entityTable.getCountSize()})
+							#set($currentColspan = 1)
+						#else
+							#set($currentColspan = $currentRowCount * 2 - 1)
+						#end
+						#set($currentRowCount = $currentRowCount - 1)
+					#else
+						#if($currentRowCount<=${entityTable.getCell($row,5)})
+							#set($currentColspan = $currentRowCount * 2 - 1)
+							#set($currentRowCount=0)
+						#else
+							#set($currentColspan= ${entityTable.getCell($row,5)} * 2 - 1)
+							#set($currentRowCount = $currentRowCount - ${entityTable.getCell($row,5)})
+						#end
+					#end
+					#if(${entityTable.getCountSize()} > 0) ##这里做下判断，防止不选查询条件时，打印不需要的信息 --- 1
+						#set($rowTagElement=${entityTable.getTagConfig($row)})
+						#set($tagName=${TagElementHelper.getAttributeValue($rowTagElement,"class")})
+						#if($tagName=="nui-hidden")
+						##如果是自动生成主键就不提供主键录入
+						#elseif($isAutoPK && $hasPK)
+							#foreach($key in $keys)
+							#set($rowName = ${entityTable.getCell($row,1)})
+							#if($key == $rowName)
+							#set($currentRowCount = $currentRowCount + 1)
+							#else
+						<td class="form_label">${entityTable.getCell($row,2)}:</td>
+						<td colspan="${currentColspan}">
+						${entityTable.getTagConfig($row).toString(true,true)}
+						</td>
+							#end
+							#end
+						#else
+						<td class="form_label">${entityTable.getCell($row,2)}:</td>
+						<td colspan="${currentColspan}">
+						${entityTable.getTagConfig($row).toString(true,true)}
+						</td>
+						#end
+						#if($row==${entityTable.getCountSize()})
+						</tr>
+						#set($rowStart = 1)
+						#else
+							#if($currentRowCount==0)
+						</tr>#set($currentRowCount = $row_length)
+						#set($rowStart = 1)
+							#end
+						#end
+					#end
+				#end
+      </table>
+	</div>
+  </fieldset>
+<!-- 从表的修改 -->
+<div style="margin:0px 2px 0px 2px;" >
+<div class="nui-tabs" id="tab" activeIndex="0" style="width:100%;height:100%;">
+#set($slaveryVar = "")##从表在主表中显示的属性名
+#set($slaveryTableFullName = "")
+#foreach($row in [1..${salveryEntitiesMap.getCountSize()}])
+#set($isSelected = ${salveryEntitiesMap.getCell($row,3)})
+#if($isSelected)
+#set($slaveryTableFullName = ${salveryEntitiesMap.getCell($row,2)})
+#set($slaveryVar = ${salveryEntitiesMap.getCell($row,1)})
+#set($gridIndex = $row - 1)
+<div title="${DataEntityHelper.getEntityDisplayName($slaveryTableFullName)}">
+  <div class="nui-toolbar" style="border-bottom:0;padding:0px;">
+    <table style="width:${dataformWidth};">
+      <tr>
+        <td style="width:100%;">
+         ${DataEntityHelper.getEntityDisplayName($slaveryTableFullName)}
+        </td>
+        <td >
+          <a class="nui-button " iconCls="icon-add" onclick="gridAddRow('grid_${gridIndex}')"  plain="true" tooltip="增加">
+            &nbsp;
+          </a>
+        </td>
+        <td >
+          <a class="nui-button " iconCls="icon-remove" onclick="gridRemoveRow('grid_${gridIndex}')"  plain="true" tooltip="删除">
+            &nbsp;
+          </a>
+        </td>
+        <td >
+          <a class="nui-button " iconCls="icon-reload" onclick="gridReload('grid_${gridIndex}')"  plain="true" tooltip="刷新">
+            &nbsp;
+          </a>
+        </td>
+      </tr>
+    </table>
+  </div>
+  
+  <div id="grid_${gridIndex}" class="nui-datagrid" style="width:100%;height:150px;" showPager="false" sortMode="client" url="${get_biz}.biz.ext" dataField="${entityVar}.${slaveryVar}"
+          allowCellEdit="true" allowCellSelect="true" multiSelect="true" editNextOnEnterKey="true">
+    <div property="columns">
+    ##set($attrKey = "name")
+	##set($fks = ${DataEntityHelper.getEntityFK($slaveryFullName, $selectedEntity)})
+	##foreach($count in [1..${fks.size()}])
+	##set($count = $count - 1)
+  	##set($propertyName = ${fks.get($count)})
+  	##<input class="nui-hidden" name="$propertyName" property="editor"/>
+	##end
+      <div type="checkcolumn">
+      </div>
+	  #set($fields = ${datacellMap.get("${slaveryVar}").get("tag_element").getElementByName("r:field")})
+	  #foreach($field in $fields)
+	  #set($fieldName = ${field.getAttributeValue("fieldName")})
+	  #set($dataCellPropertyAlign = ${field.getAttributeValue("align")})
+	  #set($dataCellPropertyWidth = ${field.getAttributeValue("width")})
+	  #if(${StringUtil.isEmpty($dataCellPropertyAlign)})
+	  #set($dataCellPropertyAlign = "left")
+	  #end
+	  #if(${StringUtil.isEmpty($dataCellPropertyWidth)})
+	  #set($dataCellPropertyWidth = "")
+	  #end
+	  #set($isPK = ${DataEntityHelper.isPrimaryKey($slaveryTableFullName, $fieldName)})
+	  #set($isFK = ${DataEntityHelper.isForeignKey($slaveryTableFullName, $selectedEntity, $fieldName)})
+	  #if($isPK)
+	  #elseif($isFK)
+	  #else
+	  <div field="$fieldName" allowSort="true" align="$dataCellPropertyAlign" headerAlign="center" width="$dataCellPropertyWidth">
+		${field.getAttributeValue("label")}
+		#set($fieldChildren = ${field.getChildElements()})
+		#foreach($fieldChild in $fieldChildren)
+			##该属性API文档上没有但是必须添加
+			$fieldChild.addAttr("property","editor")
+			${fieldChild.toString4NUI(true,true)}
+		#end
+	  </div>
+	  #end
+	  #end
+    </div>
+  </div>
+</div>
+#end
+#end
+</div>
+
+  <div class="nui-toolbar" style="padding:0px;" borderStyle="border:0;">
+	<table width="100%">
+	  <tr>
+		<td style="text-align:center;" colspan="4">
+		  <a class="nui-button" iconCls="icon-save" onclick="onOk()">
+			保存
+		  </a>
+		  <span style="display:inline-block;width:25px;">
+		  </span>
+		  <a class="nui-button" iconCls="icon-cancel" onclick="onCancel()">
+			取消
+		  </a>
+		</td>
+	  </tr>
+	</table>
+  </div>
+</div>
+
+<script type="text/javascript">
+  nui.parse();
+  var form = new nui.Form("#${dataFormName}");
+  var tab = nui.get("tab");
+  form.setChanged(false);
+
+  function onOk(){
+	saveData();
+  }
+
+  function gridAddRow(datagrid){
+    var grid = nui.get(datagrid);
+	grid.addRow({});
+  }
+
+  function gridRemoveRow(datagrid) {
+    var grid = nui.get(datagrid);
+	var rows = grid.getSelecteds();
+	if (rows.length > 0) {
+	  grid.removeRows(rows, true);
+	}
+  }
+  function gridReload(datagrid){
+    var grid = nui.get(datagrid);
+	grid.reload();
+  }
+
+  function setGridData(datagrid,dataid){
+	var grid = nui.get(datagrid);
+	var grid_data = grid.getData();
+	nui.get(dataid).setValue(grid_data);
+  }
+  function setData(data){
+	data = nui.clone(data);
+	#foreach($row in [1..${salveryEntitiesMap.getCountSize()}])
+	#set($isSelected = ${salveryEntitiesMap.getCell($row,3)})
+	#if($isSelected)
+	#set($gridIndex = $row - 1)
+	nui.get("grid_${gridIndex}").load({${entityVar}:data});
+	#end
+	#end
+	var json = nui.encode({${entityVar}:data});
+	${aj}.ajax({
+	  url:"${get_biz}.biz.ext",
+	  type:'POST',
+	  data:json,
+	  cache:false,
+	  contentType:'text/json',
+	  success:function(text){
+		obj = nui.decode(text);
+		form.setData(obj);
+		form.setChanged(false);
+	  }
+	  });
+	}
+
+
+	function saveData(){
+	  form.validate();
+	  if(form.isValid()==false) return;
+	  #set($slaveryVar = "")##从表在主表中显示的属性名
+		#foreach($row in [1..${salveryEntitiesMap.getCountSize()}])
+		#set($isSelected = ${salveryEntitiesMap.getCell($row,3)})
+		#if($isSelected)
+		#set($slaveryVar = ${salveryEntitiesMap.getCell($row,1)})
+		#set($gridIndex = $row - 1)
+	  setGridData("grid_${gridIndex}","${entityVar}.${slaveryVar}");
+	  #end
+	  #end
+	  var data = form.getData(false,true);
+	  var json = nui.encode(data);
+
+	  ${aj}.ajax({
+		url:"${update_biz}.biz.ext",
+		type:'POST',
+		data:json,
+		cache:false,
+		contentType:'text/json',
+		success:function(text){
+		  var returnJson = nui.decode(text);
+		  if(returnJson.exception == null){
+			CloseWindow("saveSuccess");
+		  }else{
+			nui.alert("保存失败", "系统提示", function(action){
+			  if(action == "ok" || action == "close"){
+				//CloseWindow("saveFailed");
+			  }
+			  });
+			}
+		  }
+		  });
+		}
+
+		function onReset(){
+		  form.reset();
+		  form.setChanged(false);
+		}
+
+		function onCancel(){
+		  CloseWindow("cancel");
+		}
+
+		function CloseWindow(action){
+
+            if(action=="close"){
+
+              }else if(window.CloseOwnerWindow)
+              	return window.CloseOwnerWindow(action);
+              else
+              	return window.close();
+            }
+		</script>
+  </body>
+</html>
+

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSPY v2004 rel. 4 U (http://www.xmlspy.com) by ton (ORiON) -->
+<tag tagName="d:select" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
+	<require>
+		<path>/dict/baseDict.xml</path>
+		<include>name,iterateId,scope,property,value,filter,filterOp,filterField,filterStr,dictTypeId,indexed,id,style,styleClass,tabindex,accesskey,title,disabled,onclick,ondblclick,onfocus,onkeyup,onkeydown,onkeypress,onmouseup,onmousedown,onmousemove,onmouseover,onmouseout,seperator,submitMethod,modelField,onblur,onchange,extAttr</include>
+	</require>
+	<group groupName="基本属性">
+		<property name="multiple" displayName="多选" hint="多行选择列表框是否可多选" type="primitive:boolean" defaultValue="" required="false"/>
+		<property name="size" displayName="size" hint="指定多行选择列表框" type="primitive:integer" required="false">
+			<validators>
+				<intRangeValidator>
+					<min>1</min>
+					<max>500</max>
+				</intRangeValidator>
+			</validators>
+		</property>
+		<property name="nullLabel" displayName="nullLabel" hint="空选项对应的显示文本" type="primitive:string" defaultValue="--请选择--" required="false"/>
+	</group>
+</tag>

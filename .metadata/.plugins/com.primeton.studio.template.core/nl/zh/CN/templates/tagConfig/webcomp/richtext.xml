@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<tag xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" tagName="w:richtext" >
+    <require>
+        <path>/webcomp/baseWebcomp.xml</path>
+        <include>iterateId,property,id,width,height,name,value,modelField,scope</include>
+    </require>
+    <group groupName="基本属性">
+        <property showInViewModel="common" displayName="toolBar" hint="设置richtext是简单模式还是复杂模式,basic是简单模式，default是复杂模式" name="toolBar" required="false" type="combo:readonly">
+			<dataProvider class="listProvider">
+				<string>basic</string>
+				<string>default</string>
+			</dataProvider>
+        </property>
+    </group>
+</tag>

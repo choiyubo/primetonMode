@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<tag xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" tagName="w:popMenuItem" >
+    <require>
+        <path>/webcomp/baseWebcomp.xml</path>
+        <include>name,icon,onClickFunc,onRefreshFunc,scope</include>
+    </require>
+    <group groupName="基本属性">
+        <property displayName="seperator" hint="是否是分隔符" name="seperator" required="false" type="primitive:boolean"/>
+        <property displayName="menuKey" hint="Popmenu的标识，会在onClickFunc事件传回。" name="menuKey" required="false" type="primitive:string"/>
+    </group>
+</tag>

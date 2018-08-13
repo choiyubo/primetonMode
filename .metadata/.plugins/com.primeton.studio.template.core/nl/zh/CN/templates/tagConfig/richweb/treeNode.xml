@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tag tagName="r:treeNode" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
+	<group groupName="基本属性">
+		<property allowXPath="false" name="scope" displayName="scope" hint="读取数据的数据区" type="combo:readonly" defaultValue="" required="false">
+			<dataProvider class="mapProvider">
+				<mapEntry>
+					<key class="string">request</key>
+					<value class="string">r</value>
+				</mapEntry>
+				<mapEntry>
+					<key class="string">page</key>
+					<value class="string">p</value>
+				</mapEntry>
+				<mapEntry>
+					<key class="string">flow</key>
+					<value class="string">f</value>
+				</mapEntry>
+				<mapEntry>
+					<key class="string">session</key>
+					<value class="string">s</value>
+				</mapEntry>
+			</dataProvider>
+		</property>
+		<property name="nodeType" displayName="节点类型" hint="nodeType属性 确定要显示的数据实体名称" type="primitive:string" defaultValue="" required="true">
+			
+		</property>
+		<property name="showField" displayName="showField" hint="showField属性 设置节点的显示内容" type="primitive:string" defaultValue="" required="true">
+			
+		</property>
+		<property name="icon" displayName="icon" hint="icon属性 定义打开和关闭节点的图标" type="resource:multiByExtension" defaultValue="" required="false">
+		<factoryParam>
+		    <mapEntry>
+		     <key class="string">webExtensions</key>
+		     <value class="string">gif,jpg,jpeg,bmp,png</value>
+		    </mapEntry>
+		   </factoryParam>	
+		</property>
+		<property name="iconField" displayName="iconField" hint="iconField属性 定义当前节点上打开和关闭节点的图标的字段,用,号格开" type="primitive:string" defaultValue="" required="false">
+			
+		</property>
+
+		<property name="action" displayName="action" hint="action属性 设置节点展开的动作" type="resource:biz" defaultValue="" required="false">
+			
+		</property>
+		<property name="childEntities" displayName="子节点类型" hint="childEntities属性 指定展开的子节点的对象数组的xpath" type="primitive:string" defaultValue="" required="false">
+			
+		</property>
+				<property name="submitXpath" displayName="submitXpath" hint="submitXpath属性" type="primitive:string" defaultValue="" required="false">
+			
+		</property>
+	</group>
+	<group groupName="事件">
+		<property allowXPath="false" name="onClickFunc" displayName="onClickFunc" hint="onClickFunc属性 指定鼠标单击时触发的javascript函数名" type="javascript:functionName" defaultValue="" required="false">
+			
+		</property>
+		<property allowXPath="false" name="onDblclickFunc" displayName="onDblclickFunc" hint="onDblclickFunc属性 指定鼠标双击时触发的javascript函数名" type="javascript:functionName" defaultValue="" required="false">
+			
+		</property>
+		<property allowXPath="false" name="onRefreshFunc" displayName="onRefreshFunc" hint="onRefreshFunc属性 指定自定义刷新节点时调用的动作" type="javascript:functionName" defaultValue="" required="false">
+			
+		</property>	
+	</group>
+	<group groupName="其他属性">
+		<property allowXPath="false" name="initParamFunc" displayName="initParamFunction" hint="initParamFunction属性" type="primitive:string" defaultValue="" required="false">
+			
+		</property>
+
+	</group>
+</tag>

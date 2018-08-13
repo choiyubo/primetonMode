@@ -1,0 +1,17 @@
+#set($entityTable=${map.get("entityTable")})
+#set($currentRow=${map.get("currentRow")})
+#set($tagElement=${entityTable.getTagConfig($currentRow)})
+#set($operator=${entityTable.getOperationType($currentRow)})
+#set($operatorRule=${entityTable.getOperationRule($currentRow)})
+#set($property=${tagElement.getAttributeValue("property")})
+#set($xpath=${StringUtil.substringBeforeLast($property, "/")})
+#if(${operator}!="")
+<h:hidden property="${xpath}/_op" value="${operator}"/>
+#end
+#if(${operator}=="like"&&${operatorRule}!="")
+<h:hidden property="${xpath}/_likeRule" value="${operatorRule}"/>
+#end
+#set($tagName = ${TagElementHelper.getTagName($tagElement)})
+#if($tagName=="w:date")
+<h:hidden property="${xpath}/_pattern" value="yyyy-MM-dd"/>
+#end

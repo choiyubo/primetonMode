@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSPY v2004 rel. 4 U (http://www.xmlspy.com) by ton (ORiON) -->
+<tag tagName="baseBean" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
+	<require>
+		<path>/base.xml</path>
+		<include>scope,property,iterateId</include>
+	</require>
+	<group groupName="Basic">
+		<property name="ignore" displayName="ignore" hint="Sets whether to ignore null exception." type="primitive:boolean" required="false" showInViewModel="never"/>
+		<property name="value" displayName="value" hint="Default value.It is uesed when the property is null." type="primitive:string" required="false" showInViewModel="common"/>
+		<property name="toScope" displayName="toScope" hint="Sets the target data area" type="combo:readonly" defaultValue="" required="false" showInViewModel="rare" allowXPath="false">
+			<dataProvider class="listProvider">
+				<string>request</string>
+				<string>page</string>
+				<string>pageFlow</string>
+				<string>session</string>
+			</dataProvider>
+		</property>
+		<property name="propertyType" displayName="propertyType" hint="Sets the property's type" type="combo:readonly" defaultValue="" required="false" showInViewModel="never">
+			<dataProvider class="listProvider">
+				<string>cookie</string>
+				<string>header</string>
+				<string>scope</string>
+				<string>parameter</string>
+			</dataProvider>
+		</property>
+		<property showInViewModel="never" name="modelField" displayName="modelField" hint="Binding a field of ViewModel." type="resource:dataField" defaultValue="" required="false">
+		</property>
+		<property name="name" displayName="name" hint="name" type="primitive:string" required="false" showInViewModel="never"/>
+	</group>
+</tag>

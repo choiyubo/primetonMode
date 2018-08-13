@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tag tagName="r:rtree" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
+	<group groupName="基本属性">
+		<property allowXPath="false" name="id" displayName="页面标识" hint="对象的唯一标识" type="primitive:string" defaultValue="" required="true">
+			<validators>
+				<notEmptyValidator/>
+				<IDNotDuplicateValidator/>
+			</validators>
+		</property>
+		<property allowXPath="false" name="scope" displayName="scope" hint="读取数据的数据区" type="combo:readonly" defaultValue="" required="false">
+			<dataProvider class="mapProvider">
+				<mapEntry>
+					<key class="string">request</key>
+					<value class="string">r</value>
+				</mapEntry>
+				<mapEntry>
+					<key class="string">page</key>
+					<value class="string">p</value>
+				</mapEntry>
+				<mapEntry>
+					<key class="string">flow</key>
+					<value class="string">f</value>
+				</mapEntry>
+				<mapEntry>
+					<key class="string">session</key>
+					<value class="string">s</value>
+				</mapEntry>
+			</dataProvider>
+		</property>
+		<property name="width" displayName="width" hint="width属性 指定树的宽度" type="primitive:string" defaultValue="" required="false">
+			<validators>
+				<widthHeightValidator/>
+			</validators>
+		</property>
+		<property name="height" displayName="height" hint="height属性 指定树的高度" type="primitive:string" defaultValue="" required="false">
+			<validators>
+				<widthHeightValidator/>
+			</validators>
+		</property>
+		<property name="hasRoot" displayName="hasRoot" hint="hasRoot属性 指定是否显示根节点" type="primitive:boolean" defaultValue="" required="false">
+</property>
+		<property name="expandLevel" displayName="expandLevel" hint="加载时展开层数" type="primitive:integer" required="false"/>
+	</group>
+	<group groupName="事件">
+  </group>
+</tag>

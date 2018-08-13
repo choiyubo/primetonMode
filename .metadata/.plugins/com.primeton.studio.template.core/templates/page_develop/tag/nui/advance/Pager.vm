@@ -1,0 +1,8 @@
+#set($tagElement = ${map.get("tag_element")})
+${tagElement.toStringWithoutEndTag()}
+</div>
+##<script type="text/javascript">
+##    function onPageChanged(e) {
+##        alert(e.pageIndex+":"+e.pageSize);
+##    }
+##</script>

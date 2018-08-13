@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<tag xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" tagName="w:treeRoot" >
+    <require>
+        <path>/webcomp/baseWebcomp.xml</path>
+        <include>onClickFunc,onRefreshFunc,icon,scope</include>
+    </require>
+    <group groupName="基本属性">
+
+        <property displayName="根节点显示名称 " hint="树根节点显示的内容" name="display" required="true" type="primitive:string">
+        	<validators>
+				<notEmptyValidator/>
+				<IDNotDuplicateValidator/>
+			</validators>
+		</property>
+    </group>
+    <group groupName="事件">
+		 <property allowXPath="false"  displayName="onCheckFunc" hint="根节点复选框被点击时调用的方法" name="onCheckFunc" required="false" type="javascript:functionName"/>
+    </group>
+</tag>

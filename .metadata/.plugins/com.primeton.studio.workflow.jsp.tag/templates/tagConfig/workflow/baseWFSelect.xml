@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tag xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="D:\桌面\日常工作\工作流tag描述文件\tags\property.xsd" tagName="baseWFSelect">
+	<require>
+		<path>/workflow/baseWorkflow.xml</path>
+		<include>scope</include>
+	</require>
+	<group groupName="基本属性">	
+		<property type="primitive:string" name="id" displayName="id" hint="该属性必须指向一个非数组或集合类型的对象" required="false" >
+			<validators>
+				<IterateIDExistsValidator/>
+			</validators>
+		</property> 
+		<property type="primitive:integer" name="maxNum" displayName="maxNum" defaultValue="1" hint="选择的最大数目" required="false">
+			<validators>
+				<intRangeValidator>
+					<min>1</min>
+					<max>10</max>
+				</intRangeValidator>
+			</validators>
+		</property>
+		<property type="primitive:boolean" name="faltToLeaf" displayName="faltToLeaf" hint="是否选择叶子节点" required="false"/>
+		<property type="primitive:string" name="form" displayName="form" hint="表单名称" required="true"/>
+		<property type="primitive:string" name="output" displayName="output" hint="接受输出的元素名称" required="true"/>
+		<property type="primitive:string" name="hidden" displayName="hidden" hint="生成的隐藏字段的名称" required="true"/>
+		<property type="primitive:string" name="hiddenType" displayName="hiddenType" hint="生成的隐藏字段的类型" required="true"/>
+		<property type="primitive:boolean" name="genScript" displayName="genScript" hint="true生成脚本,false生成按钮" defaultValue="" required="false"/>
+		<property type="primitive:string" name="styleClass" displayName="styleClass" hint="自定义控件的css样式" required="true"/>
+		<property type="primitive:string" name="name" displayName="name" hint="生成的按钮的名称" required="false" />
+		<property type="primitive:string" name="value" displayName="value" hint="生成的按钮的值" required="false" />
+	</group>
+</tag>

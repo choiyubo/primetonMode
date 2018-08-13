@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<tag xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" tagName="w:panel" >
+	<require>
+		<path>/webcomp/baseWebcomp.xml</path>
+		<include>title,width,height,scope</include>
+	</require>
+	<group groupName="Basic">
+		<property name="id" displayName="id" hint="id" type="primitive:string" defaultValue="" required="true" allowXpath="false" showInViewModel="rare">
+			<validators>
+				<IDNotDuplicateValidator/>
+			</validators>
+		</property>
+		<property displayName="align" hint="Sets the align of the title，left,center or right" name="align" required="false" type="combo:editable">
+			<dataProvider class="listProvider">
+				<string>left</string>
+				<string>center</string>
+				<string>right</string>
+			</dataProvider>
+		</property>
+		<property displayName="expand" hint="Sets the status of the panel.Opened or closed." name="expand" required="false" type="primitive:boolean"/>
+	</group>
+	<group groupName="Style">
+		<property displayName="titleStyle" hint="Sets the style of the title." name="titleStyle" required="false" type="css:style"/>
+		<property displayName="titleStyleClass" hint="Sets the style of the title." name="titleStyleClass" required="false" type="css:styleclass"/>
+		<property displayName="bodyStyle" hint="Sets the style of body area." name="bodyStyle" required="false" type="css:style"/>
+		<property displayName="bodyStyleClass" hint="Sets the style of body area." name="bodyStyleClass" required="false" type="css:styleclass"/>
+	</group>
+	<group groupName="Event">
+		<property displayName="onExpandFunc" hint="Fires when the panel has been opened." name="onExpandFunc" required="false" type="javascript:functionName"/>
+		<property displayName="onCloseFunc" hint="Fires when the panel has been closed." name="onCloseFunc" required="false" type="javascript:functionName"/>
+	</group>
+</tag>

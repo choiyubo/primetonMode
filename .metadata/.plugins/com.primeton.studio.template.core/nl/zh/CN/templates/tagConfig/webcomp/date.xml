@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<tag xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" tagName="w:date" >
+    <require>
+        <path>/webcomp/baseWebcomp.xml</path>
+        <include>iterateId,scope,property,name,value,indexed,id,style,styleClass,tabindex,accesskey,readOnly,disabled,size,maxlength,onblur,onchange,onclick,ondblclick,onfocus,onselect,onkeyup,onkeydown,onkeypress,onmouseup,onmousedown,onmousemove,onmouseover,onmouseout,title,onSelectFunc,modelField,width</include>
+    </require>
+    <group groupName="基本属性">
+        <property showInViewModel="common" displayName="format" hint="日历控件的输出格式" name="format" required="false" type="combo:editable">
+			<dataProvider class="listProvider">
+				<string>yyyy-MM-dd HH:mm:ss</string>
+				<string>yyyy-MM-dd</string>
+				<string>yyyy/MM/dd</string>
+				<string>yyyy年MM月dd日 HH时mm分ss秒</string>
+				<string>yyyy年MM月dd日</string>
+				<string>yyyyMMddHHmmss</string>
+				<string>yyyyMMdd</string>
+			</dataProvider>
+        </property>
+        <property showInViewModel="common" displayName="srcFormat" hint="源值格式，日历控件取到的值为字符串，须指定该格式" name="srcFormat" required="false" type="combo:editable">
+   			<dataProvider class="listProvider">
+				<string>yyyy-MM-dd HH:mm:ss</string>
+				<string>yyyy-MM-dd</string>
+				<string>yyyy/MM/dd</string>
+				<string>yyyy年MM月dd日 HH时mm分ss秒</string>
+				<string>yyyy年MM月dd日</string>
+				<string>yyyyMMddHHmmss</string>
+				<string>yyyyMMdd</string>
+			</dataProvider>
+        </property>
+        <property showInViewModel="common" displayName="submitFormat" hint="提交的格式" name="submitFormat" required="false" type="combo:editable">
+   			<dataProvider class="listProvider">
+				<string>yyyy-MM-dd HH:mm:ss</string>
+				<string>yyyy-MM-dd</string>
+				<string>yyyy/MM/dd</string>
+				<string>yyyy年MM月dd日 HH时mm分ss秒</string>
+				<string>yyyy年MM月dd日</string>
+				<string>yyyyMMddHHmmss</string>
+				<string>yyyyMMdd</string>
+			</dataProvider>
+        </property>
+        <property name="allowInput" showInViewModel="common" displayName="allowInput" hint="allowInput属性 是否允许用户输入" type="primitive:boolean" defaultValue="" required="false">
+</property>
+        <property showInViewModel="common" displayName="maxValue" hint="日历控件的最大值，格式应该符合format" name="maxValue" required="false" type="primitive:string">
+        </property>
+        <property showInViewModel="common" displayName="minValue" hint="日历控件的最小值，格式应该符合format" name="minValue" required="false" type="primitive:string"/>
+        <property showInViewModel="common" displayName="defaultNull" hint="设置日历控件取不到值时的默认显示方式，为true则文本框内不显示值，为false则显示为当前时间。" name="defaultNull" required="false" type="primitive:boolean"/>
+    	<property showInViewModel="common" displayName="allowNull" hint="允许不输入。" name="allowNull" required="false" type="primitive:boolean"/>
+    </group>
+</tag>

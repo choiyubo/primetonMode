@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<PaletteGroups>
+	<PaletteGroup initialState="INITIAL_STATE_OPEN" largeIcon=""
+		name="表单控件" plugin="com.primeton.studio.jsp.tag"
+		smallIcon="icons/click.gif">
+		<PaletteItem initialTemplateID=""
+			label="Form" largeIcon="icons/nui/control/form_32.gif"
+			smallIcon="icons/nui/control/form.gif" templateId="nui-form"
+			operation="com.primeton.studio.jsp.ui.palette.NuiPaletteItemOperation"/>
+		<PaletteItem initialTemplateID=""
+			label="Button" largeIcon="icons/nui/control/button_32.gif"
+			smallIcon="icons/nui/control/button.gif" templateId="nui-button" 
+			operation="com.primeton.studio.jsp.ui.palette.NuiPaletteItemOperation"/>
+		<PaletteItem initialTemplateID=""
+			label="CheckBox" largeIcon="icons/nui/control/checkbox_32.gif"
+			smallIcon="icons/nui/control/checkbox.gif" templateId="nui-checkbox"
+			operation="com.primeton.studio.jsp.ui.palette.NuiPaletteItemOperation"/>
+		<PaletteItem initialTemplateID=""
+			label="ListBox" largeIcon="icons/nui/control/listbox_32.gif"
+			smallIcon="icons/nui/control/listbox.gif" templateId="nui-listbox"
+			operation="com.primeton.studio.jsp.ui.palette.NuiPaletteItemOperation"/>
+		<PaletteItem initialTemplateID=""
+			label="CheckBoxList" largeIcon="icons/nui/control/checkboxlist_32.gif"
+			smallIcon="icons/nui/control/checkboxlist.gif" templateId="nui-checkboxlist"
+			operation="com.primeton.studio.jsp.ui.palette.NuiPaletteItemOperation"/>
+		<PaletteItem initialTemplateID=""
+			label="RadioButtonList" largeIcon="icons/control/radio_button_32.gif"
+			smallIcon="icons/nui/control/radio_button.gif" templateId="nui-radiobuttonlist"
+			operation="com.primeton.studio.jsp.ui.palette.NuiPaletteItemOperation"/>
+		<PaletteItem initialTemplateID=""
+			label="Calendar" largeIcon="icons/nui/control/calendar_32.gif"
+			smallIcon="icons/nui/control/calendar.gif" templateId="nui-calendar"
+			operation="com.primeton.studio.jsp.ui.palette.NuiPaletteItemOperation"/>
+		<PaletteItem initialTemplateID=""
+			label="ButtonEdit" largeIcon="icons/nui/control/buttonedit_32.gif"
+			smallIcon="icons/nui/control/buttonedit.gif" templateId="nui-buttonedit"
+			operation="com.primeton.studio.jsp.ui.palette.NuiPaletteItemOperation"/>
+		<PaletteItem initialTemplateID=""
+			label="TextBox" largeIcon="icons/nui/control/textbox_32.gif"
+			smallIcon="icons/nui/control/textbox.gif" templateId="nui-textbox" 
+			operation="com.primeton.studio.jsp.ui.palette.NuiPaletteItemOperation"/>
+		<PaletteItem initialTemplateID=""
+			label="Password" largeIcon="icons/nui/control/password_32.gif"
+			smallIcon="icons/nui/control/password.gif" templateId="nui-password"
+			operation="com.primeton.studio.jsp.ui.palette.NuiPaletteItemOperation"/>
+		<PaletteItem initialTemplateID=""
+			label="TextArea" largeIcon="icons/nui/control/textarea_32.gif"
+			smallIcon="icons/nui/control/textarea.gif" templateId="nui-textarea"
+			operation="com.primeton.studio.jsp.ui.palette.NuiPaletteItemOperation"></PaletteItem>
+		<PaletteItem initialTemplateID=""
+			label="TextboxList" largeIcon="icons/nui/control/textboxlist_32.gif"
+			smallIcon="icons/nui/control/textboxlist.gif" templateId="nui-textboxlist"
+			operation="com.primeton.studio.jsp.ui.palette.NuiPaletteItemOperation"/>
+		<PaletteItem initialTemplateID=""
+			label="ComboBox" largeIcon="icons/nui/control/combobox_32.gif"
+			smallIcon="icons/nui/control/combobox.gif" templateId="nui-combobox"
+			operation="com.primeton.studio.jsp.ui.palette.NuiPaletteItemOperation"/>
+		<PaletteItem initialTemplateID=""
+			label="DatePicker" largeIcon="icons/nui/control/datepicker_32.gif"
+			smallIcon="icons/nui/control/datepicker.gif" templateId="nui-datepicker"
+			operation="com.primeton.studio.jsp.ui.palette.NuiPaletteItemOperation"/>
+		<PaletteItem initialTemplateID=""
+			label="Spinner" largeIcon="icons/nui/control/spinner_32.gif"
+			smallIcon="icons/nui/control/spinner.gif" templateId="nui-spinner"
+			operation="com.primeton.studio.jsp.ui.palette.NuiPaletteItemOperation"/>
+		<PaletteItem initialTemplateID=""
+			label="TimeSpinner" largeIcon="icons/nui/control/timespinner_32.gif"
+			smallIcon="icons/nui/control/timespinner.gif" templateId="nui-timespinner"
+			operation="com.primeton.studio.jsp.ui.palette.NuiPaletteItemOperation"/>
+		<PaletteItem initialTemplateID=""
+			label="TreeSelect" largeIcon="icons/nui/control/treeselect_32.gif"
+			smallIcon="icons/nui/control/treeselect.gif" templateId="nui-treeselect"
+			operation="com.primeton.studio.jsp.ui.palette.NuiPaletteItemOperation"/>
+		<PaletteItem initialTemplateID=""
+			label="Lookup" largeIcon="icons/nui/control/lookup_32.gif"
+			smallIcon="icons/nui/control/lookup.gif" templateId="nui-lookup"
+			operation="com.primeton.studio.jsp.ui.palette.NuiPaletteItemOperation"/>
+		<PaletteItem initialTemplateID=""
+			label="HtmlFile" largeIcon="icons/nui/control/htm_file_32.gif"
+			smallIcon="icons/nui/control/htm_file.gif" templateId="nui-htmlfile"
+			operation="com.primeton.studio.jsp.ui.palette.NuiPaletteItemOperation"/>
+		<PaletteItem initialTemplateID=""
+			label="FileUpload" largeIcon="icons/nui/control/file_upload_32.gif"
+			smallIcon="icons/nui/control/file_upload.gif" templateId="nui-fileupload"
+			operation="com.primeton.studio.jsp.ui.palette.NuiPaletteItemOperation"/>
+	</PaletteGroup>
+	
+	<PaletteGroup initialState="INITIAL_STATE_CLOSED" largeIcon=""
+		name="布局控件" plugin="com.primeton.studio.jsp.tag"
+		smallIcon="icons/click.gif">
+		<PaletteItem initialTemplateID=""
+			label="Panel" largeIcon="icons/nui/advance/panel.gif"
+			smallIcon="icons/nui/advance/panel.gif" templateId="nui-panel" 
+			operation="com.primeton.studio.jsp.ui.palette.NuiPaletteItemOperation"/>
+		<PaletteItem initialTemplateID=""
+			label="Window" largeIcon="icons/nui/advance/window.gif"
+			smallIcon="icons/nui/advance/window.gif" templateId="nui-window" 
+			operation="com.primeton.studio.jsp.ui.palette.NuiPaletteItemOperation"/>
+		<PaletteItem initialTemplateID=""
+			label="Splitter" largeIcon="icons/nui/advance/splitter.gif"
+			smallIcon="icons/nui/advance/splitter.gif" templateId="nui-splitter" 
+			operation="com.primeton.studio.jsp.ui.palette.NuiPaletteItemOperation"/>
+		<PaletteItem initialTemplateID=""
+			label="Layout" largeIcon="icons/nui/advance/layout.gif"
+			smallIcon="icons/nui/advance/layout.gif" templateId="nui-layout" 
+			operation="com.primeton.studio.jsp.ui.palette.NuiPaletteItemOperation"/>
+		<PaletteItem initialTemplateID=""
+			label="Fit" largeIcon="icons/nui/advance/fit.gif"
+			smallIcon="icons/nui/advance/fit.gif" templateId="nui-fit" 
+			operation="com.primeton.studio.jsp.ui.palette.NuiPaletteItemOperation"/>
+		<PaletteItem initialTemplateID=""
+			label="FormLayout" largeIcon="icons/nui/advance/layout.gif"
+			smallIcon="icons/nui/advance/layout.gif" templateId="nui-formlayout" 
+			operation="com.primeton.studio.jsp.ui.palette.NuiPaletteItemOperation"/>	
+		<PaletteItem initialTemplateID=""
+			label="FieldSet" largeIcon="icons/nui/advance/fit.gif"
+			smallIcon="icons/nui/advance/fit.gif" templateId="nui-fieldset" 
+			operation="com.primeton.studio.jsp.ui.palette.NuiPaletteItemOperation"/>
+	</PaletteGroup>
+	
+	<PaletteGroup initialState="INITIAL_STATE_CLOSED" largeIcon=""
+		name="导航控件" plugin="com.primeton.studio.jsp.tag"
+		smallIcon="icons/click.gif">
+		<PaletteItem initialTemplateID=""
+			label="Pager" largeIcon="icons/nui/advance/pager.gif"
+			smallIcon="icons/nui/advance/pager.gif" templateId="nui-pager" 
+			operation="com.primeton.studio.jsp.ui.palette.NuiPaletteItemOperation"/>
+		<PaletteItem initialTemplateID=""
+			label="Tabs" largeIcon="icons/nui/advance/tabs.gif"
+			smallIcon="icons/nui/advance/tabs.gif" templateId="nui-tabs" 
+			operation="com.primeton.studio.jsp.ui.palette.NuiPaletteItemOperation"/>
+		<PaletteItem initialTemplateID=""
+			label="MenuBar" largeIcon="icons/nui/advance/menubar_32.gif"
+			smallIcon="icons/nui/advance/menubar.gif" templateId="nui-menubar" 
+			operation="com.primeton.studio.jsp.ui.palette.NuiPaletteItemOperation"/>
+		<PaletteItem initialTemplateID=""
+			label="Toolbar" largeIcon="icons/nui/advance/toolbar.gif"
+			smallIcon="icons/nui/advance/toolbar.gif" templateId="nui-toolbar" 
+			operation="com.primeton.studio.jsp.ui.palette.NuiPaletteItemOperation"/>
+		<PaletteItem initialTemplateID=""
+			label="OutlookBar" largeIcon="icons/nui/advance/outlookbar.gif"
+			smallIcon="icons/nui/advance/outlookbar.gif" templateId="nui-outlookbar" 
+			operation="com.primeton.studio.jsp.ui.palette.NuiPaletteItemOperation"/>
+		<PaletteItem initialTemplateID=""
+			label="OutlookMenu" largeIcon="icons/nui/advance/outlookmenu.gif"
+			smallIcon="icons/nui/advance/outlookmenu.gif" templateId="nui-outlookmenu" 
+			operation="com.primeton.studio.jsp.ui.palette.NuiPaletteItemOperation"/>
+		<PaletteItem initialTemplateID=""
+			label="OutlookTree" largeIcon="icons/nui/advance/outlooktree.gif"
+			smallIcon="icons/nui/advance/outlooktree.gif" templateId="nui-outlooktree" 
+			operation="com.primeton.studio.jsp.ui.palette.NuiPaletteItemOperation"/>
+	</PaletteGroup>
+	
+	<PaletteGroup initialState="INITIAL_STATE_CLOSED" largeIcon=""
+		name="列表控件" plugin="com.primeton.studio.jsp.tag"
+		smallIcon="icons/click.gif">
+		<PaletteItem initialTemplateID=""
+			label="DataGrid" largeIcon="icons/nui/advance/datagrid.gif"
+			smallIcon="icons/nui/advance/datagrid.gif" templateId="nui-datagrid" 
+			operation="com.primeton.studio.jsp.ui.palette.NuiPaletteItemOperation"/>
+		<PaletteItem initialTemplateID=""
+			label="TreeGrid" largeIcon="icons/nui/advance/treegrid.gif"
+			smallIcon="icons/nui/advance/treegrid.gif" templateId="nui-treegrid" 
+			operation="com.primeton.studio.jsp.ui.palette.NuiPaletteItemOperation"/>
+		<PaletteItem initialTemplateID=""
+			label="Tree" largeIcon="icons/nui/advance/tree.gif"
+			smallIcon="icons/nui/advance/tree.gif" templateId="nui-tree" 
+			operation="com.primeton.studio.jsp.ui.palette.NuiPaletteItemOperation"/>
+	</PaletteGroup>
+	
+	<PaletteGroup initialState="INITIAL_STATE_CLOSED" largeIcon=""
+		name="业务字典" plugin="com.primeton.studio.jsp.tag"
+		smallIcon="icons/click.gif">
+		<PaletteItem initialTemplateID=""
+			label="DictCombobox" largeIcon="icons/nui/control/dict_32.gif"
+			smallIcon="icons/nui/control/dict.gif" templateId="nui-dictcombobox"
+			operation="com.primeton.studio.jsp.ui.palette.NuiPaletteItemOperation"/>
+		<PaletteItem initialTemplateID=""
+			label="DictRadio" largeIcon="icons/nui/control/dict_32.gif"
+			smallIcon="icons/nui/control/dict.gif" templateId="nui-dictradiogroup"
+			operation="com.primeton.studio.jsp.ui.palette.NuiPaletteItemOperation"/>
+		<PaletteItem initialTemplateID=""
+			label="DictCheckbox" largeIcon="icons/nui/control/dict_32.gif"
+			smallIcon="icons/nui/control/dict.gif" templateId="nui-dictcheckboxgroup"
+			operation="com.primeton.studio.jsp.ui.palette.NuiPaletteItemOperation"/>
+	</PaletteGroup>
+		<PaletteGroup initialState="INITIAL_STATE_CLOSED" largeIcon=""
+		name="图表控件" plugin="com.primeton.studio.jsp.tag"
+		smallIcon="icons/click.gif">
+		<PaletteItem initialTemplateID=""
+			label="KLine" largeIcon="icons/nui/advance/kline.png"
+			smallIcon="icons/nui/advance/kline.png" templateId="nui-klinechart"
+			operation="com.primeton.studio.jsp.ui.palette.NuiPaletteItemOperation"/>
+		<PaletteItem initialTemplateID=""
+			label="BoxPlot" largeIcon="icons/nui/advance/boxline.png"
+			smallIcon="icons/nui/advance/boxline.png" templateId="nui-boxplotchart"
+			operation="com.primeton.studio.jsp.ui.palette.NuiPaletteItemOperation"/>
+			
+			
+			<PaletteItem initialTemplateID=""
+			label="Gauge" largeIcon="icons/nui/advance/dashboard.png"
+			smallIcon="icons/nui/advance/dashboard.png" templateId="nui-gaugechart"
+			operation="com.primeton.studio.jsp.ui.palette.NuiPaletteItemOperation"/>
+			
+			<PaletteItem initialTemplateID=""
+			label="Funnel" largeIcon="icons/nui/advance/funnel.png"
+			smallIcon="icons/nui/advance/funnel.png" templateId="nui-funnelchart"
+			operation="com.primeton.studio.jsp.ui.palette.NuiPaletteItemOperation"/>
+			<PaletteItem initialTemplateID=""
+			label="HeatMap" largeIcon="icons/nui/advance/hotspot.png"
+			smallIcon="icons/nui/advance/hotspot.png" templateId="nui-heatmapchart"
+			operation="com.primeton.studio.jsp.ui.palette.NuiPaletteItemOperation"/>
+			<PaletteItem initialTemplateID=""
+			label="Parallel" largeIcon="icons/nui/advance/parallel.png"
+			smallIcon="icons/nui/advance/parallel.png" templateId="nui-parallelchart"
+			operation="com.primeton.studio.jsp.ui.palette.NuiPaletteItemOperation"/>
+			<PaletteItem initialTemplateID=""
+			label="TreeMap" largeIcon="icons/nui/advance/rectchart.png"
+			smallIcon="icons/nui/advance/rectchart.png" templateId="nui-treemapchart"
+			operation="com.primeton.studio.jsp.ui.palette.NuiPaletteItemOperation"/>
+			<PaletteItem initialTemplateID=""
+			label="Graph" largeIcon="icons/nui/advance/relation.png"
+			smallIcon="icons/nui/advance/relation.png" templateId="nui-graphchart"
+			operation="com.primeton.studio.jsp.ui.palette.NuiPaletteItemOperation"/>
+			<PaletteItem initialTemplateID=""
+			label="Sankey" largeIcon="icons/nui/advance/sankey.png"
+			smallIcon="icons/nui/advance/sankey.png" templateId="nui-sankeychart"
+			operation="com.primeton.studio.jsp.ui.palette.NuiPaletteItemOperation"/>
+			
+			
+			
+			
+			
+			
+		<PaletteItem initialTemplateID=""
+			label="Line" largeIcon="icons/nui/advance/line.png"
+			smallIcon="icons/nui/advance/line.png" templateId="nui-linechart"
+			operation="com.primeton.studio.jsp.ui.palette.NuiPaletteItemOperation"/>
+		<PaletteItem initialTemplateID=""
+			label="Scatter" largeIcon="icons/nui/advance/scatter.png"
+			smallIcon="icons/nui/advance/scatter.png" templateId="nui-scatterchart"
+			operation="com.primeton.studio.jsp.ui.palette.NuiPaletteItemOperation"/>
+		<PaletteItem initialTemplateID=""
+			label="Columns" largeIcon="icons/nui/advance/columns.png"
+			smallIcon="icons/nui/advance/columns.png" templateId="nui-columnschart"
+			operation="com.primeton.studio.jsp.ui.palette.NuiPaletteItemOperation"/>
+		<PaletteItem initialTemplateID=""
+			label="Pie" largeIcon="icons/nui/advance/pie.png"
+			smallIcon="icons/nui/advance/pie.png" templateId="nui-piechart"
+			operation="com.primeton.studio.jsp.ui.palette.NuiPaletteItemOperation"/>
+		<PaletteItem initialTemplateID=""
+			label="Radar" largeIcon="icons/nui/advance/radar.png"
+			smallIcon="icons/nui/advance/radar.png" templateId="nui-radarchart"
+			operation="com.primeton.studio.jsp.ui.palette.NuiPaletteItemOperation"/>
+		<PaletteItem initialTemplateID=""
+			label="Bar" largeIcon="icons/nui/advance/bar.png"
+			smallIcon="icons/nui/advance/bar.png" templateId="nui-barchart"
+			operation="com.primeton.studio.jsp.ui.palette.NuiPaletteItemOperation"/>
+	</PaletteGroup>
+<!-- 	<PaletteGroup initialState="INITIAL_STATE_CLOSED"
+		largeIcon="icons/html/html_elements.gif" name="Combination Control"
+		plugin="com.primeton.studio.jsp.tag"
+		smallIcon="icons/html/html_elements.gif">
+		<PaletteItem
+			initialTemplateID=""
+			label="QueryForm" largeIcon="icons/rc/queryform.gif"
+			smallIcon="icons/rc/queryform.gif" templateId="queryform" 
+			operation="com.primeton.studio.jsp.ui.palette.NuiPaletteItemOperation"/>
+		<PaletteItem
+			initialTemplateID=""
+			label="ViewList" largeIcon="icons/rc/viewlist.gif"
+			smallIcon="icons/rc/viewlist.gif" templateId="viewlist" 
+			operation="com.primeton.studio.jsp.ui.palette.NuiPaletteItemOperation"/>
+		<PaletteItem
+			initialTemplateID=""
+			label="RecordView" largeIcon="icons/rc/recordform.gif"
+			smallIcon="icons/rc/recordform.gif" templateId="recordview" 
+			operation="com.primeton.studio.jsp.ui.palette.NuiPaletteItemOperation"/>
+		<PaletteItem
+			initialTemplateID=""
+			label="DataForm" largeIcon="icons/rc/dataform.gif"
+			smallIcon="icons/rc/dataform.gif" templateId="dataform" 
+			operation="com.primeton.studio.jsp.ui.palette.NuiPaletteItemOperation"/>
+	</PaletteGroup>
+	<PaletteGroup initialState="INITIAL_STATE_CLOSED" largeIcon=""
+		name="HTML Tabs" plugin="com.primeton.studio.jsp.tag"
+		smallIcon="icons/html/html_elements.gif">
+		<PaletteItem initialTemplateID="" label="TextArea"
+			largeIcon="icons/html/textarea_32.gif"
+			smallIcon="icons/html/textarea.gif" templateId="TextArea" />
+		<PaletteItem initialTemplateID="" label="TextBox"
+			largeIcon="icons/html/textbox_32.gif"
+			smallIcon="icons/html/textbox.gif" templateId="TextBox" />
+		<PaletteItem initialTemplateID="" label="Password"
+			largeIcon="icons/html/password_32.gif"
+			smallIcon="icons/html/password.gif" templateId="Password" />
+		<PaletteItem initialTemplateID="" label="Button"
+			largeIcon="icons/html/button_32.gif"
+			smallIcon="icons/html/button.gif" templateId="Button" />
+		<PaletteItem initialTemplateID="" label="SubmitButton"
+			largeIcon="icons/html/submit_button_32.gif"
+			smallIcon="icons/html/submit_button.gif" templateId="SubmitButton" />
+		<PaletteItem initialTemplateID="" label="ResetButton"
+			largeIcon="icons/html/reset_button_32.gif"
+			smallIcon="icons/html/reset_button.gif" templateId="ResetButton" />
+		<PaletteItem initialTemplateID="" label="ImageButton"
+			largeIcon="icons/html/image_button_32.gif"
+			smallIcon="icons/html/image_button.gif" templateId="ImageButton" />
+		<PaletteItem initialTemplateID="" label="CheckBox"
+			largeIcon="icons/html/checkbox_32.gif"
+			smallIcon="icons/html/checkbox.gif" templateId="CheckBox" />
+		<PaletteItem initialTemplateID="" label="RadioButton"
+			largeIcon="icons/html/radio_32.gif" smallIcon="icons/html/radio.gif"
+			templateId="radio" />
+		<PaletteItem initialTemplateID="" label="ComboBox"
+			largeIcon="icons/html/combobox_32.gif"
+			smallIcon="icons/html/combobox.gif" templateId="ComboBox" />
+		<PaletteItem initialTemplateID="" label="ListBox"
+			largeIcon="icons/html/listbox_32.gif"
+			smallIcon="icons/html/listbox.gif" templateId="ListBox" />
+		<PaletteItem initialTemplateID="" label="HiddenField"
+			largeIcon="icons/html/hidden_field_32.gif"
+			smallIcon="icons/html/hidden_field.gif" templateId="HiddenField" />
+		<PaletteItem initialTemplateID="" label="FileUpload"
+			largeIcon="icons/html/file_upload_32.gif"
+			smallIcon="icons/html/file_upload.gif" templateId="FileUpload" />
+		<PaletteItem initialTemplateID="" label="GroupBox"
+			largeIcon="icons/html/groupbox_32.gif"
+			smallIcon="icons/html/groupbox.gif" templateId="GroupBox" />
+		<PaletteItem initialTemplateID="" label="Link"
+			largeIcon="icons/html/link_32.gif" smallIcon="icons/html/link.gif"
+			templateId="Link" />
+		<PaletteItem initialTemplateID="" label="Image"
+			largeIcon="icons/html/image_32.gif" smallIcon="icons/html/image.gif"
+			templateId="Image" />
+		<PaletteItem initialTemplateID="" label="Table"
+			largeIcon="icons/html/table_32.gif" smallIcon="icons/html/table.gif"
+			templateId="table" />
+		<PaletteItem initialTemplateID="" label="Panel"
+			largeIcon="icons/html/panel_32.gif" smallIcon="icons/html/panel.gif"
+			templateId="Panel" />
+		<PaletteItem initialTemplateID="" label="IFrame"
+			largeIcon="icons/html/iframe_32.gif"
+			smallIcon="icons/html/iframe.gif" templateId="IFrame" />
+		<PaletteItem initialTemplateID="" label="HorizontalRule"
+			largeIcon="icons/html/horizontal_rule_32.gif"
+			smallIcon="icons/html/horizontal_rule.gif"
+			templateId="HorizontalRule" />
+		<PaletteItem initialTemplateID="" label="Form"
+			largeIcon="icons/html/form_32.gif" smallIcon="icons/html/form.gif"
+			templateId="Form" />
+	</PaletteGroup> -->
+</PaletteGroups>

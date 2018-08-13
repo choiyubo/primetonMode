@@ -1,0 +1,108 @@
+##获得整个向导数据
+#set($wizardMap=${dataContextManager.getWizardDataContext()})
+##获得向导所在的contribution名称
+#set($contributionName=${wizardMap.get("contribution")})
+#set($flowQName=${templateConfigManager.getInvokePath("entity_maintain.vm")})
+#set($queryMap = ${dataContextManager.getComponentDataContext(1, "queryform")})
+#set($viewlistMap = ${dataContextManager.getComponentDataContext(2, "viewlist")})
+#set($selectedEntityMap = ${dataContextManager.getComponentDataContext(0, "entitySelect")})
+#set($selectedEntity=${dataContextManager.getComponentDataContext(0, "entitySelect").get("selectedEntity")})
+##选择实体的短名称（String类型）
+#set($entityName=${dataContextManager.getComponentDataContext(0, "entitySelect").get("entityName")})
+#set($temp=$selectedEntityMap.put("entityName_low", "${entityName.toLowerCase()}"))
+#set($isPagination=${queryMap.get("isPagination")})
+#set($keys = ${DataEntityHelper.getPrimaryKeys($selectedEntity)})
+#set($iter_xpath = "${entityName.toLowerCase()}s")
+#set($criteria = $queryMap.get("criteriaName"))
+#if ($criteria == "")
+	#set($criteria = "criteria")
+#end
+<%@page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
+<%@include file="/common/common.jsp"%>
+<h:css href="/css/style1/style-custom.css"/>
+<%@include file="/common/skins/skin0/component.jsp" %>
+<%-- 
+  - Author(s): ${RuntimeInfo.getAuthor()}
+  - Date: ${RuntimeInfo.getDate()} ${RuntimeInfo.getTime()}
+  - Description:
+--%>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<title>${DataEntityHelper.getEntityDisplayName($selectedEntity)}维护</title>
+</head>
+<body>
+<e:datasource name="${criteria}" type="entity" path="com.primeton.das.criteria.criteriaType" />
+<e:datasource name="page" type="entity" path="com.eos.foundation.PageCond" />
+<e:datasource name="$iter_xpath" type="entity" path="$selectedEntity" />
+#set($temp=${queryMap.put("pageFlow",${flowQName})}) ##将生成的页面流作为queryform表单的的action
+#set($temp=$queryMap.put("action", "pageQuery"))
+#set($map=${queryMap})
+#parse("queryform")  ##执行queryform模板
+$WizardReverseHelper.createReverseConfigFile("queryform", $queryMap)##生成反向配置文件
+<br/>
+##查询表单中是否分页
+#set($temp=$viewlistMap.put("pageFlow", ${flowQName}))
+#set($temp=$viewlistMap.put("genFunction", false))
+#set($temp=$viewlistMap.put("action", "pageQuery"))
+#set($temp=$viewlistMap.put("isPagination", ${isPagination}))
+#set($temp=$viewlistMap.put("formWidth", ${queryMap.get("formWidth")}))
+#set($temp=$viewlistMap.put("tableType", 1))
+#set($temp=$viewlistMap.put("iter_xpath", $iter_xpath))
+#set($temp=$viewlistMap.put("criteriaName", ${criteria}))
+#set($eventEntityTable = ${viewlistMap.get("events")})
+#set($entityTable = ${viewlistMap.get("entityTable")})
+${eventEntityTable.clear()}
+#set($item=["增加","addRecord","0"])
+${eventEntityTable.addRow($item)}
+#set($item=["修改","updateRecord","1"])
+${eventEntityTable.addRow($item)}
+#set($item=["删除","deleteRecord","2"])
+${eventEntityTable.addRow($item)}
+#foreach($row in [1..${entityTable.getCountSize()}])
+	#foreach($key in $keys)
+		#if($key == $entityTable.getCell($row,1))
+			$entityTable.setCell($row,5,true)
+		#end
+	#end
+#end
+#set($pageFormName = $viewlistMap.get("formName"))
+#if($pageFormName == "")
+	#set($pageFormName = "page_form")
+#end
+#set($map=${viewlistMap})
+#parse("viewlist")  ##执行viewlist模板
+$WizardReverseHelper.createReverseConfigFile("viewlist", $viewlistMap)##生成反向配置文件
+<script>
+function updateRecord()
+{
+	var g = $id("group1");
+	var frm = $name("${pageFormName}");
+	if (g.getSelectLength() != 1) {
+		alert("请选择一行记录！");
+		return;
+	}
+	frm.elements["_eosFlowAction"].value = "update";
+	frm.submit();
+}
+function addRecord()
+{
+	var frm = $name("${pageFormName}");
+	frm.elements["_eosFlowAction"].value = "insert";
+	frm.submit();
+}
+function deleteRecord()
+{
+	var g = $id("group1");
+	var frm = $name("${pageFormName}");
+	if (g.getSelectLength() < 1) {
+		alert("请选择记录！");
+		return;
+	}
+	frm.elements["_eosFlowAction"].value = "delete";
+	frm.submit();
+}
+</script>
+</body>
+</html>
+

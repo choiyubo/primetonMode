@@ -1,0 +1,326 @@
+##获得整个向导数据
+#set($wizardMap=${dataContextManager.getWizardDataContext()})
+##查询表单
+#set($queryMap = ${dataContextManager.getComponentDataContext(1, "nui_queryform")})
+#set($entityTable = ${queryMap.get("entityTable")})
+#set($criteriaName = ${queryMap.get("criteriaName").toString()})
+#set($queryformWidth = ${queryMap.get("formWidth")})
+#if(${StringUtil.isEmpty($queryformWidth)})
+#set($queryformWidth = "100%")
+#end
+#set($queryformTitle=${queryMap.get("title")})
+#if(${StringUtil.isEmpty($queryformTitle)})
+#set($queryformTitle = "查询")
+#end
+#set($formName=${queryMap.get("formName")})
+#if(${StringUtil.isEmpty($formName)})
+#set($formName = "form1")
+#end
+##排序字段的所有信息
+#set($orderEntityTable=${queryMap.get("orderEntityTable")})
+##每行显示字段数 (Integer类型)
+#set($row_length=${queryMap.get("rowLength")})
+##是否分页 (Boolean类型)
+#set($isPagination=${queryMap.get("isPagination")})
+##是否统计总行数
+#set($isPageCount=${queryMap.get("isPageCount")})
+##每页显示字段数 (Integer类型)
+#set($pageLength=${queryMap.get("pageLength")})
+##表单提交页面
+#set($submitPage = ${templateConfigManager.getFileName("form_jsp.vm")})
+##显示列表
+#set($viewlistMap = ${dataContextManager.getComponentDataContext(2, "nui_viewlist")})
+#set($viewlistTable=${viewlistMap.get("entityTable")})
+#set($viewlistTitle=${viewlistMap.get("title")})
+#if(${StringUtil.isEmpty($viewlistTitle)})
+#set($viewlistTitle = "列表")
+#end
+#set($queryResultWidth = ${viewlistMap.get("formWidth")})
+#if(${StringUtil.isEmpty($queryResultWidth)})
+#set($queryResultWidth = "100%")
+#end
+## 表格外观 分为check radio none (Integer类型)
+## 取得为integer类型 0对应none,1对应check, 2对应radio
+#set($tableStyle=${viewlistMap.get("tableType")})
+##获取实体名称
+#set($entityFullName = ${dataContextManager.getComponentDataContext(0, "entitySelect").get("selectedEntity")})
+#set($entityNameLow = "${entityName.toLowerCase()}")
+##录入页面
+#set($dataformMap = ${dataContextManager.getComponentDataContext(3, "nui_dataform")})
+#set($entityVar = ${dataformMap.get("entityVariable")})
+#set($aj = "$")
+##逻辑流
+#set($delete_biz = ${templateConfigManager.getInvokePath("delete_entities.vm")})
+#set($query_biz = ${templateConfigManager.getInvokePath("query_entities.vm")})
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" session="false" %>
+	
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<%-- 
+  - Author(s): ${RuntimeInfo.getAuthor()}
+  - Date: ${RuntimeInfo.getDate()} ${RuntimeInfo.getTime()}
+  - Description: 
+--%>
+<head>
+<title>${queryformTitle}</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="<%= request.getContextPath() %>/common/nui/nui.js" type="text/javascript"></script>
+</head>
+<body style="width:98%;height:95%;">
+	<div class="nui-panel" title="$queryformTitle" iconCls="icon-add" style="width:${queryformWidth};height:15%;"
+    	showToolbar="false" showFooter="true">
+        
+	    <div id="$formName" class="nui-form" align="center" style="height:100%">
+	    
+	    <!-- 数据实体的名称 -->
+        <input class="nui-hidden" name="${criteriaName}/_entity" value="${entityFullName}">   
+        <!-- 排序字段 -->
+        ##列出所有排序字段,列从1开始而不是0
+        #if(${orderEntityTable.getCountSize()} > 0)
+        #foreach($count in [1..${orderEntityTable.getCountSize()}])
+        	#set($sortName = ${orderEntityTable.getCell($count, 1)})
+        	#set($sortType = ${orderEntityTable.getCell($count, 2)})
+        	<input class="nui-hidden" name="${criteriaName}/_orderby[${count}]/_property" value="${sortName}">
+        	<input class="nui-hidden" name="${criteriaName}/_orderby[${count}]/_sort" value="${sortType}">
+			#set($count = $count + 1)
+        #end
+        #end
+              <table id="table1" class="table" style="height:100%">
+              	##列出所有hidden标签
+				#foreach($row in [1..${entityTable.getCountSize()}])
+					#set($temp=$map.put("currentRow",$row))
+					#set($rowTagElement=${entityTable.getTagConfig($row)})
+					#set($tagName=${TagElementHelper.getTagName($rowTagElement)})
+					#if($tagName=="nui-hidden")
+					${entityTable.getTagConfig($row).toString(false,true)}
+					#end
+				#end
+				#set($currentRowCount = $row_length)
+				#foreach($row in [1..${entityTable.getCountSize()}])
+					##将row行号放入map中供生成标签的属性中产生查询条件下标
+					#set($temp=$map.put("currentRow",$row))
+					
+					##temp变量无用处，如果去掉会把$map.put("currentRow",$row)打印在也页面上
+					#if($currentRowCount==$row_length)
+					<tr>
+					#end
+					##下面计算输入控件所占cols的数量
+					#if(${entityTable.getCell($row,5)}==1)
+						#if($row<${entityTable.getCountSize()})
+							#set($currentColspan = 1)
+						#else
+							#set($currentColspan = $currentRowCount * 2 - 1)
+						#end
+						#set($currentRowCount = $currentRowCount - 1)
+					#else
+						#if($currentRowCount<=${entityTable.getCell($row,5)})
+							#set($currentColspan = $currentRowCount * 2 - 1)
+							#set($currentRowCount=0)
+						#else
+							#set($currentColspan= ${entityTable.getCell($row,5)} * 2 - 1)
+							#set($currentRowCount = $currentRowCount - ${entityTable.getCell($row,5)})
+						#end
+					#end
+					#if(${entityTable.getCountSize()} > 0) ##这里做下判断，防止不选查询条件时，打印不需要的信息 --- 1
+						<td class="form_label">${entityTable.getCell($row,2)}:</td>
+						<td colspan="${currentColspan}">
+						##得到拼凑了criteria查询条件的TagElement
+						${entityTable.getCriteriaTagConfig($row).toString(true,true)}
+						##查询字段的匹配规则
+						#set($ruleType = ${entityTable.getOperationType($row)})
+						<input class="nui-hidden" name="${criteriaName}/_expr[$row]/_op" value="$ruleType">
+						##判断是不是like
+						#if($ruleType.equals("like"))
+						#set($operationRule = ${entityTable.getOperationRule($row)})
+						<input class="nui-hidden" name="${criteriaName}/_expr[$row]/_likeRule" value="$operationRule">
+						#end
+						</td>
+						#if($row==${entityTable.getCountSize()})
+						</tr>
+						#else
+							#if($currentRowCount==0)
+						</tr>#set($currentRowCount = $row_length)
+							#end
+						#end
+					#end
+				#end
+			</table>
+        </div>
+	</div>
+
+	<!--footer-->
+    <div property="footer" align="center">
+        <a class="nui-button" onclick="search()">查询</a>
+        <a class="nui-button" onclick="reset()">重置</a>
+    </div>
+	
+	<div class="nui-panel" title="$viewlistTitle" iconCls="icon-add" style="width:${queryResultWidth};height:85%;"
+    	showToolbar="false" showFooter="false" >
+    	
+	    <div class="nui-toolbar" style="border-bottom:0;padding:0px;">
+	        <table style="width:100%;">
+	            <tr>
+	                <td style="width:100%;">
+	                    <a class="nui-button" iconCls="icon-add" onclick="add()">增加</a>
+	                    <a id="update" class="nui-button" iconCls="icon-edit" onclick="edit()">编辑</a>
+	                    <a class="nui-button" iconCls="icon-remove" onclick="remove()">删除</a>
+	                </td>
+	            </tr>
+	        </table>
+	 	</div>
+	    
+	    <div class="nui-fit">
+			<div id="datagrid1" dataField="${entityVar}s" class="nui-datagrid" style="width:${queryResultWidth};height:100%;" url="${query_biz}.biz.ext" 
+			#if($isPagination)
+			 pageSize="$pageLength" showPageInfo="$isPageCount"
+			#else
+			 showPager="false"
+			#end
+			#if($tableStyle==1)
+			 multiSelect="true"
+			#elseif($tableStyle==2)
+			 multiSelect="false"
+			#end onselectionchanged="selectionChanged" allowSortColumn="false">
+			    <div property="columns">
+			   		<div type="indexcolumn"></div>
+			   		#if($tableStyle==1 || $tableStyle==2) 
+			    	<div type="checkcolumn"></div>
+			    	#end
+			    	#foreach($row in [1..${viewlistTable.getCountSize()}])
+			    		#if(${viewlistTable.getCell($row,4)})
+				    	<div field="${viewlistTable.getCell($row,1)}" headerAlign="center" allowSort="true" >${viewlistTable.getCell($row,2)}</div>
+				    	#else
+				    	<div field="${viewlistTable.getCell($row,1)}" headerAlign="center" allowSort="true" visible="false">${viewlistTable.getCell($row,2)}</div>
+			    		#end
+			    	#end
+			    </div>
+			</div>
+		</div>
+	</div>
+	
+    <script type="text/javascript">
+    nui.parse();
+    var grid = nui.get("datagrid1");
+    
+    var formData = new nui.Form("#${formName}").getData(false,false);  
+    grid.load(formData);
+
+    //新增
+    function add() {
+      nui.open({
+        url: "${submitPage}",
+        title: "新增记录", width: 600, height: 300,
+        onload: function () {//弹出页面加载完成
+        var iframe = this.getIFrameEl();
+        var data = {pageType:"add"};//传入页面的json数据
+        iframe.contentWindow.setFormData(data);
+        },
+        ondestroy: function (action) {//弹出页面关闭前
+        grid.reload();
+      }
+      });
+    }
+
+    //编辑
+    function edit() {
+      var row = grid.getSelected();
+      if (row) {
+        nui.open({
+          url: "${submitPage}",
+          title: "编辑数据",
+          width: 600,
+          height: 300,
+          onload: function () {
+            var iframe = this.getIFrameEl();
+            var data = {pageType:"edit",record:{${entityVar}:row}};
+            //直接从页面获取，不用去后台获取
+            iframe.contentWindow.setFormData(data);
+            },
+            ondestroy: function (action) {
+              grid.reload();
+            }
+            });
+          } else {
+            nui.alert("请选中一条记录","提示");
+          }
+        }
+
+    //删除
+    function remove(){
+          var rows = grid.getSelecteds();
+          if(rows.length > 0){
+            nui.confirm("确定删除选中记录？","系统提示",
+            function(action){
+              if(action=="ok"){
+                var json = nui.encode({${entityVar}s:rows});
+                grid.loading("正在删除中,请稍等...");
+                ${aj}.ajax({
+                  url:"${delete_biz}.biz.ext",
+                  type:'POST',
+                  data:json,
+                  cache: false,
+                  contentType:'text/json',
+                  success:function(text){
+                    var returnJson = nui.decode(text);
+                    if(returnJson.exception == null){
+                      grid.reload();
+                      nui.alert("删除成功", "系统提示", function(action){
+                        });
+                      }else{
+                        grid.unmask();
+                        nui.alert("删除失败", "系统提示");
+                      }
+                    }
+                    });
+                  }
+                  });
+                }else{
+                  nui.alert("请选中一条记录！");
+                }
+             }
+
+      //重新刷新页面
+      function refresh(){
+       var form = new  nui.Form("#${formName}");
+       var json = form.getData(false,false);
+       grid.load(json);//grid查询
+       nui.get("update").enable();
+      }
+
+      //查询
+      function search() {
+       var form = new nui.Form("#${formName}");
+       var json = form.getData(false,false);
+       grid.load(json);//grid查询
+      }
+
+      //重置查询条件
+      function reset(){
+        var form = new nui.Form("#${formName}");//将普通form转为nui的form
+        form.reset();
+      }
+
+      //enter键触发查询
+      function onKeyEnter(e) {
+        search();
+      }
+
+      //当选择列时
+      function selectionChanged(){
+        var rows = grid.getSelecteds();
+        if(rows.length>1){
+          nui.get("update").disable();
+        }else{
+          nui.get("update").enable();
+        }
+      }
+    </script>
+  </body>
+</html>
+
+
+
+
+
+
+

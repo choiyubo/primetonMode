@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wizard height="500" sort="1017" id="nui_entity_slavery" isDefault="true" name="NUI 主从表维护功能向导" width="750" type="NUI">
+	<page description="选择一个数据实体产生维护的功能代码(只支持选择单向1:n或者双向n:1关联的1端实体)" height="600" index="0" title="选择数据实体" width="780">
+		<layout column="2" row="3"/>
+		<component id="entitySelect" type="entity_select" label="选择实体:">
+			<ui>
+				<size column="1" row="1"/>
+				<fillStyle style="fill_horizontal"/>
+			</ui>
+		</component>
+		<component id="auto_pk" type="checkbox" label="自动生成主键">
+			<ui>
+				<size column="1" row="1"/>
+				<fillStyle style="fill_horizontal"/>
+				<data default_value="true"/>
+			</ui>
+		</component>
+		<component id="select_slavery_tables" label="选择需要维护的从表" type="table_select">
+			<ui>
+				<size column="2" row="2"/>
+			</ui>
+		</component>
+		<templates>
+			<item>data_init.vm</item>
+		</templates>
+	</page>
+	<page description="配置查询的字段、条件" height="600" index="1" title="查询条件配置页" width="780">
+		<layout column="1" row="2"/>
+		<component id="nui_queryform" type="nui_queryform">
+			<ui>
+				<size column="1" row="2"/>
+			</ui>
+		</component>
+	</page>
+	<page description="配置查询结果的显示页面" height="600" index="2" title="查询结果页" width="750">
+		<layout column="1" row="2"/>
+		<component id="nui_viewlist" type="nui_viewlist">
+			<ui>
+				<size column="1" row="2"/>
+			</ui>
+		</component>
+	</page>
+	<page description="配置数据的录入页面" height="600" index="3" title="数据录入页" width="750">
+		<layout column="1" row="2"/>
+		<component id="nui_dataform" type="nui_dataform">
+			<ui>
+				<size column="1" row="2"/>
+			</ui>
+		</component>
+		<templates>
+			<item>datacell_init.vm</item>
+		</templates>
+	</page>
+	<page description="配置从表数据的录入" height="600" index="4" title="从表录入配置" width="800">
+		<layout column="1" row="2"/>
+		<component id="nui_slavery_tables" nested_type="nui_datacell" type="tables">
+			<ui>
+				<size column="1" row="2"/>
+			</ui>
+		</component>
+	</page>
+	<event>
+		<entry source="entitySelect" target="nui_queryform"/>
+		<entry source="entitySelect" target="nui_viewlist"/>
+		<entry source="entitySelect" target="nui_dataform"/>
+		<entry source="entitySelect" target="select_slavery_tables"/>
+		<entry source="select_slavery_tables" target="nui_slavery_tables"/>
+	</event>
+	<template>
+		<entry templateName="list_jsp.vm" fileName="${entitySelect.entityName}List.jsp" fileType="page"/>
+		<entry templateName="form_add_jsp.vm" fileName="${entitySelect.entityName}Add.jsp" fileType="page"/>
+		<entry templateName="form_update_jsp.vm" fileName="${entitySelect.entityName}Update.jsp" fileType="page"/>
+		
+		<entry templateName="add_entity.vm" component="${entitySelect.entityNameLowerCase}biz" fileName="add${entitySelect.entityName}.bizx" fileType="biz"/>
+		<entry templateName="delete_entities.vm" component="${entitySelect.entityNameLowerCase}biz" fileName="delete${entitySelect.entityName}s.bizx" fileType="biz"/>
+		<entry templateName="get_entity.vm" component="${entitySelect.entityNameLowerCase}biz" fileName="get${entitySelect.entityName}.bizx" fileType="biz"/>
+		<entry templateName="query_entities.vm" component="${entitySelect.entityNameLowerCase}biz" fileName="query${entitySelect.entityName}s.bizx" fileType="biz"/>
+		<entry templateName="update_entity.vm" component="${entitySelect.entityNameLowerCase}biz" fileName="update${entitySelect.entityName}.bizx" fileType="biz"/>
+		<entry templateName="data_init.vm"/>
+		<entry templateName="datacell_init.vm"/>
+	</template>
+</wizard>
+
+

@@ -1,0 +1,9 @@
+INDEX VERSION 1.3+/Users/caiyubo/Applications/primeton/platform/ide/eclipse/workspace_demo/.metadata/.plugins/org.eclipse.wst.jsdt.core/indexes
+4267368841.index
+2283705789.index
+4060847025.index
+1219672175.index
+3670299430.index
+2150726124.index
+3708006965.index
+487237921.index

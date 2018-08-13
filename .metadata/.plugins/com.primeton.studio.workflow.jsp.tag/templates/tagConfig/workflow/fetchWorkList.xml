@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tag xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="D:\桌面\日常工作\工作流tag描述文件\tags\property.xsd" tagName="wf:fetchWorkList">
+	<require>
+		<path>/workflow/baseWorkflow.xml</path>
+		<include>id,scope</include>
+	</require>
+	<group groupName="基本属性">
+		<property type="primitive:string" name="personId" displayName="personId" hint="用户ID" required="false"/>
+		<property type="primitive:string" name="taskSource" displayName="taskSource" hint="任务来源：ALL,AGENT,DELEG,HELP,SELF" required="true"/>
+		<property type="combo:readonly" name="workListType" displayName="workListType" hint="" required="false" defaultValue="">
+			<dataProvider class="listProvider">
+				<string>ALL</string>
+				<string>FINISHED</string>
+				<string>ENTRUST</string>
+				<string>EFINISHED</string>
+			</dataProvider>
+		</property>
+		<property type="primitive:string" name="taskProperty" displayName="taskProperty" hint="任务属性：PUBLIC,PRIVATE,ALL" required="false" defaultValue="ALL" />
+		<property type="primitive:integer" name="pageBegin" displayName="pageBegin" hint="用于分页查询，从第几条记录开始查询" required="false"/>
+		<property type="primitive:integer" name="pageLength" displayName="pageLength" hint="用于分页查询，每页显示多少条记录" required="false" />
+		<property type="primitive:integer" name="pageCount" displayName="pageCount" hint="用于分页查询，显示总页数" required="false" />
+		
+	</group>
+</tag>

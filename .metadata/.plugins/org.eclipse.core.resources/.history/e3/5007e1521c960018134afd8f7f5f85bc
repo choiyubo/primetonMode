@@ -1,0 +1,188 @@
+package com.primeton.eos.file;
+
+
+import java.io.File;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.Arrays;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.fileupload.disk.DiskFileItemFactory;
+import org.apache.commons.fileupload.servlet.ServletFileUpload;
+
+import com.eos.foundation.common.io.FileUtil;
+import com.eos.foundation.data.DataObjectUtil;
+import com.eos.foundation.database.DatabaseExt;
+import com.eos.foundation.database.DatabaseUtil;
+import com.eos.foundation.eoscommon.ConfigurationUtil;
+import com.primeton.eos.Util.JDConvertUtil;
+
+import commonj.sdo.DataObject;
+
+/**
+ * 文件上传接口
+ * @author caiyb
+ *
+ */
+@WebServlet(name="FileUpServlet",urlPatterns="/FileUpServlet")
+@MultipartConfig
+public class FileUploadServlet extends HttpServlet {
+	private static final long serialVersionUID = -7568203412743972190L;
+
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
+			throws ServletException, IOException {
+		this.doPost(req, resp);
+	}
+
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
+			throws ServletException, IOException {
+		//文件上传的最大路径
+		String MAXSIZE = (String) ConfigurationUtil.getUserConfigMultiValue("Access-Http", "FileUpload","MaxSize").get(0);
+		int maxSize=Integer.parseInt(MAXSIZE);
+		//不允许的上传 类型
+		String fileType = (String) ConfigurationUtil.getUserConfigMultiValue("Access-Http", "FileUpload","Exclude").get(0);
+		//上传相对路径
+		String TempDir = (String) ConfigurationUtil.getUserConfigMultiValue("Access-Http", "FileUpload","TempDir").get(0);
+ 		String relativepath = TempDir;
+	    //得到上传文件的保存目录，将上传的文件放在webRoot目录下
+		String path = this.getServletContext().getRealPath(relativepath);
+		//存放普通数据
+		Map<String,String> params = new HashMap<String,String>();
+		//返回数据，文件id和错误信息
+		String code = "";
+		String fileId = "";
+        String message = "";
+        File file = new File(path);
+        //判断上传文件的保存目录是否存在
+        if(!file.exists() && !file.isDirectory()){
+            //创建目录
+            file.mkdir();
+        }
+  
+        try{
+            DiskFileItemFactory disk = new DiskFileItemFactory(); 
+            //如果没以下两行设置的话，上传大的 文件 会占用 很多内存，  
+            //设置暂时存放的 存储室 , 这个存储室，可以和 最终存储文件 的目录不同  
+            /** 
+             * 原理 它是先存到 暂时存储室，然后在真正写到 对应目录的硬盘上，  
+             * 按理来说 当上传一个文件时，其实是上传了两份，第一个是以 .tem 格式的  
+             * 然后再将其真正写到 对应目录的硬盘上 
+             */
+            disk.setRepository(new File(path));
+            //new File(System.getProperty("java.io.tmpdir"))
+            //设置 缓存的大小，当上传文件的容量超过该缓存时，直接放到 暂时存储室
+            disk.setSizeThreshold(1024*1024);
+            ServletFileUpload up = new ServletFileUpload(disk);
+            // 中文处理
+            up.setHeaderEncoding("UTF-8"); 
+			@SuppressWarnings("unchecked")
+			List<FileItem> list = (List<FileItem>)up.parseRequest(req);  
+        	
+            for(FileItem item : list){
+                //如果fileItem中封装的是普通输入项的数据
+                if(item.isFormField()){
+                    //获取字段名字
+                    String name = item.getFieldName();
+                    //解决普通输入项中中文乱码问题
+                    String value = item.getString("UTF-8");
+                    params.put(name, value);
+                }else{    
+                	//一、获得上传的文件名称,进行防xxs注入过滤
+                    String filename ="";
+                    filename = item.getName();
+                    if(filename == null || filename.trim().equals("")){
+        				code = "-1";
+                    	message = "没有上传文件";
+                        continue;
+                    }else{
+                    	filename = FileUtil.xssEncode(filename);
+                    	  //二、扩展名校验
+                        String  name = filename.substring(filename.lastIndexOf("\\") + 1,
+                        		filename.lastIndexOf("."));
+                        if(name.length()>255){
+                        	name.substring(0, 255);
+                        }
+            			//获取文件后缀名
+            			String extName = filename.substring(filename.lastIndexOf(".") + 1).toLowerCase().trim();
+            			if (Arrays.<String> asList(fileType.split(",")).contains(extName)) {
+            				item.delete();
+            				code = "-1";
+            				message =  "文件类型不能为" + fileType + "的文件！";
+            			}
+            			//判断文件大小是否超限
+            			long filesize = item.getSize();
+            			if (filesize > maxSize) {
+            				item.delete();
+            				message ="文件大小超过限制！应小于" + maxSize/ 1024 / 1024 + "M";
+            				return ;
+            			}
+            			
+            			//保存文件
+            			String newFileName =FileUtil.getUUID32() + "." + extName;
+            			File uploadedFile = new File(path,newFileName);
+            			item.write(uploadedFile);
+            			
+            			
+            			//设置文件的权限
+            			uploadedFile.setReadable(true, false);
+            			uploadedFile.setExecutable(false, false);
+            			uploadedFile.setWritable(true, false);
+            			//将文件信息写入数据库
+            			String useridString = params.get("userid");
+            			if(useridString!=null && !"".equals(useridString.trim())){
+            				PctFile pctFile = PctFile.FACTORY.create();
+            				Integer userid = new Integer(useridString) ;
+            				pctFile.setOwnerId(userid);//用户id
+            				pctFile.setFileName(filename);//文件名称
+            				pctFile.setFileSize(filesize);
+            				pctFile.setFilePath(relativepath+"/"+newFileName);
+            				pctFile.setMd5("");
+            				pctFile.setUploadTime(new Date());
+            				DatabaseExt.getPrimaryKey(pctFile);
+            		        DatabaseUtil.insertEntity(PctFile.QNAME, pctFile);
+            		        fileId= pctFile.getFileId();
+            		        code = "0";
+            		        message = "文件上传成功";
+            			}else{
+            				message = "userid为空";
+            			}
+                    }
+                }
+            }
+            
+        }catch(Exception e){
+            code = "-1";
+
+            message = "文件上传失败！";
+            e.printStackTrace();
+        }
+        DataObject dataObject = DataObjectUtil.createDataObject("commonj.sdo.DataObject");
+       
+   
+        Map<String,Object> map = new  HashMap<String, Object>();
+        if(code.equals("0")){
+            map.put("fileId", fileId); 
+        }       
+        dataObject.set("code", code);
+        dataObject.set("msg", message);
+        dataObject.set("resultData", map);
+        resp.setContentType("text/html;charset=utf-8");
+        PrintWriter out = resp.getWriter();
+        out.print(JDConvertUtil.convertDataObjectToJsonString(dataObject));    
+        out.close();
+    }
+	
+}

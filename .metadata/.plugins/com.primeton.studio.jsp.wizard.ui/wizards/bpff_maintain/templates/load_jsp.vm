@@ -1,0 +1,257 @@
+##获得整个向导数据
+#set($wizardMap=${dataContextManager.getWizardDataContext()})
+##获得向导所在的contribution名称
+#set($selectedEntityMap = ${dataContextManager.getComponentDataContext(0, "entitySelect")})
+#set($dataformMap = ${dataContextManager.getComponentDataContext(1, "nui_dataform")})
+##选择实体的全名
+#set($selectedEntity=${dataContextManager.getComponentDataContext(0, "entitySelect").get("selectedEntity")})
+#set($isCustomBiz=${dataContextManager.getPageDataContext("template_page").get("custom_biz_select")})
+##选择实体的短名称（String类型）
+#set($entityName=${dataContextManager.getComponentDataContext(0, "entitySelect").get("entityName")})
+#set($entityNameLow = "${entityName.toLowerCase()}")
+#set($isPagination=${queryMap.get("isPagination")})
+#set($isAutoPK=${dataContextManager.getComponentDataContext(0, "auto_pk").get("checked")})
+#set($hasPK = ${DataEntityHelper.hasPrimaryKey($selectedEntity)})
+#set($keys = ${DataEntityHelper.getPrimaryKeys($selectedEntity)})
+##录入页面用到逻辑流
+#set($add_biz=${templateConfigManager.getInvokePath("add_entity.vm")})
+#set($update_biz=${templateConfigManager.getInvokePath("update_entity.vm")})
+#set($query_biz=${templateConfigManager.getInvokePath("query_entities.vm")})
+#set($query_biz_file=${StringUtil.substringAfterLast($query_biz, ".")})
+##获得向导中设置的传递参数的变量
+#set($criteria = $queryMap.get("criteriaName"))
+#set($entityVar = $dataformMap.get("entityVariable"))
+##表单信息
+#set($entityTable=${dataformMap.get("entityTable")})
+#set($dataformTitle=${dataformMap.get("title")})
+#set($dataFormName = ${dataformMap.get("formName")})
+#if(${StringUtil.isEmpty($dataFormName)})
+#set($dataFormName="dataform1")
+#end
+#set($dataFormWidth = ${dataformMap.get("width")})
+#if(${StringUtil.isEmpty($dataFormWidth)})
+#set($dataFormWidth = "100%")
+#end
+##每行显示字段数 (Integer类型)
+#set($row_length=${dataformMap.get("rowLength")})
+#if(${StringUtil.isEmpty($row_length)})
+#set($row_length = 2)
+#end
+##判断
+#if($criteria == "")#set($criteria = "criteria")#end
+#if($entityVar == "")#set($entityVar = $entityNameLow)#end
+#set($aj = "$")
+<%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8" session="false"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<%-- 
+  - Author(s): ${RuntimeInfo.getAuthor()}
+  - Date: ${RuntimeInfo.getDate()} ${RuntimeInfo.getTime()}
+  - Description: 
+--%>
+<head>
+<title>${dataformTitle}Load</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+		<!-- 引入表单框架jsp -->
+		<%@include file="/bizform/bizformCommon.jsp" %>
+</head>
+<body>
+	<div style="overflow:auto">
+		<fieldset
+			style="border: solid 1px #aaa; position: relative; margin: 5px 2px 0px 2px;">
+			<legend> ${dataformTitle}Info </legend>
+			<div id="${dataFormName}" style="padding-top: 5px;">
+				<!-- hidden域 -->
+				##选择为隐藏的字段
+	    	#foreach($row in [1..${entityTable.getCountSize()}])
+					#set($temp=$map.put("currentRow",$row))
+					#set($rowTagElement=${entityTable.getTagConfig($row)})
+					#set($tagName=${TagElementHelper.getAttributeValue($rowTagElement,"class")})
+					#if($tagName=="nui-hidden")
+						${entityTable.getTagConfig($row).toString(false,true)}
+					#end
+				#end
+				##如果是自动生成主键则隐藏主键域的录入 
+				#foreach($key in $keys)
+				<input class="nui-hidden" name="${entityVar}.${key}" id="${entityVar}.${key}"/>
+				#end
+				<input class="nui-hidden" name="${entityVar}.__type"/>
+				<input class="nui-hidden" name="${entityVar}.processInstID" />
+				
+				<table style="width: ${dataFormWidth}; height: 95%; table-layout: fixed;" class="nui-form-table">
+			##是否是一行的开始
+	        #set($rowStart = 1)
+	        #set($currentRowCount = $row_length)		
+					#foreach($row in [1..${entityTable.getCountSize()}])
+						##将row行号放入map中供生成标签的属性中产生查询条件下标
+						#set($temp=$map.put("currentRow",$row))
+						##temp变量无用处，如果去掉会把$map.put("currentRow",$row)打印在也页面上
+						#if($rowStart == 1)
+						<tr>
+						#set($rowStart = 0)
+						#end
+						##下面计算输入控件所占cols的数量
+						#if(${entityTable.getCell($row,5)}==1)
+							#if($row<${entityTable.getCountSize()})
+								#set($currentColspan = 1)
+							#else
+								#set($currentColspan = $currentRowCount * 2 - 1)
+							#end
+							#set($currentRowCount = $currentRowCount - 1)
+						#else
+							#if($currentRowCount<=${entityTable.getCell($row,5)})
+								#set($currentColspan = $currentRowCount * 2 - 1)
+								#set($currentRowCount=0)
+							#else
+								#set($currentColspan= ${entityTable.getCell($row,5)} * 2 - 1)
+								#set($currentRowCount = $currentRowCount - ${entityTable.getCell($row,5)})
+							#end
+						#end
+						#if(${entityTable.getCountSize()} > 0) ##这里做下判断，防止不选查询条件时，打印不需要的信息 --- 1
+							#set($rowTagElement=${entityTable.getTagConfig($row)})
+							##这里做下判断，防止不选查询条件时，打印不需要的信息 --- 1
+							${TagElementHelper.setAttributeValue($rowTagElement,"readonly", "true")}
+							#set($tagName=${TagElementHelper.getAttributeValue($rowTagElement,"class")})
+							#set($rowName = ${entityTable.getCell($row,1)})
+							#if($tagName=="nui-hidden")
+							##如果是自动生成主键就不提供主键录入
+							#elseif($rowName=="processInstID")
+							##processInstID 不用输出
+							#elseif($isAutoPK && $hasPK)
+								#set($rowIsPK=0)
+								#foreach($key in $keys)
+								#if($key == $rowName)
+								#set($currentRowCount = $currentRowCount + 1)
+								#set($rowIsPK=1)
+								#else
+								#end
+								#end
+							#if($rowIsPK==0)
+							<td class="form_label">${entityTable.getCell($row,2)}:</td>
+							<td colspan="${currentColspan}">
+							${entityTable.getTagConfig($row).toString(true,true)}
+							</td>
+							#end	
+							#else
+							<td class="form_label">${entityTable.getCell($row,2)}:</td>
+							<td colspan="${currentColspan}">
+							${entityTable.getTagConfig($row).toString(true,true)}
+							</td>
+							#end
+							#if($row==${entityTable.getCountSize()})
+							</tr>
+							#set($rowStart = 1)
+							#else
+								#if($currentRowCount==0)
+							</tr>#set($currentRowCount = $row_length)
+							#set($rowStart = 1)
+								#end
+							#end
+						#end
+					#end			
+				</table>
+			</div>
+		</fieldset>
+	</div>
+	<script type="text/javascript">
+		$(function() {
+    		$("body").css({"overflow":"auto", "position":"relative"});
+    	});
+    	
+		nui.parse();
+
+		var form = new nui.Form("${dataFormName}");
+		
+		/**
+		* 参数数据格式：
+		* e: {
+		*	workItemID: xxx,
+		*	processInstID: xxx,
+		*	workItem: {
+		*		workItemID: xxx,
+		*		workItemName: xxx,
+		*		xxx...
+		*	}
+		* }
+		*/
+		function initData(e){
+			var param = {
+				processInstID: e.processInstID,
+				__type: "sdo:${selectedEntity}"
+			};
+			bpff.components.core.loadEntity({
+				data: param, 
+				success: function(ret){
+					if(ret){
+						form.setData({${entityVar}: ret});
+					}else{
+						form.setData({${entityVar}: param});
+					}
+				}, 
+				error:function(err){
+					bpff.components.core.showMessage(err);						
+				}
+			});
+		}
+		
+		/**
+		* 表单提交之前调用：
+		* 可能用于数据校验等操作
+		*/
+		function beforeSubmit(e){
+			if(e.isValidateForm){
+				form.validate();
+	    		e.submit = form.isValid();
+	    	}
+	    	 #if(${isCustomBiz})
+	    	 //自定义表单数据保持逻辑
+	    	 e.instance.data.customSaveFormDataBiz = "${add_biz}.biz.ext";
+	    	 //提交除了表单数据之外的数据到自定义逻辑流
+	    	 /*e.instance.data.extAttr = {
+	    	 	key1: "value1",
+	    	 	key2: "value2"
+	    	 };*/
+	    	 #end
+		}
+		
+		/**
+		* 返回需要提交的业务数据
+		* 
+		*/
+		function getSubmitData(e){
+	        var data = form.getData();
+	        var entity = {
+	        	entity: data.${entityVar}
+	        };
+	        return entity;
+		}
+		
+		/**
+		* 表单提交之后调用
+		* e.returnData = {
+		*	userResult: {},
+		*	bizResult: {}
+		* }
+		*/
+		function afterSubmit(e){
+			if(e.returnData.exception){
+				return;
+			}
+			var userResult = e.returnData.userResult;//自定义逻辑流返回值，是一个数组，因为可能保存多个表单数据
+			
+			var componentID=e.instance.id;
+			if(needCloseWindow(componentID)){//是否需要关闭窗口；只有暂存，领取组件不需要关闭窗口
+				bps.components.core.closeNuiWindowAlways("ok");
+			}
+		}
+		
+		function needCloseWindow(componentID){
+			return componentID && componentID=="submit"||componentID=="terminate"||componentID=="deleg"||componentID=="help"||
+				componentID=="backActivity"||componentID=="cancelGet"||componentID=="reject"||componentID=="redo";
+		}
+	</script>
+</body>
+</html>
+
+
+

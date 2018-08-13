@@ -1,0 +1,175 @@
+##set wizard data context
+#set($wizardMap=${dataContextManager.getWizardDataContext()})
+##set contribution name
+#set($contributionName=${wizardMap.get("contribution")})
+#set($flowQName=${templateConfigManager.getInvokePath("entity_maintain.vm")})
+#set($queryMap = ${dataContextManager.getComponentDataContext(1, "queryform")})
+#set($viewlistMap = ${dataContextManager.getComponentDataContext(2, "viewlist")})
+#set($dataformMap = ${dataContextManager.getComponentDataContext(3, "dataform")})
+#set($selectedEntityMap = ${dataContextManager.getComponentDataContext(0, "entitySelect")})
+#set($selectedEntity=${dataContextManager.getComponentDataContext(0, "entitySelect").get("selectedEntity")})
+##set entity name
+#set($entityName=${dataContextManager.getComponentDataContext(0, "entitySelect").get("entityName")})
+#set($entityNameLow = "${entityName.toLowerCase()}")
+#set($isPagination=${queryMap.get("isPagination")})
+#set($isAutoPK=${dataContextManager.getComponentDataContext(0, "auto_pk").get("checked")})
+#set($keys = ${DataEntityHelper.getPrimaryKeys($selectedEntity)})
+##dataform
+#set($entityTable=${dataformMap.get("entityTable")})
+##set slavery selected object
+#set($slaveryMap = ${dataContextManager.getComponentDataContext(4, "slavery_tables")})
+#set($criteria = $queryMap.get("criteriaName"))
+#set($entityVar = $dataformMap.get("entityVariable"))
+#set($selectArrVar = $viewlistMap.get("submitXpath"))
+#set($formName = $dataformMap.get("formName"))
+#set($iter_xpath = "${entityNameLow}s")
+#if($criteria == "")#set($criteria = "criteria")#end
+#if($entityVar == "")#set($entityVar = $entityNameLow)#end
+#if($selectArrVar == "")#set($selectArrVar = "select_objs")#end
+<%@page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
+<%@include file="/common/common.jsp"%>
+<%@include file="/common/skins/skin0/component.jsp" %>
+<h:css href="/css/style1/style-custom.css"/>
+<%--
+  - Author(s): ${RuntimeInfo.getAuthor()}
+  - Date: ${RuntimeInfo.getDate()} ${RuntimeInfo.getTime()}
+  - Description:
+--%>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<title>${DataEntityHelper.getEntityDisplayName($selectedEntity)}Input</title>
+</head>
+<body>
+<e:datasource name="${entityVar}" type="entity" path="$selectedEntity" />
+<h:form name="$formName" action="${flowQName}" method="post" onsubmit="return submitDatacell(this);">
+#foreach($key in $keys)
+#if($isAutoPK)
+	<h:hidden property="$entityVar/$key" />
+#end
+	#set($keyRow=0)
+	#foreach($row in [1..${entityTable.getCountSize()}])
+		#if($key == ${entityTable.getCell($row,1)})
+			#set($keyRow = $row)
+		#end
+	#end
+#if($isAutoPK)
+	#if($keyRow != 0)
+		$entityTable.deleteRow($keyRow)
+	#end
+#else
+	#if($keyRow == 0)
+	<h:hidden property="$entityVar/$key" />
+	#end
+#end
+#end
+	<l:equal property="_eosLastAccessAction" targetValue="update">
+		<input type="hidden" name="_eosFlowAction" value="updateSubmit" >
+	</l:equal>
+	<l:equal property="_eosLastAccessAction" targetValue="insert">
+		<input type="hidden" name="_eosFlowAction" value="insertSubmit" >
+	</l:equal>
+<h:hiddendata property="${criteria}" />
+#if($isPagination)
+<h:hidden property="page/begin"/>
+<h:hidden property="page/length"/>
+<h:hidden property="page/isCount"/>
+#end
+#set($temp=${dataformMap.put("pageFlow","")})
+#set($map=${dataformMap})
+#parse("dataform")
+$WizardReverseHelper.createReverseConfigFile("dataform", $dataformMap)
+#set($slaveryProperties = $slaveryMap.get("slaveryProperties"))
+#set($count = 0)
+#foreach($property in $slaveryProperties)
+	#set($count = $count + 1)
+#end
+#set($scripts = " ")
+
+#if($count > 1)
+<w:tabPanel id="tabs1">
+#end
+#foreach($property in $slaveryProperties)
+	#set($tagElement = ${slaveryMap.get("$property").get("tag_element")})
+	#set($toolBars = $TagElementHelper.getElementByName($tagElement, "r:toolbar"))
+	#set($toolBar = "")
+    #foreach($bar in $toolBars)
+    	#set($toolBar = $bar)
+    #end
+	#set($cellId = $TagElementHelper.getAttributeValue($tagElement, "id"))
+	#set($scripts = $scripts.concat("var dcell = $id('${cellId}'); dcell.submitAllByHidden();"))
+	#set($entityNamespace = $TagElementHelper.getAttributeValue($tagElement, "entityType"))
+
+	#if($toolBar == "")
+		#set($toolBar=$TagElementHelper.newTagElement("r:toolbar"))
+	#end
+
+
+	#set($entityPKs = ${DataEntityHelper.getPrimaryKeys($entityNamespace)})
+	#set($rfields = $TagElementHelper.getElementByName($tagElement, "r:field"))
+	#set($fks = $DataEntityHelper.getEntityFK($entityNamespace, $selectedEntity))
+	#foreach($rfield in $rfields)
+		#if($rfield)
+			#set($fieldName = $TagElementHelper.getAttributeValue($rfield, "fieldName"))
+
+			#set($isFK = false)
+			#foreach($fk in $fks)
+				#if($fk == $fieldName)
+					#set($isFK = true)
+				#end
+			#end
+
+			#set($isPK = false)
+			#foreach($pk in $entityPKs)
+				#if($pk == $fieldName)
+					#set($isPK = true)
+				#end
+			#end
+
+			#if($isFK && !$isPK)
+				${TagElementHelper.removeChildElement($tagElement, $rfield)}
+			#end
+
+			#if($isPK && $isAutoPK)
+				${TagElementHelper.removeChildElement($tagElement, $rfield)}
+			#end
+
+			#if($isPK && !$isAutoPK)
+				$rfield.addAttr("allowModify", "false")
+			#end
+		#end
+	#end
+	$TagElementHelper.setAttributeValue($tagElement, "xpath", "${entityVar}/${property}")
+	$TagElementHelper.setAttributeValue($tagElement, "submitXpath", "${entityVar}/${property}")
+	$TagElementHelper.setAttributeValue($tagElement, "queryAction", "")
+	$TagElementHelper.setAttributeValue($tagElement, "submitAction", "")
+	$TagElementHelper.setAttributeValue($toolBar, "location", "top")
+	$TagElementHelper.setAttributeValue($toolBar, "tools", "edit:add del")
+    #if($count > 1)
+    	<w:tabPage id="${property}_page" tabType="div" title="Update ${DataEntityHelper.getEntityDisplayName($entityNamespace)} Infomation">
+    #end
+	#set($map = ${slaveryMap.get("$property")})
+	#parse("r:datacell")
+    #if($count > 1)
+		</w:tabPage>
+	#end
+#end
+#if($count > 1)
+</w:tabPanel>
+#end
+</h:form>
+<script>
+function submitDatacell(frm) {
+	if (checkForm(frm)) {
+$scripts
+		return true;
+	}
+	return false;
+}
+</script>
+</body>
+</html>
+
+
+
+

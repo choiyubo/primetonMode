@@ -1,0 +1,58 @@
+<div id="linechart" style="height:400px"></div>
+	<script type="text/javascript">
+
+	             var linechart = echarts.init(document.getElementById('linechart')); 
+	             
+	             var option = {
+	                 title : {
+	                    text: 'Please input a text.',
+	                    subtext: 'Please input a text.'
+	                 },
+	                 tooltip : {
+	                    trigger: 'axis'
+	                 },
+	                 legend: {
+	                    data:['Index1','Index2']
+	                 },
+	                 toolbox: {
+	                    show : false,
+	                    feature : {
+	                        mark : {show: true},
+	                        dataView : {show: true, readOnly: false},
+	                        magicType : {show: true, type: ['line', 'bar']},
+	                        restore : {show: true},
+	                        saveAsImage : {show: true}
+	                     }
+	                  },
+	                  calculable : true,
+	                  xAxis : [
+	                      {
+	                          type : 'category',
+	                          data : ['Test1','Test2','Test3','Test4','Test5','Test6','Test7']
+	                      }
+	                    ],
+	                   yAxis : [
+	                       {
+	                          type : 'value',
+	                       }
+	                    ],
+	                   series :[
+	                        {
+	                           name:'Index1',
+	                           type:'line',
+	                           data:[11, 11, 15, 13, 12, 13, 10],
+	                            
+	                        },
+	                        {
+	                           name:'Index2',
+	                           type:'line',
+	                           data:[1, 3, 5, 7, 9, 13, 15],
+	                           
+	                        }
+	                    ]
+	                };
+	               
+	                linechart.setOption(option);
+	                
+	          
+	</script>

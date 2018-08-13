@@ -1,0 +1,115 @@
+
+#set($wizardMap=${dataContextManager.getWizardDataContext()})
+
+#set($contribution=${wizardMap.get("contribution")})
+
+#set($selectedEntity=${dataContextManager.getComponentDataContext(0, "entitySelect").get("selectedEntity")})
+#set($entityName=${dataContextManager.getComponentDataContext(0, "entitySelect").get("entityName")})
+#set($entityNameLow="${entityName.replaceFirst('.', ${entityName.substring(0,1).toLowerCase()})}")
+#set($isAutoPK=${dataContextManager.getComponentDataContext(0, "auto_pk").get("checked")})
+
+#set($author=${wizardMap.get("author")})
+#set($email=${wizardMap.get("email")})
+
+#set($currentServiceNamespace=${templateConfigManager.getInvokePath("template_service_impl.vm")})
+#if(${StringUtil.contains($currentServiceNamespace, ".")})
+#set($currentPackage=${StringUtil.substringBeforeLast($currentServiceNamespace, ".")})
+#else
+#set($currentPackage="")
+#end
+#if(${StringUtil.contains($currentServiceNamespace, ".")})
+#set($currentFile=${StringUtil.substringAfterLast($currentServiceNamespace, ".")})
+#else
+#set($currentFile=$currentServiceNamespace)
+#end
+#set($interfaceNamespace=${templateConfigManager.getInvokePath("template_service_interface.vm")})
+#if(${StringUtil.contains($interfaceNamespace, ".")})
+#set($interfacePackage=${StringUtil.substringBeforeLast($interfaceNamespace, ".")})
+#else
+#set($interfacePackage="")
+#end
+#if(${StringUtil.contains($interfaceNamespace, ".")})
+#set($interfaceFile=${StringUtil.substringAfterLast($interfaceNamespace, ".")})
+#else
+#set($interfaceFile=$interfaceNamespace)
+#end
+
+##set($currentPackage=${dataContextManager.getPageDataContext("template_page").get("package_template_service_impl.vm")})
+##set($currentFile=${dataContextManager.getPageDataContext("template_page").get("file_template_service_impl.vm")})
+##set($interfacePackage=${dataContextManager.getPageDataContext("template_page").get("package_template_service_interface.vm")})
+##set($interfaceFile=${dataContextManager.getPageDataContext("template_page").get("file_template_service_interface.vm")})
+##set($interfaceNamespace="${interfacePackage}.${interfaceFile}")
+
+#set($slaveryMap = ${dataContextManager.getComponentDataContext(4, "slavery_tables")})
+#set($slaveryProperties = $slaveryMap.get("slaveryProperties"))
+#if(!${StringUtil.equals(${currentPackage}, "")})
+package ${currentPackage};
+#end
+
+import com.eos.das.entity.IDASCriteria;
+import com.eos.das.entity.criteria.CriteriaType;
+import com.eos.foundation.PageCond;
+import com.eos.spring.DASDaoSupport;
+import ${selectedEntity};
+#if(!${StringUtil.equals($interfacePackage, $currentPackage)})
+import ${interfaceNamespace};
+#end
+
+import commonj.sdo.DataObject;
+
+/**
+ * <pre>
+ * Title: the title
+ * Description: the description
+ * </pre>
+ * @author ${author} (mailto:${email})
+ * @version 1.00.00
+ *
+ */
+/*
+ * Modify History
+ * $log$
+ */
+public class ${currentFile} extends DASDaoSupport implements ${interfaceFile}{
+	public void add${entityName}(${entityName} ${entityNameLow}){
+#if($isAutoPK)
+		getDASTemplate().getPrimaryKey(${entityNameLow});
+#end
+		getDASTemplate().insertEntityCascade(${entityNameLow});
+	}
+
+	public void delete${entityName}(${entityName}[] ${entityNameLow}s ){
+		for(${entityName} ${entityNameLow}:${entityNameLow}s){
+			getDASTemplate().deleteEntityCascade(${entityNameLow});
+		}
+	}
+
+
+	public void get${entityName}(${entityName} ${entityNameLow}){
+		getDASTemplate().expandEntity(${entityNameLow});
+#foreach($property in $slaveryProperties)
+		getDASTemplate().expandRelation(${entityNameLow}, "$property");
+#end
+	}
+
+
+	public ${entityName}[] query${entityName}s(CriteriaType criteriaType,PageCond pageCond){
+		IDASCriteria dasCriteria = getDASTemplate().criteriaTypeToDASCriteria(criteriaType);
+		${entityName}[] result = getDASTemplate().queryEntitiesByCriteriaEntityWithPage(${entityName}.class, dasCriteria, pageCond);
+
+		//for webservice,open the line for lazy loading.
+#foreach($property in $slaveryProperties)
+		//getDASTemplate().expandEntitiesRelation(result, "$property");
+#end
+		return result;
+	}
+
+
+    public void update${entityName}(${entityName} ${entityNameLow}){
+	    getDASTemplate().updateEntityCascade(${entityNameLow});
+    }
+
+}
+
+
+

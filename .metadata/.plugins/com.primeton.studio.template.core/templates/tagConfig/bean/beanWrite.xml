@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSPY v2004 rel. 4 U (http://www.xmlspy.com) by ton (ORiON) -->
+<tag tagName="b:write" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
+	<require>
+		<path>/bean/baseBean.xml</path>
+		<include>iterateId,value,propertyType,ignore,property,scope</include>
+	</require>
+	<group groupName="Basic">
+		<property name="formatPattern" displayName="formatPattern" hint="format Pattern" type="combo:editable" required="false" showInViewModel="common">
+						<dataProvider class="listProvider">
+							<string>yyyy/MM/dd</string>
+							<string>yyyy-MM-dd</string>
+							<string>yyyyMMdd</string>
+						</dataProvider>
+		</property>
+		<property name="srcFormatPattern" displayName="srcFormatPattern" hint="Original format." type="primitive:string" required="false" showInViewModel="common"/>
+		<property name="maxLength" displayName="maxLength" hint="Set the the maximum length of output." type="primitive:integer" required="false" showInViewModel="common">
+			<validators>
+				<intRangeValidator>
+					<min>2</min>
+				</intRangeValidator>
+			</validators>
+		</property>
+	<property name="filter" displayName="filter" hint="Sets whether to convert the HTML tag." type="primitive:boolean" required="false" defaultValue=""/>
+		<property name="maxLengthString" displayName="maxLengthString" hint="Sets the string to replace the content which beyond the maximum length of output." type="primitive:string" showInViewModel="common" defaultValue="" required="false"/>
+		<property showInViewModel="never" name="modelField" displayName="modelField" hint="Binding a field of ViewModel" type="resource:dataField" defaultValue="" required="false">
+
+		</property>
+	</group>
+</tag>

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wizard height="500" sort="1007" id="entity_slavery" isDefault="true" name="主从表维护向导" width="750" type="Richweb">
+	<page description="选择一个数据实体产生维护的功能代码(只支持选择单向1:n或者双向n:1关联的1端实体)" height="500" index="0" title="选择数据实体" width="750">
+		<layout column="2" row="3"/>
+		<component id="entitySelect" type="entity_select" label="选择实体:">
+			<ui>
+				<size column="1" row="1"/>
+				<fillStyle style="fill_horizontal"/>
+			</ui>
+		</component>
+		<component id="auto_pk" label="自动产生主键" type="checkbox">
+			<ui>
+				<size column="1" row="1"/>
+				<fillStyle style="fill_horizontal"/>
+				<data default_value="true"/>
+			</ui>
+		</component>
+		<component id="select_slavery_tables" label="选择需要维护的从表" type="table_select">
+			<ui>
+				<size column="2" row="2"/>
+			</ui>
+		</component>
+		<templates>
+			<item>data_init.vm</item>
+		</templates>
+	</page>
+	<page description="使用queryform查询表单查询选择的实体" height="550" index="1" title="查询条件页面设置" width="750">
+		<layout column="1" row="2"/>
+		<component id="queryform" type="queryform">
+			<ui>
+				<size column="1" row="2"/>
+			</ui>
+		</component>
+	</page>
+	<page description="采用table方式显示当前实体的查询结果" height="700" index="2" title="查询结果列表设置" width="750">
+		<layout column="1" row="2"/>
+		<component id="viewlist" type="viewlist">
+			<ui>
+				<size column="1" row="2"/>
+			</ui>
+		</component>
+	</page>
+	<page description="配置录入表单的基本信息" height="600" index="3" title="数据录入页面设置" width="750">
+		<layout column="1" row="2"/>
+		<component id="dataform" type="dataform">
+			<ui>
+				<size column="1" row="2"/>
+			</ui>
+		</component>
+		<templates>
+			<item>datacell_init.vm</item>
+		</templates>
+	</page>
+	<page description="采用datacell录入从表，配置datacell选项" height="700" index="4" title="从表录入配置" width="800">
+		<layout column="1" row="2"/>
+		<component id="slavery_tables" nested_type="datacell" type="tables">
+			<ui>
+				<size column="1" row="2"/>
+			</ui>
+		</component>
+	</page>
+	<event>
+		<entry source="entitySelect" target="queryform"/>
+		<entry source="entitySelect" target="viewlist"/>
+		<entry source="entitySelect" target="dataform"/>
+		<entry source="entitySelect" target="select_slavery_tables"/>
+		<entry source="select_slavery_tables" target="slavery_tables"/>
+	</event>
+	<template>
+		<entry fileName="${entitySelect.entityName}Query.jsp" fileType="page" templateName="entity_query.vm"/>
+		<entry fileName="${entitySelect.entityName}Input.jsp" fileType="page" templateName="entity_input.vm"/>
+		<entry fileName="${entitySelect.entityName}Maintain.flowx" fileType="pageflow" templateName="entity_maintain.vm"/>
+		<entry component="${entitySelect.entityNameLowerCase}biz" fileName="add${entitySelect.entityName}.bizx" fileType="biz" templateName="add_entity.vm"/>
+		<entry component="${entitySelect.entityNameLowerCase}biz" fileName="delete${entitySelect.entityName}s.bizx" fileType="biz" templateName="delete_entities.vm"/>
+		<entry component="${entitySelect.entityNameLowerCase}biz" fileName="get${entitySelect.entityName}.bizx" fileType="biz" templateName="get_entity.vm"/>
+		<entry component="${entitySelect.entityNameLowerCase}biz" fileName="query${entitySelect.entityName}s.bizx" fileType="biz" templateName="query_entities.vm"/>
+		<entry component="${entitySelect.entityNameLowerCase}biz" fileName="update${entitySelect.entityName}.bizx" fileType="biz" templateName="update_entity.vm"/>
+		<entry templateName="data_init.vm"/>
+		<entry templateName="datacell_init.vm"/>
+	</template>
+</wizard>

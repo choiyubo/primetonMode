@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tag tagName="r:toolbar" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
+	<group groupName="Basic">
+		<property allowXPath="false" name="scope" displayName="scope" hint="Sets the data area." type="combo:readonly" defaultValue="" required="false">
+			<dataProvider class="mapProvider">
+				<mapEntry>
+					<key class="string">request</key>
+					<value class="string">r</value>
+				</mapEntry>
+				<mapEntry>
+					<key class="string">page</key>
+					<value class="string">p</value>
+				</mapEntry>
+				<mapEntry>
+					<key class="string">flow</key>
+					<value class="string">f</value>
+				</mapEntry>
+				<mapEntry>
+					<key class="string">session</key>
+					<value class="string">s</value>
+				</mapEntry>
+			</dataProvider>
+		</property>
+	</group>
+	<group groupName="Other">
+		<property name="tools" displayName="tools" hint="Sets the tools of the bar." type="toolbox" defaultValue="" required="false">
+			
+		</property>
+		<property name="location" displayName="location" hint="Sets the toolsbar's location. " type="combo:readonly" defaultValue="" required="false">
+			<dataProvider class="mapProvider">
+				<mapEntry>
+					<key class="string">top</key>
+					<value class="string">top</value>
+				</mapEntry>
+				<mapEntry>
+					<key class="string">bottom</key>
+					<value class="string">bottom</value>
+				</mapEntry>
+			</dataProvider>
+		</property>
+	</group>
+</tag>

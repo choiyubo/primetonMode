@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<tag xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" tagName="w:radioGroup" >
+    <require>
+        <path>/webcomp/baseWebcomp.xml</path>
+        <include>id,scope</include>
+    </require>
+    <group groupName="Basic">
+    </group>
+</tag>

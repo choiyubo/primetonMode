@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<viewModelSet author="huang" displayName="data" id="com.primeton.nuisample.data">
+    <viewModel author="huang" displayName="联系人" entityName="com.primeton.nuisample.data.OContacts" id="OContacts">
+        <field dataType="Long" dict="false" entityField="contactId" id="contactId" label="联系人编号">
+            <view type="write"/>
+            <edit name="" type="text"/>
+        </field>
+        <field dataType="Long" dict="false" entityField="operatorId" id="operatorId" label="操作员编号">
+            <view type="write"/>
+            <edit name="" type="text"/>
+        </field>
+        <field dataType="String" dict="false" entityField="contactName" id="contactName" label="姓名">
+            <view type="write"/>
+            <edit name="" type="text"/>
+        </field>
+        <field dataType="String" dict="false" entityField="relation" id="relation" label="关系">
+            <view type="write"/>
+            <edit name="" type="text"/>
+        </field>
+        <field dataType="String" dict="false" entityField="phone" id="phone" label="电话">
+            <view type="write"/>
+            <edit name="" type="text"/>
+        </field>
+        <field dataType="String" dict="false" entityField="postcode" id="postcode" label="邮政邮编">
+            <view type="write"/>
+            <edit name="" type="text"/>
+        </field>
+        <field dataType="String" dict="false" entityField="address" id="address" label="地址">
+            <view type="write"/>
+            <edit name="" type="text"/>
+        </field>
+        <field dataType="String" dict="false" entityField="email" id="email" label="电子邮箱">
+            <view type="write"/>
+            <edit name="" type="text"/>
+        </field>
+    </viewModel>
+    <viewModel author="huang" displayName="操作员" entityName="com.primeton.nuisample.data.OOperator" id="OOperator">
+        <field dataType="Long" dict="false" entityField="operatorId" id="operatorId" label="操作员编号">
+            <view type="write"/>
+            <edit name="" type="text"/>
+        </field>
+        <field dataType="String" dict="false" entityField="userId" id="userId" label="身份证">
+            <view type="write"/>
+            <edit name="" type="text"/>
+        </field>
+        <field dataType="String" dict="false" entityField="userName" id="userName" label="姓名">
+            <view type="write"/>
+            <edit name="" type="text"/>
+        </field>
+        <field dataType="Date" dict="false" entityField="birthday" id="birthday" label="生日">
+            <view type="write"/>
+            <edit name="" type="date"/>
+        </field>
+        <field dataType="String" dict="false" entityField="gender" id="gender" label="性别">
+            <view type="write"/>
+            <edit name="" type="text"/>
+        </field>
+        <field dataType="String" dict="false" entityField="postcode" id="postcode" label="邮政编码">
+            <view type="write"/>
+            <edit name="" type="text"/>
+        </field>
+        <field dataType="String" dict="false" entityField="address" id="address" label="地址">
+            <view type="write"/>
+            <edit name="" type="text"/>
+        </field>
+        <field dataType="String" dict="false" entityField="phone" id="phone" label="电话">
+            <view type="write"/>
+            <edit name="" type="text"/>
+        </field>
+        <field dataType="String" dict="false" entityField="email" id="email" label="电子邮件">
+            <view type="write"/>
+            <edit name="" type="text"/>
+        </field>
+        <field dataType="String" dict="false" entityField="memo" id="memo" label="备注">
+            <view type="write"/>
+            <edit name="" type="text"/>
+        </field>
+        <field dataType="Long" dict="false" entityField="orgId" id="orgId" label="orgId">
+            <view type="write"/>
+            <edit name="" type="text"/>
+        </field>
+        <field dataType="Long" dict="false" entityField="oOrg.orgId" id="oOrg.orgId" label="orgId">
+            <view type="write"/>
+            <edit name="" type="text"/>
+        </field>
+        <field dataType="String" dict="false" entityField="oOrg.orgAddress" id="oOrg.orgAddress" label="orgAddress">
+            <view type="write"/>
+            <edit name="" type="text"/>
+        </field>
+        <field dataType="String" dict="false" entityField="oOrg.orgCode" id="oOrg.orgCode" label="orgCode">
+            <view type="write"/>
+            <edit name="" type="text"/>
+        </field>
+        <field dataType="Long" dict="false" entityField="oOrg.parentOrgId" id="oOrg.parentOrgId" label="parentOrgId">
+            <view type="write"/>
+            <edit name="" type="text"/>
+        </field>
+        <field dataType="String" dict="false" entityField="oOrg.orgName" id="oOrg.orgName" label="orgName">
+            <view type="write"/>
+            <edit name="" type="text"/>
+        </field>
+        <field dataType="String" dict="false" entityField="oOrg.orgSeq" id="oOrg.orgSeq" label="orgSeq">
+            <view type="write"/>
+            <edit name="" type="text"/>
+        </field>
+        <field dataType="String" dict="false" entityField="oContacts.phone" id="oContacts.phone" label="phone">
+            <view type="write"/>
+            <edit name="" type="text"/>
+        </field>
+        <field dataType="Long" dict="false" entityField="oContacts.contactId" id="oContacts.contactId" label="contactId">
+            <view type="write"/>
+            <edit name="" type="text"/>
+        </field>
+        <field dataType="Long" dict="false" entityField="oContacts.operatorId" id="oContacts.operatorId" label="operatorId">
+            <view type="write"/>
+            <edit name="" type="text"/>
+        </field>
+        <field dataType="String" dict="false" entityField="oContacts.email" id="oContacts.email" label="email">
+            <view type="write"/>
+            <edit name="" type="text"/>
+        </field>
+        <field dataType="String" dict="false" entityField="oContacts.address" id="oContacts.address" label="address">
+            <view type="write"/>
+            <edit name="" type="text"/>
+        </field>
+        <field dataType="String" dict="false" entityField="oContacts.contactName" id="oContacts.contactName" label="contactName">
+            <view type="write"/>
+            <edit name="" type="text"/>
+        </field>
+        <field dataType="String" dict="false" entityField="oContacts.relation" id="oContacts.relation" label="relation">
+            <view type="write"/>
+            <edit name="" type="text"/>
+        </field>
+        <field dataType="String" dict="false" entityField="oContacts.postcode" id="oContacts.postcode" label="postcode">
+            <view type="write"/>
+            <edit name="" type="text"/>
+        </field>
+    </viewModel>
+    <viewModel author="huang" displayName="机构" entityName="com.primeton.nuisample.data.OOrg" id="OOrg">
+        <field dataType="Long" dict="false" entityField="orgId" id="orgId" label="机构编号">
+            <view type="write"/>
+            <edit name="" type="text"/>
+        </field>
+        <field dataType="String" dict="false" entityField="orgName" id="orgName" label="机构名称">
+            <view type="write"/>
+            <edit name="" type="text"/>
+        </field>
+        <field dataType="String" dict="false" entityField="orgCode" id="orgCode" label="机构代码">
+            <view type="write"/>
+            <edit name="" type="text"/>
+        </field>
+        <field dataType="String" dict="false" entityField="orgAddress" id="orgAddress" label="机构地址">
+            <view type="write"/>
+            <edit name="" type="text"/>
+        </field>
+        <field dataType="String" dict="false" entityField="orgSeq" id="orgSeq" label="机构序号">
+            <view type="write"/>
+            <edit name="" type="text"/>
+        </field>
+        <field dataType="Long" dict="false" entityField="parentOrgId" id="parentOrgId" label="parentOrgId">
+            <view type="write"/>
+            <edit name="" type="text"/>
+        </field>
+        <field dataType="Long" dict="false" entityField="oOrg.orgId" id="oOrg.orgId" label="orgId">
+            <view type="write"/>
+            <edit name="" type="text"/>
+        </field>
+        <field dataType="String" dict="false" entityField="oOrg.orgAddress" id="oOrg.orgAddress" label="orgAddress">
+            <view type="write"/>
+            <edit name="" type="text"/>
+        </field>
+        <field dataType="String" dict="false" entityField="oOrg.orgCode" id="oOrg.orgCode" label="orgCode">
+            <view type="write"/>
+            <edit name="" type="text"/>
+        </field>
+        <field dataType="Long" dict="false" entityField="oOrg.parentOrgId" id="oOrg.parentOrgId" label="parentOrgId">
+            <view type="write"/>
+            <edit name="" type="text"/>
+        </field>
+        <field dataType="String" dict="false" entityField="oOrg.orgName" id="oOrg.orgName" label="orgName">
+            <view type="write"/>
+            <edit name="" type="text"/>
+        </field>
+        <field dataType="String" dict="false" entityField="oOrg.orgSeq" id="oOrg.orgSeq" label="orgSeq">
+            <view type="write"/>
+            <edit name="" type="text"/>
+        </field>
+    </viewModel>
+</viewModelSet>

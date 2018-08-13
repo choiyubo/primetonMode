@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wizard id="nui_entity_maintain" sort="1018" isDefault="true" name="NUI 单表维护功能向导"  width="700" height="350" type="NUI">
+	<page index="0" title="选择数据实体" description="选择一个数据实体产生维护的功能代码" width="600" height="350">
+		<layout row="1" column="2"/>
+		<component id="entitySelect" type="entity_select" label="选择实体:">
+			<ui>
+				<size row="1" column="2"/>
+			</ui>
+		</component>
+		<component id="auto_pk" type="checkbox" label="自动生成主键">
+			<ui>
+				<size row="1" column="1"/>
+				<data default_value="true"></data>
+			</ui>
+		</component>
+		<templates>
+			<item>data_init.vm</item>
+		</templates>
+	</page>
+	<page index="1" title="查询条件设置页" description="设置查询页面的查询字段和条件" width="800" height="650">
+		<layout row="2" column="1"/>
+		<component id="nui_queryform" type="nui_queryform">
+			<ui>
+				<size row="2" column="1"/>
+			</ui>
+		</component>
+	</page>
+ 	<page index="2" title="查询结果配置页" description="配置查询结果的显示页面" width="750" height="700">
+		<layout row="2" column="1"/>
+		<component id="nui_viewlist" type="nui_viewlist">
+			<ui>
+				<size row="2" column="1"/>
+			</ui>
+		</component>
+	</page>
+	<page index="3" title="实体录入配置页面" description="配置录入表单的基本信息" width="750" height="600">
+		<layout row="2" column="1"/>
+		<component id="nui_dataform" type="nui_dataform">
+			<ui>
+				<size row="2" column="1"/>
+			</ui>
+		</component>
+	</page>
+	<event>
+		<entry source="entitySelect" target="nui_queryform"/>
+ 		<entry source="entitySelect" target="nui_viewlist"/>
+		<entry source="entitySelect" target="nui_dataform"/>
+	</event>
+ 	<template>
+		<entry templateName="list_jsp.vm" fileName="${entitySelect.entityName}List.jsp" fileType="page"/>
+		<entry templateName="form_jsp.vm" fileName="${entitySelect.entityName}Form.jsp" fileType="page"/>
+
+		<entry templateName="add_entity.vm" fileName="add${entitySelect.entityName}.bizx" component="${entitySelect.entityNameLowerCase}biz" fileType="biz"/>
+		<entry templateName="delete_entities.vm" fileName="delete${entitySelect.entityName}s.bizx" component="${entitySelect.entityNameLowerCase}biz" fileType="biz"/>
+		<entry templateName="get_entity.vm" fileName="get${entitySelect.entityName}.bizx" component="${entitySelect.entityNameLowerCase}biz" fileType="biz"/>
+		<entry templateName="query_entities.vm" fileName="query${entitySelect.entityName}s.bizx" component="${entitySelect.entityNameLowerCase}biz" fileType="biz"/>
+		<entry templateName="update_entity.vm" fileName="update${entitySelect.entityName}.bizx" component="${entitySelect.entityNameLowerCase}biz" fileType="biz"/>
+	</template>
+</wizard>
+
+
+

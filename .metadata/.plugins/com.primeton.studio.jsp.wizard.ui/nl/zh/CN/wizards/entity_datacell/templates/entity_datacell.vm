@@ -1,0 +1,75 @@
+##获得整个向导数据
+#set($wizardMap=${dataContextManager.getWizardDataContext()})
+##获得向导所在的contribution名称
+#set($contributionName=${wizardMap.get("contribution")})
+#set($queryMap = ${dataContextManager.getComponentDataContext(1, "queryform")})
+#set($selectedEntityMap = ${dataContextManager.getComponentDataContext(0, "entitySelect")})
+#set($selectedEntity=${dataContextManager.getComponentDataContext(0, "entitySelect").get("selectedEntity")})
+##选择实体的短名称（String类型）
+#set($entityName=${dataContextManager.getComponentDataContext(0, "entitySelect").get("entityName")})
+#set($entityNameLow = "${entityName.toLowerCase()}")
+#set($isPagination=${queryMap.get("isPagination")})
+#set($isAutoPK=${dataContextManager.getComponentDataContext(0, "auto_pk").get("checked")})
+#set($keys = ${DataEntityHelper.getPrimaryKeys($selectedEntity)})
+#set($save_biz=${templateConfigManager.getInvokePath("save_all_entities.vm")})
+#set($query_biz=${templateConfigManager.getInvokePath("query_entities.vm")})
+#set($queryFormName = $queryMap.get("formName"))
+#if($queryFormName == "") #set($queryFormName = "query_form") #end
+<%@page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
+<%@include file="/common/common.jsp"%>
+<%@include file="/common/skins/skin0/component.jsp" %>
+<h:css href="/css/style1/style-custom.css"/>
+<%-- 
+  - Author(s): ${RuntimeInfo.getAuthor()}
+  - Date: ${RuntimeInfo.getDate()} ${RuntimeInfo.getTime()}
+  - Description:
+--%>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<title>${DataEntityHelper.getEntityDisplayName($selectedEntity)}</title>
+</head>
+<body>
+#set($temp=${queryMap.put("pageFlow","")}) ## 将queryform向导中选择的页面流清空，不然queryform模板产生form表单
+#set($temp=${queryMap.put("criteriaName", "criteria")}) ## 将queryform中设置的查询条件变量设置为criteria
+#set($tempPagination=${queryMap.get("isPagination")}) ## 先缓存原来的值，在执行完queryform后，再设回去
+#set($temp=${queryMap.put("isPagination", false)})
+#set($temp=$queryMap.put("formId", "queryFormDatacell"))
+#set($temp=$queryMap.put("onsubmit", "return submitQuery(this);"))
+#set($map=${queryMap})
+#set($tagElement = ${map.get("tag_element")})
+#set($pageSize = ${map.get("pageLength")})
+#set($isPageCount = ${map.get("isPageCount")})
+#set($width=${map.get("formWidth")})
+#parse("queryform")  ##执行queryform模板
+#set($temp=${queryMap.put("isPagination", $tempPagination)}) ## 设回原有的值
+$WizardReverseHelper.createReverseConfigFile("queryform", $queryMap)##生成反向配置文件
+#set($map = ${dataContextManager.getComponentDataContext(2, "datacell")})
+#set($tagElement = $map.get("tag_element"))
+<script>
+function submitQuery(frm) {
+	if (checkForm(frm)) {
+		var a = $id('${tagElement.getAttributes().get("id")}');
+		a.reload();
+	}
+	return false;
+}
+</script>
+<br/>
+${TagElementHelper.setAttributeValue($tagElement, "paramFormId", "queryFormDatacell")}
+${TagElementHelper.setAttributeValue($tagElement, "queryAction", "${query_biz}.biz")}
+${TagElementHelper.setAttributeValue($tagElement, "submitAction", "${save_biz}.biz")}
+${TagElementHelper.setAttributeValue($tagElement, "xpath", "${entityNameLow}s")}
+${TagElementHelper.setAttributeValue($tagElement, "width", "${width}")}
+#if($pageSize != "")
+	${TagElementHelper.setAttributeValue($tagElement, "pageSize", "${pageSize}")}
+#end
+#if($isPageCount != "")
+	${TagElementHelper.setAttributeValue($tagElement, "isCount", "${isPageCount}")}
+#end
+#parse("r:datacell")
+</body>
+</html>
+
+
+

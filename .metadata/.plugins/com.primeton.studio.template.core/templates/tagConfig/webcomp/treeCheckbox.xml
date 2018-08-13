@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<tag xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" tagName="w:treeCheckbox">
+    <require>
+        <path>/webcomp/baseWebcomp.xml</path>
+        <include>value,scope</include>
+    </require>
+    <group groupName="Basic">
+        <property displayName="field" hint="field" name="field" required="false" type="primitive:string"/>
+        <property displayName="checkedXpath" hint="checkedXpath" name="checkedXpath" required="false" type="primitive:string"/>
+        <property displayName="checkedField" hint="checkedField" name="checkedField" required="false" type="primitive:string"/>
+    </group>
+</tag>

@@ -1,0 +1,6 @@
+#set($tagElement = ${map.get("tag_element")})
+${tagElement.toStringWithoutEndTag()}
+	<div property="columns">
+        <div field="" width="" headerAlign="" allowSort="true"></div>
+    </div>
+</div>

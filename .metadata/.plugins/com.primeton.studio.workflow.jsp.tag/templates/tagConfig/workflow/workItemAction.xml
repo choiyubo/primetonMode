@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tag xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" tagName="wf:workItemAction">
+	<group groupName="基本属性">
+		<property type="combo:readonly" name="type" displayName="type" hint="操作类型" required="true">
+			<dataProvider class="listProvider">
+				<string>CANCELGET</string>
+				<string>GET</string>
+				<string>SUBMIT</string>
+				<string>DELEGATE</string>
+				<string>WITHDRAW</string>
+				<string>HELP</string>
+				<string>REJECT</string>
+				<string>REDO</string>
+			</dataProvider>
+		</property>
+	</group>
+</tag>
+
+

@@ -1,0 +1,59 @@
+<div id="columnschart" style="height:400px"></div>
+	<script type="text/javascript">
+    
+
+                
+                var columnschart = echarts.init(document.getElementById('columnschart')); 
+                
+                var option = {
+                        title : {
+                            text: 'Please input a text.',
+                            subtext: 'Please input a text.'
+                        },
+                        tooltip : {
+                            trigger: 'axis'
+                        },
+                        legend: {
+                            data:['Index1','Index2']
+                        },
+                        toolbox: {
+                            show : false,
+                            feature : {
+                                mark : {show: true},
+                                dataView : {show: true, readOnly: false},
+                                magicType : {show: true, type: ['line', 'bar']},
+                                restore : {show: true},
+                                saveAsImage : {show: true}
+                            }
+                        },
+                        calculable : true,
+                        xAxis : [
+                            {
+                                type : 'category',
+                                data : ['Test1','Test2','Test3','Test4','Test5','Test6']
+                            }
+                        ],
+                        yAxis : [
+                            {
+                                type : 'value'
+                            }
+                        ],
+                        series : [
+                            {
+                                name:'Index1',
+                                type:'bar',
+                                data:[2.0, 4.9, 7.0, 23.2, 25.6, 76.7],
+                                
+                            },
+                            {
+                                name:'Index2',
+                                type:'bar',
+                                data:[2.6, 5.9, 9.0, 26.4, 28.7, 70.7],
+                                
+                            }
+                        ]
+             };
+                
+                columnschart.setOption(option); 
+
+    </script> 

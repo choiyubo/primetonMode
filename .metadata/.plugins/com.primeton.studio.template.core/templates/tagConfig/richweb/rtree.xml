@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tag tagName="r:rtree" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
+	<group groupName="Basic">
+		<property allowXPath="false" name="id" displayName="id" hint="id" type="primitive:string" defaultValue="" required="true">
+			<validators>
+				<notEmptyValidator/>
+				<IDNotDuplicateValidator/>
+			</validators>
+		</property>
+		<property allowXPath="false" name="scope" displayName="scope" hint="Sets the data area." type="combo:readonly" defaultValue="" required="false">
+			<dataProvider class="mapProvider">
+				<mapEntry>
+					<key class="string">request</key>
+					<value class="string">r</value>
+				</mapEntry>
+				<mapEntry>
+					<key class="string">page</key>
+					<value class="string">p</value>
+				</mapEntry>
+				<mapEntry>
+					<key class="string">flow</key>
+					<value class="string">f</value>
+				</mapEntry>
+				<mapEntry>
+					<key class="string">session</key>
+					<value class="string">s</value>
+				</mapEntry>
+			</dataProvider>
+		</property>
+		<property name="width" displayName="width" hint="Sets the tree's width." type="primitive:string" defaultValue="" required="false">
+			<validators>
+				<widthHeightValidator/>
+			</validators>
+		</property>
+		<property name="height" displayName="height" hint="Sets the tree's height." type="primitive:string" defaultValue="" required="false">
+			<validators>
+				<widthHeightValidator/>
+			</validators>
+		</property>
+		<property name="hasRoot" displayName="hasRoot" hint="Sets whether the tree has root node." type="primitive:boolean" defaultValue="" required="false">
+</property>
+		<property name="expandLevel" displayName="expandLevel" hint="Sets the level to expand." type="primitive:integer" required="false"/>
+	</group>
+	<group groupName="Event">
+  </group>
+</tag>

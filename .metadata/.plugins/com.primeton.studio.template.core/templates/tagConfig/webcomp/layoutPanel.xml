@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<tag xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" tagName="w:layoutPanel" >
+	<require>
+		<path>/webcomp/baseWebcomp.xml</path>
+		<include>iterateId,property,name,value,width,height,indexed,id,style,styleClass,tabindex,accesskey,readonly,disabled,size,maxlength,onblur,onchange,onclick,ondblclick,onfocus,onselect,onkeyup,onkeydown,onkeypress,onmouseup,onmousedown,onmousemove,onmouseover,onmouseout,title,scope,modelField</include>
+	</require>
+	<group groupName="Basic">
+		<property showInViewModel="common" displayName="width" hint="width" name="width" required="false" type="primitive:string">
+			<validators>
+				<widthHeightValidator/>
+			</validators>
+		</property>
+		<property showInViewModel="common" displayName="height" hint="height" name="height" required="false" type="primitive:string">
+			<validators>
+				<widthHeightValidator/>
+			</validators>
+		</property>
+		<property showInViewModel="common" displayName="style" hint="style" name="style" required="false" type="primitive:string"/>
+		<property showInViewModel="common" displayName="styleClass" hint="styleClass" name="styleClass" required="false" type="primitive:string"/>
+	</group>
+</tag>

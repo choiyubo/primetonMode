@@ -1,0 +1,1407 @@
+2018-08-02 02:08:10:DEBUG Worker-5 com.primeton.ext.system.deploy.file.FileDeployerHelper - Try to get deployService from null:0
+2018-08-02 02:08:10:DEBUG Worker-5 com.primeton.ext.system.deploy.file.FileDeployerHelper - An error occured when getting a remoteMbeanServer!
+com.eos.system.management.ManagementRuntimeException: An error occured when getting a remoteMbeanServer!
+	at com.eos.system.management.MBeanServerFactory.getMBeanServer(MBeanServerFactory.java:201)
+	at com.eos.internal.system.deploy.ApplicationHelper.getMBean(ApplicationHelper.java:362)
+	at com.eos.internal.system.deploy.ApplicationHelper.getApplicationMBean(ApplicationHelper.java:330)
+	at com.primeton.ext.system.deploy.file.FileDeployerHelper.deploy(FileDeployerHelper.java:86)
+	at com.primeton.studio.workbench.deploy.processor.base.AbstractDeployProcessor.deploy(AbstractDeployProcessor.java:137)
+	at com.primeton.studio.workbench.deploy.EosDeployManager$1.runInWorkspace(EosDeployManager.java:182)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:38)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+Caused by: java.io.IOException: Failed to retrieve RMIServer stub: javax.naming.ServiceUnavailableException [Root exception is java.rmi.ConnectException: Connection refused to host: 169.254.74.65; nested exception is: 
+	java.net.ConnectException: Connection refused]
+	at javax.management.remote.rmi.RMIConnector.connect(RMIConnector.java:369)
+	at javax.management.remote.JMXConnectorFactory.connect(JMXConnectorFactory.java:268)
+	at com.eos.system.management.MBeanServerFactory.getMBeanServer(MBeanServerFactory.java:189)
+	... 7 more
+Caused by: javax.naming.ServiceUnavailableException [Root exception is java.rmi.ConnectException: Connection refused to host: 169.254.74.65; nested exception is: 
+	java.net.ConnectException: Connection refused]
+	at com.sun.jndi.rmi.registry.RegistryContext.lookup(RegistryContext.java:118)
+	at com.sun.jndi.toolkit.url.GenericURLContext.lookup(GenericURLContext.java:203)
+	at javax.naming.InitialContext.lookup(InitialContext.java:411)
+	at javax.management.remote.rmi.RMIConnector.findRMIServerJNDI(RMIConnector.java:1929)
+	at javax.management.remote.rmi.RMIConnector.findRMIServer(RMIConnector.java:1896)
+	at javax.management.remote.rmi.RMIConnector.connect(RMIConnector.java:286)
+	... 9 more
+Caused by: java.rmi.ConnectException: Connection refused to host: 169.254.74.65; nested exception is: 
+	java.net.ConnectException: Connection refused
+	at sun.rmi.transport.tcp.TCPEndpoint.newSocket(TCPEndpoint.java:619)
+	at sun.rmi.transport.tcp.TCPChannel.createConnection(TCPChannel.java:216)
+	at sun.rmi.transport.tcp.TCPChannel.newConnection(TCPChannel.java:202)
+	at sun.rmi.server.UnicastRef.newCall(UnicastRef.java:341)
+	at sun.rmi.registry.RegistryImpl_Stub.lookup(Unknown Source)
+	at com.sun.jndi.rmi.registry.RegistryContext.lookup(RegistryContext.java:114)
+	... 14 more
+Caused by: java.net.ConnectException: Connection refused
+	at java.net.PlainSocketImpl.socketConnect(Native Method)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:339)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:200)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:182)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:579)
+	at java.net.Socket.connect(Socket.java:528)
+	at java.net.Socket.<init>(Socket.java:425)
+	at java.net.Socket.<init>(Socket.java:208)
+	at sun.rmi.transport.proxy.RMIDirectSocketFactory.createSocket(RMIDirectSocketFactory.java:40)
+	at sun.rmi.transport.proxy.RMIMasterSocketFactory.createSocket(RMIMasterSocketFactory.java:147)
+	at sun.rmi.transport.tcp.TCPEndpoint.newSocket(TCPEndpoint.java:613)
+	... 19 more
+2018-08-02 02:08:10:DEBUG Worker-5 com.primeton.ext.system.deploy.file.FileDeployerHelper - Does not need hot update.
+2018-08-02 02:08:10:DEBUG Worker-5 com.primeton.ext.system.deploy.file.FileDeployerHelper - Does not need hot update.
+2018-08-02 02:08:10:DEBUG Worker-5 com.primeton.ext.system.deploy.file.FileDeployerHelper - Does not need hot update.
+2018-08-02 02:08:13:DEBUG Worker-5 com.primeton.ext.system.deploy.file.FileDeployerHelper - Try to get deployService from null:0
+2018-08-02 02:08:13:DEBUG Worker-5 com.primeton.ext.system.deploy.file.FileDeployerHelper - An error occured when getting a remoteMbeanServer!
+com.eos.system.management.ManagementRuntimeException: An error occured when getting a remoteMbeanServer!
+	at com.eos.system.management.MBeanServerFactory.getMBeanServer(MBeanServerFactory.java:201)
+	at com.eos.internal.system.deploy.ApplicationHelper.getMBean(ApplicationHelper.java:362)
+	at com.eos.internal.system.deploy.ApplicationHelper.getApplicationMBean(ApplicationHelper.java:330)
+	at com.primeton.ext.system.deploy.file.FileDeployerHelper.deploy(FileDeployerHelper.java:86)
+	at com.primeton.studio.workbench.deploy.processor.base.AbstractDeployProcessor.deploy(AbstractDeployProcessor.java:137)
+	at com.primeton.studio.workbench.deploy.EosDeployManager$1.runInWorkspace(EosDeployManager.java:182)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:38)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+Caused by: java.io.IOException: Failed to retrieve RMIServer stub: javax.naming.ServiceUnavailableException [Root exception is java.rmi.ConnectException: Connection refused to host: 169.254.74.65; nested exception is: 
+	java.net.ConnectException: Connection refused]
+	at javax.management.remote.rmi.RMIConnector.connect(RMIConnector.java:369)
+	at javax.management.remote.JMXConnectorFactory.connect(JMXConnectorFactory.java:268)
+	at com.eos.system.management.MBeanServerFactory.getMBeanServer(MBeanServerFactory.java:189)
+	... 7 more
+Caused by: javax.naming.ServiceUnavailableException [Root exception is java.rmi.ConnectException: Connection refused to host: 169.254.74.65; nested exception is: 
+	java.net.ConnectException: Connection refused]
+	at com.sun.jndi.rmi.registry.RegistryContext.lookup(RegistryContext.java:118)
+	at com.sun.jndi.toolkit.url.GenericURLContext.lookup(GenericURLContext.java:203)
+	at javax.naming.InitialContext.lookup(InitialContext.java:411)
+	at javax.management.remote.rmi.RMIConnector.findRMIServerJNDI(RMIConnector.java:1929)
+	at javax.management.remote.rmi.RMIConnector.findRMIServer(RMIConnector.java:1896)
+	at javax.management.remote.rmi.RMIConnector.connect(RMIConnector.java:286)
+	... 9 more
+Caused by: java.rmi.ConnectException: Connection refused to host: 169.254.74.65; nested exception is: 
+	java.net.ConnectException: Connection refused
+	at sun.rmi.transport.tcp.TCPEndpoint.newSocket(TCPEndpoint.java:619)
+	at sun.rmi.transport.tcp.TCPChannel.createConnection(TCPChannel.java:216)
+	at sun.rmi.transport.tcp.TCPChannel.newConnection(TCPChannel.java:202)
+	at sun.rmi.server.UnicastRef.newCall(UnicastRef.java:341)
+	at sun.rmi.registry.RegistryImpl_Stub.lookup(Unknown Source)
+	at com.sun.jndi.rmi.registry.RegistryContext.lookup(RegistryContext.java:114)
+	... 14 more
+Caused by: java.net.ConnectException: Connection refused
+	at java.net.PlainSocketImpl.socketConnect(Native Method)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:339)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:200)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:182)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:579)
+	at java.net.Socket.connect(Socket.java:528)
+	at java.net.Socket.<init>(Socket.java:425)
+	at java.net.Socket.<init>(Socket.java:208)
+	at sun.rmi.transport.proxy.RMIDirectSocketFactory.createSocket(RMIDirectSocketFactory.java:40)
+	at sun.rmi.transport.proxy.RMIMasterSocketFactory.createSocket(RMIMasterSocketFactory.java:147)
+	at sun.rmi.transport.tcp.TCPEndpoint.newSocket(TCPEndpoint.java:613)
+	... 19 more
+2018-08-02 02:08:22:DEBUG Worker-3 com.primeton.ext.system.deploy.file.FileDeployerHelper - Try to get deployService from null:0
+2018-08-02 02:08:22:DEBUG Worker-3 com.primeton.ext.system.deploy.file.FileDeployerHelper - An error occured when getting a remoteMbeanServer!
+com.eos.system.management.ManagementRuntimeException: An error occured when getting a remoteMbeanServer!
+	at com.eos.system.management.MBeanServerFactory.getMBeanServer(MBeanServerFactory.java:201)
+	at com.eos.internal.system.deploy.ApplicationHelper.getMBean(ApplicationHelper.java:362)
+	at com.eos.internal.system.deploy.ApplicationHelper.getApplicationMBean(ApplicationHelper.java:330)
+	at com.primeton.ext.system.deploy.file.FileDeployerHelper.deploy(FileDeployerHelper.java:86)
+	at com.primeton.studio.workbench.deploy.processor.base.AbstractDeployProcessor.deploy(AbstractDeployProcessor.java:137)
+	at com.primeton.studio.workbench.deploy.EosDeployManager$1.runInWorkspace(EosDeployManager.java:182)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:38)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+Caused by: java.io.IOException: Failed to retrieve RMIServer stub: javax.naming.ServiceUnavailableException [Root exception is java.rmi.ConnectException: Connection refused to host: 169.254.74.65; nested exception is: 
+	java.net.ConnectException: Connection refused]
+	at javax.management.remote.rmi.RMIConnector.connect(RMIConnector.java:369)
+	at javax.management.remote.JMXConnectorFactory.connect(JMXConnectorFactory.java:268)
+	at com.eos.system.management.MBeanServerFactory.getMBeanServer(MBeanServerFactory.java:189)
+	... 7 more
+Caused by: javax.naming.ServiceUnavailableException [Root exception is java.rmi.ConnectException: Connection refused to host: 169.254.74.65; nested exception is: 
+	java.net.ConnectException: Connection refused]
+	at com.sun.jndi.rmi.registry.RegistryContext.lookup(RegistryContext.java:118)
+	at com.sun.jndi.toolkit.url.GenericURLContext.lookup(GenericURLContext.java:203)
+	at javax.naming.InitialContext.lookup(InitialContext.java:411)
+	at javax.management.remote.rmi.RMIConnector.findRMIServerJNDI(RMIConnector.java:1929)
+	at javax.management.remote.rmi.RMIConnector.findRMIServer(RMIConnector.java:1896)
+	at javax.management.remote.rmi.RMIConnector.connect(RMIConnector.java:286)
+	... 9 more
+Caused by: java.rmi.ConnectException: Connection refused to host: 169.254.74.65; nested exception is: 
+	java.net.ConnectException: Connection refused
+	at sun.rmi.transport.tcp.TCPEndpoint.newSocket(TCPEndpoint.java:619)
+	at sun.rmi.transport.tcp.TCPChannel.createConnection(TCPChannel.java:216)
+	at sun.rmi.transport.tcp.TCPChannel.newConnection(TCPChannel.java:202)
+	at sun.rmi.server.UnicastRef.newCall(UnicastRef.java:341)
+	at sun.rmi.registry.RegistryImpl_Stub.lookup(Unknown Source)
+	at com.sun.jndi.rmi.registry.RegistryContext.lookup(RegistryContext.java:114)
+	... 14 more
+Caused by: java.net.ConnectException: Connection refused
+	at java.net.PlainSocketImpl.socketConnect(Native Method)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:339)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:200)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:182)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:579)
+	at java.net.Socket.connect(Socket.java:528)
+	at java.net.Socket.<init>(Socket.java:425)
+	at java.net.Socket.<init>(Socket.java:208)
+	at sun.rmi.transport.proxy.RMIDirectSocketFactory.createSocket(RMIDirectSocketFactory.java:40)
+	at sun.rmi.transport.proxy.RMIMasterSocketFactory.createSocket(RMIMasterSocketFactory.java:147)
+	at sun.rmi.transport.tcp.TCPEndpoint.newSocket(TCPEndpoint.java:613)
+	... 19 more
+2018-08-02 02:08:58:DEBUG Worker-5 com.primeton.ext.system.deploy.file.FileDeployerHelper - Try to get deployService from null:0
+2018-08-02 02:08:58:DEBUG Worker-5 com.primeton.ext.system.deploy.file.FileDeployerHelper - An error occured when getting a remoteMbeanServer!
+com.eos.system.management.ManagementRuntimeException: An error occured when getting a remoteMbeanServer!
+	at com.eos.system.management.MBeanServerFactory.getMBeanServer(MBeanServerFactory.java:201)
+	at com.eos.internal.system.deploy.ApplicationHelper.getMBean(ApplicationHelper.java:362)
+	at com.eos.internal.system.deploy.ApplicationHelper.getApplicationMBean(ApplicationHelper.java:330)
+	at com.primeton.ext.system.deploy.file.FileDeployerHelper.deploy(FileDeployerHelper.java:86)
+	at com.primeton.studio.workbench.deploy.processor.base.AbstractDeployProcessor.deploy(AbstractDeployProcessor.java:137)
+	at com.primeton.studio.workbench.deploy.EosDeployManager$1.runInWorkspace(EosDeployManager.java:182)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:38)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+Caused by: java.io.IOException: Failed to retrieve RMIServer stub: javax.naming.ServiceUnavailableException [Root exception is java.rmi.ConnectException: Connection refused to host: 169.254.74.65; nested exception is: 
+	java.net.ConnectException: Connection refused]
+	at javax.management.remote.rmi.RMIConnector.connect(RMIConnector.java:369)
+	at javax.management.remote.JMXConnectorFactory.connect(JMXConnectorFactory.java:268)
+	at com.eos.system.management.MBeanServerFactory.getMBeanServer(MBeanServerFactory.java:189)
+	... 7 more
+Caused by: javax.naming.ServiceUnavailableException [Root exception is java.rmi.ConnectException: Connection refused to host: 169.254.74.65; nested exception is: 
+	java.net.ConnectException: Connection refused]
+	at com.sun.jndi.rmi.registry.RegistryContext.lookup(RegistryContext.java:118)
+	at com.sun.jndi.toolkit.url.GenericURLContext.lookup(GenericURLContext.java:203)
+	at javax.naming.InitialContext.lookup(InitialContext.java:411)
+	at javax.management.remote.rmi.RMIConnector.findRMIServerJNDI(RMIConnector.java:1929)
+	at javax.management.remote.rmi.RMIConnector.findRMIServer(RMIConnector.java:1896)
+	at javax.management.remote.rmi.RMIConnector.connect(RMIConnector.java:286)
+	... 9 more
+Caused by: java.rmi.ConnectException: Connection refused to host: 169.254.74.65; nested exception is: 
+	java.net.ConnectException: Connection refused
+	at sun.rmi.transport.tcp.TCPEndpoint.newSocket(TCPEndpoint.java:619)
+	at sun.rmi.transport.tcp.TCPChannel.createConnection(TCPChannel.java:216)
+	at sun.rmi.transport.tcp.TCPChannel.newConnection(TCPChannel.java:202)
+	at sun.rmi.server.UnicastRef.newCall(UnicastRef.java:341)
+	at sun.rmi.registry.RegistryImpl_Stub.lookup(Unknown Source)
+	at com.sun.jndi.rmi.registry.RegistryContext.lookup(RegistryContext.java:114)
+	... 14 more
+Caused by: java.net.ConnectException: Connection refused
+	at java.net.PlainSocketImpl.socketConnect(Native Method)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:339)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:200)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:182)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:579)
+	at java.net.Socket.connect(Socket.java:528)
+	at java.net.Socket.<init>(Socket.java:425)
+	at java.net.Socket.<init>(Socket.java:208)
+	at sun.rmi.transport.proxy.RMIDirectSocketFactory.createSocket(RMIDirectSocketFactory.java:40)
+	at sun.rmi.transport.proxy.RMIMasterSocketFactory.createSocket(RMIMasterSocketFactory.java:147)
+	at sun.rmi.transport.tcp.TCPEndpoint.newSocket(TCPEndpoint.java:613)
+	... 19 more
+2018-08-02 02:08:59:DEBUG Worker-5 com.primeton.ext.system.deploy.file.FileDeployerHelper - Try to get deployService from null:0
+2018-08-02 02:08:59:DEBUG Worker-5 com.primeton.ext.system.deploy.file.FileDeployerHelper - An error occured when getting a remoteMbeanServer!
+com.eos.system.management.ManagementRuntimeException: An error occured when getting a remoteMbeanServer!
+	at com.eos.system.management.MBeanServerFactory.getMBeanServer(MBeanServerFactory.java:201)
+	at com.eos.internal.system.deploy.ApplicationHelper.getMBean(ApplicationHelper.java:362)
+	at com.eos.internal.system.deploy.ApplicationHelper.getApplicationMBean(ApplicationHelper.java:330)
+	at com.primeton.ext.system.deploy.file.FileDeployerHelper.deploy(FileDeployerHelper.java:86)
+	at com.primeton.studio.workbench.deploy.processor.base.AbstractDeployProcessor.deploy(AbstractDeployProcessor.java:137)
+	at com.primeton.studio.workbench.deploy.EosDeployManager$1.runInWorkspace(EosDeployManager.java:182)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:38)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+Caused by: java.io.IOException: Failed to retrieve RMIServer stub: javax.naming.ServiceUnavailableException [Root exception is java.rmi.ConnectException: Connection refused to host: 169.254.74.65; nested exception is: 
+	java.net.ConnectException: Connection refused]
+	at javax.management.remote.rmi.RMIConnector.connect(RMIConnector.java:369)
+	at javax.management.remote.JMXConnectorFactory.connect(JMXConnectorFactory.java:268)
+	at com.eos.system.management.MBeanServerFactory.getMBeanServer(MBeanServerFactory.java:189)
+	... 7 more
+Caused by: javax.naming.ServiceUnavailableException [Root exception is java.rmi.ConnectException: Connection refused to host: 169.254.74.65; nested exception is: 
+	java.net.ConnectException: Connection refused]
+	at com.sun.jndi.rmi.registry.RegistryContext.lookup(RegistryContext.java:118)
+	at com.sun.jndi.toolkit.url.GenericURLContext.lookup(GenericURLContext.java:203)
+	at javax.naming.InitialContext.lookup(InitialContext.java:411)
+	at javax.management.remote.rmi.RMIConnector.findRMIServerJNDI(RMIConnector.java:1929)
+	at javax.management.remote.rmi.RMIConnector.findRMIServer(RMIConnector.java:1896)
+	at javax.management.remote.rmi.RMIConnector.connect(RMIConnector.java:286)
+	... 9 more
+Caused by: java.rmi.ConnectException: Connection refused to host: 169.254.74.65; nested exception is: 
+	java.net.ConnectException: Connection refused
+	at sun.rmi.transport.tcp.TCPEndpoint.newSocket(TCPEndpoint.java:619)
+	at sun.rmi.transport.tcp.TCPChannel.createConnection(TCPChannel.java:216)
+	at sun.rmi.transport.tcp.TCPChannel.newConnection(TCPChannel.java:202)
+	at sun.rmi.server.UnicastRef.newCall(UnicastRef.java:341)
+	at sun.rmi.registry.RegistryImpl_Stub.lookup(Unknown Source)
+	at com.sun.jndi.rmi.registry.RegistryContext.lookup(RegistryContext.java:114)
+	... 14 more
+Caused by: java.net.ConnectException: Connection refused
+	at java.net.PlainSocketImpl.socketConnect(Native Method)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:339)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:200)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:182)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:579)
+	at java.net.Socket.connect(Socket.java:528)
+	at java.net.Socket.<init>(Socket.java:425)
+	at java.net.Socket.<init>(Socket.java:208)
+	at sun.rmi.transport.proxy.RMIDirectSocketFactory.createSocket(RMIDirectSocketFactory.java:40)
+	at sun.rmi.transport.proxy.RMIMasterSocketFactory.createSocket(RMIMasterSocketFactory.java:147)
+	at sun.rmi.transport.tcp.TCPEndpoint.newSocket(TCPEndpoint.java:613)
+	... 19 more
+2018-08-02 02:09:22:DEBUG Worker-11 com.primeton.ext.system.deploy.file.FileDeployerHelper - Does not need hot update.
+2018-08-02 02:09:38:DEBUG Worker-9 com.primeton.ext.system.deploy.file.FileDeployerHelper - Does not need hot update.
+2018-08-02 02:09:42:DEBUG Worker-12 com.primeton.ext.system.deploy.file.FileDeployerHelper - Does not need hot update.
+2018-08-02 02:10:22:DEBUG Worker-3 com.primeton.ext.system.deploy.file.FileDeployerHelper - Try to get deployService from null:0
+2018-08-02 02:10:22:DEBUG Worker-3 com.primeton.ext.system.deploy.file.FileDeployerHelper - An error occured when getting a remoteMbeanServer!
+com.eos.system.management.ManagementRuntimeException: An error occured when getting a remoteMbeanServer!
+	at com.eos.system.management.MBeanServerFactory.getMBeanServer(MBeanServerFactory.java:201)
+	at com.eos.internal.system.deploy.ApplicationHelper.getMBean(ApplicationHelper.java:362)
+	at com.eos.internal.system.deploy.ApplicationHelper.getApplicationMBean(ApplicationHelper.java:330)
+	at com.primeton.ext.system.deploy.file.FileDeployerHelper.deploy(FileDeployerHelper.java:86)
+	at com.primeton.studio.workbench.deploy.processor.base.AbstractDeployProcessor.deploy(AbstractDeployProcessor.java:137)
+	at com.primeton.studio.workbench.deploy.EosDeployManager$1.runInWorkspace(EosDeployManager.java:182)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:38)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+Caused by: java.io.IOException: Failed to retrieve RMIServer stub: javax.naming.ServiceUnavailableException [Root exception is java.rmi.ConnectException: Connection refused to host: 169.254.74.65; nested exception is: 
+	java.net.ConnectException: Connection refused]
+	at javax.management.remote.rmi.RMIConnector.connect(RMIConnector.java:369)
+	at javax.management.remote.JMXConnectorFactory.connect(JMXConnectorFactory.java:268)
+	at com.eos.system.management.MBeanServerFactory.getMBeanServer(MBeanServerFactory.java:189)
+	... 7 more
+Caused by: javax.naming.ServiceUnavailableException [Root exception is java.rmi.ConnectException: Connection refused to host: 169.254.74.65; nested exception is: 
+	java.net.ConnectException: Connection refused]
+	at com.sun.jndi.rmi.registry.RegistryContext.lookup(RegistryContext.java:118)
+	at com.sun.jndi.toolkit.url.GenericURLContext.lookup(GenericURLContext.java:203)
+	at javax.naming.InitialContext.lookup(InitialContext.java:411)
+	at javax.management.remote.rmi.RMIConnector.findRMIServerJNDI(RMIConnector.java:1929)
+	at javax.management.remote.rmi.RMIConnector.findRMIServer(RMIConnector.java:1896)
+	at javax.management.remote.rmi.RMIConnector.connect(RMIConnector.java:286)
+	... 9 more
+Caused by: java.rmi.ConnectException: Connection refused to host: 169.254.74.65; nested exception is: 
+	java.net.ConnectException: Connection refused
+	at sun.rmi.transport.tcp.TCPEndpoint.newSocket(TCPEndpoint.java:619)
+	at sun.rmi.transport.tcp.TCPChannel.createConnection(TCPChannel.java:216)
+	at sun.rmi.transport.tcp.TCPChannel.newConnection(TCPChannel.java:202)
+	at sun.rmi.server.UnicastRef.newCall(UnicastRef.java:341)
+	at sun.rmi.registry.RegistryImpl_Stub.lookup(Unknown Source)
+	at com.sun.jndi.rmi.registry.RegistryContext.lookup(RegistryContext.java:114)
+	... 14 more
+Caused by: java.net.ConnectException: Connection refused
+	at java.net.PlainSocketImpl.socketConnect(Native Method)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:339)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:200)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:182)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:579)
+	at java.net.Socket.connect(Socket.java:528)
+	at java.net.Socket.<init>(Socket.java:425)
+	at java.net.Socket.<init>(Socket.java:208)
+	at sun.rmi.transport.proxy.RMIDirectSocketFactory.createSocket(RMIDirectSocketFactory.java:40)
+	at sun.rmi.transport.proxy.RMIMasterSocketFactory.createSocket(RMIMasterSocketFactory.java:147)
+	at sun.rmi.transport.tcp.TCPEndpoint.newSocket(TCPEndpoint.java:613)
+	... 19 more
+2018-08-02 02:10:22:DEBUG Worker-3 com.primeton.ext.system.deploy.file.FileDeployerHelper - Try to get deployService from null:0
+2018-08-02 02:10:22:DEBUG Worker-3 com.primeton.ext.system.deploy.file.FileDeployerHelper - An error occured when getting a remoteMbeanServer!
+com.eos.system.management.ManagementRuntimeException: An error occured when getting a remoteMbeanServer!
+	at com.eos.system.management.MBeanServerFactory.getMBeanServer(MBeanServerFactory.java:201)
+	at com.eos.internal.system.deploy.ApplicationHelper.getMBean(ApplicationHelper.java:362)
+	at com.eos.internal.system.deploy.ApplicationHelper.getApplicationMBean(ApplicationHelper.java:330)
+	at com.primeton.ext.system.deploy.file.FileDeployerHelper.deploy(FileDeployerHelper.java:86)
+	at com.primeton.studio.workbench.deploy.processor.base.AbstractDeployProcessor.deploy(AbstractDeployProcessor.java:137)
+	at com.primeton.studio.workbench.deploy.EosDeployManager$1.runInWorkspace(EosDeployManager.java:182)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:38)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+Caused by: java.io.IOException: Failed to retrieve RMIServer stub: javax.naming.ServiceUnavailableException [Root exception is java.rmi.ConnectException: Connection refused to host: 169.254.74.65; nested exception is: 
+	java.net.ConnectException: Connection refused]
+	at javax.management.remote.rmi.RMIConnector.connect(RMIConnector.java:369)
+	at javax.management.remote.JMXConnectorFactory.connect(JMXConnectorFactory.java:268)
+	at com.eos.system.management.MBeanServerFactory.getMBeanServer(MBeanServerFactory.java:189)
+	... 7 more
+Caused by: javax.naming.ServiceUnavailableException [Root exception is java.rmi.ConnectException: Connection refused to host: 169.254.74.65; nested exception is: 
+	java.net.ConnectException: Connection refused]
+	at com.sun.jndi.rmi.registry.RegistryContext.lookup(RegistryContext.java:118)
+	at com.sun.jndi.toolkit.url.GenericURLContext.lookup(GenericURLContext.java:203)
+	at javax.naming.InitialContext.lookup(InitialContext.java:411)
+	at javax.management.remote.rmi.RMIConnector.findRMIServerJNDI(RMIConnector.java:1929)
+	at javax.management.remote.rmi.RMIConnector.findRMIServer(RMIConnector.java:1896)
+	at javax.management.remote.rmi.RMIConnector.connect(RMIConnector.java:286)
+	... 9 more
+Caused by: java.rmi.ConnectException: Connection refused to host: 169.254.74.65; nested exception is: 
+	java.net.ConnectException: Connection refused
+	at sun.rmi.transport.tcp.TCPEndpoint.newSocket(TCPEndpoint.java:619)
+	at sun.rmi.transport.tcp.TCPChannel.createConnection(TCPChannel.java:216)
+	at sun.rmi.transport.tcp.TCPChannel.newConnection(TCPChannel.java:202)
+	at sun.rmi.server.UnicastRef.newCall(UnicastRef.java:341)
+	at sun.rmi.registry.RegistryImpl_Stub.lookup(Unknown Source)
+	at com.sun.jndi.rmi.registry.RegistryContext.lookup(RegistryContext.java:114)
+	... 14 more
+Caused by: java.net.ConnectException: Connection refused
+	at java.net.PlainSocketImpl.socketConnect(Native Method)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:339)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:200)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:182)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:579)
+	at java.net.Socket.connect(Socket.java:528)
+	at java.net.Socket.<init>(Socket.java:425)
+	at java.net.Socket.<init>(Socket.java:208)
+	at sun.rmi.transport.proxy.RMIDirectSocketFactory.createSocket(RMIDirectSocketFactory.java:40)
+	at sun.rmi.transport.proxy.RMIMasterSocketFactory.createSocket(RMIMasterSocketFactory.java:147)
+	at sun.rmi.transport.tcp.TCPEndpoint.newSocket(TCPEndpoint.java:613)
+	... 19 more
+2018-08-02 02:11:17:DEBUG Worker-10 com.primeton.ext.system.deploy.file.FileDeployerHelper - Try to get deployService from null:0
+2018-08-02 02:11:17:DEBUG Worker-10 com.primeton.ext.system.deploy.file.FileDeployerHelper - An error occured when getting a remoteMbeanServer!
+com.eos.system.management.ManagementRuntimeException: An error occured when getting a remoteMbeanServer!
+	at com.eos.system.management.MBeanServerFactory.getMBeanServer(MBeanServerFactory.java:201)
+	at com.eos.internal.system.deploy.ApplicationHelper.getMBean(ApplicationHelper.java:362)
+	at com.eos.internal.system.deploy.ApplicationHelper.getApplicationMBean(ApplicationHelper.java:330)
+	at com.primeton.ext.system.deploy.file.FileDeployerHelper.deploy(FileDeployerHelper.java:86)
+	at com.primeton.studio.workbench.deploy.processor.base.AbstractDeployProcessor.deploy(AbstractDeployProcessor.java:137)
+	at com.primeton.studio.workbench.deploy.EosDeployManager$1.runInWorkspace(EosDeployManager.java:182)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:38)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+Caused by: java.io.IOException: Failed to retrieve RMIServer stub: javax.naming.ServiceUnavailableException [Root exception is java.rmi.ConnectException: Connection refused to host: 169.254.74.65; nested exception is: 
+	java.net.ConnectException: Connection refused]
+	at javax.management.remote.rmi.RMIConnector.connect(RMIConnector.java:369)
+	at javax.management.remote.JMXConnectorFactory.connect(JMXConnectorFactory.java:268)
+	at com.eos.system.management.MBeanServerFactory.getMBeanServer(MBeanServerFactory.java:189)
+	... 7 more
+Caused by: javax.naming.ServiceUnavailableException [Root exception is java.rmi.ConnectException: Connection refused to host: 169.254.74.65; nested exception is: 
+	java.net.ConnectException: Connection refused]
+	at com.sun.jndi.rmi.registry.RegistryContext.lookup(RegistryContext.java:118)
+	at com.sun.jndi.toolkit.url.GenericURLContext.lookup(GenericURLContext.java:203)
+	at javax.naming.InitialContext.lookup(InitialContext.java:411)
+	at javax.management.remote.rmi.RMIConnector.findRMIServerJNDI(RMIConnector.java:1929)
+	at javax.management.remote.rmi.RMIConnector.findRMIServer(RMIConnector.java:1896)
+	at javax.management.remote.rmi.RMIConnector.connect(RMIConnector.java:286)
+	... 9 more
+Caused by: java.rmi.ConnectException: Connection refused to host: 169.254.74.65; nested exception is: 
+	java.net.ConnectException: Connection refused
+	at sun.rmi.transport.tcp.TCPEndpoint.newSocket(TCPEndpoint.java:619)
+	at sun.rmi.transport.tcp.TCPChannel.createConnection(TCPChannel.java:216)
+	at sun.rmi.transport.tcp.TCPChannel.newConnection(TCPChannel.java:202)
+	at sun.rmi.server.UnicastRef.newCall(UnicastRef.java:341)
+	at sun.rmi.registry.RegistryImpl_Stub.lookup(Unknown Source)
+	at com.sun.jndi.rmi.registry.RegistryContext.lookup(RegistryContext.java:114)
+	... 14 more
+Caused by: java.net.ConnectException: Connection refused
+	at java.net.PlainSocketImpl.socketConnect(Native Method)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:339)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:200)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:182)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:579)
+	at java.net.Socket.connect(Socket.java:528)
+	at java.net.Socket.<init>(Socket.java:425)
+	at java.net.Socket.<init>(Socket.java:208)
+	at sun.rmi.transport.proxy.RMIDirectSocketFactory.createSocket(RMIDirectSocketFactory.java:40)
+	at sun.rmi.transport.proxy.RMIMasterSocketFactory.createSocket(RMIMasterSocketFactory.java:147)
+	at sun.rmi.transport.tcp.TCPEndpoint.newSocket(TCPEndpoint.java:613)
+	... 19 more
+2018-08-02 02:11:17:DEBUG Worker-10 com.primeton.ext.system.deploy.file.FileDeployerHelper - Try to get deployService from null:0
+2018-08-02 02:11:17:DEBUG Worker-10 com.primeton.ext.system.deploy.file.FileDeployerHelper - An error occured when getting a remoteMbeanServer!
+com.eos.system.management.ManagementRuntimeException: An error occured when getting a remoteMbeanServer!
+	at com.eos.system.management.MBeanServerFactory.getMBeanServer(MBeanServerFactory.java:201)
+	at com.eos.internal.system.deploy.ApplicationHelper.getMBean(ApplicationHelper.java:362)
+	at com.eos.internal.system.deploy.ApplicationHelper.getApplicationMBean(ApplicationHelper.java:330)
+	at com.primeton.ext.system.deploy.file.FileDeployerHelper.deploy(FileDeployerHelper.java:86)
+	at com.primeton.studio.workbench.deploy.processor.base.AbstractDeployProcessor.deploy(AbstractDeployProcessor.java:137)
+	at com.primeton.studio.workbench.deploy.EosDeployManager$1.runInWorkspace(EosDeployManager.java:182)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:38)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+Caused by: java.io.IOException: Failed to retrieve RMIServer stub: javax.naming.ServiceUnavailableException [Root exception is java.rmi.ConnectException: Connection refused to host: 169.254.74.65; nested exception is: 
+	java.net.ConnectException: Connection refused]
+	at javax.management.remote.rmi.RMIConnector.connect(RMIConnector.java:369)
+	at javax.management.remote.JMXConnectorFactory.connect(JMXConnectorFactory.java:268)
+	at com.eos.system.management.MBeanServerFactory.getMBeanServer(MBeanServerFactory.java:189)
+	... 7 more
+Caused by: javax.naming.ServiceUnavailableException [Root exception is java.rmi.ConnectException: Connection refused to host: 169.254.74.65; nested exception is: 
+	java.net.ConnectException: Connection refused]
+	at com.sun.jndi.rmi.registry.RegistryContext.lookup(RegistryContext.java:118)
+	at com.sun.jndi.toolkit.url.GenericURLContext.lookup(GenericURLContext.java:203)
+	at javax.naming.InitialContext.lookup(InitialContext.java:411)
+	at javax.management.remote.rmi.RMIConnector.findRMIServerJNDI(RMIConnector.java:1929)
+	at javax.management.remote.rmi.RMIConnector.findRMIServer(RMIConnector.java:1896)
+	at javax.management.remote.rmi.RMIConnector.connect(RMIConnector.java:286)
+	... 9 more
+Caused by: java.rmi.ConnectException: Connection refused to host: 169.254.74.65; nested exception is: 
+	java.net.ConnectException: Connection refused
+	at sun.rmi.transport.tcp.TCPEndpoint.newSocket(TCPEndpoint.java:619)
+	at sun.rmi.transport.tcp.TCPChannel.createConnection(TCPChannel.java:216)
+	at sun.rmi.transport.tcp.TCPChannel.newConnection(TCPChannel.java:202)
+	at sun.rmi.server.UnicastRef.newCall(UnicastRef.java:341)
+	at sun.rmi.registry.RegistryImpl_Stub.lookup(Unknown Source)
+	at com.sun.jndi.rmi.registry.RegistryContext.lookup(RegistryContext.java:114)
+	... 14 more
+Caused by: java.net.ConnectException: Connection refused
+	at java.net.PlainSocketImpl.socketConnect(Native Method)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:339)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:200)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:182)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:579)
+	at java.net.Socket.connect(Socket.java:528)
+	at java.net.Socket.<init>(Socket.java:425)
+	at java.net.Socket.<init>(Socket.java:208)
+	at sun.rmi.transport.proxy.RMIDirectSocketFactory.createSocket(RMIDirectSocketFactory.java:40)
+	at sun.rmi.transport.proxy.RMIMasterSocketFactory.createSocket(RMIMasterSocketFactory.java:147)
+	at sun.rmi.transport.tcp.TCPEndpoint.newSocket(TCPEndpoint.java:613)
+	... 19 more
+2018-08-02 02:11:17:DEBUG Worker-4 com.primeton.ext.system.deploy.file.FileDeployerHelper - Does not need hot update.
+2018-08-02 02:11:28:DEBUG Worker-9 com.primeton.ext.system.deploy.file.FileDeployerHelper - Does not need hot update.
+2018-08-02 02:12:59:DEBUG Worker-4 com.primeton.ext.system.deploy.file.FileDeployerHelper - Try to get deployService from null:0
+2018-08-02 02:12:59:DEBUG Worker-4 com.primeton.ext.system.deploy.file.FileDeployerHelper - An error occured when getting a remoteMbeanServer!
+com.eos.system.management.ManagementRuntimeException: An error occured when getting a remoteMbeanServer!
+	at com.eos.system.management.MBeanServerFactory.getMBeanServer(MBeanServerFactory.java:201)
+	at com.eos.internal.system.deploy.ApplicationHelper.getMBean(ApplicationHelper.java:362)
+	at com.eos.internal.system.deploy.ApplicationHelper.getApplicationMBean(ApplicationHelper.java:330)
+	at com.primeton.ext.system.deploy.file.FileDeployerHelper.deploy(FileDeployerHelper.java:86)
+	at com.primeton.studio.workbench.deploy.processor.base.AbstractDeployProcessor.deploy(AbstractDeployProcessor.java:137)
+	at com.primeton.studio.workbench.deploy.EosDeployManager$1.runInWorkspace(EosDeployManager.java:182)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:38)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+Caused by: java.io.IOException: Failed to retrieve RMIServer stub: javax.naming.ServiceUnavailableException [Root exception is java.rmi.ConnectException: Connection refused to host: 169.254.74.65; nested exception is: 
+	java.net.ConnectException: Connection refused]
+	at javax.management.remote.rmi.RMIConnector.connect(RMIConnector.java:369)
+	at javax.management.remote.JMXConnectorFactory.connect(JMXConnectorFactory.java:268)
+	at com.eos.system.management.MBeanServerFactory.getMBeanServer(MBeanServerFactory.java:189)
+	... 7 more
+Caused by: javax.naming.ServiceUnavailableException [Root exception is java.rmi.ConnectException: Connection refused to host: 169.254.74.65; nested exception is: 
+	java.net.ConnectException: Connection refused]
+	at com.sun.jndi.rmi.registry.RegistryContext.lookup(RegistryContext.java:118)
+	at com.sun.jndi.toolkit.url.GenericURLContext.lookup(GenericURLContext.java:203)
+	at javax.naming.InitialContext.lookup(InitialContext.java:411)
+	at javax.management.remote.rmi.RMIConnector.findRMIServerJNDI(RMIConnector.java:1929)
+	at javax.management.remote.rmi.RMIConnector.findRMIServer(RMIConnector.java:1896)
+	at javax.management.remote.rmi.RMIConnector.connect(RMIConnector.java:286)
+	... 9 more
+Caused by: java.rmi.ConnectException: Connection refused to host: 169.254.74.65; nested exception is: 
+	java.net.ConnectException: Connection refused
+	at sun.rmi.transport.tcp.TCPEndpoint.newSocket(TCPEndpoint.java:619)
+	at sun.rmi.transport.tcp.TCPChannel.createConnection(TCPChannel.java:216)
+	at sun.rmi.transport.tcp.TCPChannel.newConnection(TCPChannel.java:202)
+	at sun.rmi.server.UnicastRef.newCall(UnicastRef.java:341)
+	at sun.rmi.registry.RegistryImpl_Stub.lookup(Unknown Source)
+	at com.sun.jndi.rmi.registry.RegistryContext.lookup(RegistryContext.java:114)
+	... 14 more
+Caused by: java.net.ConnectException: Connection refused
+	at java.net.PlainSocketImpl.socketConnect(Native Method)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:339)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:200)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:182)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:579)
+	at java.net.Socket.connect(Socket.java:528)
+	at java.net.Socket.<init>(Socket.java:425)
+	at java.net.Socket.<init>(Socket.java:208)
+	at sun.rmi.transport.proxy.RMIDirectSocketFactory.createSocket(RMIDirectSocketFactory.java:40)
+	at sun.rmi.transport.proxy.RMIMasterSocketFactory.createSocket(RMIMasterSocketFactory.java:147)
+	at sun.rmi.transport.tcp.TCPEndpoint.newSocket(TCPEndpoint.java:613)
+	... 19 more
+2018-08-02 02:12:59:DEBUG Worker-4 com.primeton.ext.system.deploy.file.FileDeployerHelper - Try to get deployService from null:0
+2018-08-02 02:12:59:DEBUG Worker-4 com.primeton.ext.system.deploy.file.FileDeployerHelper - An error occured when getting a remoteMbeanServer!
+com.eos.system.management.ManagementRuntimeException: An error occured when getting a remoteMbeanServer!
+	at com.eos.system.management.MBeanServerFactory.getMBeanServer(MBeanServerFactory.java:201)
+	at com.eos.internal.system.deploy.ApplicationHelper.getMBean(ApplicationHelper.java:362)
+	at com.eos.internal.system.deploy.ApplicationHelper.getApplicationMBean(ApplicationHelper.java:330)
+	at com.primeton.ext.system.deploy.file.FileDeployerHelper.deploy(FileDeployerHelper.java:86)
+	at com.primeton.studio.workbench.deploy.processor.base.AbstractDeployProcessor.deploy(AbstractDeployProcessor.java:137)
+	at com.primeton.studio.workbench.deploy.EosDeployManager$1.runInWorkspace(EosDeployManager.java:182)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:38)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+Caused by: java.io.IOException: Failed to retrieve RMIServer stub: javax.naming.ServiceUnavailableException [Root exception is java.rmi.ConnectException: Connection refused to host: 169.254.74.65; nested exception is: 
+	java.net.ConnectException: Connection refused]
+	at javax.management.remote.rmi.RMIConnector.connect(RMIConnector.java:369)
+	at javax.management.remote.JMXConnectorFactory.connect(JMXConnectorFactory.java:268)
+	at com.eos.system.management.MBeanServerFactory.getMBeanServer(MBeanServerFactory.java:189)
+	... 7 more
+Caused by: javax.naming.ServiceUnavailableException [Root exception is java.rmi.ConnectException: Connection refused to host: 169.254.74.65; nested exception is: 
+	java.net.ConnectException: Connection refused]
+	at com.sun.jndi.rmi.registry.RegistryContext.lookup(RegistryContext.java:118)
+	at com.sun.jndi.toolkit.url.GenericURLContext.lookup(GenericURLContext.java:203)
+	at javax.naming.InitialContext.lookup(InitialContext.java:411)
+	at javax.management.remote.rmi.RMIConnector.findRMIServerJNDI(RMIConnector.java:1929)
+	at javax.management.remote.rmi.RMIConnector.findRMIServer(RMIConnector.java:1896)
+	at javax.management.remote.rmi.RMIConnector.connect(RMIConnector.java:286)
+	... 9 more
+Caused by: java.rmi.ConnectException: Connection refused to host: 169.254.74.65; nested exception is: 
+	java.net.ConnectException: Connection refused
+	at sun.rmi.transport.tcp.TCPEndpoint.newSocket(TCPEndpoint.java:619)
+	at sun.rmi.transport.tcp.TCPChannel.createConnection(TCPChannel.java:216)
+	at sun.rmi.transport.tcp.TCPChannel.newConnection(TCPChannel.java:202)
+	at sun.rmi.server.UnicastRef.newCall(UnicastRef.java:341)
+	at sun.rmi.registry.RegistryImpl_Stub.lookup(Unknown Source)
+	at com.sun.jndi.rmi.registry.RegistryContext.lookup(RegistryContext.java:114)
+	... 14 more
+Caused by: java.net.ConnectException: Connection refused
+	at java.net.PlainSocketImpl.socketConnect(Native Method)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:339)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:200)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:182)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:579)
+	at java.net.Socket.connect(Socket.java:528)
+	at java.net.Socket.<init>(Socket.java:425)
+	at java.net.Socket.<init>(Socket.java:208)
+	at sun.rmi.transport.proxy.RMIDirectSocketFactory.createSocket(RMIDirectSocketFactory.java:40)
+	at sun.rmi.transport.proxy.RMIMasterSocketFactory.createSocket(RMIMasterSocketFactory.java:147)
+	at sun.rmi.transport.tcp.TCPEndpoint.newSocket(TCPEndpoint.java:613)
+	... 19 more
+2018-08-02 02:12:59:DEBUG Worker-4 com.primeton.ext.system.deploy.file.FileDeployerHelper - Try to get deployService from null:0
+2018-08-02 02:12:59:DEBUG Worker-4 com.primeton.ext.system.deploy.file.FileDeployerHelper - An error occured when getting a remoteMbeanServer!
+com.eos.system.management.ManagementRuntimeException: An error occured when getting a remoteMbeanServer!
+	at com.eos.system.management.MBeanServerFactory.getMBeanServer(MBeanServerFactory.java:201)
+	at com.eos.internal.system.deploy.ApplicationHelper.getMBean(ApplicationHelper.java:362)
+	at com.eos.internal.system.deploy.ApplicationHelper.getApplicationMBean(ApplicationHelper.java:330)
+	at com.primeton.ext.system.deploy.file.FileDeployerHelper.deploy(FileDeployerHelper.java:86)
+	at com.primeton.studio.workbench.deploy.processor.base.AbstractDeployProcessor.deploy(AbstractDeployProcessor.java:137)
+	at com.primeton.studio.workbench.deploy.EosDeployManager$1.runInWorkspace(EosDeployManager.java:182)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:38)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+Caused by: java.io.IOException: Failed to retrieve RMIServer stub: javax.naming.ServiceUnavailableException [Root exception is java.rmi.ConnectException: Connection refused to host: 169.254.74.65; nested exception is: 
+	java.net.ConnectException: Connection refused]
+	at javax.management.remote.rmi.RMIConnector.connect(RMIConnector.java:369)
+	at javax.management.remote.JMXConnectorFactory.connect(JMXConnectorFactory.java:268)
+	at com.eos.system.management.MBeanServerFactory.getMBeanServer(MBeanServerFactory.java:189)
+	... 7 more
+Caused by: javax.naming.ServiceUnavailableException [Root exception is java.rmi.ConnectException: Connection refused to host: 169.254.74.65; nested exception is: 
+	java.net.ConnectException: Connection refused]
+	at com.sun.jndi.rmi.registry.RegistryContext.lookup(RegistryContext.java:118)
+	at com.sun.jndi.toolkit.url.GenericURLContext.lookup(GenericURLContext.java:203)
+	at javax.naming.InitialContext.lookup(InitialContext.java:411)
+	at javax.management.remote.rmi.RMIConnector.findRMIServerJNDI(RMIConnector.java:1929)
+	at javax.management.remote.rmi.RMIConnector.findRMIServer(RMIConnector.java:1896)
+	at javax.management.remote.rmi.RMIConnector.connect(RMIConnector.java:286)
+	... 9 more
+Caused by: java.rmi.ConnectException: Connection refused to host: 169.254.74.65; nested exception is: 
+	java.net.ConnectException: Connection refused
+	at sun.rmi.transport.tcp.TCPEndpoint.newSocket(TCPEndpoint.java:619)
+	at sun.rmi.transport.tcp.TCPChannel.createConnection(TCPChannel.java:216)
+	at sun.rmi.transport.tcp.TCPChannel.newConnection(TCPChannel.java:202)
+	at sun.rmi.server.UnicastRef.newCall(UnicastRef.java:341)
+	at sun.rmi.registry.RegistryImpl_Stub.lookup(Unknown Source)
+	at com.sun.jndi.rmi.registry.RegistryContext.lookup(RegistryContext.java:114)
+	... 14 more
+Caused by: java.net.ConnectException: Connection refused
+	at java.net.PlainSocketImpl.socketConnect(Native Method)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:339)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:200)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:182)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:579)
+	at java.net.Socket.connect(Socket.java:528)
+	at java.net.Socket.<init>(Socket.java:425)
+	at java.net.Socket.<init>(Socket.java:208)
+	at sun.rmi.transport.proxy.RMIDirectSocketFactory.createSocket(RMIDirectSocketFactory.java:40)
+	at sun.rmi.transport.proxy.RMIMasterSocketFactory.createSocket(RMIMasterSocketFactory.java:147)
+	at sun.rmi.transport.tcp.TCPEndpoint.newSocket(TCPEndpoint.java:613)
+	... 19 more
+2018-08-02 02:13:20:DEBUG Worker-9 com.primeton.ext.system.deploy.file.FileDeployerHelper - Does not need hot update.
+2018-08-02 02:13:50:DEBUG Worker-4 com.primeton.ext.system.deploy.file.FileDeployerHelper - Does not need hot update.
+2018-08-02 02:16:24:DEBUG Worker-15 com.primeton.ext.system.deploy.file.FileDeployerHelper - Does not need hot update.
+2018-08-02 02:20:17:ERROR Worker-15 com.primeton.studio.component.java.core.annotation.ParserFactory - <$c_com.primeton.studio.component.java.core>处理Annotation出现异常
+java.lang.NullPointerException
+	at com.primeton.studio.component.java.ui.bizlet.jdt.BizletJdtAnnotationProcessor.handleAnnotationOnType(BizletJdtAnnotationProcessor.java:173)
+	at com.primeton.studio.component.java.ui.annotation.jdt.JdtAnnotationParser.processAnnotations(JdtAnnotationParser.java:363)
+	at com.primeton.studio.component.java.ui.annotation.jdt.JdtAnnotationParser.parseJavaFile(JdtAnnotationParser.java:253)
+	at com.primeton.studio.component.java.ui.annotation.jdt.JdtAnnotationParser.parse(JdtAnnotationParser.java:153)
+	at com.primeton.studio.component.java.core.annotation.ParserFactory.parse(ParserFactory.java:169)
+	at com.primeton.studio.component.java.core.util.ProcessorUtil.getBizletsByParsingModel(ProcessorUtil.java:274)
+	at com.primeton.studio.component.java.core.util.ProcessorUtil.getBizletsByParsingModel(ProcessorUtil.java:298)
+	at com.primeton.studio.component.java.core.bizlet.BizletXmlModelParser.toElement(BizletXmlModelParser.java:473)
+	at com.primeton.studio.runtime.RuntimeHelper.toElement(RuntimeHelper.java:754)
+	at com.primeton.studio.runtime.RuntimeHelper.toElement(RuntimeHelper.java:770)
+	at com.primeton.studio.runtime.core.internal.EosModel.doLoadChildren(EosModel.java:169)
+	at com.primeton.studio.runtime.core.base.AbstractEosElement.getChildren(AbstractEosElement.java:402)
+	at com.primeton.studio.runtime.model.internal.DefaultHtmlDocProvider.createDocument(DefaultHtmlDocProvider.java:82)
+	at com.primeton.studio.runtime.RuntimeHelper.writeDocument(RuntimeHelper.java:1401)
+	at com.primeton.studio.runtime.project.EOSProjectBuilder.buildFile(EOSProjectBuilder.java:1565)
+	at com.primeton.studio.runtime.project.EOSProjectBuilder.updateBuild(EOSProjectBuilder.java:1385)
+	at com.primeton.studio.runtime.project.EOSProjectBuilder.incrementalBuild(EOSProjectBuilder.java:1198)
+	at com.primeton.studio.runtime.project.EOSProjectBuilder.incrementalBuild(EOSProjectBuilder.java:1212)
+	at com.primeton.studio.runtime.project.EOSProjectBuilder.incrementalBuild(EOSProjectBuilder.java:1212)
+	at com.primeton.studio.runtime.project.EOSProjectBuilder.incrementalBuild(EOSProjectBuilder.java:1212)
+	at com.primeton.studio.runtime.project.EOSProjectBuilder.incrementalBuild(EOSProjectBuilder.java:1212)
+	at com.primeton.studio.runtime.project.EOSProjectBuilder.incrementalBuild(EOSProjectBuilder.java:1212)
+	at com.primeton.studio.runtime.project.EOSProjectBuilder.incrementalBuild(EOSProjectBuilder.java:1212)
+	at com.primeton.studio.runtime.project.EOSProjectBuilder.incrementalBuild(EOSProjectBuilder.java:1212)
+	at com.primeton.studio.runtime.project.EOSProjectBuilder.doBuild(EOSProjectBuilder.java:794)
+	at com.primeton.studio.runtime.project.EOSProjectBuilder.build(EOSProjectBuilder.java:736)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:734)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:206)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:246)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:299)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:302)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:358)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:381)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:143)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:241)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+2018-08-02 02:20:17:ERROR Worker-15 com.primeton.studio.component.java.core.annotation.ParserFactory - <$c_com.primeton.studio.component.java.core>处理Annotation出现异常
+java.lang.NullPointerException
+	at com.primeton.studio.component.java.ui.bizlet.jdt.BizletJdtAnnotationProcessor.handleAnnotationOnType(BizletJdtAnnotationProcessor.java:173)
+	at com.primeton.studio.component.java.ui.annotation.jdt.JdtAnnotationParser.processAnnotations(JdtAnnotationParser.java:363)
+	at com.primeton.studio.component.java.ui.annotation.jdt.JdtAnnotationParser.parseJavaFile(JdtAnnotationParser.java:253)
+	at com.primeton.studio.component.java.ui.annotation.jdt.JdtAnnotationParser.parse(JdtAnnotationParser.java:153)
+	at com.primeton.studio.component.java.core.annotation.ParserFactory.parse(ParserFactory.java:169)
+	at com.primeton.studio.component.java.core.util.ProcessorUtil.getBizletsByParsingModel(ProcessorUtil.java:274)
+	at com.primeton.studio.component.java.core.util.ProcessorUtil.getBizletsByParsingModel(ProcessorUtil.java:298)
+	at com.primeton.studio.component.java.core.bizlet.BizletXmlModelParser.toElement(BizletXmlModelParser.java:473)
+	at com.primeton.studio.runtime.RuntimeHelper.toElement(RuntimeHelper.java:754)
+	at com.primeton.studio.runtime.RuntimeHelper.toElement(RuntimeHelper.java:770)
+	at com.primeton.studio.runtime.core.internal.EosModel.doLoadChildren(EosModel.java:169)
+	at com.primeton.studio.runtime.core.base.AbstractEosElement.getChildren(AbstractEosElement.java:402)
+	at com.primeton.studio.runtime.MetadataManager.setChildren(MetadataManager.java:1034)
+	at com.primeton.studio.runtime.MetadataManager.metadataToString(MetadataManager.java:968)
+	at com.primeton.studio.runtime.project.EOSProjectBuilder.updateMetadata(EOSProjectBuilder.java:1620)
+	at com.primeton.studio.runtime.project.EOSProjectBuilder.buildFile(EOSProjectBuilder.java:1578)
+	at com.primeton.studio.runtime.project.EOSProjectBuilder.updateBuild(EOSProjectBuilder.java:1385)
+	at com.primeton.studio.runtime.project.EOSProjectBuilder.incrementalBuild(EOSProjectBuilder.java:1198)
+	at com.primeton.studio.runtime.project.EOSProjectBuilder.incrementalBuild(EOSProjectBuilder.java:1212)
+	at com.primeton.studio.runtime.project.EOSProjectBuilder.incrementalBuild(EOSProjectBuilder.java:1212)
+	at com.primeton.studio.runtime.project.EOSProjectBuilder.incrementalBuild(EOSProjectBuilder.java:1212)
+	at com.primeton.studio.runtime.project.EOSProjectBuilder.incrementalBuild(EOSProjectBuilder.java:1212)
+	at com.primeton.studio.runtime.project.EOSProjectBuilder.incrementalBuild(EOSProjectBuilder.java:1212)
+	at com.primeton.studio.runtime.project.EOSProjectBuilder.incrementalBuild(EOSProjectBuilder.java:1212)
+	at com.primeton.studio.runtime.project.EOSProjectBuilder.incrementalBuild(EOSProjectBuilder.java:1212)
+	at com.primeton.studio.runtime.project.EOSProjectBuilder.doBuild(EOSProjectBuilder.java:794)
+	at com.primeton.studio.runtime.project.EOSProjectBuilder.build(EOSProjectBuilder.java:736)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:734)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:206)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:246)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:299)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:302)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:358)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:381)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:143)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:241)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+2018-08-02 02:20:17:DEBUG Worker-16 com.primeton.ext.system.deploy.file.FileDeployerHelper - Does not need hot update.
+2018-08-02 02:20:24:ERROR Worker-17 com.primeton.studio.component.java.core.annotation.ParserFactory - <$c_com.primeton.studio.component.java.core>处理Annotation出现异常
+java.lang.NullPointerException
+	at com.primeton.studio.component.java.ui.bizlet.jdt.BizletJdtAnnotationProcessor.handleAnnotationOnType(BizletJdtAnnotationProcessor.java:173)
+	at com.primeton.studio.component.java.ui.annotation.jdt.JdtAnnotationParser.processAnnotations(JdtAnnotationParser.java:363)
+	at com.primeton.studio.component.java.ui.annotation.jdt.JdtAnnotationParser.parseJavaFile(JdtAnnotationParser.java:253)
+	at com.primeton.studio.component.java.ui.annotation.jdt.JdtAnnotationParser.parse(JdtAnnotationParser.java:153)
+	at com.primeton.studio.component.java.core.annotation.ParserFactory.parse(ParserFactory.java:169)
+	at com.primeton.studio.component.java.core.util.ProcessorUtil.getBizletsByParsingModel(ProcessorUtil.java:274)
+	at com.primeton.studio.component.java.core.util.ProcessorUtil.getBizletsByParsingModel(ProcessorUtil.java:298)
+	at com.primeton.studio.component.java.core.bizlet.BizletXmlModelParser.toElement(BizletXmlModelParser.java:473)
+	at com.primeton.studio.runtime.RuntimeHelper.toElement(RuntimeHelper.java:754)
+	at com.primeton.studio.runtime.RuntimeHelper.toElement(RuntimeHelper.java:770)
+	at com.primeton.studio.runtime.core.internal.EosModel.doLoadChildren(EosModel.java:169)
+	at com.primeton.studio.runtime.core.base.AbstractEosElement.getChildren(AbstractEosElement.java:402)
+	at com.primeton.studio.runtime.model.internal.DefaultHtmlDocProvider.createDocument(DefaultHtmlDocProvider.java:82)
+	at com.primeton.studio.runtime.RuntimeHelper.writeDocument(RuntimeHelper.java:1401)
+	at com.primeton.studio.runtime.project.EOSProjectBuilder.buildFile(EOSProjectBuilder.java:1565)
+	at com.primeton.studio.runtime.project.EOSProjectBuilder.updateBuild(EOSProjectBuilder.java:1385)
+	at com.primeton.studio.runtime.project.EOSProjectBuilder.incrementalBuild(EOSProjectBuilder.java:1198)
+	at com.primeton.studio.runtime.project.EOSProjectBuilder.incrementalBuild(EOSProjectBuilder.java:1212)
+	at com.primeton.studio.runtime.project.EOSProjectBuilder.incrementalBuild(EOSProjectBuilder.java:1212)
+	at com.primeton.studio.runtime.project.EOSProjectBuilder.incrementalBuild(EOSProjectBuilder.java:1212)
+	at com.primeton.studio.runtime.project.EOSProjectBuilder.incrementalBuild(EOSProjectBuilder.java:1212)
+	at com.primeton.studio.runtime.project.EOSProjectBuilder.incrementalBuild(EOSProjectBuilder.java:1212)
+	at com.primeton.studio.runtime.project.EOSProjectBuilder.incrementalBuild(EOSProjectBuilder.java:1212)
+	at com.primeton.studio.runtime.project.EOSProjectBuilder.incrementalBuild(EOSProjectBuilder.java:1212)
+	at com.primeton.studio.runtime.project.EOSProjectBuilder.doBuild(EOSProjectBuilder.java:794)
+	at com.primeton.studio.runtime.project.EOSProjectBuilder.build(EOSProjectBuilder.java:736)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:734)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:206)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:246)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:299)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:302)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:358)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:381)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:143)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:241)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+2018-08-02 02:20:24:ERROR Worker-17 com.primeton.studio.component.java.core.annotation.ParserFactory - <$c_com.primeton.studio.component.java.core>处理Annotation出现异常
+java.lang.NullPointerException
+	at com.primeton.studio.component.java.ui.bizlet.jdt.BizletJdtAnnotationProcessor.handleAnnotationOnType(BizletJdtAnnotationProcessor.java:173)
+	at com.primeton.studio.component.java.ui.annotation.jdt.JdtAnnotationParser.processAnnotations(JdtAnnotationParser.java:363)
+	at com.primeton.studio.component.java.ui.annotation.jdt.JdtAnnotationParser.parseJavaFile(JdtAnnotationParser.java:253)
+	at com.primeton.studio.component.java.ui.annotation.jdt.JdtAnnotationParser.parse(JdtAnnotationParser.java:153)
+	at com.primeton.studio.component.java.core.annotation.ParserFactory.parse(ParserFactory.java:169)
+	at com.primeton.studio.component.java.core.util.ProcessorUtil.getBizletsByParsingModel(ProcessorUtil.java:274)
+	at com.primeton.studio.component.java.core.util.ProcessorUtil.getBizletsByParsingModel(ProcessorUtil.java:298)
+	at com.primeton.studio.component.java.core.bizlet.BizletXmlModelParser.toElement(BizletXmlModelParser.java:473)
+	at com.primeton.studio.runtime.RuntimeHelper.toElement(RuntimeHelper.java:754)
+	at com.primeton.studio.runtime.RuntimeHelper.toElement(RuntimeHelper.java:770)
+	at com.primeton.studio.runtime.core.internal.EosModel.doLoadChildren(EosModel.java:169)
+	at com.primeton.studio.runtime.core.base.AbstractEosElement.getChildren(AbstractEosElement.java:402)
+	at com.primeton.studio.runtime.MetadataManager.setChildren(MetadataManager.java:1034)
+	at com.primeton.studio.runtime.MetadataManager.metadataToString(MetadataManager.java:968)
+	at com.primeton.studio.runtime.project.EOSProjectBuilder.updateMetadata(EOSProjectBuilder.java:1620)
+	at com.primeton.studio.runtime.project.EOSProjectBuilder.buildFile(EOSProjectBuilder.java:1578)
+	at com.primeton.studio.runtime.project.EOSProjectBuilder.updateBuild(EOSProjectBuilder.java:1385)
+	at com.primeton.studio.runtime.project.EOSProjectBuilder.incrementalBuild(EOSProjectBuilder.java:1198)
+	at com.primeton.studio.runtime.project.EOSProjectBuilder.incrementalBuild(EOSProjectBuilder.java:1212)
+	at com.primeton.studio.runtime.project.EOSProjectBuilder.incrementalBuild(EOSProjectBuilder.java:1212)
+	at com.primeton.studio.runtime.project.EOSProjectBuilder.incrementalBuild(EOSProjectBuilder.java:1212)
+	at com.primeton.studio.runtime.project.EOSProjectBuilder.incrementalBuild(EOSProjectBuilder.java:1212)
+	at com.primeton.studio.runtime.project.EOSProjectBuilder.incrementalBuild(EOSProjectBuilder.java:1212)
+	at com.primeton.studio.runtime.project.EOSProjectBuilder.incrementalBuild(EOSProjectBuilder.java:1212)
+	at com.primeton.studio.runtime.project.EOSProjectBuilder.incrementalBuild(EOSProjectBuilder.java:1212)
+	at com.primeton.studio.runtime.project.EOSProjectBuilder.doBuild(EOSProjectBuilder.java:794)
+	at com.primeton.studio.runtime.project.EOSProjectBuilder.build(EOSProjectBuilder.java:736)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:734)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:206)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:246)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:299)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:302)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:358)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:381)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:143)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:241)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+2018-08-02 02:20:24:DEBUG Worker-16 com.primeton.ext.system.deploy.file.FileDeployerHelper - Does not need hot update.
+2018-08-02 02:20:36:DEBUG Worker-7 com.primeton.ext.system.deploy.file.FileDeployerHelper - Try to get deployService from null:0
+2018-08-02 02:20:36:DEBUG Worker-7 com.primeton.ext.system.deploy.file.FileDeployerHelper - An error occured when getting a remoteMbeanServer!
+com.eos.system.management.ManagementRuntimeException: An error occured when getting a remoteMbeanServer!
+	at com.eos.system.management.MBeanServerFactory.getMBeanServer(MBeanServerFactory.java:201)
+	at com.eos.internal.system.deploy.ApplicationHelper.getMBean(ApplicationHelper.java:362)
+	at com.eos.internal.system.deploy.ApplicationHelper.getApplicationMBean(ApplicationHelper.java:330)
+	at com.primeton.ext.system.deploy.file.FileDeployerHelper.deploy(FileDeployerHelper.java:86)
+	at com.primeton.studio.workbench.deploy.processor.base.AbstractDeployProcessor.deploy(AbstractDeployProcessor.java:137)
+	at com.primeton.studio.workbench.deploy.EosDeployManager$1.runInWorkspace(EosDeployManager.java:182)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:38)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+Caused by: java.io.IOException: Failed to retrieve RMIServer stub: javax.naming.ServiceUnavailableException [Root exception is java.rmi.ConnectException: Connection refused to host: 169.254.74.65; nested exception is: 
+	java.net.ConnectException: Connection refused]
+	at javax.management.remote.rmi.RMIConnector.connect(RMIConnector.java:369)
+	at javax.management.remote.JMXConnectorFactory.connect(JMXConnectorFactory.java:268)
+	at com.eos.system.management.MBeanServerFactory.getMBeanServer(MBeanServerFactory.java:189)
+	... 7 more
+Caused by: javax.naming.ServiceUnavailableException [Root exception is java.rmi.ConnectException: Connection refused to host: 169.254.74.65; nested exception is: 
+	java.net.ConnectException: Connection refused]
+	at com.sun.jndi.rmi.registry.RegistryContext.lookup(RegistryContext.java:118)
+	at com.sun.jndi.toolkit.url.GenericURLContext.lookup(GenericURLContext.java:203)
+	at javax.naming.InitialContext.lookup(InitialContext.java:411)
+	at javax.management.remote.rmi.RMIConnector.findRMIServerJNDI(RMIConnector.java:1929)
+	at javax.management.remote.rmi.RMIConnector.findRMIServer(RMIConnector.java:1896)
+	at javax.management.remote.rmi.RMIConnector.connect(RMIConnector.java:286)
+	... 9 more
+Caused by: java.rmi.ConnectException: Connection refused to host: 169.254.74.65; nested exception is: 
+	java.net.ConnectException: Connection refused
+	at sun.rmi.transport.tcp.TCPEndpoint.newSocket(TCPEndpoint.java:619)
+	at sun.rmi.transport.tcp.TCPChannel.createConnection(TCPChannel.java:216)
+	at sun.rmi.transport.tcp.TCPChannel.newConnection(TCPChannel.java:202)
+	at sun.rmi.server.UnicastRef.newCall(UnicastRef.java:341)
+	at sun.rmi.registry.RegistryImpl_Stub.lookup(Unknown Source)
+	at com.sun.jndi.rmi.registry.RegistryContext.lookup(RegistryContext.java:114)
+	... 14 more
+Caused by: java.net.ConnectException: Connection refused
+	at java.net.PlainSocketImpl.socketConnect(Native Method)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:339)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:200)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:182)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:579)
+	at java.net.Socket.connect(Socket.java:528)
+	at java.net.Socket.<init>(Socket.java:425)
+	at java.net.Socket.<init>(Socket.java:208)
+	at sun.rmi.transport.proxy.RMIDirectSocketFactory.createSocket(RMIDirectSocketFactory.java:40)
+	at sun.rmi.transport.proxy.RMIMasterSocketFactory.createSocket(RMIMasterSocketFactory.java:147)
+	at sun.rmi.transport.tcp.TCPEndpoint.newSocket(TCPEndpoint.java:613)
+	... 19 more
+2018-08-02 02:21:13:DEBUG Worker-7 com.primeton.ext.system.deploy.file.FileDeployerHelper - Does not need hot update.
+2018-08-02 02:21:43:DEBUG Worker-17 com.primeton.ext.system.deploy.file.FileDeployerHelper - Does not need hot update.
+2018-08-02 02:24:20:DEBUG Worker-15 com.primeton.ext.system.deploy.file.FileDeployerHelper - Does not need hot update.
+2018-08-02 02:24:30:DEBUG Worker-21 com.primeton.ext.system.deploy.file.FileDeployerHelper - Try to get deployService from null:0
+2018-08-02 02:24:30:DEBUG Worker-21 com.primeton.ext.system.deploy.file.FileDeployerHelper - An error occured when getting a remoteMbeanServer!
+com.eos.system.management.ManagementRuntimeException: An error occured when getting a remoteMbeanServer!
+	at com.eos.system.management.MBeanServerFactory.getMBeanServer(MBeanServerFactory.java:201)
+	at com.eos.internal.system.deploy.ApplicationHelper.getMBean(ApplicationHelper.java:362)
+	at com.eos.internal.system.deploy.ApplicationHelper.getApplicationMBean(ApplicationHelper.java:330)
+	at com.primeton.ext.system.deploy.file.FileDeployerHelper.deploy(FileDeployerHelper.java:86)
+	at com.primeton.studio.workbench.deploy.processor.base.AbstractDeployProcessor.deploy(AbstractDeployProcessor.java:137)
+	at com.primeton.studio.workbench.deploy.EosDeployManager$1.runInWorkspace(EosDeployManager.java:182)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:38)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+Caused by: java.io.IOException: Failed to retrieve RMIServer stub: javax.naming.ServiceUnavailableException [Root exception is java.rmi.ConnectException: Connection refused to host: 169.254.74.65; nested exception is: 
+	java.net.ConnectException: Connection refused]
+	at javax.management.remote.rmi.RMIConnector.connect(RMIConnector.java:369)
+	at javax.management.remote.JMXConnectorFactory.connect(JMXConnectorFactory.java:268)
+	at com.eos.system.management.MBeanServerFactory.getMBeanServer(MBeanServerFactory.java:189)
+	... 7 more
+Caused by: javax.naming.ServiceUnavailableException [Root exception is java.rmi.ConnectException: Connection refused to host: 169.254.74.65; nested exception is: 
+	java.net.ConnectException: Connection refused]
+	at com.sun.jndi.rmi.registry.RegistryContext.lookup(RegistryContext.java:118)
+	at com.sun.jndi.toolkit.url.GenericURLContext.lookup(GenericURLContext.java:203)
+	at javax.naming.InitialContext.lookup(InitialContext.java:411)
+	at javax.management.remote.rmi.RMIConnector.findRMIServerJNDI(RMIConnector.java:1929)
+	at javax.management.remote.rmi.RMIConnector.findRMIServer(RMIConnector.java:1896)
+	at javax.management.remote.rmi.RMIConnector.connect(RMIConnector.java:286)
+	... 9 more
+Caused by: java.rmi.ConnectException: Connection refused to host: 169.254.74.65; nested exception is: 
+	java.net.ConnectException: Connection refused
+	at sun.rmi.transport.tcp.TCPEndpoint.newSocket(TCPEndpoint.java:619)
+	at sun.rmi.transport.tcp.TCPChannel.createConnection(TCPChannel.java:216)
+	at sun.rmi.transport.tcp.TCPChannel.newConnection(TCPChannel.java:202)
+	at sun.rmi.server.UnicastRef.newCall(UnicastRef.java:341)
+	at sun.rmi.registry.RegistryImpl_Stub.lookup(Unknown Source)
+	at com.sun.jndi.rmi.registry.RegistryContext.lookup(RegistryContext.java:114)
+	... 14 more
+Caused by: java.net.ConnectException: Connection refused
+	at java.net.PlainSocketImpl.socketConnect(Native Method)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:339)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:200)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:182)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:579)
+	at java.net.Socket.connect(Socket.java:528)
+	at java.net.Socket.<init>(Socket.java:425)
+	at java.net.Socket.<init>(Socket.java:208)
+	at sun.rmi.transport.proxy.RMIDirectSocketFactory.createSocket(RMIDirectSocketFactory.java:40)
+	at sun.rmi.transport.proxy.RMIMasterSocketFactory.createSocket(RMIMasterSocketFactory.java:147)
+	at sun.rmi.transport.tcp.TCPEndpoint.newSocket(TCPEndpoint.java:613)
+	... 19 more
+2018-08-02 02:24:39:DEBUG Worker-15 com.primeton.ext.system.deploy.file.FileDeployerHelper - Try to get deployService from null:0
+2018-08-02 02:24:39:DEBUG Worker-15 com.primeton.ext.system.deploy.file.FileDeployerHelper - An error occured when getting a remoteMbeanServer!
+com.eos.system.management.ManagementRuntimeException: An error occured when getting a remoteMbeanServer!
+	at com.eos.system.management.MBeanServerFactory.getMBeanServer(MBeanServerFactory.java:201)
+	at com.eos.internal.system.deploy.ApplicationHelper.getMBean(ApplicationHelper.java:362)
+	at com.eos.internal.system.deploy.ApplicationHelper.getApplicationMBean(ApplicationHelper.java:330)
+	at com.primeton.ext.system.deploy.file.FileDeployerHelper.deploy(FileDeployerHelper.java:86)
+	at com.primeton.studio.workbench.deploy.processor.base.AbstractDeployProcessor.deploy(AbstractDeployProcessor.java:137)
+	at com.primeton.studio.workbench.deploy.EosDeployManager$1.runInWorkspace(EosDeployManager.java:182)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:38)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+Caused by: java.io.IOException: Failed to retrieve RMIServer stub: javax.naming.ServiceUnavailableException [Root exception is java.rmi.ConnectException: Connection refused to host: 169.254.74.65; nested exception is: 
+	java.net.ConnectException: Connection refused]
+	at javax.management.remote.rmi.RMIConnector.connect(RMIConnector.java:369)
+	at javax.management.remote.JMXConnectorFactory.connect(JMXConnectorFactory.java:268)
+	at com.eos.system.management.MBeanServerFactory.getMBeanServer(MBeanServerFactory.java:189)
+	... 7 more
+Caused by: javax.naming.ServiceUnavailableException [Root exception is java.rmi.ConnectException: Connection refused to host: 169.254.74.65; nested exception is: 
+	java.net.ConnectException: Connection refused]
+	at com.sun.jndi.rmi.registry.RegistryContext.lookup(RegistryContext.java:118)
+	at com.sun.jndi.toolkit.url.GenericURLContext.lookup(GenericURLContext.java:203)
+	at javax.naming.InitialContext.lookup(InitialContext.java:411)
+	at javax.management.remote.rmi.RMIConnector.findRMIServerJNDI(RMIConnector.java:1929)
+	at javax.management.remote.rmi.RMIConnector.findRMIServer(RMIConnector.java:1896)
+	at javax.management.remote.rmi.RMIConnector.connect(RMIConnector.java:286)
+	... 9 more
+Caused by: java.rmi.ConnectException: Connection refused to host: 169.254.74.65; nested exception is: 
+	java.net.ConnectException: Connection refused
+	at sun.rmi.transport.tcp.TCPEndpoint.newSocket(TCPEndpoint.java:619)
+	at sun.rmi.transport.tcp.TCPChannel.createConnection(TCPChannel.java:216)
+	at sun.rmi.transport.tcp.TCPChannel.newConnection(TCPChannel.java:202)
+	at sun.rmi.server.UnicastRef.newCall(UnicastRef.java:341)
+	at sun.rmi.registry.RegistryImpl_Stub.lookup(Unknown Source)
+	at com.sun.jndi.rmi.registry.RegistryContext.lookup(RegistryContext.java:114)
+	... 14 more
+Caused by: java.net.ConnectException: Connection refused
+	at java.net.PlainSocketImpl.socketConnect(Native Method)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:339)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:200)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:182)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:579)
+	at java.net.Socket.connect(Socket.java:528)
+	at java.net.Socket.<init>(Socket.java:425)
+	at java.net.Socket.<init>(Socket.java:208)
+	at sun.rmi.transport.proxy.RMIDirectSocketFactory.createSocket(RMIDirectSocketFactory.java:40)
+	at sun.rmi.transport.proxy.RMIMasterSocketFactory.createSocket(RMIMasterSocketFactory.java:147)
+	at sun.rmi.transport.tcp.TCPEndpoint.newSocket(TCPEndpoint.java:613)
+	... 19 more
+2018-08-02 02:24:46:DEBUG Worker-4 com.primeton.ext.system.deploy.file.FileDeployerHelper - Try to get deployService from null:0
+2018-08-02 02:24:46:DEBUG Worker-4 com.primeton.ext.system.deploy.file.FileDeployerHelper - An error occured when getting a remoteMbeanServer!
+com.eos.system.management.ManagementRuntimeException: An error occured when getting a remoteMbeanServer!
+	at com.eos.system.management.MBeanServerFactory.getMBeanServer(MBeanServerFactory.java:201)
+	at com.eos.internal.system.deploy.ApplicationHelper.getMBean(ApplicationHelper.java:362)
+	at com.eos.internal.system.deploy.ApplicationHelper.getApplicationMBean(ApplicationHelper.java:330)
+	at com.primeton.ext.system.deploy.file.FileDeployerHelper.deploy(FileDeployerHelper.java:86)
+	at com.primeton.studio.workbench.deploy.processor.base.AbstractDeployProcessor.deploy(AbstractDeployProcessor.java:137)
+	at com.primeton.studio.workbench.deploy.EosDeployManager$1.runInWorkspace(EosDeployManager.java:182)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:38)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+Caused by: java.io.IOException: Failed to retrieve RMIServer stub: javax.naming.ServiceUnavailableException [Root exception is java.rmi.ConnectException: Connection refused to host: 169.254.74.65; nested exception is: 
+	java.net.ConnectException: Connection refused]
+	at javax.management.remote.rmi.RMIConnector.connect(RMIConnector.java:369)
+	at javax.management.remote.JMXConnectorFactory.connect(JMXConnectorFactory.java:268)
+	at com.eos.system.management.MBeanServerFactory.getMBeanServer(MBeanServerFactory.java:189)
+	... 7 more
+Caused by: javax.naming.ServiceUnavailableException [Root exception is java.rmi.ConnectException: Connection refused to host: 169.254.74.65; nested exception is: 
+	java.net.ConnectException: Connection refused]
+	at com.sun.jndi.rmi.registry.RegistryContext.lookup(RegistryContext.java:118)
+	at com.sun.jndi.toolkit.url.GenericURLContext.lookup(GenericURLContext.java:203)
+	at javax.naming.InitialContext.lookup(InitialContext.java:411)
+	at javax.management.remote.rmi.RMIConnector.findRMIServerJNDI(RMIConnector.java:1929)
+	at javax.management.remote.rmi.RMIConnector.findRMIServer(RMIConnector.java:1896)
+	at javax.management.remote.rmi.RMIConnector.connect(RMIConnector.java:286)
+	... 9 more
+Caused by: java.rmi.ConnectException: Connection refused to host: 169.254.74.65; nested exception is: 
+	java.net.ConnectException: Connection refused
+	at sun.rmi.transport.tcp.TCPEndpoint.newSocket(TCPEndpoint.java:619)
+	at sun.rmi.transport.tcp.TCPChannel.createConnection(TCPChannel.java:216)
+	at sun.rmi.transport.tcp.TCPChannel.newConnection(TCPChannel.java:202)
+	at sun.rmi.server.UnicastRef.newCall(UnicastRef.java:341)
+	at sun.rmi.registry.RegistryImpl_Stub.lookup(Unknown Source)
+	at com.sun.jndi.rmi.registry.RegistryContext.lookup(RegistryContext.java:114)
+	... 14 more
+Caused by: java.net.ConnectException: Connection refused
+	at java.net.PlainSocketImpl.socketConnect(Native Method)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:339)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:200)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:182)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:579)
+	at java.net.Socket.connect(Socket.java:528)
+	at java.net.Socket.<init>(Socket.java:425)
+	at java.net.Socket.<init>(Socket.java:208)
+	at sun.rmi.transport.proxy.RMIDirectSocketFactory.createSocket(RMIDirectSocketFactory.java:40)
+	at sun.rmi.transport.proxy.RMIMasterSocketFactory.createSocket(RMIMasterSocketFactory.java:147)
+	at sun.rmi.transport.tcp.TCPEndpoint.newSocket(TCPEndpoint.java:613)
+	... 19 more
+2018-08-02 02:24:59:DEBUG Worker-15 com.primeton.ext.system.deploy.file.FileDeployerHelper - Try to get deployService from null:0
+2018-08-02 02:24:59:DEBUG Worker-15 com.primeton.ext.system.deploy.file.FileDeployerHelper - An error occured when getting a remoteMbeanServer!
+com.eos.system.management.ManagementRuntimeException: An error occured when getting a remoteMbeanServer!
+	at com.eos.system.management.MBeanServerFactory.getMBeanServer(MBeanServerFactory.java:201)
+	at com.eos.internal.system.deploy.ApplicationHelper.getMBean(ApplicationHelper.java:362)
+	at com.eos.internal.system.deploy.ApplicationHelper.getApplicationMBean(ApplicationHelper.java:330)
+	at com.primeton.ext.system.deploy.file.FileDeployerHelper.deploy(FileDeployerHelper.java:86)
+	at com.primeton.studio.workbench.deploy.processor.base.AbstractDeployProcessor.deploy(AbstractDeployProcessor.java:137)
+	at com.primeton.studio.workbench.deploy.EosDeployManager$1.runInWorkspace(EosDeployManager.java:182)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:38)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+Caused by: java.io.IOException: Failed to retrieve RMIServer stub: javax.naming.ServiceUnavailableException [Root exception is java.rmi.ConnectException: Connection refused to host: 169.254.74.65; nested exception is: 
+	java.net.ConnectException: Connection refused]
+	at javax.management.remote.rmi.RMIConnector.connect(RMIConnector.java:369)
+	at javax.management.remote.JMXConnectorFactory.connect(JMXConnectorFactory.java:268)
+	at com.eos.system.management.MBeanServerFactory.getMBeanServer(MBeanServerFactory.java:189)
+	... 7 more
+Caused by: javax.naming.ServiceUnavailableException [Root exception is java.rmi.ConnectException: Connection refused to host: 169.254.74.65; nested exception is: 
+	java.net.ConnectException: Connection refused]
+	at com.sun.jndi.rmi.registry.RegistryContext.lookup(RegistryContext.java:118)
+	at com.sun.jndi.toolkit.url.GenericURLContext.lookup(GenericURLContext.java:203)
+	at javax.naming.InitialContext.lookup(InitialContext.java:411)
+	at javax.management.remote.rmi.RMIConnector.findRMIServerJNDI(RMIConnector.java:1929)
+	at javax.management.remote.rmi.RMIConnector.findRMIServer(RMIConnector.java:1896)
+	at javax.management.remote.rmi.RMIConnector.connect(RMIConnector.java:286)
+	... 9 more
+Caused by: java.rmi.ConnectException: Connection refused to host: 169.254.74.65; nested exception is: 
+	java.net.ConnectException: Connection refused
+	at sun.rmi.transport.tcp.TCPEndpoint.newSocket(TCPEndpoint.java:619)
+	at sun.rmi.transport.tcp.TCPChannel.createConnection(TCPChannel.java:216)
+	at sun.rmi.transport.tcp.TCPChannel.newConnection(TCPChannel.java:202)
+	at sun.rmi.server.UnicastRef.newCall(UnicastRef.java:341)
+	at sun.rmi.registry.RegistryImpl_Stub.lookup(Unknown Source)
+	at com.sun.jndi.rmi.registry.RegistryContext.lookup(RegistryContext.java:114)
+	... 14 more
+Caused by: java.net.ConnectException: Connection refused
+	at java.net.PlainSocketImpl.socketConnect(Native Method)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:339)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:200)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:182)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:579)
+	at java.net.Socket.connect(Socket.java:528)
+	at java.net.Socket.<init>(Socket.java:425)
+	at java.net.Socket.<init>(Socket.java:208)
+	at sun.rmi.transport.proxy.RMIDirectSocketFactory.createSocket(RMIDirectSocketFactory.java:40)
+	at sun.rmi.transport.proxy.RMIMasterSocketFactory.createSocket(RMIMasterSocketFactory.java:147)
+	at sun.rmi.transport.tcp.TCPEndpoint.newSocket(TCPEndpoint.java:613)
+	... 19 more
+2018-08-02 02:25:30:DEBUG Worker-22 com.primeton.ext.system.deploy.file.FileDeployerHelper - Does not need hot update.
+2018-08-02 02:47:16:DEBUG Worker-29 com.primeton.ext.system.deploy.file.FileDeployerHelper - Does not need hot update.
+2018-08-02 02:47:54:ERROR Worker-29 com.primeton.studio.runtime.RuntimePlugin - 
+java.lang.NullPointerException
+	at com.primeton.studio.jsp.ui.index.PageFileIndexer.getReference(PageFileIndexer.java:151)
+	at com.primeton.studio.runtime.index.base.AbstractFileIndexer.buildIndex(AbstractFileIndexer.java:88)
+	at com.primeton.studio.runtime.index.internal.IndexBuilderImpl.doBuildFileIndex(IndexBuilderImpl.java:510)
+	at com.primeton.studio.runtime.index.internal.IndexBuilderImpl.doBuildIndex(IndexBuilderImpl.java:448)
+	at com.primeton.studio.runtime.index.internal.IndexBuilderImpl.buildIndex(IndexBuilderImpl.java:422)
+	at com.primeton.studio.runtime.index.IndexManager.buildIndex(IndexManager.java:260)
+	at com.primeton.studio.runtime.project.EOSProjectBuilder.buildIndex(EOSProjectBuilder.java:1407)
+	at com.primeton.studio.runtime.project.EOSProjectBuilder.updateBuild(EOSProjectBuilder.java:1390)
+	at com.primeton.studio.runtime.project.EOSProjectBuilder.incrementalBuild(EOSProjectBuilder.java:1198)
+	at com.primeton.studio.runtime.project.EOSProjectBuilder.incrementalBuild(EOSProjectBuilder.java:1212)
+	at com.primeton.studio.runtime.project.EOSProjectBuilder.incrementalBuild(EOSProjectBuilder.java:1212)
+	at com.primeton.studio.runtime.project.EOSProjectBuilder.incrementalBuild(EOSProjectBuilder.java:1212)
+	at com.primeton.studio.runtime.project.EOSProjectBuilder.incrementalBuild(EOSProjectBuilder.java:1212)
+	at com.primeton.studio.runtime.project.EOSProjectBuilder.doBuild(EOSProjectBuilder.java:794)
+	at com.primeton.studio.runtime.project.EOSProjectBuilder.build(EOSProjectBuilder.java:736)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:734)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:206)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:246)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:299)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:302)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:358)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:381)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:143)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:241)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+2018-08-02 02:47:54:DEBUG Worker-30 com.primeton.ext.system.deploy.file.FileDeployerHelper - Does not need hot update.
+2018-08-02 02:48:33:DEBUG Worker-30 com.primeton.ext.system.deploy.file.FileDeployerHelper - Does not need hot update.
+2018-08-02 02:48:46:DEBUG Worker-27 com.primeton.ext.system.deploy.file.FileDeployerHelper - Does not need hot update.
+2018-08-02 02:49:06:DEBUG Worker-30 com.primeton.ext.system.deploy.file.FileDeployerHelper - Try to get deployService from null:0
+2018-08-02 02:49:06:DEBUG Worker-30 com.primeton.ext.system.deploy.file.FileDeployerHelper - An error occured when getting a remoteMbeanServer!
+com.eos.system.management.ManagementRuntimeException: An error occured when getting a remoteMbeanServer!
+	at com.eos.system.management.MBeanServerFactory.getMBeanServer(MBeanServerFactory.java:201)
+	at com.eos.internal.system.deploy.ApplicationHelper.getMBean(ApplicationHelper.java:362)
+	at com.eos.internal.system.deploy.ApplicationHelper.getApplicationMBean(ApplicationHelper.java:330)
+	at com.primeton.ext.system.deploy.file.FileDeployerHelper.deploy(FileDeployerHelper.java:86)
+	at com.primeton.studio.workbench.deploy.processor.impl.ProjectDeployProcessor.deployProject(ProjectDeployProcessor.java:101)
+	at com.primeton.studio.workbench.deploy.EosDeployManager.deployProject(EosDeployManager.java:203)
+	at com.primeton.studio.navigator.actions.deploy.DeployProjectAction$1.runInWorkspace(DeployProjectAction.java:140)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:38)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+Caused by: java.io.IOException: Failed to retrieve RMIServer stub: javax.naming.ServiceUnavailableException [Root exception is java.rmi.ConnectException: Connection refused to host: 169.254.74.65; nested exception is: 
+	java.net.ConnectException: Connection refused]
+	at javax.management.remote.rmi.RMIConnector.connect(RMIConnector.java:369)
+	at javax.management.remote.JMXConnectorFactory.connect(JMXConnectorFactory.java:268)
+	at com.eos.system.management.MBeanServerFactory.getMBeanServer(MBeanServerFactory.java:189)
+	... 8 more
+Caused by: javax.naming.ServiceUnavailableException [Root exception is java.rmi.ConnectException: Connection refused to host: 169.254.74.65; nested exception is: 
+	java.net.ConnectException: Connection refused]
+	at com.sun.jndi.rmi.registry.RegistryContext.lookup(RegistryContext.java:118)
+	at com.sun.jndi.toolkit.url.GenericURLContext.lookup(GenericURLContext.java:203)
+	at javax.naming.InitialContext.lookup(InitialContext.java:411)
+	at javax.management.remote.rmi.RMIConnector.findRMIServerJNDI(RMIConnector.java:1929)
+	at javax.management.remote.rmi.RMIConnector.findRMIServer(RMIConnector.java:1896)
+	at javax.management.remote.rmi.RMIConnector.connect(RMIConnector.java:286)
+	... 10 more
+Caused by: java.rmi.ConnectException: Connection refused to host: 169.254.74.65; nested exception is: 
+	java.net.ConnectException: Connection refused
+	at sun.rmi.transport.tcp.TCPEndpoint.newSocket(TCPEndpoint.java:619)
+	at sun.rmi.transport.tcp.TCPChannel.createConnection(TCPChannel.java:216)
+	at sun.rmi.transport.tcp.TCPChannel.newConnection(TCPChannel.java:202)
+	at sun.rmi.server.UnicastRef.newCall(UnicastRef.java:341)
+	at sun.rmi.registry.RegistryImpl_Stub.lookup(Unknown Source)
+	at com.sun.jndi.rmi.registry.RegistryContext.lookup(RegistryContext.java:114)
+	... 15 more
+Caused by: java.net.ConnectException: Connection refused
+	at java.net.PlainSocketImpl.socketConnect(Native Method)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:339)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:200)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:182)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:579)
+	at java.net.Socket.connect(Socket.java:528)
+	at java.net.Socket.<init>(Socket.java:425)
+	at java.net.Socket.<init>(Socket.java:208)
+	at sun.rmi.transport.proxy.RMIDirectSocketFactory.createSocket(RMIDirectSocketFactory.java:40)
+	at sun.rmi.transport.proxy.RMIMasterSocketFactory.createSocket(RMIMasterSocketFactory.java:147)
+	at sun.rmi.transport.tcp.TCPEndpoint.newSocket(TCPEndpoint.java:613)
+	... 20 more
+2018-08-02 02:49:10:DEBUG Worker-29 com.primeton.ext.system.deploy.file.FileDeployerHelper - Does not need hot update.
+2018-08-02 02:49:18:DEBUG Worker-20 com.primeton.ext.system.deploy.file.FileDeployerHelper - Does not need hot update.
+2018-08-02 02:49:25:DEBUG Worker-27 com.primeton.ext.system.deploy.file.FileDeployerHelper - Does not need hot update.
+2018-08-02 02:54:39:DEBUG Worker-2 com.primeton.ext.system.deploy.file.FileDeployerHelper - Try to get deployService from 127.0.0.1:6210
+2018-08-02 02:54:39:DEBUG Worker-2 com.primeton.ext.system.deploy.file.FileDeployerHelper - An error occured when getting a remoteMbeanServer!
+com.eos.system.management.ManagementRuntimeException: An error occured when getting a remoteMbeanServer!
+	at com.eos.system.management.MBeanServerFactory.getMBeanServer(MBeanServerFactory.java:201)
+	at com.eos.internal.system.deploy.ApplicationHelper.getMBean(ApplicationHelper.java:362)
+	at com.eos.internal.system.deploy.ApplicationHelper.getApplicationMBean(ApplicationHelper.java:330)
+	at com.primeton.ext.system.deploy.file.FileDeployerHelper.deploy(FileDeployerHelper.java:86)
+	at com.primeton.studio.workbench.deploy.processor.base.AbstractDeployProcessor.deploy(AbstractDeployProcessor.java:137)
+	at com.primeton.studio.workbench.deploy.EosDeployManager$1.runInWorkspace(EosDeployManager.java:182)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:38)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+Caused by: java.io.IOException: Failed to retrieve RMIServer stub: javax.naming.ServiceUnavailableException [Root exception is java.rmi.ConnectException: Connection refused to host: 127.0.0.1; nested exception is: 
+	java.net.ConnectException: Connection refused]
+	at javax.management.remote.rmi.RMIConnector.connect(RMIConnector.java:369)
+	at javax.management.remote.JMXConnectorFactory.connect(JMXConnectorFactory.java:268)
+	at com.eos.system.management.MBeanServerFactory.getMBeanServer(MBeanServerFactory.java:189)
+	... 7 more
+Caused by: javax.naming.ServiceUnavailableException [Root exception is java.rmi.ConnectException: Connection refused to host: 127.0.0.1; nested exception is: 
+	java.net.ConnectException: Connection refused]
+	at com.sun.jndi.rmi.registry.RegistryContext.lookup(RegistryContext.java:118)
+	at com.sun.jndi.toolkit.url.GenericURLContext.lookup(GenericURLContext.java:203)
+	at javax.naming.InitialContext.lookup(InitialContext.java:411)
+	at javax.management.remote.rmi.RMIConnector.findRMIServerJNDI(RMIConnector.java:1929)
+	at javax.management.remote.rmi.RMIConnector.findRMIServer(RMIConnector.java:1896)
+	at javax.management.remote.rmi.RMIConnector.connect(RMIConnector.java:286)
+	... 9 more
+Caused by: java.rmi.ConnectException: Connection refused to host: 127.0.0.1; nested exception is: 
+	java.net.ConnectException: Connection refused
+	at sun.rmi.transport.tcp.TCPEndpoint.newSocket(TCPEndpoint.java:619)
+	at sun.rmi.transport.tcp.TCPChannel.createConnection(TCPChannel.java:216)
+	at sun.rmi.transport.tcp.TCPChannel.newConnection(TCPChannel.java:202)
+	at sun.rmi.server.UnicastRef.newCall(UnicastRef.java:341)
+	at sun.rmi.registry.RegistryImpl_Stub.lookup(Unknown Source)
+	at com.sun.jndi.rmi.registry.RegistryContext.lookup(RegistryContext.java:114)
+	... 14 more
+Caused by: java.net.ConnectException: Connection refused
+	at java.net.PlainSocketImpl.socketConnect(Native Method)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:339)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:200)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:182)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:579)
+	at java.net.Socket.connect(Socket.java:528)
+	at java.net.Socket.<init>(Socket.java:425)
+	at java.net.Socket.<init>(Socket.java:208)
+	at sun.rmi.transport.proxy.RMIDirectSocketFactory.createSocket(RMIDirectSocketFactory.java:40)
+	at sun.rmi.transport.proxy.RMIMasterSocketFactory.createSocket(RMIMasterSocketFactory.java:147)
+	at sun.rmi.transport.tcp.TCPEndpoint.newSocket(TCPEndpoint.java:613)
+	... 19 more
+2018-08-02 02:54:39:DEBUG Worker-2 com.primeton.ext.system.deploy.file.FileDeployerHelper - Try to get deployService from 127.0.0.1:6210
+2018-08-02 02:54:39:DEBUG Worker-2 com.primeton.ext.system.deploy.file.FileDeployerHelper - An error occured when getting a remoteMbeanServer!
+com.eos.system.management.ManagementRuntimeException: An error occured when getting a remoteMbeanServer!
+	at com.eos.system.management.MBeanServerFactory.getMBeanServer(MBeanServerFactory.java:201)
+	at com.eos.internal.system.deploy.ApplicationHelper.getMBean(ApplicationHelper.java:362)
+	at com.eos.internal.system.deploy.ApplicationHelper.getApplicationMBean(ApplicationHelper.java:330)
+	at com.primeton.ext.system.deploy.file.FileDeployerHelper.deploy(FileDeployerHelper.java:86)
+	at com.primeton.studio.workbench.deploy.processor.base.AbstractDeployProcessor.deploy(AbstractDeployProcessor.java:137)
+	at com.primeton.studio.workbench.deploy.EosDeployManager$1.runInWorkspace(EosDeployManager.java:182)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:38)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+Caused by: java.io.IOException: Failed to retrieve RMIServer stub: javax.naming.ServiceUnavailableException [Root exception is java.rmi.ConnectException: Connection refused to host: 127.0.0.1; nested exception is: 
+	java.net.ConnectException: Connection refused]
+	at javax.management.remote.rmi.RMIConnector.connect(RMIConnector.java:369)
+	at javax.management.remote.JMXConnectorFactory.connect(JMXConnectorFactory.java:268)
+	at com.eos.system.management.MBeanServerFactory.getMBeanServer(MBeanServerFactory.java:189)
+	... 7 more
+Caused by: javax.naming.ServiceUnavailableException [Root exception is java.rmi.ConnectException: Connection refused to host: 127.0.0.1; nested exception is: 
+	java.net.ConnectException: Connection refused]
+	at com.sun.jndi.rmi.registry.RegistryContext.lookup(RegistryContext.java:118)
+	at com.sun.jndi.toolkit.url.GenericURLContext.lookup(GenericURLContext.java:203)
+	at javax.naming.InitialContext.lookup(InitialContext.java:411)
+	at javax.management.remote.rmi.RMIConnector.findRMIServerJNDI(RMIConnector.java:1929)
+	at javax.management.remote.rmi.RMIConnector.findRMIServer(RMIConnector.java:1896)
+	at javax.management.remote.rmi.RMIConnector.connect(RMIConnector.java:286)
+	... 9 more
+Caused by: java.rmi.ConnectException: Connection refused to host: 127.0.0.1; nested exception is: 
+	java.net.ConnectException: Connection refused
+	at sun.rmi.transport.tcp.TCPEndpoint.newSocket(TCPEndpoint.java:619)
+	at sun.rmi.transport.tcp.TCPChannel.createConnection(TCPChannel.java:216)
+	at sun.rmi.transport.tcp.TCPChannel.newConnection(TCPChannel.java:202)
+	at sun.rmi.server.UnicastRef.newCall(UnicastRef.java:341)
+	at sun.rmi.registry.RegistryImpl_Stub.lookup(Unknown Source)
+	at com.sun.jndi.rmi.registry.RegistryContext.lookup(RegistryContext.java:114)
+	... 14 more
+Caused by: java.net.ConnectException: Connection refused
+	at java.net.PlainSocketImpl.socketConnect(Native Method)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:339)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:200)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:182)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:579)
+	at java.net.Socket.connect(Socket.java:528)
+	at java.net.Socket.<init>(Socket.java:425)
+	at java.net.Socket.<init>(Socket.java:208)
+	at sun.rmi.transport.proxy.RMIDirectSocketFactory.createSocket(RMIDirectSocketFactory.java:40)
+	at sun.rmi.transport.proxy.RMIMasterSocketFactory.createSocket(RMIMasterSocketFactory.java:147)
+	at sun.rmi.transport.tcp.TCPEndpoint.newSocket(TCPEndpoint.java:613)
+	... 19 more
+2018-08-02 02:54:39:DEBUG Worker-2 com.primeton.ext.system.deploy.file.FileDeployerHelper - Try to get deployService from 127.0.0.1:6210
+2018-08-02 02:54:39:DEBUG Worker-2 com.primeton.ext.system.deploy.file.FileDeployerHelper - An error occured when getting a remoteMbeanServer!
+com.eos.system.management.ManagementRuntimeException: An error occured when getting a remoteMbeanServer!
+	at com.eos.system.management.MBeanServerFactory.getMBeanServer(MBeanServerFactory.java:201)
+	at com.eos.internal.system.deploy.ApplicationHelper.getMBean(ApplicationHelper.java:362)
+	at com.eos.internal.system.deploy.ApplicationHelper.getApplicationMBean(ApplicationHelper.java:330)
+	at com.primeton.ext.system.deploy.file.FileDeployerHelper.deploy(FileDeployerHelper.java:86)
+	at com.primeton.studio.workbench.deploy.processor.base.AbstractDeployProcessor.deploy(AbstractDeployProcessor.java:137)
+	at com.primeton.studio.workbench.deploy.EosDeployManager$1.runInWorkspace(EosDeployManager.java:182)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:38)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+Caused by: java.io.IOException: Failed to retrieve RMIServer stub: javax.naming.ServiceUnavailableException [Root exception is java.rmi.ConnectException: Connection refused to host: 127.0.0.1; nested exception is: 
+	java.net.ConnectException: Connection refused]
+	at javax.management.remote.rmi.RMIConnector.connect(RMIConnector.java:369)
+	at javax.management.remote.JMXConnectorFactory.connect(JMXConnectorFactory.java:268)
+	at com.eos.system.management.MBeanServerFactory.getMBeanServer(MBeanServerFactory.java:189)
+	... 7 more
+Caused by: javax.naming.ServiceUnavailableException [Root exception is java.rmi.ConnectException: Connection refused to host: 127.0.0.1; nested exception is: 
+	java.net.ConnectException: Connection refused]
+	at com.sun.jndi.rmi.registry.RegistryContext.lookup(RegistryContext.java:118)
+	at com.sun.jndi.toolkit.url.GenericURLContext.lookup(GenericURLContext.java:203)
+	at javax.naming.InitialContext.lookup(InitialContext.java:411)
+	at javax.management.remote.rmi.RMIConnector.findRMIServerJNDI(RMIConnector.java:1929)
+	at javax.management.remote.rmi.RMIConnector.findRMIServer(RMIConnector.java:1896)
+	at javax.management.remote.rmi.RMIConnector.connect(RMIConnector.java:286)
+	... 9 more
+Caused by: java.rmi.ConnectException: Connection refused to host: 127.0.0.1; nested exception is: 
+	java.net.ConnectException: Connection refused
+	at sun.rmi.transport.tcp.TCPEndpoint.newSocket(TCPEndpoint.java:619)
+	at sun.rmi.transport.tcp.TCPChannel.createConnection(TCPChannel.java:216)
+	at sun.rmi.transport.tcp.TCPChannel.newConnection(TCPChannel.java:202)
+	at sun.rmi.server.UnicastRef.newCall(UnicastRef.java:341)
+	at sun.rmi.registry.RegistryImpl_Stub.lookup(Unknown Source)
+	at com.sun.jndi.rmi.registry.RegistryContext.lookup(RegistryContext.java:114)
+	... 14 more
+Caused by: java.net.ConnectException: Connection refused
+	at java.net.PlainSocketImpl.socketConnect(Native Method)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:339)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:200)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:182)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:579)
+	at java.net.Socket.connect(Socket.java:528)
+	at java.net.Socket.<init>(Socket.java:425)
+	at java.net.Socket.<init>(Socket.java:208)
+	at sun.rmi.transport.proxy.RMIDirectSocketFactory.createSocket(RMIDirectSocketFactory.java:40)
+	at sun.rmi.transport.proxy.RMIMasterSocketFactory.createSocket(RMIMasterSocketFactory.java:147)
+	at sun.rmi.transport.tcp.TCPEndpoint.newSocket(TCPEndpoint.java:613)
+	... 19 more
+2018-08-02 04:39:19:DEBUG Worker-46 com.primeton.ext.system.deploy.file.FileDeployerHelper - Try to get deployService from 127.0.0.1:6210
+2018-08-02 04:39:20:DEBUG Worker-46 com.primeton.ext.system.deploy.file.FileDeployerHelper - Got deployService
+2018-08-02 04:39:20:DEBUG Worker-46 com.primeton.ext.system.deploy.file.FileDeployerHelper - Begin to call hotUpdate interface of remote server 127.0.0.1:6210
+2018-08-02 04:39:20:DEBUG Worker-46 com.primeton.ext.system.deploy.file.FileDeployerHelper - Finished calling hotUpdate interface of remote server 127.0.0.1:6210
+2018-08-02 04:39:20:DEBUG Worker-46 com.primeton.ext.system.deploy.file.FileDeployerHelper - Try to get deployService from 127.0.0.1:6210
+2018-08-02 04:39:20:DEBUG Worker-46 com.primeton.ext.system.deploy.file.FileDeployerHelper - Got deployService
+2018-08-02 04:39:20:DEBUG Worker-46 com.primeton.ext.system.deploy.file.FileDeployerHelper - Begin to call hotUpdate interface of remote server 127.0.0.1:6210
+2018-08-02 04:39:20:DEBUG Worker-46 com.primeton.ext.system.deploy.file.FileDeployerHelper - Finished calling hotUpdate interface of remote server 127.0.0.1:6210
+2018-08-02 04:39:20:DEBUG Worker-46 com.primeton.ext.system.deploy.file.FileDeployerHelper - Try to get deployService from 127.0.0.1:6210
+2018-08-02 04:39:20:DEBUG Worker-46 com.primeton.ext.system.deploy.file.FileDeployerHelper - Got deployService
+2018-08-02 04:39:20:DEBUG Worker-46 com.primeton.ext.system.deploy.file.FileDeployerHelper - Begin to call hotUpdate interface of remote server 127.0.0.1:6210
+2018-08-02 04:39:20:DEBUG Worker-46 com.primeton.ext.system.deploy.file.FileDeployerHelper - Finished calling hotUpdate interface of remote server 127.0.0.1:6210
+2018-08-02 04:39:25:DEBUG Worker-50 com.primeton.ext.system.deploy.file.FileDeployerHelper - Try to get deployService from 127.0.0.1:6210
+2018-08-02 04:39:25:DEBUG Worker-50 com.primeton.ext.system.deploy.file.FileDeployerHelper - Got deployService
+2018-08-02 04:39:25:DEBUG Worker-50 com.primeton.ext.system.deploy.file.FileDeployerHelper - Begin to call hotUpdate interface of remote server 127.0.0.1:6210
+2018-08-02 04:39:25:DEBUG Worker-50 com.primeton.ext.system.deploy.file.FileDeployerHelper - Finished calling hotUpdate interface of remote server 127.0.0.1:6210
+2018-08-02 04:39:25:DEBUG Worker-50 com.primeton.ext.system.deploy.file.FileDeployerHelper - Try to get deployService from 127.0.0.1:6210
+2018-08-02 04:39:25:DEBUG Worker-50 com.primeton.ext.system.deploy.file.FileDeployerHelper - Got deployService
+2018-08-02 04:39:25:DEBUG Worker-50 com.primeton.ext.system.deploy.file.FileDeployerHelper - Begin to call hotUpdate interface of remote server 127.0.0.1:6210
+2018-08-02 04:39:25:DEBUG Worker-50 com.primeton.ext.system.deploy.file.FileDeployerHelper - Finished calling hotUpdate interface of remote server 127.0.0.1:6210
+2018-08-02 04:39:25:DEBUG Worker-50 com.primeton.ext.system.deploy.file.FileDeployerHelper - Try to get deployService from 127.0.0.1:6210
+2018-08-02 04:39:25:DEBUG Worker-50 com.primeton.ext.system.deploy.file.FileDeployerHelper - Got deployService
+2018-08-02 04:39:25:DEBUG Worker-50 com.primeton.ext.system.deploy.file.FileDeployerHelper - Begin to call hotUpdate interface of remote server 127.0.0.1:6210
+2018-08-02 04:39:25:DEBUG Worker-50 com.primeton.ext.system.deploy.file.FileDeployerHelper - Finished calling hotUpdate interface of remote server 127.0.0.1:6210
+2018-08-02 04:39:30:DEBUG Worker-48 com.primeton.ext.system.deploy.file.FileDeployerHelper - Try to get deployService from 127.0.0.1:6210
+2018-08-02 04:39:30:DEBUG Worker-48 com.primeton.ext.system.deploy.file.FileDeployerHelper - Got deployService
+2018-08-02 04:39:30:DEBUG Worker-48 com.primeton.ext.system.deploy.file.FileDeployerHelper - Begin to call hotUpdate interface of remote server 127.0.0.1:6210
+2018-08-02 04:39:30:DEBUG Worker-48 com.primeton.ext.system.deploy.file.FileDeployerHelper - Finished calling hotUpdate interface of remote server 127.0.0.1:6210
+2018-08-02 04:45:58:DEBUG Worker-47 com.primeton.ext.system.deploy.file.FileDeployerHelper - Try to get deployService from 127.0.0.1:6210
+2018-08-02 04:45:58:DEBUG Worker-47 com.primeton.ext.system.deploy.file.FileDeployerHelper - Got deployService
+2018-08-02 04:45:58:DEBUG Worker-47 com.primeton.ext.system.deploy.file.FileDeployerHelper - Begin to call hotUpdate interface of remote server 127.0.0.1:6210
+2018-08-02 04:45:58:DEBUG Worker-47 com.primeton.ext.system.deploy.file.FileDeployerHelper - Finished calling hotUpdate interface of remote server 127.0.0.1:6210
+2018-08-02 04:45:58:DEBUG Worker-47 com.primeton.ext.system.deploy.file.FileDeployerHelper - Does not need hot update.
+2018-08-02 04:45:58:DEBUG Worker-47 com.primeton.ext.system.deploy.file.FileDeployerHelper - Try to get deployService from 127.0.0.1:6210
+2018-08-02 04:45:58:DEBUG Worker-47 com.primeton.ext.system.deploy.file.FileDeployerHelper - Got deployService
+2018-08-02 04:45:58:DEBUG Worker-47 com.primeton.ext.system.deploy.file.FileDeployerHelper - Begin to call hotUpdate interface of remote server 127.0.0.1:6210
+2018-08-02 04:45:58:DEBUG Worker-47 com.primeton.ext.system.deploy.file.FileDeployerHelper - Finished calling hotUpdate interface of remote server 127.0.0.1:6210
+2018-08-02 04:45:58:DEBUG Worker-47 com.primeton.ext.system.deploy.file.FileDeployerHelper - Try to get deployService from 127.0.0.1:6210
+2018-08-02 04:45:58:DEBUG Worker-47 com.primeton.ext.system.deploy.file.FileDeployerHelper - Got deployService
+2018-08-02 04:45:58:DEBUG Worker-47 com.primeton.ext.system.deploy.file.FileDeployerHelper - Begin to call hotUpdate interface of remote server 127.0.0.1:6210
+2018-08-02 04:45:58:DEBUG Worker-47 com.primeton.ext.system.deploy.file.FileDeployerHelper - Finished calling hotUpdate interface of remote server 127.0.0.1:6210
+2018-08-02 04:45:58:DEBUG Worker-47 com.primeton.ext.system.deploy.file.FileDeployerHelper - Try to get deployService from 127.0.0.1:6210
+2018-08-02 04:45:58:DEBUG Worker-47 com.primeton.ext.system.deploy.file.FileDeployerHelper - Got deployService
+2018-08-02 04:45:58:DEBUG Worker-47 com.primeton.ext.system.deploy.file.FileDeployerHelper - Begin to call hotUpdate interface of remote server 127.0.0.1:6210
+2018-08-02 04:45:58:DEBUG Worker-47 com.primeton.ext.system.deploy.file.FileDeployerHelper - Finished calling hotUpdate interface of remote server 127.0.0.1:6210
+2018-08-02 04:45:58:DEBUG Worker-47 com.primeton.ext.system.deploy.file.FileDeployerHelper - Does not need hot update.
+2018-08-02 04:45:58:DEBUG Worker-47 com.primeton.ext.system.deploy.file.FileDeployerHelper - Does not need hot update.
+2018-08-02 04:46:00:DEBUG Worker-50 com.primeton.ext.system.deploy.file.FileDeployerHelper - Try to get deployService from 127.0.0.1:6210
+2018-08-02 04:46:00:DEBUG Worker-50 com.primeton.ext.system.deploy.file.FileDeployerHelper - Got deployService
+2018-08-02 04:46:00:DEBUG Worker-50 com.primeton.ext.system.deploy.file.FileDeployerHelper - Begin to call hotUpdate interface of remote server 127.0.0.1:6210
+2018-08-02 04:46:00:DEBUG Worker-50 com.primeton.ext.system.deploy.file.FileDeployerHelper - Finished calling hotUpdate interface of remote server 127.0.0.1:6210
+2018-08-02 04:46:00:DEBUG Worker-50 com.primeton.ext.system.deploy.file.FileDeployerHelper - Try to get deployService from 127.0.0.1:6210
+2018-08-02 04:46:00:DEBUG Worker-50 com.primeton.ext.system.deploy.file.FileDeployerHelper - Got deployService
+2018-08-02 04:46:00:DEBUG Worker-50 com.primeton.ext.system.deploy.file.FileDeployerHelper - Begin to call hotUpdate interface of remote server 127.0.0.1:6210
+2018-08-02 04:46:00:DEBUG Worker-50 com.primeton.ext.system.deploy.file.FileDeployerHelper - Finished calling hotUpdate interface of remote server 127.0.0.1:6210
+2018-08-02 04:46:00:DEBUG Worker-50 com.primeton.ext.system.deploy.file.FileDeployerHelper - Try to get deployService from 127.0.0.1:6210
+2018-08-02 04:46:00:DEBUG Worker-50 com.primeton.ext.system.deploy.file.FileDeployerHelper - Got deployService
+2018-08-02 04:46:00:DEBUG Worker-50 com.primeton.ext.system.deploy.file.FileDeployerHelper - Begin to call hotUpdate interface of remote server 127.0.0.1:6210
+2018-08-02 04:46:00:DEBUG Worker-50 com.primeton.ext.system.deploy.file.FileDeployerHelper - Finished calling hotUpdate interface of remote server 127.0.0.1:6210
+2018-08-02 04:46:01:DEBUG Worker-35 com.primeton.ext.system.deploy.file.FileDeployerHelper - Try to get deployService from 127.0.0.1:6210
+2018-08-02 04:46:01:DEBUG Worker-35 com.primeton.ext.system.deploy.file.FileDeployerHelper - Got deployService
+2018-08-02 04:46:01:DEBUG Worker-35 com.primeton.ext.system.deploy.file.FileDeployerHelper - Begin to call hotUpdate interface of remote server 127.0.0.1:6210
+2018-08-02 04:46:01:DEBUG Worker-35 com.primeton.ext.system.deploy.file.FileDeployerHelper - Finished calling hotUpdate interface of remote server 127.0.0.1:6210
+2018-08-02 04:46:01:DEBUG Worker-35 com.primeton.ext.system.deploy.file.FileDeployerHelper - Try to get deployService from 127.0.0.1:6210
+2018-08-02 04:46:01:DEBUG Worker-35 com.primeton.ext.system.deploy.file.FileDeployerHelper - Got deployService
+2018-08-02 04:46:01:DEBUG Worker-35 com.primeton.ext.system.deploy.file.FileDeployerHelper - Begin to call hotUpdate interface of remote server 127.0.0.1:6210
+2018-08-02 04:46:01:DEBUG Worker-35 com.primeton.ext.system.deploy.file.FileDeployerHelper - Finished calling hotUpdate interface of remote server 127.0.0.1:6210
+2018-08-02 04:46:01:DEBUG Worker-35 com.primeton.ext.system.deploy.file.FileDeployerHelper - Try to get deployService from 127.0.0.1:6210
+2018-08-02 04:46:01:DEBUG Worker-35 com.primeton.ext.system.deploy.file.FileDeployerHelper - Got deployService
+2018-08-02 04:46:01:DEBUG Worker-35 com.primeton.ext.system.deploy.file.FileDeployerHelper - Begin to call hotUpdate interface of remote server 127.0.0.1:6210
+2018-08-02 04:46:01:DEBUG Worker-35 com.primeton.ext.system.deploy.file.FileDeployerHelper - Finished calling hotUpdate interface of remote server 127.0.0.1:6210
+2018-08-02 04:46:49:DEBUG Worker-52 com.primeton.ext.system.deploy.file.FileDeployerHelper - Does not need hot update.
+2018-08-02 04:46:50:DEBUG Worker-47 com.primeton.ext.system.deploy.file.FileDeployerHelper - Try to get deployService from 127.0.0.1:6210
+2018-08-02 04:46:50:DEBUG Worker-47 com.primeton.ext.system.deploy.file.FileDeployerHelper - Got deployService
+2018-08-02 04:46:50:DEBUG Worker-47 com.primeton.ext.system.deploy.file.FileDeployerHelper - Begin to call hotUpdate interface of remote server 127.0.0.1:6210
+2018-08-02 04:46:51:DEBUG Worker-47 com.primeton.ext.system.deploy.file.FileDeployerHelper - Finished calling hotUpdate interface of remote server 127.0.0.1:6210
+2018-08-02 04:46:51:DEBUG Worker-47 com.primeton.ext.system.deploy.file.FileDeployerHelper - Try to get deployService from 127.0.0.1:6210
+2018-08-02 04:46:51:DEBUG Worker-47 com.primeton.ext.system.deploy.file.FileDeployerHelper - Got deployService
+2018-08-02 04:46:51:DEBUG Worker-47 com.primeton.ext.system.deploy.file.FileDeployerHelper - Begin to call hotUpdate interface of remote server 127.0.0.1:6210
+2018-08-02 04:46:51:DEBUG Worker-47 com.primeton.ext.system.deploy.file.FileDeployerHelper - Finished calling hotUpdate interface of remote server 127.0.0.1:6210
+2018-08-02 04:46:51:DEBUG Worker-47 com.primeton.ext.system.deploy.file.FileDeployerHelper - Try to get deployService from 127.0.0.1:6210
+2018-08-02 04:46:51:DEBUG Worker-47 com.primeton.ext.system.deploy.file.FileDeployerHelper - Got deployService
+2018-08-02 04:46:51:DEBUG Worker-47 com.primeton.ext.system.deploy.file.FileDeployerHelper - Begin to call hotUpdate interface of remote server 127.0.0.1:6210
+2018-08-02 04:46:51:DEBUG Worker-47 com.primeton.ext.system.deploy.file.FileDeployerHelper - Finished calling hotUpdate interface of remote server 127.0.0.1:6210
+2018-08-02 04:48:23:DEBUG Worker-51 com.primeton.ext.system.deploy.file.FileDeployerHelper - Does not need hot update.
+2018-08-02 04:48:25:DEBUG Worker-52 com.primeton.ext.system.deploy.file.FileDeployerHelper - Try to get deployService from 127.0.0.1:6210
+2018-08-02 04:48:25:DEBUG Worker-52 com.primeton.ext.system.deploy.file.FileDeployerHelper - Got deployService
+2018-08-02 04:48:25:DEBUG Worker-52 com.primeton.ext.system.deploy.file.FileDeployerHelper - Begin to call hotUpdate interface of remote server 127.0.0.1:6210
+2018-08-02 04:48:25:DEBUG Worker-52 com.primeton.ext.system.deploy.file.FileDeployerHelper - Finished calling hotUpdate interface of remote server 127.0.0.1:6210
+2018-08-02 04:48:25:DEBUG Worker-52 com.primeton.ext.system.deploy.file.FileDeployerHelper - Try to get deployService from 127.0.0.1:6210
+2018-08-02 04:48:25:DEBUG Worker-52 com.primeton.ext.system.deploy.file.FileDeployerHelper - Got deployService
+2018-08-02 04:48:25:DEBUG Worker-52 com.primeton.ext.system.deploy.file.FileDeployerHelper - Begin to call hotUpdate interface of remote server 127.0.0.1:6210
+2018-08-02 04:48:25:DEBUG Worker-52 com.primeton.ext.system.deploy.file.FileDeployerHelper - Finished calling hotUpdate interface of remote server 127.0.0.1:6210
+2018-08-02 04:48:25:DEBUG Worker-52 com.primeton.ext.system.deploy.file.FileDeployerHelper - Try to get deployService from 127.0.0.1:6210
+2018-08-02 04:48:25:DEBUG Worker-52 com.primeton.ext.system.deploy.file.FileDeployerHelper - Got deployService
+2018-08-02 04:48:25:DEBUG Worker-52 com.primeton.ext.system.deploy.file.FileDeployerHelper - Begin to call hotUpdate interface of remote server 127.0.0.1:6210
+2018-08-02 04:48:25:DEBUG Worker-52 com.primeton.ext.system.deploy.file.FileDeployerHelper - Finished calling hotUpdate interface of remote server 127.0.0.1:6210
+2018-08-02 04:48:25:DEBUG Worker-47 com.primeton.ext.system.deploy.file.FileDeployerHelper - Try to get deployService from 127.0.0.1:6210
+2018-08-02 04:48:25:DEBUG Worker-47 com.primeton.ext.system.deploy.file.FileDeployerHelper - Got deployService
+2018-08-02 04:48:25:DEBUG Worker-47 com.primeton.ext.system.deploy.file.FileDeployerHelper - Begin to call hotUpdate interface of remote server 127.0.0.1:6210
+2018-08-02 04:48:25:DEBUG Worker-47 com.primeton.ext.system.deploy.file.FileDeployerHelper - Finished calling hotUpdate interface of remote server 127.0.0.1:6210
+2018-08-02 04:48:25:DEBUG Worker-47 com.primeton.ext.system.deploy.file.FileDeployerHelper - Try to get deployService from 127.0.0.1:6210
+2018-08-02 04:48:25:DEBUG Worker-47 com.primeton.ext.system.deploy.file.FileDeployerHelper - Got deployService
+2018-08-02 04:48:25:DEBUG Worker-47 com.primeton.ext.system.deploy.file.FileDeployerHelper - Begin to call hotUpdate interface of remote server 127.0.0.1:6210
+2018-08-02 04:48:25:DEBUG Worker-47 com.primeton.ext.system.deploy.file.FileDeployerHelper - Finished calling hotUpdate interface of remote server 127.0.0.1:6210
+2018-08-02 04:48:25:DEBUG Worker-47 com.primeton.ext.system.deploy.file.FileDeployerHelper - Try to get deployService from 127.0.0.1:6210
+2018-08-02 04:48:25:DEBUG Worker-47 com.primeton.ext.system.deploy.file.FileDeployerHelper - Got deployService
+2018-08-02 04:48:25:DEBUG Worker-47 com.primeton.ext.system.deploy.file.FileDeployerHelper - Begin to call hotUpdate interface of remote server 127.0.0.1:6210
+2018-08-02 04:48:25:DEBUG Worker-47 com.primeton.ext.system.deploy.file.FileDeployerHelper - Finished calling hotUpdate interface of remote server 127.0.0.1:6210
+2018-08-02 04:51:55:DEBUG Worker-40 com.primeton.ext.system.deploy.file.FileDeployerHelper - Does not need hot update.
+2018-08-02 04:51:57:DEBUG Worker-49 com.primeton.ext.system.deploy.file.FileDeployerHelper - Try to get deployService from 127.0.0.1:6210
+2018-08-02 04:51:57:DEBUG Worker-49 com.primeton.ext.system.deploy.file.FileDeployerHelper - Got deployService
+2018-08-02 04:51:57:DEBUG Worker-49 com.primeton.ext.system.deploy.file.FileDeployerHelper - Begin to call hotUpdate interface of remote server 127.0.0.1:6210
+2018-08-02 04:51:57:DEBUG Worker-49 com.primeton.ext.system.deploy.file.FileDeployerHelper - Finished calling hotUpdate interface of remote server 127.0.0.1:6210
+2018-08-02 04:51:57:DEBUG Worker-49 com.primeton.ext.system.deploy.file.FileDeployerHelper - Try to get deployService from 127.0.0.1:6210
+2018-08-02 04:51:57:DEBUG Worker-49 com.primeton.ext.system.deploy.file.FileDeployerHelper - Got deployService
+2018-08-02 04:51:57:DEBUG Worker-49 com.primeton.ext.system.deploy.file.FileDeployerHelper - Begin to call hotUpdate interface of remote server 127.0.0.1:6210
+2018-08-02 04:51:57:DEBUG Worker-49 com.primeton.ext.system.deploy.file.FileDeployerHelper - Finished calling hotUpdate interface of remote server 127.0.0.1:6210
+2018-08-02 04:51:57:DEBUG Worker-49 com.primeton.ext.system.deploy.file.FileDeployerHelper - Try to get deployService from 127.0.0.1:6210
+2018-08-02 04:51:57:DEBUG Worker-49 com.primeton.ext.system.deploy.file.FileDeployerHelper - Got deployService
+2018-08-02 04:51:57:DEBUG Worker-49 com.primeton.ext.system.deploy.file.FileDeployerHelper - Begin to call hotUpdate interface of remote server 127.0.0.1:6210
+2018-08-02 04:51:57:DEBUG Worker-49 com.primeton.ext.system.deploy.file.FileDeployerHelper - Finished calling hotUpdate interface of remote server 127.0.0.1:6210
+2018-08-02 04:52:42:DEBUG Worker-35 com.primeton.ext.system.deploy.file.FileDeployerHelper - Does not need hot update.
+2018-08-02 04:52:45:DEBUG Worker-49 com.primeton.ext.system.deploy.file.FileDeployerHelper - Try to get deployService from 127.0.0.1:6210
+2018-08-02 04:52:45:DEBUG Worker-49 com.primeton.ext.system.deploy.file.FileDeployerHelper - Got deployService
+2018-08-02 04:52:45:DEBUG Worker-49 com.primeton.ext.system.deploy.file.FileDeployerHelper - Begin to call hotUpdate interface of remote server 127.0.0.1:6210
+2018-08-02 04:52:45:DEBUG Worker-49 com.primeton.ext.system.deploy.file.FileDeployerHelper - Finished calling hotUpdate interface of remote server 127.0.0.1:6210
+2018-08-02 04:52:45:DEBUG Worker-49 com.primeton.ext.system.deploy.file.FileDeployerHelper - Try to get deployService from 127.0.0.1:6210
+2018-08-02 04:52:45:DEBUG Worker-49 com.primeton.ext.system.deploy.file.FileDeployerHelper - Got deployService
+2018-08-02 04:52:45:DEBUG Worker-49 com.primeton.ext.system.deploy.file.FileDeployerHelper - Begin to call hotUpdate interface of remote server 127.0.0.1:6210
+2018-08-02 04:52:45:DEBUG Worker-49 com.primeton.ext.system.deploy.file.FileDeployerHelper - Finished calling hotUpdate interface of remote server 127.0.0.1:6210
+2018-08-02 04:52:45:DEBUG Worker-49 com.primeton.ext.system.deploy.file.FileDeployerHelper - Try to get deployService from 127.0.0.1:6210
+2018-08-02 04:52:45:DEBUG Worker-49 com.primeton.ext.system.deploy.file.FileDeployerHelper - Got deployService
+2018-08-02 04:52:45:DEBUG Worker-49 com.primeton.ext.system.deploy.file.FileDeployerHelper - Begin to call hotUpdate interface of remote server 127.0.0.1:6210
+2018-08-02 04:52:45:DEBUG Worker-49 com.primeton.ext.system.deploy.file.FileDeployerHelper - Finished calling hotUpdate interface of remote server 127.0.0.1:6210
+2018-08-02 04:52:53:DEBUG Worker-51 com.primeton.ext.system.deploy.file.FileDeployerHelper - Try to get deployService from 127.0.0.1:6210
+2018-08-02 04:52:53:DEBUG Worker-51 com.primeton.ext.system.deploy.file.FileDeployerHelper - Got deployService
+2018-08-02 04:52:53:DEBUG Worker-51 com.primeton.ext.system.deploy.file.FileDeployerHelper - Begin to call hotUpdate interface of remote server 127.0.0.1:6210
+2018-08-02 04:52:53:DEBUG Worker-51 com.primeton.ext.system.deploy.file.FileDeployerHelper - Finished calling hotUpdate interface of remote server 127.0.0.1:6210
+2018-08-02 05:26:44:DEBUG Worker-61 com.primeton.ext.system.deploy.file.FileDeployerHelper - Does not need hot update.
+2018-08-02 05:26:54:DEBUG Worker-65 com.primeton.ext.system.deploy.file.FileDeployerHelper - Does not need hot update.
+2018-08-02 05:27:45:DEBUG Worker-65 com.primeton.ext.system.deploy.file.FileDeployerHelper - Does not need hot update.
+2018-08-02 05:28:12:DEBUG Worker-61 com.primeton.ext.system.deploy.file.FileDeployerHelper - Does not need hot update.
+2018-08-02 05:28:42:DEBUG Worker-62 com.primeton.ext.system.deploy.file.FileDeployerHelper - Does not need hot update.
+2018-08-02 05:30:20:DEBUG Worker-59 com.primeton.ext.system.deploy.file.FileDeployerHelper - Does not need hot update.
+2018-08-02 05:30:25:DEBUG Worker-65 com.primeton.ext.system.deploy.file.FileDeployerHelper - Does not need hot update.
+2018-08-02 05:31:12:DEBUG Worker-66 com.primeton.ext.system.deploy.file.FileDeployerHelper - Does not need hot update.
+2018-08-02 05:34:39:DEBUG Worker-64 com.primeton.ext.system.deploy.file.FileDeployerHelper - Does not need hot update.
+2018-08-02 05:34:51:DEBUG Worker-66 com.primeton.ext.system.deploy.file.FileDeployerHelper - Does not need hot update.
+2018-08-02 05:40:38:DEBUG Worker-61 com.primeton.ext.system.deploy.file.FileDeployerHelper - Does not need hot update.
+2018-08-02 05:41:18:DEBUG Worker-59 com.primeton.ext.system.deploy.file.FileDeployerHelper - Does not need hot update.
+2018-08-02 05:52:56:DEBUG Worker-73 com.primeton.ext.system.deploy.file.FileDeployerHelper - Does not need hot update.
+2018-08-02 05:53:54:DEBUG Worker-66 com.primeton.ext.system.deploy.file.FileDeployerHelper - Does not need hot update.
+2018-08-02 05:53:56:DEBUG Worker-76 com.primeton.ext.system.deploy.file.FileDeployerHelper - Does not need hot update.
+2018-08-02 05:54:28:DEBUG Worker-79 com.primeton.ext.system.deploy.file.FileDeployerHelper - Does not need hot update.
+2018-08-02 05:55:55:DEBUG Worker-73 com.primeton.ext.system.deploy.file.FileDeployerHelper - Does not need hot update.
+2018-08-02 05:56:10:DEBUG Worker-80 com.primeton.ext.system.deploy.file.FileDeployerHelper - Does not need hot update.
+2018-08-02 05:56:24:DEBUG Worker-77 com.primeton.ext.system.deploy.file.FileDeployerHelper - Does not need hot update.
+2018-08-02 05:56:36:DEBUG Worker-77 com.primeton.ext.system.deploy.file.FileDeployerHelper - Does not need hot update.
+2018-08-02 06:01:34:DEBUG Worker-76 com.primeton.ext.system.deploy.file.FileDeployerHelper - Does not need hot update.
+2018-08-02 06:04:40:DEBUG Worker-77 com.primeton.ext.system.deploy.file.FileDeployerHelper - Does not need hot update.
+2018-08-03 09:31:18:DEBUG Worker-7 com.primeton.ext.system.deploy.file.FileDeployerHelper - Does not need hot update.

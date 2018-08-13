@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="将编译单元“com.primeton.eos.Util.DataObjectCoverUtil.java”重命名为“JDConvertUtil.java”&#x0A;－ 原始项目：“mytest”&#x0A;－ 原始元素：“com.primeton.eos.Util.DataObjectCoverUtil.java”&#x0A;－ 重命名的元素：“com.primeton.eos.Util.JDConvertUtil.java”" description="重命名编译单元“DataObjectCoverUtil.java”" flags="2" id="org.eclipse.jdt.ui.rename.compilationunit" input="/com.primeton.eos.Util\/src&lt;com.primeton.eos.Util{DataObjectCoverUtil.java" name="JDConvertUtil.java" references="false" stamp="1533190835248" version="1.0"/>
+</session>

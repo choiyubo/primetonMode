@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<tag xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" tagName="w:rowRadio" >
+	<require>
+		<path>/webcomp/baseWebcomp.xml</path>
+		<include>scope,onSelectFunc,onUnSelectFunc,beforeSelectFunc,afterSelectFunc</include>
+	</require>
+	<group groupName="基本属性">
+		<property displayName="rowEvent" hint="选中行的事件，目前只支持click及dblclick事件" name="rowEvent" required="false" type="combo:readonly">
+			<dataProvider class="listProvider">
+				<string>click</string>
+				<string>dblclick</string>
+			</dataProvider>
+		</property>
+		<property displayName="tagName" hint="给哪个父标签增加事件，设置为tr则是行选择工具，设置为td则是单元格选择工具。默认为tr" name="tagName" required="false" type="combo:readonly">
+			<dataProvider class="listProvider">
+				<string>tr</string>
+				<string>td</string>
+			</dataProvider>
+		</property>
+		<property displayName="showRadio" hint="是否显示radio，默认为显示" name="showRadio" required="false" type="primitive:boolean"/>
+	</group>
+	<group groupName="样式">
+		<property displayName="selectStyleClass" hint="选中行的样式className" name="selectStyleClass" required="false" type="css:styleclass"/>
+	</group>
+</tag>

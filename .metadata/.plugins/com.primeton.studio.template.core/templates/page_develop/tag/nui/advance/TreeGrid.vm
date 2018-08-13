@@ -1,0 +1,7 @@
+#set($tagElement = ${map.get("tag_element")})
+${tagElement.toStringWithoutEndTag()}
+    <div property="columns">
+        <div name="taskname" field="Name" width="200"></div>
+        <div field="Duration" width="100"></div>
+    </div>
+</div>

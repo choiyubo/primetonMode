@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSPY v2004 rel. 4 U (http://www.xmlspy.com) by ton (ORiON) -->
+<tag tagName="b:write" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
+	<require>
+		<path>/bean/baseBean.xml</path>
+		<include>iterateId,value,propertyType,ignore,property,scope</include>
+	</require>
+	<group groupName="基本属性">
+		<property name="formatPattern" displayName="formatPattern" hint="格式化样式" type="combo:editable" required="false" showInViewModel="common">
+						<dataProvider class="listProvider">
+							<string>yyyy年MM月dd日</string>
+							<string>yyyy-MM-dd</string>
+							<string>yyyyMMdd</string>
+						</dataProvider>
+		</property>
+		<property name="srcFormatPattern" displayName="srcFormatPattern" hint="数据原始格式" type="primitive:string" required="false" showInViewModel="common"/>
+		<property name="maxLength" displayName="maxLength" hint="输出字符串长度" type="primitive:integer" required="false" showInViewModel="common">
+			<validators>
+				<intRangeValidator>
+					<min>2</min>
+				</intRangeValidator>
+			</validators>
+		</property>
+	<property name="filter" displayName="filter" hint="是否作html敏感过滤" type="primitive:boolean" required="false" defaultValue=""/>
+		<property name="maxLengthString" displayName="maxLengthString" hint="定义超出长度的字符串的替换字符串" type="primitive:string" showInViewModel="common" defaultValue="" required="false"/>
+		<property showInViewModel="never" name="modelField" displayName="绑定显示模型的某个字段" hint="绑定显示模型的某个字段" type="resource:dataField" defaultValue="" required="false">
+
+		</property>
+	</group>
+</tag>

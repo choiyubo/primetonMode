@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<tag xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" tagName="w:time" >
+    <require>
+        <path>/webcomp/baseWebcomp.xml</path>
+        <include>iterateId,scope,property,name,value,indexed,id,readOnly,title,tabindex,disabled,modelField</include>
+    </require>
+    <group groupName="Basic">
+        <property showInViewModel="common" displayName="srcFormat" hint="Sets original format." name="srcFormat" required="false" type="combo:editable">
+   			<dataProvider class="listProvider">
+				<string>HH:mm:ss</string>
+				<string>HHmmss</string>
+			</dataProvider>
+        </property>
+        <property showInViewModel="common" displayName="maxValue" hint="Sets the maximum value of control，Format should be suitable for HH: mm: ss" name="maxValue" required="false" type="primitive:string">
+        </property>
+        <property showInViewModel="common" displayName="minValue" hint="Sets the minimum value of control，Format should be suitable for HH: mm: ss" name="minValue" required="false" type="primitive:string"/>
+    </group>
+</tag>

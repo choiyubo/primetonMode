@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wizard id="data_select" isDefault="true" name="Lookup Dialog Wizard" sort="1010" type="Richweb">
+	<page index="0" title="DataEntity Selected" description="Create the dataObject selected by popup dialog" width="750" height="350">
+		<layout row="2" column="3"/>
+		<component id="entitySelect" type="entity_select" label="Select entity:">
+			<ui>
+				<size row="1" column="3"/>
+			</ui>
+		</component>
+		<component id="select_display_field" type="field_select_combo_without_N_1" label="Select view field:">
+			<ui>
+				<size row="1" column="1"/>
+			</ui>
+		</component>
+		<component id="window_width" type="text" label="Input the width of dialog:">
+			<ui>
+				<size row="1" column="1"/>
+				<data default_value="600"></data>
+			</ui>
+		</component>
+		<component id="window_height" type="text" label="Input the heigth of dialog:">
+			<ui>
+				<size row="1" column="1"/>
+				<data default_value="480"></data>
+			</ui>
+		</component>
+		<templates>
+			<item>data_init.vm</item>
+		</templates>
+	</page>
+	<page index="1" title="Query condition setting" description="The Entity using queryform to query and selected"  width="800" height="550">
+		<layout row="2" column="1"/>
+		<component id="queryform" type="queryform">
+			<ui>
+				<size row="2" column="1"/>
+			</ui>
+		</component>
+	</page>
+	<page index="2" title="Setting the table displayed the result" description="Selected records with table"  width="750" height="700">
+		<layout row="2" column="1"/>
+		<component id="viewlist" type="viewlist">
+			<ui>
+				<size row="2" column="1"/>
+			</ui>
+		</component>
+	</page>
+	<event>
+		<entry source="entitySelect" target="select_display_field"/>
+		<entry source="entitySelect" target="queryform"/>
+		<entry source="entitySelect" target="viewlist"/>
+	</event>
+	<template>
+		<entry templateName="data_select.vm" fileName="${entitySelect.entityName}Select.jsp" fileType="page"/>
+		<entry templateName="data_select_flow.vm" fileName="${entitySelect.entityName}Select.flowx" fileType="pageflow"/>
+		<entry templateName="data_init.vm"/>
+	</template>
+</wizard>

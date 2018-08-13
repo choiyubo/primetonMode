@@ -1,0 +1,76 @@
+##获得整个向导数据
+#set($wizardMap=${dataContextManager.getWizardDataContext()})
+##获得向导所在的contribution名称
+#set($contribution=${wizardMap.get("contribution")})
+##选择实体的短名称（String类型）
+#set($selectedEntity=${dataContextManager.getComponentDataContext(0, "entitySelect").get("selectedEntity")})
+#set($entityName=${dataContextManager.getComponentDataContext(0, "entitySelect").get("entityName")})
+#set($entityVar="${entityName.replaceFirst('.', ${entityName.substring(0,1).toLowerCase()})}")
+##获得作者、邮箱
+#set($author=${wizardMap.get("author")})
+#set($email=${wizardMap.get("email")})
+##获取package
+#set($currentServiceNamespace=${templateConfigManager.getInvokePath("template_service_interface.vm")})
+#if(${StringUtil.contains($currentServiceNamespace, ".")})
+	#set($currentPackage=${StringUtil.substringBeforeLast($currentServiceNamespace, ".")})
+#else
+	#set($currentPackage="")
+#end
+#if(${StringUtil.contains($currentServiceNamespace, ".")})
+	#set($currentFile=${StringUtil.substringAfterLast($currentServiceNamespace, ".")})
+#else
+	#set($currentFile=$currentServiceNamespace)
+#end
+#if(!${StringUtil.equals(${currentPackage}, "")})
+package ${currentPackage};
+#end
+
+import com.eos.das.entity.criteria.CriteriaType;
+import com.eos.foundation.PageCond;
+import ${selectedEntity};
+
+/**
+ * <pre>
+ * Title: 
+ * Description:  
+ * </pre>
+ * @author ${author} (mailto:${email})
+ * 
+ */
+
+public interface ${currentFile}{
+
+	/**
+	 *
+	 * @param ${entityVar} ${entityName}
+	 */
+	public abstract void add${entityName}(${entityName} ${entityVar});
+
+	/**
+	 *
+	 * @param ${entityVar}s ${entityName}[]
+	 */
+	public abstract void delete${entityName}s(${entityName}[] ${entityVar}s);
+
+	/**
+	 *
+	 * @param ${entityVar} ${entityName}[]
+	 */
+	public abstract void get${entityName}(${entityName} ${entityVar});
+
+	/**
+	 *
+	 * @param criteria CriteriaType
+	 * @param page PageCond
+	 * @return ${entityName}[]
+	 */
+	public abstract ${entityName}[] query${entityName}s(CriteriaType criteriaType,
+			PageCond pageCond);
+
+	/**
+	 *
+	 * @param ${entityVar} ${entityName}[]
+	 */
+	public abstract void update${entityName}(${entityName} ${entityVar});
+
+}

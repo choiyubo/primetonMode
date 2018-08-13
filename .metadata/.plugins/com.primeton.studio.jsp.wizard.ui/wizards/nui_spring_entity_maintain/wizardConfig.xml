@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wizard id="nui_spring_entity_maintain" sort="919" isDefault="true" name="NUI Spring单表维护功能向导" width="750" height="500" type="NUI">
+	<page index="0" title="选择数据实体" description="选择一个数据实体产生维护的功能代码" width="650" height="500">
+		<layout row="1" column="1"/>
+		<component id="entitySelect" type="Spring_Entity_Select">
+			<ui>
+				<size row="3" column="1"/>
+				<fillStyle style="fill_horizontal"/>
+			</ui>
+		</component>
+		<component id="auto_pk" type="checkbox" label="自动产生主键">
+			<ui>
+				<size row="1" column="1"/>
+				<data default_value="true"></data>
+			</ui>
+		</component>
+		<templates>
+			<item>data_init.vm</item>
+		</templates>
+	</page>
+	<page index="1" title="查询条件页面设置" description="使用queryform查询表单查询选择的实体" width="750" height="550">
+		<layout row="2" column="1"/>
+		<component id="nui_queryform" type="nui_queryform">
+			<ui>
+				<size row="2" column="1"/>
+			</ui>
+		</component>
+	</page>
+	<page index="2" title="查询结果列表设置" description="采用table方式显示当前实体的查询结果" width="750" height="700">
+		<layout row="2" column="1"/>
+		<component id="nui_viewlist" type="nui_viewlist">
+			<ui>
+				<size row="2" column="1"/>
+			</ui>
+		</component>
+	</page>
+	<page index="3" title="新增页面设置" description="配置录入表单的基本信息" width="750" height="600">
+		<layout row="2" column="1"/>
+		<component id="nui_dataform" type="nui_dataform">
+			<ui>
+				<size row="2" column="1"/>
+			</ui>
+		</component>
+	</page>
+
+	<previewPage plugin="com.primeton.studio.spring.ui" class="com.primeton.studio.spring.ui.functionWizard.SpringFunctionWizardPreviewPageBuilderFactory"/>
+
+	<event>
+		<entry source="entitySelect" target="nui_queryform"/>
+		<entry source="entitySelect" target="nui_viewlist"/>
+		<entry source="entitySelect" target="nui_dataform"/>
+	</event>
+
+	<handlers>
+		<handler plugin="com.primeton.studio.spring.ui" class="com.primeton.studio.spring.ui.functionWizard.SpringFunctionWizardProcessHandler"/>
+	</handlers>
+
+	<template>
+        <entry templateName="list_jsp.vm" fileName="${entitySelect.entityName}List.jsp" fileType="page"/>
+		<entry templateName="form_jsp.vm" fileName="${entitySelect.entityName}Form.jsp" fileType="page"/>
+		
+		<entry templateName="add_entity.vm" fileName="add${entitySelect.entityName}.bizx" component="${entitySelect.entityNameLowerCase}biz" fileType="biz"/>
+		<entry templateName="delete_entities.vm" fileName="delete${entitySelect.entityName}s.bizx" component="${entitySelect.entityNameLowerCase}biz" fileType="biz"/>
+		<entry templateName="get_entity.vm" fileName="get${entitySelect.entityName}.bizx" component="${entitySelect.entityNameLowerCase}biz" fileType="biz"/>
+		<entry templateName="query_entities.vm" fileName="query${entitySelect.entityName}s.bizx" component="${entitySelect.entityNameLowerCase}biz" fileType="biz"/>
+		<entry templateName="update_entity.vm" fileName="update${entitySelect.entityName}.bizx" component="${entitySelect.entityNameLowerCase}biz" fileType="biz"/>
+
+		<entry templateName="template_service_interface.vm" fileName="I${entitySelect.entityName}Service.java" fileType="java"/>
+		<entry templateName="template_service_impl.vm" fileName="${entitySelect.entityName}Service.java" fileType="java"/>
+	</template>
+</wizard>

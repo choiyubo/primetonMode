@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wizard id="data_select" isDefault="true" name="Lookup 对话框向导" sort="1010" type="Richweb">
+	<page index="0" title="数据实体选择" description="生成弹出对话框选择的数据对象" width="750" height="350">
+		<layout row="2" column="3"/>
+		<component id="entitySelect" type="entity_select" label="选择实体:">
+			<ui>
+				<size row="1" column="3"/>
+			</ui>
+		</component>
+		<component id="select_display_field" type="field_select_combo_without_N_1" label="选择显示字段:">
+			<ui>
+				<size row="1" column="1"/>
+			</ui>
+		</component>
+		<component id="window_width" type="text" label="输入对话框宽度:">
+			<ui>
+				<size row="1" column="1"/>
+				<data default_value="600"></data>
+			</ui>
+		</component>
+		<component id="window_height" type="text" label="输入对话框高度:">
+			<ui>
+				<size row="1" column="1"/>
+				<data default_value="480"></data>
+			</ui>
+		</component>
+		<templates>
+			<item>data_init.vm</item>
+		</templates>
+	</page>
+	<page index="1" title="查询条件设置" description="使用queryform查询表单查询选择的实体"  width="750" height="550">
+		<layout row="2" column="1"/>
+		<component id="queryform" type="queryform">
+			<ui>
+				<size row="2" column="1"/>
+			</ui>
+		</component>
+	</page>
+	<page index="2" title="显示列表设置" description="采用table方式选择行记录"  width="750" height="700">
+		<layout row="2" column="1"/>
+		<component id="viewlist" type="viewlist">
+			<ui>
+				<size row="2" column="1"/>
+			</ui>
+		</component>
+	</page>
+	<event>
+		<entry source="entitySelect" target="select_display_field"/>
+		<entry source="entitySelect" target="queryform"/>
+		<entry source="entitySelect" target="viewlist"/>
+	</event>
+	<template>
+		<entry templateName="data_select.vm" fileName="${entitySelect.entityName}Select.jsp" fileType="page"/>
+		<entry templateName="data_select_flow.vm" fileName="${entitySelect.entityName}Select.flowx" fileType="pageflow"/>
+		<entry templateName="data_init.vm"/>
+	</template>
+</wizard>

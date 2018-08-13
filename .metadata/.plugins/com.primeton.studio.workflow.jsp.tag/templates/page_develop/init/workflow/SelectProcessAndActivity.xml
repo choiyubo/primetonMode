@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="GBK"?>
+<resources>
+	<require uri="/workflow/wfcomponent/web/js/Graphic.js" type="hscript" code="&lt;h:script src=&quot;/workflow/wfcomponent/web/js/Graphic.js&quot;/&gt;"/>
+	<require uri="/workflow/wfcomponent/web/js/workflow-tag.js" type="hscript" code="&lt;h:script src=&quot;/workflow/wfcomponent/web/js/workflow-tag.js&quot;/&gt;"/>
+	<require uri="http://eos.primeton.com/tags/workflow" type="taglib" code='&lt;%@taglib uri="http://eos.primeton.com/tags/workflow" prefix="wf"%&gt;'/>
+	<require uri="/common/common.jsp" type="include" code="&lt;%@include file=&quot;/common/common.jsp&quot;%&gt;"/>
+	<require uri="/common/common.jsp" type="include" code="&lt;%@include file=&quot;/common/skins/skin[0-9]/component(-debug)?.jsp&quot;%&gt;"/>
+</resources>

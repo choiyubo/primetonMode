@@ -1,0 +1,26 @@
+<map>
+  <entry>
+    <string></string>
+    <string>&lt;html&gt;&lt;b&gt;Name:&lt;/b&gt;ooperatorbiz.componentType&lt;br&gt;&lt;b&gt;Display Name:&lt;/b&gt;&lt;br&gt;&lt;b&gt;Namespace:&lt;/b&gt;com.primeton.nuisample.ooperatorbiz&lt;/html&gt;</string>
+  </entry>
+  <entry>
+    <string>com.primeton.nuisample.ooperatorbiz.queryOOperators(com.primeton.das.criteria.criteriaType, com.eos.foundation.PageCond, Int, Int)</string>
+    <string>&lt;html&gt;&lt;b&gt;Name:&lt;/b&gt;queryOOperators&lt;br&gt;&lt;b&gt;Display Name:&lt;/b&gt;queryOOperators&lt;br&gt;&lt;b&gt;Namespace:&lt;/b&gt;com.primeton.nuisample.ooperatorbiz.queryOOperators&lt;dl&gt;&lt;dt&gt;Parameters:&lt;/dt&gt;&lt;dd&gt;&lt;b&gt;criteria(com.primeton.das.criteria.criteriaType):&lt;/b&gt;&lt;/dd&gt;&lt;dd&gt;&lt;b&gt;page(com.eos.foundation.PageCond):&lt;/b&gt;&lt;/dd&gt;&lt;dd&gt;&lt;b&gt;pageIndex(Int):&lt;/b&gt;&lt;/dd&gt;&lt;dd&gt;&lt;b&gt;pageSize(Int):&lt;/b&gt;&lt;/dd&gt;&lt;dt&gt;Return:&lt;/dt&gt;&lt;dd&gt;&lt;b&gt;ooperators(com.primeton.nuisample.data.OOperator[]):&lt;/b&gt;&lt;/dd&gt;&lt;dd&gt;&lt;b&gt;total(Int):&lt;/b&gt;&lt;/dd&gt;&lt;/html&gt;</string>
+  </entry>
+  <entry>
+    <string>com.primeton.nuisample.ooperatorbiz.getOOperator(com.primeton.nuisample.data.OOperator)</string>
+    <string>&lt;html&gt;&lt;b&gt;Name:&lt;/b&gt;getOOperator&lt;br&gt;&lt;b&gt;Display Name:&lt;/b&gt;getOOperator&lt;br&gt;&lt;b&gt;Namespace:&lt;/b&gt;com.primeton.nuisample.ooperatorbiz.getOOperator&lt;dl&gt;&lt;dt&gt;Parameters:&lt;/dt&gt;&lt;dd&gt;&lt;b&gt;ooperator(com.primeton.nuisample.data.OOperator):&lt;/b&gt;&lt;/dd&gt;&lt;dt&gt;Return:&lt;/dt&gt;&lt;dd&gt;&lt;b&gt;ooperator(com.primeton.nuisample.data.OOperator):&lt;/b&gt;&lt;/dd&gt;&lt;/html&gt;</string>
+  </entry>
+  <entry>
+    <string>com.primeton.nuisample.ooperatorbiz.deleteOOperators(com.primeton.nuisample.data.OOperator[])</string>
+    <string>&lt;html&gt;&lt;b&gt;Name:&lt;/b&gt;deleteOOperators&lt;br&gt;&lt;b&gt;Display Name:&lt;/b&gt;deleteOOperators&lt;br&gt;&lt;b&gt;Namespace:&lt;/b&gt;com.primeton.nuisample.ooperatorbiz.deleteOOperators&lt;dl&gt;&lt;dt&gt;Parameters:&lt;/dt&gt;&lt;dd&gt;&lt;b&gt;ooperators(com.primeton.nuisample.data.OOperator[]):&lt;/b&gt;&lt;/dd&gt;&lt;/html&gt;</string>
+  </entry>
+  <entry>
+    <string>com.primeton.nuisample.ooperatorbiz.addOOperator(com.primeton.nuisample.data.OOperator)</string>
+    <string>&lt;html&gt;&lt;b&gt;Name:&lt;/b&gt;addOOperator&lt;br&gt;&lt;b&gt;Display Name:&lt;/b&gt;addOOperator&lt;br&gt;&lt;b&gt;Namespace:&lt;/b&gt;com.primeton.nuisample.ooperatorbiz.addOOperator&lt;dl&gt;&lt;dt&gt;Parameters:&lt;/dt&gt;&lt;dd&gt;&lt;b&gt;ooperator(com.primeton.nuisample.data.OOperator):&lt;/b&gt;&lt;/dd&gt;&lt;/html&gt;</string>
+  </entry>
+  <entry>
+    <string>com.primeton.nuisample.ooperatorbiz.updateOOperator(com.primeton.nuisample.data.OOperator)</string>
+    <string>&lt;html&gt;&lt;b&gt;Name:&lt;/b&gt;updateOOperator&lt;br&gt;&lt;b&gt;Display Name:&lt;/b&gt;updateOOperator&lt;br&gt;&lt;b&gt;Namespace:&lt;/b&gt;com.primeton.nuisample.ooperatorbiz.updateOOperator&lt;dl&gt;&lt;dt&gt;Parameters:&lt;/dt&gt;&lt;dd&gt;&lt;b&gt;ooperator(com.primeton.nuisample.data.OOperator):&lt;/b&gt;&lt;/dd&gt;&lt;dt&gt;Return:&lt;/dt&gt;&lt;dd&gt;&lt;b&gt;ooperator(com.primeton.nuisample.data.OOperator):&lt;/b&gt;&lt;/dd&gt;&lt;/html&gt;</string>
+  </entry>
+</map>

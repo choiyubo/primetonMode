@@ -1,0 +1,94 @@
+package com.primeton.eos.Util;
+
+public class DataObjectCoverUtil {
+	
+	//Json串转实体数组
+
+	public static DataObject[] convertJsonStringToDataObjects(
+	   String entityName, String jsonString) throws JSONException {
+	  ArrayList<DataObject> result = new ArrayList<DataObject>();
+
+	  JSONArray jsonArr = new JSONArray(jsonString);
+	  for (int i = 0; i < jsonArr.length(); i++) {
+	   JSONObject json = jsonArr.getJSONObject(i);
+
+	   DataObject dataObject = DataObjectUtil.createDataObject(entityName);
+	   List list = dataObject.getInstanceProperties();
+	   for (Object object : list) {
+	    Property key = (Property) object;
+	    String keyType = key.getType().getName();//获取字段类型
+	    if (json.has(key.getName())) {
+	     Object value = json.get(key.getName());
+	     if (value == JSONObject.NULL)
+	      continue;
+	     dataObject.set(key, value);
+	     dataObject = converType(keyType, key, dataObject, value);
+	    }
+
+	   }
+	   result.add(dataObject);
+	  }
+
+	  return result.toArray(new DataObject[result.size()]);
+	 }
+
+	//json串转实体对象
+
+	public static DataObject convertJsonStringToDataObject(String entityName,
+	   String jsonString) throws JSONException {
+	  JSONObject json = new JSONObject(jsonString);
+	  DataObject dataObject = DataObjectUtil.createDataObject(entityName);
+	  List list = dataObject.getInstanceProperties();
+	  for (Object object : list) {
+	   Property key = (Property) object;
+	   String keyType = key.getType().getName();//获取字段类型
+	   if (json.has(key.getName())) {
+	    Object value = json.get(key.getName());
+	    if (value == JSONObject.NULL)
+	     continue;
+	    dataObject = converType(keyType, key, dataObject, value);//根据不同类型设置值
+	   } else {
+	   }
+	  }
+	  return dataObject;
+	 }
+
+	//实体转json串
+
+	public static String convertDataObjectToJsonString(DataObject dataObject) {
+	  DataObject[] dataObjects = new DataObject[] { dataObject };
+	  String jsonString = convertDataObjectsToJsonString(dataObjects);
+	  jsonString = jsonString.substring(1, jsonString.length() - 1);
+	  return jsonString;
+	 }
+
+	//实体数组转json串
+
+	public static String convertDataObjectsToJsonString(DataObject[] dataObjects) {
+	  Map<String, DataObject[]> root = new HashMap<String, DataObject[]>();
+	  root.put("data", dataObjects);
+
+	  StringWriter stringWriter = new StringWriter();
+	  JSONWriter jsonWriter = new JSONWriter(stringWriter);
+	  try {
+	   ExtendedXMLSerializer serializer = new ExtendedXMLSerializer();
+	   SerializeOption operation = new SerializeOption();
+	   operation.setCreateOuterCollectionNode(true);
+	   serializer.setOption(operation);
+	   IMarshallingNode node = serializer.marshallToNode(root, "root");
+	   jsonWriter.object();
+	   List<IMarshallingNode> children = node.getChildren();
+	   for (IMarshallingNode child : children) {
+	    write(child, jsonWriter);
+	   }
+	   jsonWriter.endObject();
+	  } catch (Exception e) {
+	   e.printStackTrace();
+	   throw new RuntimeException(e.getMessage());
+	  }
+	  String jsonString = stringWriter.toString();
+	  jsonString = jsonString.substring(8, jsonString.length() - 1);
+	  return jsonString;
+	 }
+
+}

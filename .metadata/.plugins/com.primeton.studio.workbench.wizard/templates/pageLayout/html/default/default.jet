@@ -1,0 +1,27 @@
+<%@ jet
+    package="com.primeton.jsp.template.page"
+    class="DefaultPage"
+    imports="java.util.HashMap"
+    startTag = "[%"
+    endTag = "%]"
+%>
+[%
+HashMap map = (HashMap)argument;
+String fileTitle = (String)map.get("title");
+String author = (String)map.get("author");
+String date = (String)map.get("date");
+String time = (String)map.get("time");
+%]
+<html>
+<!-- 
+  - Author(s): [%=author%]
+  - Date: [%=date%] [%=time%]
+  - Description:
+-->
+<head>
+<meta http-equiv="Content-Type" contentType="text/html; charset=UTF-8" >
+<title>[%=fileTitle%]</title>
+</head>
+<body>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wizard height="500" sort="1007" id="entity_slavery" isDefault="true" name="Master Detail CRUD Wizard" width="750" type="Richweb">
+	<page description="Select a data entity to generat the maintenance code(Only can select the 1 peer data entity in one-way 1:n relation or two-way n:1 relation)" height="500" index="0" title="Select data entity" width="750">
+		<layout column="2" row="3"/>
+		<component id="entitySelect" type="entity_select" label="Select entity:">
+			<ui>
+				<size column="1" row="1"/>
+				<fillStyle style="fill_horizontal"/>
+			</ui>
+		</component>
+		<component id="auto_pk" label="Auto create primary key" type="checkbox">
+			<ui>
+				<size column="1" row="1"/>
+				<fillStyle style="fill_horizontal"/>
+				<data default_value="true"/>
+			</ui>
+		</component>
+		<component id="select_slavery_tables" label="Select the master-detail table which need maintenance" type="table_select">
+			<ui>
+				<size column="2" row="2"/>
+			</ui>
+		</component>
+		<templates>
+			<item>data_init.vm</item>
+		</templates>
+	</page>
+	<page description="The entity using queryform to query and select" height="550" index="1" title="Query Condition Setting" width="750">
+		<layout column="1" row="2"/>
+		<component id="queryform" type="queryform">
+			<ui>
+				<size column="1" row="2"/>
+			</ui>
+		</component>
+	</page>
+	<page description="Show results with list" height="700" index="2" title="Query Result List Setting" width="750">
+		<layout column="1" row="2"/>
+		<component id="viewlist" type="viewlist">
+			<ui>
+				<size column="1" row="2"/>
+			</ui>
+		</component>
+	</page>
+	<page description="Config the base infomation of the form" height="600" index="3" title="The Data Input Page Setting" width="750">
+		<layout column="1" row="2"/>
+		<component id="dataform" type="dataform">
+			<ui>
+				<size column="1" row="2"/>
+			</ui>
+		</component>
+		<templates>
+			<item>datacell_init.vm</item>
+		</templates>
+	</page>
+	<page description="Use datacell fill the subordinate table，and config datacell options" height="700" index="4" title="Config the subordinate table" width="800">
+		<layout column="1" row="2"/>
+		<component id="slavery_tables" nested_type="datacell" type="tables">
+			<ui>
+				<size column="1" row="2"/>
+			</ui>
+		</component>
+	</page>
+	<event>
+		<entry source="entitySelect" target="queryform"/>
+		<entry source="entitySelect" target="viewlist"/>
+		<entry source="entitySelect" target="dataform"/>
+		<entry source="entitySelect" target="select_slavery_tables"/>
+		<entry source="select_slavery_tables" target="slavery_tables"/>
+	</event>
+	<template>
+		<entry fileName="${entitySelect.entityName}Query.jsp" fileType="page" templateName="entity_query.vm"/>
+		<entry fileName="${entitySelect.entityName}Input.jsp" fileType="page" templateName="entity_input.vm"/>
+		<entry fileName="${entitySelect.entityName}Maintain.flowx" fileType="pageflow" templateName="entity_maintain.vm"/>
+		<entry component="${entitySelect.entityNameLowerCase}biz" fileName="add${entitySelect.entityName}.bizx" fileType="biz" templateName="add_entity.vm"/>
+		<entry component="${entitySelect.entityNameLowerCase}biz" fileName="delete${entitySelect.entityName}s.bizx" fileType="biz" templateName="delete_entities.vm"/>
+		<entry component="${entitySelect.entityNameLowerCase}biz" fileName="get${entitySelect.entityName}.bizx" fileType="biz" templateName="get_entity.vm"/>
+		<entry component="${entitySelect.entityNameLowerCase}biz" fileName="query${entitySelect.entityName}s.bizx" fileType="biz" templateName="query_entities.vm"/>
+		<entry component="${entitySelect.entityNameLowerCase}biz" fileName="update${entitySelect.entityName}.bizx" fileType="biz" templateName="update_entity.vm"/>
+		<entry templateName="data_init.vm"/>
+		<entry templateName="datacell_init.vm"/>
+	</template>
+</wizard>

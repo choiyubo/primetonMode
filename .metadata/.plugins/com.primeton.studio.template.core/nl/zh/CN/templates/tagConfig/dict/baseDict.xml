@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSPY v2004 rel. 4 U (http://www.xmlspy.com) by ton (ORiON) -->
+<tag tagName="baseDict" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  groupName="基本属性">
+	<require>
+		<path>/base.xml</path>
+		<include>scope,property,id,iterateId</include>
+	</require>
+	<group groupName="基本属性">
+		<property name="dictTypeId" displayName="dictTypeId" hint="业务字典类别代码" type="selectDictType" required="false" showInViewModel="never">
+			<validators>
+				<notEmptyValidator/>
+			</validators>
+		</property>
+		<property name="name" displayName="name" hint="对象的名称" type="primitive:string" required="false" showInViewModel="never"/>
+		<property name="id" displayName="id" hint="控件唯一标识" type="primitive:string" required="false" showInViewModel="never"/>
+		<property name="indexed" displayName="indexed" hint="是否产生索引属性" type="primitive:boolean" required="false" showInViewModel="never"/>
+		<property name="filterStr" displayName="filterStr" hint="过滤字符串" type="primitive:string" required="false"/>
+		<property name="filterOp" displayName="filterOp" hint="业务字典取值时过滤用操作符" type="combo:editable" required="false">
+			<dataProvider class="listProvider">
+				<string>=</string>
+				<string>!=</string>
+				<string>&gt;</string>
+				<string>&gt;=</string>
+				<string>&lt;</string>
+				<string>&lt;=</string>
+				<string>in</string>
+				<string>!in</string>
+				<string>between</string>
+				<string>!between</string>
+				<string>like</string>
+				<string>!like</string>
+				<string>match</string>
+				<string>!match</string>
+			</dataProvider>
+		</property>
+		<property name="filterField" displayName="filterField" hint="过滤用字段" type="primitive:string" required="false"/>
+		<property name="extAttr" displayName="extAttr" hint="扩展属性" type="primitive:string" required="false" showInViewModel="rare"/>
+		<property name="disabled" displayName="disabled" hint="指定该控件是否可用" type="primitive:boolean" required="false" defaultValue="" showInViewModel="rare"/>
+		<property name="submitMethod" displayName="submitMethod" hint="提交数据的方式,standard为正常的form提交方式,specail时数据以name=a,b,c方式提交." type="combo:readonly" required="false">
+			<dataProvider class="listProvider">
+				<string>standard</string>
+				<string>special</string>
+			</dataProvider>
+		</property>
+		<property name="perrow" displayName="perrow" hint="每行显示个数" type="primitive:integer" required="false" showInViewModel="rare"/>
+		<property name="accesskey" displayName="accesskey" hint="该元素获得焦点的快捷键" type="primitive:string" required="false" showInViewModel="rare">
+			<validators>
+				<characterValidator/>
+			</validators>
+		</property>
+		<property name="value" displayName="value" hint="代码常量" type="primitive:string"/>
+		<property name="seperator" displayName="分隔符" hint="分隔符" type="primitive:string" required="false" defaultValue=""/>
+		<property showInViewModel="never" name="modelField" displayName="绑定显示模型的某个字段" hint="绑定显示模型的某个字段" type="resource:dataField" defaultValue="" required="false">
+
+		</property>
+		<property name="filter" displayName="filter" hint="是否对业务字典的名称作html敏感过滤" type="primitive:boolean" required="false" defaultValue=""/>
+		<property name="title" displayName="title" hint="控件的浮动帮助信息" type="primitive:string" required="false" showInViewModel="rare"/>
+		<property name="tabindex" displayName="tabindex" hint="不同元素之间获得焦点的顺序" type="primitive:integer" required="false" showInViewModel="rare">
+			<validators>
+				<intRangeValidator>
+					<min>1</min>
+					<max>500</max>
+					<checkMax>false</checkMax>
+				</intRangeValidator>
+			</validators>
+		</property>
+	</group>
+	<group groupName="事件">
+		<property name="onmouseup" displayName="onmouseup事件" hint="onmouseup事件" type="javascript:function" required="false" showInViewModel="rare" allowXpath="false"/>
+		<property name="onmouseover" displayName="onmouseover事件" hint="onmouseover事件" type="javascript:function" required="false" showInViewModel="rare" allowXpath="false"/>
+		<property name="onmouseout" displayName="onmouseout事件" hint="onmouseout事件" type="javascript:function" required="false" showInViewModel="rare" allowXpath="false"/>
+		<property name="onmousemove" displayName="onmousemove事件" hint="onmousemove事件" type="javascript:function" required="false" showInViewModel="rare" allowXpath="false"/>
+		<property name="onmousedown" displayName="onmousedown事件" hint="onmousedown事件" type="javascript:function" required="false" showInViewModel="rare" allowXpath="false"/>
+		<property name="onkeyup" displayName="onkeyup事件" hint="onkeyup事件" type="javascript:function" required="false" showInViewModel="rare" allowXpath="false"/>
+		<property name="onkeypress" displayName="onkeypress事件" hint="onkeypress事件" type="javascript:function" required="false" showInViewModel="rare" allowXpath="false"/>
+		<property name="onkeydown" displayName="onkeydown事件" hint="onkeydown事件" type="javascript:function" required="false" showInViewModel="rare" allowXpath="false"/>
+		<property name="onfocus" displayName="onfocus事件" hint="onfocus事件" type="javascript:function" required="false" showInViewModel="rare" allowXpath="false"/>
+		<property name="ondblclick" displayName="ondblclick事件" hint="ondblclick事件" type="javascript:function" required="false" showInViewModel="rare" allowXpath="false"/>
+		<property name="onclick" displayName="onclick事件" hint="onclick事件" type="javascript:function" required="false" showInViewModel="rare" allowXpath="false"/>
+		<property name="onchange" displayName="onchange事件" hint="onchange事件" type="javascript:function" required="false" showInViewModel="rare" allowXpath="false"/>
+		<property name="onblur" displayName="onblur事件" hint="onblur事件" type="javascript:function" required="false" showInViewModel="rare" allowXpath="false"/>
+	</group>
+	<group groupName="样式">
+		<property name="styleClass" displayName="样式名称" hint="指定css的样式名称" type="css:styleclass" showInViewModel="rare" allowXpath="false" required="false"/>
+		<property name="style" displayName="样式" hint="指定页面的样式表达式" type="css:style" showInViewModel="rare" allowXpath="false" required="false"/>
+	</group>
+</tag>

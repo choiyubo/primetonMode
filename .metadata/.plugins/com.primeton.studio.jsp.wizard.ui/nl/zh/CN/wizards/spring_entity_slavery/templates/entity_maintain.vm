@@ -1,0 +1,405 @@
+##获得整个向导数据
+#set($wizardMap=${dataContextManager.getWizardDataContext()})
+##获得向导所在的contribution名称
+#set($contributionName=${wizardMap.get("contribution")})
+#set($flowQName=${templateConfigManager.getInvokePath("entity_maintain.vm")})
+#set($flowQName_file=${StringUtil.substringAfterLast(${StringUtil.substringBeforeLast($flowQName, ".")}, ".")})
+#set($query_jsp=${templateConfigManager.getInvokePath("entity_query.vm")})
+#set($query_jsp_file=${StringUtil.substringAfterLast($query_jsp, "/")})
+#set($input_jsp=${templateConfigManager.getInvokePath("entity_input.vm")})
+#set($input_jsp_file=${StringUtil.substringAfterLast($input_jsp, "/")})
+#set($queryMap = ${dataContextManager.getComponentDataContext(1, "queryform")})
+#set($viewlistMap = ${dataContextManager.getComponentDataContext(2, "viewlist")})
+#set($dataformMap = ${dataContextManager.getComponentDataContext(3, "dataform")})
+#set($selectedEntityMap = ${dataContextManager.getComponentDataContext(0, "entitySelect")})
+#set($selectedEntity=${dataContextManager.getComponentDataContext(0, "entitySelect").get("selectedEntity")})
+#set($beanID=${dataContextManager.getComponentDataContext(0, "entitySelect").get("beanId")})
+##选择实体的短名称（String类型）
+#set($entityName=${dataContextManager.getComponentDataContext(0, "entitySelect").get("entityName")})
+#set($entityNameLow = "${entityName.toLowerCase()}")
+#set($isPagination=${queryMap.get("isPagination")})
+#set($isAutoPK=${dataContextManager.getComponentDataContext(0, "auto_pk").get("checked")})
+#set($keys = ${DataEntityHelper.getPrimaryKeys($selectedEntity)})
+##统计总行数 (Boolean类型)
+#set($isPageCount=${queryMap.get("isPageCount")})
+##获得向导中设置的传递参数的变量
+#set($criteria = $queryMap.get("criteriaName"))
+#set($entityVar = $dataformMap.get("entityVariable"))
+#set($selectArrVar = $viewlistMap.get("submitXpath"))
+#set($iter_xpath = "${entityNameLow}s")
+#if($criteria == "")#set($criteria = "criteria")#end
+#if($entityVar == "")#set($entityVar = $entityNameLow)#end
+#if($selectArrVar == "")#set($selectArrVar = "select_objs")#end
+##设置spring图元的一些名称
+#set($query_spring_name="query${entityName}")
+#set($add_spring_name="add${entityName}")
+#set($del_spring_name="delete${entityName}")
+#set($get_spring_name="get${entityName}")
+#set($update_spring_name="update${entityName}")
+##获取package和文件名
+#set($currentServiceNamespace=${templateConfigManager.getInvokePath("template_service_impl.vm")})
+#if(${StringUtil.contains($currentServiceNamespace, ".")})
+#set($currentPackage=${StringUtil.substringBeforeLast($currentServiceNamespace, ".")})
+#else
+#set($currentPackage="")
+#end
+#if(${StringUtil.contains($currentServiceNamespace, ".")})
+#set($currentFile=${StringUtil.substringAfterLast($currentServiceNamespace, ".")})
+#else
+#set($currentFile=$currentServiceNamespace)
+#end
+##生成方法实例
+#if(${StringUtil.equals($currentPackage, "")})
+#set($implService="${currentFile}")
+#else
+#set($implService="${currentPackage}.${currentFile}")
+#end
+#set($implService_query="${implService}.query${entityName}s")
+#set($implService_add="${implService}.add${entityName}")
+#set($implService_delete="${implService}.delete${entityName}")
+#set($implService_get="${implService}.get${entityName}")
+#set($implService_update="${implService}.update${entityName}")
+<?xml version="1.0" encoding="UTF-8"?>
+<process:tPageFlow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:model="http://com.primeton.emf.core" xmlns:process="http://primeton.com/emf/core/process" name="${flowQName_file}.flowx" gridVisibility="false" rulerVisibility="true" snapToGeometry="true" productVersion="6.0" state="stateless">
+  <nodes xsi:type="process:tStart" id="start0" name="开始" displayName="开始" nodeType="common" type="start">
+    <sourceConnections xsi:type="process:tActionLink" description="" id="link0" name="link0" lineType="reference" isDefault="true" type="action" actionName="query" dataConvertClass="">
+      <sourceNode>start0</sourceNode>
+      <targetNode>assign0</targetNode>
+      <process:validateRules errorPage="" onError="default"/>
+      <process:inputParameters>
+        <process:parameter description="" historyStateLocation="client" isArray="false" modelType="com.primeton.das.criteria.criteriaType" name="${criteria}"/>
+        <process:parameter description="" historyStateLocation="client" isArray="false" modelType="com.eos.foundation.PageCond" name="page"/>
+      </process:inputParameters>
+      <process:serviceParameters/>
+    </sourceConnections>
+    <location x="33" y="149"/>
+    <size height="28" width="28"/>
+    <nodeLabel>start0label</nodeLabel>
+  </nodes>
+  <nodes xsi:type="model:NodeElementLabel" id="start0label" name="label" displayName="label" nodeType="label">
+    <location x="35" y="185"/>
+    <figSize height="12" width="25"/>
+    <node>start0</node>
+  </nodes>
+  <nodes xsi:type="process:tAssign" description="" id="assign0" name="赋值" displayName="赋值" type="assign">
+    <sourceConnections xsi:type="process:tLink" id="link1" name="link1" displayName="连接线" isDefault="true" type="transition">
+      <sourceNode>assign0</sourceNode>
+      <targetNode>invokeSpring0</targetNode>
+    </sourceConnections>
+    <targetConnections>link0</targetConnections>
+    <location x="117" y="149"/>
+    <size height="28" width="28"/>
+    <nodeLabel>assign0label</nodeLabel>
+    <process:copy>
+      <process:from type="literal" pattern="reference">${selectedEntity}</process:from>
+      <process:to type="query">${criteria}/_entity</process:to>
+    </process:copy>
+    <process:copy>
+      <process:from type="literal" pattern="reference">${isPageCount}</process:from>
+      <process:to type="query">page/isCount</process:to>
+    </process:copy>
+    <process:copy>
+      <process:from type="literal" pattern="reference">-1</process:from>
+      <process:to type="query">page/count</process:to>
+    </process:copy>
+  </nodes>
+  <nodes xsi:type="model:NodeElementLabel" id="assign0label" name="label" nodeType="label">
+    <location x="119" y="185"/>
+    <figSize height="12" width="25"/>
+    <node>assign0</node>
+  </nodes>
+  <nodes xsi:type="process:tView" description="" id="view1" name="$query_jsp_file" displayName="视图" type="view" contextPath="" contributionName="$contributionName" method="forward" uri="$query_jsp">
+    <sourceConnections xsi:type="process:tActionLink" description="" id="link3" name="link3" lineType="reference" isDefault="false" type="action" actionName="pageQuery" dataConvertClass="">
+      <sourceNode>view1</sourceNode>
+      <targetNode>invokeSpring1</targetNode>
+      <process:validateRules onError="default"/>
+      <process:inputParameters/>
+      <process:serviceParameters/>
+    </sourceConnections>
+    <sourceConnections xsi:type="process:tActionLink" description="" id="link5" name="link5" lineType="reference" isDefault="false" type="action" actionName="update" dataConvertClass="">
+      <sourceNode>view1</sourceNode>
+      <targetNode>assign1</targetNode>
+      <process:validateRules onError="default"/>
+      <process:inputParameters/>
+      <process:serviceParameters/>
+    </sourceConnections>
+    <sourceConnections xsi:type="process:tActionLink" description="" id="link8" name="link8" lineType="reference" isDefault="true" type="action" actionName="insert" dataConvertClass="">
+      <sourceNode>view1</sourceNode>
+      <targetNode>view0</targetNode>
+      <process:validateRules errorPage="" onError="default"/>
+      <process:inputParameters/>
+      <process:serviceParameters/>
+    </sourceConnections>
+    <sourceConnections xsi:type="process:tActionLink" description="" id="link11" name="link11" lineType="reference" type="action" actionName="delete" dataConvertClass="">
+      <sourceNode>view1</sourceNode>
+      <targetNode>invokeSpring2</targetNode>
+      <process:validateRules onError="default"/>
+      <process:inputParameters/>
+      <process:serviceParameters/>
+    </sourceConnections>
+    <targetConnections>link2</targetConnections>
+    <location x="318" y="149"/>
+    <size height="28" width="22"/>
+    <nodeLabel>view1label</nodeLabel>
+    <process:inputParameters>
+      <process:parameter description="" historyStateLocation="client" isArray="false" modelType="com.primeton.das.criteria.criteriaType" name="${criteria}"/>
+#if($isPagination)
+      <process:parameter description="" historyStateLocation="client" isArray="false" modelType="com.eos.foundation.PageCond" name="page"/>
+#end
+      <process:parameter description="" historyStateLocation="client" isArray="true" modelType="${selectedEntity}" name="${selectArrVar}"/>
+    </process:inputParameters>
+    <process:outputVariables/>
+  </nodes>
+  <nodes xsi:type="model:NodeElementLabel" id="view1label" name="label" nodeType="label">
+    <location x="275" y="185"/>
+    <figSize height="12" width="109"/>
+    <node>view1</node>
+  </nodes>
+  <nodes xsi:type="process:tEnd" id="end1" name="$query_jsp_file" displayName="$query_jsp_file" nodeType="common" type="end" contributionName="$contributionName" uri="$query_jsp" variableUri="false">
+    <targetConnections>link4</targetConnections>
+    <location x="308" y="35"/>
+    <size height="28" width="28"/>
+    <nodeLabel>end1label</nodeLabel>
+    <process:inputVariables/>
+  </nodes>
+  <nodes xsi:type="model:NodeElementLabel" id="end1label" name="label" nodeType="label">
+    <location x="268" y="71"/>
+    <figSize height="12" width="109"/>
+    <node>end1</node>
+  </nodes>
+  <nodes xsi:type="process:tAssign" description="" id="assign1" name="赋值1" displayName="赋值" type="assign">
+    <sourceConnections xsi:type="process:tLink" id="link6" name="link6" displayName="连接线" isDefault="true" type="transition">
+      <sourceNode>assign1</sourceNode>
+      <targetNode>invokeSpring3</targetNode>
+    </sourceConnections>
+    <targetConnections>link5</targetConnections>
+    <location x="212" y="230"/>
+    <size height="28" width="28"/>
+    <nodeLabel>assign1label</nodeLabel>
+    <process:copy>
+      <process:from type="query" pattern="reference">${selectArrVar}[1]</process:from>
+      <process:to type="query">${entityVar}</process:to>
+    </process:copy>
+  </nodes>
+  <nodes xsi:type="model:NodeElementLabel" id="assign1label" name="label" nodeType="label">
+    <location x="211" y="266"/>
+    <figSize height="12" width="31"/>
+    <node>assign1</node>
+  </nodes>
+  <nodes xsi:type="process:tView" description="" id="view0" name="$input_jsp_file" displayName="$input_jsp_file" type="view" contextPath="" contributionName="$contributionName" method="forward" uri="$input_jsp">
+    <sourceConnections xsi:type="process:tActionLink" description="" id="link9" name="link9" lineType="reference" isDefault="true" type="action" actionName="insertSubmit" dataConvertClass="">
+      <sourceNode>view0</sourceNode>
+      <targetNode>invokeSpring4</targetNode>
+      <process:validateRules onError="default"/>
+      <process:inputParameters/>
+      <process:serviceParameters/>
+    </sourceConnections>
+    <sourceConnections xsi:type="process:tActionLink" description="" id="link10" name="link10" lineType="reference" type="action" actionName="updateSubmit" dataConvertClass="">
+      <sourceNode>view0</sourceNode>
+      <targetNode>invokeSpring5</targetNode>
+      <process:validateRules onError="default"/>
+      <process:inputParameters/>
+      <process:serviceParameters/>
+    </sourceConnections>
+    <targetConnections>link7</targetConnections>
+    <targetConnections>link8</targetConnections>
+    <location x="319" y="326"/>
+    <size height="28" width="22"/>
+    <nodeLabel>view0label</nodeLabel>
+    <process:inputParameters>
+      <process:parameter description="" historyStateLocation="client" isArray="false" modelType="com.primeton.das.criteria.criteriaType" name="${criteria}"/>
+#if($isPagination)
+	  <process:parameter description="" historyStateLocation="client" isArray="false" modelType="com.eos.foundation.PageCond" name="page"/>
+#end
+      <process:parameter description="" historyStateLocation="client" isArray="false" modelType="$selectedEntity" name="${entityVar}"/>
+    </process:inputParameters>
+    <process:outputVariables/>
+  </nodes>
+  <nodes xsi:type="model:NodeElementLabel" id="view0label" name="label" nodeType="label">
+    <location x="276" y="362"/>
+    <figSize height="12" width="109"/>
+    <node>view0</node>
+  </nodes>
+  <nodes xsi:type="process:tAssign" description="" id="assign2" name="赋值2" displayName="赋值" type="assign">
+    <sourceConnections xsi:type="process:tLink" id="link15" name="link15" displayName="连接线" isDefault="true" type="transition">
+      <sourceNode>assign2</sourceNode>
+      <targetNode>invokeSpring1</targetNode>
+    </sourceConnections>
+    <targetConnections>link12</targetConnections>
+    <targetConnections>link13</targetConnections>
+    <targetConnections>link14</targetConnections>
+    <location x="525" y="150"/>
+    <size height="28" width="28"/>
+    <nodeLabel>assign2label</nodeLabel>
+    <process:copy>
+      <process:from type="literal" pattern="reference">${selectedEntity}</process:from>
+      <process:to type="query">${criteria}/_entity</process:to>
+    </process:copy>
+    <process:copy>
+      <process:from type="literal" pattern="reference">${isPageCount}</process:from>
+      <process:to type="query">page/isCount</process:to>
+    </process:copy>
+    <process:copy>
+      <process:from type="literal" pattern="reference">-1</process:from>
+      <process:to type="query">page/count</process:to>
+    </process:copy>
+  </nodes>
+  <nodes xsi:type="model:NodeElementLabel" id="assign2label" name="label" nodeType="label">
+    <location x="524" y="186"/>
+    <figSize height="12" width="31"/>
+    <node>assign2</node>
+  </nodes>
+  <nodes xsi:type="process:tInvoke" description="" id="invokeSpring0" name="$query_spring_name" displayName="$query_spring_name" nodeType="common" type="invoke" index="0" invokeType="invoke_spring" varArgs="false">
+    <sourceConnections xsi:type="process:tLink" id="link2" name="link2" displayName="连接线" isDefault="true" type="transition">
+      <sourceNode>invokeSpring0</sourceNode>
+      <targetNode>view1</targetNode>
+    </sourceConnections>
+    <targetConnections>link1</targetConnections>
+    <location x="211" y="149"/>
+    <size height="28" width="28"/>
+    <nodeLabel>invokeSpring0label</nodeLabel>
+    <process:spring methodType="beanID" synchronization="true">
+      <process:partner type="literal">${implService_query}</process:partner>
+      <process:instance instanceName="${beanID}"/>
+    </process:spring>
+    <process:inputVariables>
+     <process:inputVariable id="0" name="criteria" type="query" value="com.eos.das.entity.criteria.CriteriaType" valueType="Java" pattern="reference">${criteria}</process:inputVariable>
+#if($isPagination)
+      <process:inputVariable id="1" name="page" type="query" value="com.eos.foundation.PageCond" valueType="Java" pattern="reference">page</process:inputVariable>
+#end
+    </process:inputVariables>
+    <process:outputVariables>
+      <process:outputVariable id="0" name="${iter_xpath}" type="query" value="${selectedEntity}[]" valueType="Java">${iter_xpath}</process:outputVariable>
+    </process:outputVariables>
+  </nodes>
+  <nodes xsi:type="model:NodeElementLabel" id="invokeSpring0label" name="label" nodeType="label">
+    <location x="180" y="185"/>
+    <figSize height="12" width="91"/>
+    <node>invokeSpring0</node>
+  </nodes>
+  <nodes xsi:type="process:tInvoke" id="invokeSpring1" name="$query_spring_name" displayName="$query_spring_name" nodeType="common" type="invoke" invokeType="invoke_spring">
+    <sourceConnections xsi:type="process:tLink" id="link4" name="link4" displayName="连接线" isDefault="true" type="transition">
+      <sourceNode>invokeSpring1</sourceNode>
+      <targetNode>end1</targetNode>
+    </sourceConnections>
+    <targetConnections>link3</targetConnections>
+    <targetConnections>link15</targetConnections>
+    <location x="526" y="35"/>
+    <size height="28" width="28"/>
+    <nodeLabel>invokeSpring1label</nodeLabel>
+    <process:spring methodType="beanID" synchronization="true">
+      <process:partner type="literal">${implService_query}</process:partner>
+      <process:instance instanceName="${beanID}"/>
+    </process:spring>
+    <process:inputVariables>
+	  <process:inputVariable id="0" name="criteria" type="query" value="com.eos.das.entity.criteria.CriteriaType" valueType="Java" pattern="reference">${criteria}</process:inputVariable>
+#if($isPagination)
+      <process:inputVariable id="1" name="page" type="query" value="com.eos.foundation.PageCond" valueType="Java" pattern="reference">page</process:inputVariable>
+#end
+    </process:inputVariables>
+    <process:outputVariables>
+      <process:outputVariable id="0" name="${iter_xpath}" type="query" value="${selectedEntity}[]" valueType="Java">${iter_xpath}</process:outputVariable>
+    </process:outputVariables>
+  </nodes>
+  <nodes xsi:type="model:NodeElementLabel" id="invokeSpring1label" name="label" nodeType="label">
+    <location x="495" y="71"/>
+    <figSize height="12" width="91"/>
+    <node>invokeSpring1</node>
+  </nodes>
+  <nodes xsi:type="process:tInvoke" id="invokeSpring2" name="$del_spring_name" displayName="$del_spring_name" nodeType="common" type="invoke" invokeType="invoke_spring">
+    <sourceConnections xsi:type="process:tLink" id="link12" name="link12" displayName="连接线" isDefault="true" type="transition">
+      <sourceNode>invokeSpring2</sourceNode>
+      <targetNode>assign2</targetNode>
+    </sourceConnections>
+    <targetConnections>link11</targetConnections>
+    <location x="430" y="149"/>
+    <size height="28" width="28"/>
+    <nodeLabel>invokeSpring2label</nodeLabel>
+    <process:spring methodType="beanID" synchronization="true">
+      <process:partner type="literal">${implService_delete}</process:partner>
+      <process:instance instanceName="${beanID}"/>
+    </process:spring>
+    <process:inputVariables>
+	  <process:inputVariable id="0" name="${entityNameLow}s" type="query" value="${selectedEntity}[]" valueType="Java" pattern="reference">${selectArrVar}</process:inputVariable>
+    </process:inputVariables>
+    <process:outputVariables/>
+  </nodes>
+  <nodes xsi:type="model:NodeElementLabel" id="invokeSpring2label" name="label" nodeType="label">
+    <location x="396" y="185"/>
+    <figSize height="12" width="97"/>
+    <node>invokeSpring2</node>
+  </nodes>
+  <nodes xsi:type="process:tInvoke" id="invokeSpring3" name="$get_spring_name" displayName="$get_spring_name" nodeType="common" type="invoke" invokeType="invoke_spring">
+    <sourceConnections xsi:type="process:tLink" id="link7" name="link7" displayName="连接线" isDefault="true" type="transition">
+      <sourceNode>invokeSpring3</sourceNode>
+      <targetNode>view0</targetNode>
+    </sourceConnections>
+    <targetConnections>link6</targetConnections>
+    <location x="213" y="326"/>
+    <size height="28" width="28"/>
+    <nodeLabel>invokeSpring3label</nodeLabel>
+    <process:spring methodType="beanID" synchronization="true">
+      <process:partner type="literal">${implService_get}</process:partner>
+      <process:instance instanceName="${beanID}"/>
+    </process:spring>
+    <process:inputVariables>
+	  <process:inputVariable id="0" name="${entityVar}" type="query" value="$selectedEntity" valueType="Java" pattern="reference">${entityVar}</process:inputVariable>
+    </process:inputVariables>
+    <process:outputVariables/>
+  </nodes>
+  <nodes xsi:type="model:NodeElementLabel" id="invokeSpring3label" name="label" nodeType="label">
+    <location x="191" y="362"/>
+    <figSize height="12" width="73"/>
+    <node>invokeSpring3</node>
+  </nodes>
+  <nodes xsi:type="process:tInvoke" id="invokeSpring4" name="$add_spring_name" displayName="$add_spring_name" nodeType="common" type="invoke" invokeType="invoke_spring">
+    <sourceConnections xsi:type="process:tLink" id="link13" name="link13" displayName="连接线" isDefault="true" type="transition">
+      <sourceNode>invokeSpring4</sourceNode>
+      <targetNode>assign2</targetNode>
+    </sourceConnections>
+    <targetConnections>link9</targetConnections>
+    <location x="430" y="230"/>
+    <size height="28" width="28"/>
+    <nodeLabel>invokeSpring4label</nodeLabel>
+    <process:spring methodType="beanID" synchronization="true">
+      <process:partner type="literal">${implService_add}</process:partner>
+      <process:instance instanceName="${beanID}"/>
+    </process:spring>
+    <process:inputVariables>
+	  <process:inputVariable id="0" name="${entityVar}" type="query" value="$selectedEntity" valueType="Java" pattern="reference">${entityVar}</process:inputVariable>
+    </process:inputVariables>
+    <process:outputVariables/>
+  </nodes>
+  <nodes xsi:type="model:NodeElementLabel" id="invokeSpring4label" name="label" nodeType="label">
+    <location x="408" y="266"/>
+    <figSize height="12" width="73"/>
+    <node>invokeSpring4</node>
+  </nodes>
+  <nodes xsi:type="process:tInvoke" id="invokeSpring5" name="$update_spring_name" displayName="$update_spring_name" nodeType="common" type="invoke" invokeType="invoke_spring">
+    <sourceConnections xsi:type="process:tLink" id="link14" name="link14" displayName="连接线" isDefault="true" type="transition">
+      <sourceNode>invokeSpring5</sourceNode>
+      <targetNode>assign2</targetNode>
+    </sourceConnections>
+    <targetConnections>link10</targetConnections>
+    <location x="525" y="326"/>
+    <size height="28" width="28"/>
+    <nodeLabel>invokeSpring5label</nodeLabel>
+    <process:spring methodType="beanID" synchronization="true">
+      <process:partner type="literal">${implService_update}</process:partner>
+      <process:instance instanceName="${beanID}"/>
+    </process:spring>
+    <process:inputVariables>
+	  <process:inputVariable id="0" name="${entityVar}" type="query" value="$selectedEntity" valueType="Java" pattern="reference">${entityVar}</process:inputVariable>
+    </process:inputVariables>
+    <process:outputVariables/>
+  </nodes>
+  <nodes xsi:type="model:NodeElementLabel" id="invokeSpring5label" name="label" nodeType="label">
+    <location x="494" y="362"/>
+    <figSize height="12" width="91"/>
+    <node>invokeSpring5</node>
+  </nodes>
+  <topRuler/>
+  <leftRuler/>
+  <process:info author="${RuntimeInfo.getAuthor()}" createTime="${RuntimeInfo.getDate()} ${RuntimeInfo.getTime()}" date="${RuntimeInfo.getDate()}Z" name="${flowQName_file}" version="6.0"/>
+  <process:variables/>
+</process:tPageFlow>

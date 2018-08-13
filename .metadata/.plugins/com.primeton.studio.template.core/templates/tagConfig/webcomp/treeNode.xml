@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<tag xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" tagName="w:treeNode" >
+	<require>
+		<path>/webcomp/baseWebcomp.xml</path>
+		<include>onClickFunc,onRefreshFunc,icon,scope</include>
+	</require>
+	<group groupName="Basic">
+		<property displayName="nodeType" hint="Set the type of node." name="nodeType" required="true" type="primitive:string"/>
+		<property displayName="iconField" hint="Sets the icon field for  node opened status and closed status." name="iconField" required="false" type="primitive:string"/>
+		<property displayName="xpath" hint="Sets the xpath for node." name="xpath" required="true" type="primitive:string"/>
+		<property displayName="showField" hint="Sets the contect of node." name="showField" required="true" type="primitive:string"/>
+		<property displayName="submitXpath" hint="Sets the xpath of submitted data." name="submitXpath" required="false" type="primitive:string"/>
+	</group>
+	<group groupName="Event">
+		<property  allowXPath="false" displayName="onCheckFunc" hint="Fires when the node's checkbox has been checked." name="onCheckFunc" required="false" type="javascript:functionName"/>
+	</group>
+</tag>

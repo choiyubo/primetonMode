@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tag xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" tagName="wf:selectParticipant">
+	<require>
+		<path>/workflow/baseWFSelect.xml</path>
+		<include>scope,id,name,value,maxNum,hidden,hiddenType,form,genScript,styleClass,output</include>
+	</require>
+	<group groupName="基本属性">
+		<property type="primitive:string" name="root" displayName="root" hint="根上显示的参与者，结构必须为:类型{参与者ID}，如果是多个用|分隔" required="false"/>
+		<property type="primitive:string" name="selectTypes"  displayName="selectTypes" hint="能够选择的参与者类型,多个用/分隔" required="false"/>
+	</group>
+</tag>
+

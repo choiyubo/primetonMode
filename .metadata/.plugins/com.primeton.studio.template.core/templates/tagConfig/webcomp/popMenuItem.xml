@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<tag xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" tagName="w:popMenuItem" >
+    <require>
+        <path>/webcomp/baseWebcomp.xml</path>
+        <include>name,icon,onClickFunc,onRefreshFunc,scope</include>
+    </require>
+    <group groupName="Basic">
+        <property displayName="seperator" hint="seperator" name="seperator" required="false" type="primitive:boolean"/>
+        <property displayName="menuKey" hint="Sets id of menu item." name="menuKey" required="false" type="primitive:string"/>
+    </group>
+</tag>

@@ -1,0 +1,41 @@
+#set($wizardMap=${dataContextManager.getWizardDataContext()})
+#set($contributionName=${wizardMap.get("contribution")})
+#set($queryMap = ${dataContextManager.getComponentDataContext(1, "queryform")})
+#set($selectedEntityMap = ${dataContextManager.getComponentDataContext(0, "entitySelect")})
+#set($selectedEntity=${dataContextManager.getComponentDataContext(0, "entitySelect").get("selectedEntity")})
+#set($entityName=${dataContextManager.getComponentDataContext(0, "entitySelect").get("entityName")})
+#set($entityNameLow = "${entityName.toLowerCase()}")
+#set($isAutoPK=${dataContextManager.getComponentDataContext(0, "auto_pk").get("checked")})
+#set($keys = ${DataEntityHelper.getPrimaryKeys($selectedEntity)})
+#set($save_biz=${templateConfigManager.getInvokePath("save_all_entities.vm")})
+#set($query_biz=${templateConfigManager.getInvokePath("query_entities.vm")})
+#set($temp=${queryMap.put("criteriaName", "criteria")})
+#set($map=${queryMap})
+#set($pageSize = ${map.get("pageLength")})
+#set($isPageCount = ${map.get("isPageCount")})
+#set($width=${map.get("formWidth")})
+#set($isPagination=${queryMap.get("isPagination")})
+
+#set($map = ${dataContextManager.getComponentDataContext(2, "datacell")})
+#set($tagElement = $map.get("tag_element"))
+${TagElementHelper.setAttributeValue($tagElement, "paramFormId", "query_form")}
+${TagElementHelper.setAttributeValue($tagElement, "xpath", "${entityNameLow}s")}
+${TagElementHelper.setAttributeValue($tagElement, "width", "${width}")}
+#if($pageSize != "")
+	${TagElementHelper.setAttributeValue($tagElement, "pageSize", "${pageSize}")}
+#end
+#if($isPageCount != "")
+	${TagElementHelper.setAttributeValue($tagElement, "isCount", "${isPageCount}")}
+#end
+
+#set($toolBars = $TagElementHelper.getElementByName($tagElement, "r:toolbar"))
+#set($toolBar = "")
+#foreach($bar in $toolBars)
+	#set($toolBar = $bar)
+#end
+#if($toolBar == "")
+	#set($toolBar=$TagElementHelper.newTagElement("r:toolbar"))
+#end
+$TagElementHelper.setAttributeValue($toolBar, "location", "bottom")
+$TagElementHelper.setAttributeValue($toolBar, "tools", "nav,edit,pagesize,info")
+
